@@ -1,0 +1,78 @@
+=====  0x0043695e .. 0x00436a5a (252 bytes) =====
+  0043695e  push     ebx
+  0043695f  push     esi
+  00436960  push     edi
+  00436961  push     ebp
+  00436962  imul     eax, dword ptr [0x49910c], 0x68   ; [0x0049910c]
+  00436969  cmp      byte ptr [eax + 0x496b7d], 1
+  00436970  jne      0x436a43
+  00436976  push     0
+  00436978  push     0
+  0043697a  push     0x17
+  0043697c  mov      ecx, dword ptr [0x48a05c]   ; [0x0048a05c]
+  00436982  push     ecx
+  00436983  call     0x450441   ; ->0x450441
+  00436988  add      esp, 0x10
+  0043698b  mov      dword ptr [0x48c3c0], eax   ; [0x0048c3c0]
+  00436990  push     0
+  00436992  push     0
+  00436994  push     2
+  00436996  mov      ebx, dword ptr [0x48a05c]   ; [0x0048a05c]
+  0043699c  push     ebx
+  0043699d  call     0x450441   ; ->0x450441
+  004369a2  add      esp, 0x10
+  004369a5  mov      dword ptr [0x48c3bc], eax   ; [0x0048c3bc]
+  004369aa  push     0
+  004369ac  push     0
+  004369ae  push     0x118
+  004369b3  push     0xc8
+  004369b8  call     0x451a5a   ; ->0x451a5a
+  004369bd  add      esp, 0x10
+  004369c0  mov      dword ptr [0x48c3b8], eax   ; [0x0048c3b8]
+  004369c5  push     0
+  004369c7  push     0
+  004369c9  push     0xc8
+  004369ce  push     0xc8
+  004369d3  call     0x451a5a   ; ->0x451a5a
+  004369d8  add      esp, 0x10
+  004369db  mov      dword ptr [0x48c3b4], eax   ; [0x0048c3b4]
+  004369e0  push     4
+  004369e2  call     0x4549cf   ; ->0x4549cf
+  004369e7  add      esp, 4
+  004369ea  push     0
+  004369ec  push     0x436034
+  004369f1  call     0x4018e7   ; ->0x4018e7
+  004369f6  add      esp, 8
+  004369f9  push     1
+  004369fb  call     0x41906a   ; ->0x41906a
+  00436a00  add      esp, 4
+  00436a03  call     0x454bcc   ; ->0x454bcc
+  00436a08  mov      esi, dword ptr [0x48c3c0]   ; [0x0048c3c0]
+  00436a0e  push     esi
+  00436a0f  call     0x456e11   ; ->0x456e11
+  00436a14  add      esp, 4
+  00436a17  mov      edi, dword ptr [0x48c3bc]   ; [0x0048c3bc]
+  00436a1d  push     edi
+  00436a1e  call     0x456e11   ; ->0x456e11
+  00436a23  add      esp, 4
+  00436a26  mov      ebp, dword ptr [0x48c3b8]   ; [0x0048c3b8]
+  00436a2c  push     ebp
+  00436a2d  call     0x456e11   ; ->0x456e11
+  00436a32  add      esp, 4
+  00436a35  mov      eax, dword ptr [0x48c3b4]   ; [0x0048c3b4]
+  00436a3a  push     eax
+  00436a3b  call     0x456e11   ; ->0x456e11
+  00436a40  add      esp, 4
+  00436a43  pop      ebp
+  00436a44  pop      edi
+  00436a45  pop      esi
+  00436a46  pop      ebx
+  00436a47  ret      
+  00436a48  mov      eax, eax
+  00436a4a  wait     
+  00436a4b  push     0x43
+  00436a4d  add      bh, bl
+  00436a4f  push     0x43
+  00436a51  add      ch, dh
+  00436a53  push     0x43
+  00436a55  add      byte ptr [ecx], al

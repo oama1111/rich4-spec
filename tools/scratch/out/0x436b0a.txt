@@ -1,0 +1,152 @@
+# func 0x00436b0a insns=148 callers=[] callees=[]
+#  reads=['0x00464b75', '0x00464b9e', '0x00464baf', '0x00496b68', '0x00496b88', '0x00496b90', '0x00498e7c', '0x00498e90', '0x0049910c', '0x00499114']
+#  writes=['0x0048be18', '0x00496b7d', '0x00496b90', '0x0049910c']
+===== func 0x00436b0a .. 0x00436d3a (560 bytes) =====
+  00436b0a  push     ebx
+  00436b0b  push     esi
+  00436b0c  push     edi
+  00436b0d  push     ebp
+  00436b0e  sub      esp, 0x9c
+  00436b14  mov      ebx, 1
+  00436b19  mov      edi, 0xffffffff
+  00436b1e  mov      ebp, dword ptr [0x498e7c]   ; [0x00498e7c]
+  00436b24  cmp      ebx, dword ptr [0x498e90]   ; [0x00498e90]
+  00436b2a  jg       0x436b45
+  00436b2c  imul     esi, ebx, 0x34
+  00436b2f  add      esi, ebp
+  00436b31  cmp      byte ptr [esi + 0x1a], 7
+  00436b35  jne      0x436b42
+  00436b37  mov      dl, byte ptr [esi + 0x18]
+  00436b3a  test     dl, dl
+  00436b3c  je       0x436b42
+  00436b3e  movzx    edi, dl
+  00436b41  dec      edi
+  00436b42  inc      ebx
+  00436b43  jmp      0x436b24   ; ->0x436b24
+  00436b45  cmp      dword ptr [esp + 0xb0], 0
+  00436b4d  je       0x436c6d
+  00436b53  cmp      edi, -1
+  00436b56  je       0x436c62
+  00436b5c  cmp      edi, dword ptr [0x49910c]   ; [0x0049910c]
+  00436b62  je       0x436c62
+  00436b68  imul     ebx, edi, 0x68
+  00436b6b  mov      ebx, dword ptr [ebx + 0x496b90]
+  00436b71  mov      dword ptr [esp + 0x94], ebx
+  00436b78  test     ebx, ebx
+  00436b7a  je       0x436c62
+  00436b80  xor      ebx, ebx
+  00436b82  xor      ebp, ebp
+  00436b84  cmp      ebx, dword ptr [0x499114]   ; [0x00499114]
+  00436b8a  jge      0x436ba5
+  00436b8c  cmp      ebx, edi
+  00436b8e  je       0x436ba2
+  00436b90  imul     esi, ebx, 0x68
+  00436b93  cmp      byte ptr [esi + 0x496b7d], 0
+  00436b9a  je       0x436ba2
+  00436b9c  add      ebp, dword ptr [esi + 0x496b88]
+  00436ba2  inc      ebx
+  00436ba3  jmp      0x436b84   ; ->0x436b84
+  00436ba5  cmp      ebp, dword ptr [esp + 0x94]
+  00436bac  jge      0x436c62
+  00436bb2  mov      ebx, dword ptr [0x49910c]   ; [0x0049910c]
+  00436bb8  mov      dword ptr [esp + 0x98], ebx
+  00436bbf  mov      dword ptr [0x49910c], edi   ; [0x0049910c]
+  00436bc5  xor      esi, esi
+  00436bc7  mov      dword ptr [0x48be18], esi   ; [0x0048be18]
+  00436bcd  push     1
+  00436bcf  call     0x41906a   ; ->0x41906a
+  00436bd4  add      esp, 4
+  00436bd7  mov      esi, dword ptr [esp + 0x94]
+  00436bde  sub      esi, ebp
+  00436be0  imul     ebx, edi, 0x68
+  00436be3  mov      ebp, dword ptr [ebx + 0x496b68]
+  00436be9  push     ebp
+  00436bea  lea      ebp, [esp + 0x84]
+  00436bf1  push     ebp
+  00436bf2  call     0x452946   ; ->0x452946
+  00436bf7  add      esp, 8
+  00436bfa  lea      ebp, [esp + 0x80]
+  00436c01  push     ebp
+  00436c02  push     esi
+  00436c03  push     0x464b75
+  00436c08  lea      ebp, [esp + 0xc]
+  00436c0c  push     ebp
+  00436c0d  call     0x457110   ; ->0x457110
+  00436c12  add      esp, 0x10
+  00436c15  push     0x9c4
+  00436c1a  lea      ebp, [esp + 4]
+  00436c1e  push     ebp
+  00436c1f  call     0x440cac   ; ->0x440cac
+  00436c24  add      esp, 8
+  00436c27  push     esi
+  00436c28  push     edi
+  00436c29  call     0x433bd8   ; ->0x433bd8
+  00436c2e  add      esp, 8
+  00436c31  mov      eax, dword ptr [ebx + 0x496b90]
+  00436c37  sub      eax, esi
+  00436c39  mov      dword ptr [ebx + 0x496b90], eax
+  00436c3f  test     eax, eax
+  00436c41  jge      0x436c4b
+  00436c43  xor      ecx, ecx
+  00436c45  mov      dword ptr [ebx + 0x496b90], ecx
+  00436c4b  mov      ebx, dword ptr [esp + 0x98]
+  00436c52  mov      dword ptr [0x49910c], ebx   ; [0x0049910c]
+  00436c58  push     1
+  00436c5a  call     0x41906a   ; ->0x41906a
+  00436c5f  add      esp, 4
+  00436c62  add      esp, 0x9c
+  00436c68  pop      ebp
+  00436c69  pop      edi
+  00436c6a  pop      esi
+  00436c6b  pop      ebx
+  00436c6c  ret      
+  00436c6d  xor      ebx, ebx
+  00436c6f  cmp      ebx, dword ptr [0x499114]   ; [0x00499114]
+  00436c75  jge      0x436c62
+  00436c77  cmp      ebx, edi
+  00436c79  je       0x436d34
+  00436c7f  imul     esi, ebx, 0x68
+  00436c82  cmp      byte ptr [esi + 0x496b7d], 0
+  00436c89  je       0x436d34
+  00436c8f  cmp      dword ptr [esi + 0x496b90], 0
+  00436c96  je       0x436d34
+  00436c9c  mov      ebp, dword ptr [0x49910c]   ; [0x0049910c]
+  00436ca2  mov      dword ptr [esp + 0x98], ebp
+  00436ca9  mov      dword ptr [0x49910c], ebx   ; [0x0049910c]
+  00436caf  xor      edx, edx
+  00436cb1  mov      dword ptr [0x48be18], edx   ; [0x0048be18]
+  00436cb7  push     1
+  00436cb9  call     0x41906a   ; ->0x41906a
+  00436cbe  add      esp, 4
+  00436cc1  push     0x5dc
+  00436cc6  push     0x464b9e
+  00436ccb  call     0x440cac   ; ->0x440cac
+  00436cd0  add      esp, 8
+  00436cd3  mov      ecx, dword ptr [esi + 0x496b90]
+  00436cd9  push     ecx
+  00436cda  mov      ebp, dword ptr [esi + 0x496b68]
+  00436ce0  push     ebp
+  00436ce1  push     0x464baf
+  00436ce6  lea      ebp, [esp + 0xc]
+  00436cea  push     ebp
+  00436ceb  call     0x457110   ; ->0x457110
+  00436cf0  add      esp, 0x10
+  00436cf3  push     0x5dc
+  00436cf8  lea      ebp, [esp + 4]
+  00436cfc  push     ebp
+  00436cfd  call     0x440cac   ; ->0x440cac
+  00436d02  add      esp, 8
+  00436d05  mov      eax, dword ptr [esi + 0x496b90]
+  00436d0b  push     eax
+  00436d0c  push     ebx
+  00436d0d  call     0x433bd8   ; ->0x433bd8
+  00436d12  add      esp, 8
+  00436d15  xor      edx, edx
+  00436d17  mov      dword ptr [esi + 0x496b90], edx
+  00436d1d  mov      esi, dword ptr [esp + 0x98]
+  00436d24  mov      dword ptr [0x49910c], esi   ; [0x0049910c]
+  00436d2a  push     1
+  00436d2c  call     0x41906a   ; ->0x41906a
+  00436d31  add      esp, 4
+  00436d34  inc      ebx
+  00436d35  jmp      0x436c6f   ; ->0x436c6f

@@ -1,0 +1,2702 @@
+======================================================================
+### 0x42d977   （2 处引用）
+--- packages/client/src/shop-screen.ts:337
+    /**
+     * @source `loc_0042d87e` 的跳表（VA 0x42d36b 起 5 项）。
+     *
+     * 进店时低 4 位被置成 `页 + 3`（`loc_0042d5d8`），所以真正跑得到的只有 case 3 / 4：
+     * `rand()` 抽一张脸 —— 卡片页在 1..3 里抽（图 4..6）、道具页 `rand()&1`（图 23/24）；
+     * **与上次抽到的一样就跳过**（`cmp esi, ebp / je`）。
+     *
+     * ★ 那几张走的是 `fcn_004563f5`（**不带透明**的整块贴图，见 `loc_0042d977`），
+     *   所以换一张就等于把上一张盖掉 —— 这才是它看起来会闪的原因。
+     *
+--- packages/client/src/shop-screen.ts:642
+    /**
+     * 哪几张图要**抠掉纯黑**（= 原版走带透明的 `fcn_00456418`，而不是不透明的 `fcn_004563f5`）。
+     *
+     * | 图 | 原版用哪个 | 抠黑 |
+     * |---|---|---|
+     * | 0 / 16 底图、1 / 17 货架栏 | `fcn_004563f5`（不透明）| ✗ |
+     * | 2 / 18 老板娘 | `fcn_00456418` @0x42d2f2 / 0x42d32c | ✓ |
+     * | 4–8、9–11、12、21–27 变脸帧 | `fcn_004563f5` @0x42d977（**整块贴图**，靠这个盖掉上一帧）| ✗ |
+     * | 13 / 29、14 / 30 三角钮 | `fcn_00456418` @0x42d64f | ✓ |
+     * | 35 / 36 EXIT | `fcn_00456418` @0x42d75e | ✓ |
+
+======================================================================
+### 0x44dd9f   （1 处引用）
+--- packages/client/src/help-screen.ts:11
+     *
+     * ★ **這一屏不碰任何規則**（C-ARC-2）：只是把 `help.mkf` 的版面與條目擺出來、
+     *   翻章 / 翻頁、關掉。规则永远在 core，本模块只做「摆位置 / 算命中 / 画」。
+     *
+     * ## 出处
+     *
+     * 窗口过程 `_rich4_ui_help_callback` VA **0x0044e40b**、入口
+     * `_rich4_ui_help_entry` VA **0x0044eb39**、版面函数 `fcn_0044dd9f` VA **0x0044dd9f**
+     * 与 `fcn_0044dfb4` VA **0x0044dfb4**（文件 `rich4-re/asm/rich4_ui_help.asm`）。
+     * 全仓库只有这一处引用 `0x4761b4` / `0x476028` 那两张表，素材与常量可以穷举：
+
+======================================================================
+### 0x410158   （10 处引用）
+--- packages/client/src/options-pages.test.ts:208
+      });
+    });
+    
+    // ============================================================
+    //  熱鍵頁
+    // ============================================================
+    
+    describe('熱鍵頁的版式 —— fcn_00411122 / fcn_00410158', () => {
+      it('底图 328×336，居中在 (156,72) —— @source 0x004111b6 起', () => {
+        expect(HOTKEY_AT).toEqual({ x: 156, y: 72 });
+--- packages/client/src/options-pages.ts:11
+     *
+     * 主面板在 `options.ts`（控件表 `0x474b92` + 跳表 `0x41034b`）。这里放
+     * 右上角三颗黄钮各自推开的那一层：
+     *
+     * | 副屏 | 底图 | 窗口过程 | 绘制函数 | 谁推开 |
+     * |---|---|---|---|---|
+     * | 日期頁 | `Data.mkf` 资源 3 **图 2**（199×220） | `fcn_00410ac3` | `fcn_0040ff4b` | 標題頁那颗「日期更改」|
+     * | 熱鍵頁 | 资源 3 **图 1**（328×336） | `fcn_00411122` | `fcn_00410158` | 標題頁那颗「熱鍵設定」|
+     * | 遊戲說明 | `help.mkf` 资源 0 | `_rich4_ui_help_callback` | — | 標題頁那颗「遊戲說明」|
+     * | YES/NO 框 | `Data.mkf` 资源 **440**（96×48，3 张） | `fcn_0045367e` | — | 遊戲中那三颗 |
+--- packages/client/src/options-pages.ts:27
+     *   配 8 路处理跳表 `0x410a87`
+     * - 日期頁月/年字落点 = `0x474cd4/cd6`（48,32）与 `0x474cd8/cda`（133,30），对齐码 2
+     * - 日期頁三个蓝钮的字 = 串表 `0x474cc8`（熱 鍵 / 取 消 / 確 定），
+     *   落点表 `0x474cdc/cde` 起每项 4 字节：`(38,196) (101,196) (163,196)`，对齐码 2
+     * - 日期頁日曆格 = `fcn_0040ff4b` 的日循环（`0x00410064` 起）：1 号落在
+     *   `(23×星期 + 28, 80)`，x 步进 23、满 7 格（x 到 166）换行且 y += 18
+     * - 熱鍵頁两列名字 = 串表 `0x474abc`（28 条）+ 入口 `0x00411c20` 起的坐标
+     *   （x 62 / 208，y 33 起每行 +16）；键位列 = `fcn_00410158` 的 `+0x84` / `+0x11c`
+     * - 熱鍵頁的键位表 = `0x497168`（56 字节 = 28 个 word），出厂默认 = `0x47edc2`
+     * - 键名表 = `0x47edfa`（8 字节一项：dword 键号 + dword 名字指针），78 项
+--- packages/client/src/options-pages.ts:54
+     * ## 抠黑（`Data.mkf` 的 SMP 黑底要逐图判定）
+     *
+     * `fcn_004563f5` = 不抠、`fcn_00456418` = 抠（见 `options.ts` 文件头）：
+     *
+     * | 图 | 谁画 | 抠黑 |
+     * |---|---|---|
+     * | 日期頁 图 2 | `fcn_0040ff4b` @0x0040ffab 的 `0x4563f5` | **不抠** |
+     * | 熱鍵頁 图 1 | `fcn_00410158` @0x0041018f 的 `0x456418` | 抠 |
+     * | 微调 图 12/13 | `0x410cc4` 的 `add eax,0x9c` / `0x410d72` 的 `0xa8` 之后 `0x456418` | 抠 |
+     * | 蓝钮 图 14 | `0x410e25` 的 `add eax,0xb4` 之后 `0x456418` | 抠 |
+
+======================================================================
+### 0x4306ff   （2 处引用）
+--- packages/client/src/lottery-draw-screen.ts:22
+     *
+     * ```
+     * [0] 0x430236  置 2 + 说「現在馬上為您開出這一期的號碼．．。」
+     * [1] 0x43036c  状态 3：起摇球机 + 铺台座 + 说台词（详见下）
+     * [2] 0x43024c  状态 3 的尾巴：数 20 帧后开号
+     * [3] 0x430485  状态 4：中奖
+     * [4] 0x43024c  （状态 5 走 0x430f43 的等待）
+     * [5] 0x4306ff  状态 6：说「恭喜您獨得所有獎金！」
+     * [6] 0x4308e0  状态 7→8：说「獎金將累積到下個月．．．。」
+     * [7] 0x4308f3  状态 8：把台面还原、说（中奖那条不说话）
+--- packages/client/src/lottery-draw-screen.ts:291
+     * | 6 | 6 | 恭喜 | ✓ |
+     * | 7 | 8 | 收尾（中奖那一路）| 脚本没给球 → ✗ |
+     * | 7 | 7 | 空号（没人中奖那一路）| ✓ |
+     *
+     * @source 开号那一下（0x430b7a 一片，同一个状态 3 的第二段，@0x430c17 的
+     *   `图号 = 数字 + 0x25`）、状态 4（0x4305aa / 0x4305e2 两颗，@0x48c37d 与
+     *   `+0x48c37e` 两个数字字节）、状态 5（0x431049 / 0x43108d）、状态 6
+     *   （0x4306ff 那一片）、状态 7（0x430d85 那一片）各贴一次。
+     *
+     * ⚠️ **步 3 是开号、不是步 4**：core 脚本里状态 3 **连着出现两次**
+
+======================================================================
+### 0x42728e   （1 处引用）
+--- packages/client/src/board-screen.ts:315
+        { x: 0x1f, y: 0xbc },
+        { x: 0x1f, y: 0xdc },
+      ],
+    };
+    
+    /**
+     * 详情框里**值**的落点（框内坐标）。逐条照四个分支：
+     * 股票 VA 0x0042728e、地產 VA 0x00427469、道具 VA 0x0042771a、卡片 VA 0x00427816。
+     * `align`：`center` = flag 2（正中）、`right` = flag 6（右中）。
+     */
+
+======================================================================
+### 0x43c8fb   （1 处引用）
+--- packages/client/src/bail-screen.ts:21
+     * | 犯人画 | `0xd + slot` | `0x16 + slot` |
+     * | 點數底板 | 图 21 @ (542,432) | 图 30 @ (8,432) |
+     * | 點數数字 | (622,452) | (88,452) |
+     *
+     * 两头共用 `Panel.mkf` **64** —— 那是四个**惡人立绘**（小偷/強盜/流氓/間諜），
+     * 医院还多画一张 `65` 的图 4（医生）在 (104,110)。
+     *
+     * ## 稳态版面（`fcn_0043c8fb` / `fcn_0043d88f`）
+     *
+     * ```asm
+
+======================================================================
+### 0x424049   （4 处引用）
+--- packages/client/src/asset-sheet.ts:108
+      sel: 3,
+      normal: 4,
+      nameDx: 0x2c,
+      nameY: 0x1e,
+      size: 0x14,
+    } as const;
+    
+    /** 页签命中框高度 @source VA 0x424049 `cmp edi, 0xe` / `cmp edi, 0x2f` */
+    export const SHEET_TAB_HIT = { y: 0x0e, h: 0x2f - 0x0e + 1 } as const;
+    
+--- packages/client/src/asset-sheet.ts:116
+    export const SHEET_TAB_HIT = { y: 0x0e, h: 0x2f - 0x0e + 1 } as const;
+    
+    /** 在场玩家的下标（按页签顺序）@source VA 0x42256f：`[0x48c278]` 那张表 */
+    export function activePlayers(state: GameState): number[] {
+      return state.players.filter((p) => isAlive(p)).map((p) => p.index);
+    }
+    
+    /** 点在第几个页签上（**位次**，不是玩家号）；没点中返回 null @source VA 0x424049 */
+    export function hitSheetTab(x: number, y: number, tabCount: number): number | null {
+      if (y < SHEET_TAB_HIT.y || y >= SHEET_TAB_HIT.y + SHEET_TAB_HIT.h) return null;
+--- packages/client/src/main.ts:6635
+          if (hit === undefined) return;
+          invPicked = hit.id;
+          sound.play('Effect.mkf', SOUND_IDS.TITLE_CLICK);
+          return;
+        }
+    
+        // ── 個人資產表屏（T-022）──
+        // 按下只**记状态 + 画高亮**，动作全留给抬手（原版 VA 0x424049/0x424163/0x423dd1）。
+        if (screen === 'assets') {
+          const q = eventToStage(e);
+--- packages/client/src/main.ts:6639
+        }
+    
+        // ── 個人資產表屏（T-022）──
+        // 按下只**记状态 + 画高亮**，动作全留给抬手（原版 VA 0x424049/0x424163/0x423dd1）。
+        if (screen === 'assets') {
+          const q = eventToStage(e);
+          if (q === null) return;
+          // 顶栏页签：原版**按下就换人**（VA 0x424049 里立刻 `[0x48c27c] = 玩家`）
+          const tab = hitSheetTab(q.x, q.y, activePlayers(state).length);
+          if (tab !== null) {
+
+======================================================================
+### 0x43d88f   （1 处引用）
+--- packages/client/src/bail-screen.ts:21
+     * | 犯人画 | `0xd + slot` | `0x16 + slot` |
+     * | 點數底板 | 图 21 @ (542,432) | 图 30 @ (8,432) |
+     * | 點數数字 | (622,452) | (88,452) |
+     *
+     * 两头共用 `Panel.mkf` **64** —— 那是四个**惡人立绘**（小偷/強盜/流氓/間諜），
+     * 医院还多画一张 `65` 的图 4（医生）在 (104,110)。
+     *
+     * ## 稳态版面（`fcn_0043c8fb` / `fcn_0043d88f`）
+     *
+     * ```asm
+
+======================================================================
+### 0x42771a   （1 处引用）
+--- packages/client/src/board-screen.ts:315
+        { x: 0x1f, y: 0xbc },
+        { x: 0x1f, y: 0xdc },
+      ],
+    };
+    
+    /**
+     * 详情框里**值**的落点（框内坐标）。逐条照四个分支：
+     * 股票 VA 0x0042728e、地產 VA 0x00427469、道具 VA 0x0042771a、卡片 VA 0x00427816。
+     * `align`：`center` = flag 2（正中）、`right` = flag 6（右中）。
+     */
+
+======================================================================
+### 0x412287   （1 处引用）
+--- packages/client/src/minigame-screen.ts:501
+      return { ...st, target: cell, to: nextCellToward(st.cell, cell), sub: 0 };
+    }
+    
+    /**
+     * 从 `from` 朝 `to` 走**一格**。
+     *
+     * 原版走的是 (列, 行) 上的**直线**：主轴每帧 1 格、副轴按 `drow<<16 / |dcol|` 的定点步进
+     * （@0x0041211c / @0x00412287），下一格若不是有效格就把那一条轴停住。这里直接按整数格推，
+     * 结论一致（D-MINI-6）。
+     */
+
+======================================================================
+### 0x44ee18   （15 处引用）
+--- packages/client/src/auction-screen.ts:1091
+          message: st.message,
+        });
+      },
+    
+      down(x: number, y: number, env: UiScreenEnv): void {
+        const st = screen;
+        if (st === null) return;
+        // 结算演出中点任意处 = 跳过（原版按下时 `fcn_0044ee18(1)` 直接收摊）@source 0x43bb25
+        if (st.settling || st.outcome !== null) {
+          st.message = null;
+--- packages/client/src/bank-dynamic.test.ts:238
+    
+      it('★ 借款填 0（没填）：st=8 且**不挂气泡** —— 下一拍照样滑回去', () => {
+        let ui = press({ ...loanStart(false), st: LOAN_ST.ready }, 1);
+        ui = step(ui, { kind: 'bubbleEnd' }).ui;
+        ui = step(ui, { kind: 'formClosed', amount: 0, cash: 0, deposit: 0 }).ui;
+        expect(ui.st).toBe(LOAN_ST.settle);
+        expect(ui.bubble).toBeNull();
+        // 原版的定时器在**没有气泡**时也走那张转换表（`fcn_0044ee18` 返回 1）
+        ui = step(ui, { kind: 'bubbleEnd' }).ui;
+        expect(ui.st).toBe(LOAN_ST.ready);
+--- packages/client/src/bank-dynamic.ts:587
+      /** 字心偏移：`x + w/2 + dx`、`y + h/2 + dy` @source 那两个 arg 存进 `[0x48c618]`/`[0x48c62c]` */
+      dx: 0x14,
+      dy: 0,
+      size: 0x14,
+      color: '#101010',
+    } as const;
+    
+    /** 气泡寿命 —— 与商店同一支 `fcn_0044ee18` @source `cmp eax, 0x7d0` */
+    export const LOAN_BUBBLE_MS = 2000;
+    
+--- packages/client/src/bank-dynamic.ts:682
+       */
+      | { kind: 'financeClosed'; ok: boolean }
+      /** 关屏 @source `Post_0402_Message` */
+      | { kind: 'close' };
+    
+    /** 状态机收到的**事件** */
+    export type LoanEvent =
+      /** 0x113 定时器：气泡到点（`fcn_0044ee18` 返回真）*/
+      | { kind: 'bubbleEnd' }
+      /** 左键按下 @source `loc_00435c12`（`0x201/0x203`）*/
+
+======================================================================
+### 0x4249c2   （3 处引用）
+--- packages/client/src/board-screen.test.ts:268
+    
+      it('★ 挂牌栏格数用 core 的 BOARD_SLOTS，与版面常量一致', () => {
+        expect(BOARD_SLOTS).toBe(7);
+        expect(BOARD_COLS).toBe(BOARD_SLOTS);
+      });
+    });
+    
+    describe('版面 @source VA 0x004249c2 / 0x004284be', () => {
+      it('★ 底图（596×348）落在 (22,66) —— 不是 (0,0)，四周是黑的', () => {
+        expect(BOARD_PANEL_AT).toEqual({ x: 22, y: 66 });
+--- packages/client/src/board-screen.ts:16
+     *
+     * ## 出处一览（全部自 `rich4.exe` 读出，截图只用来印证）
+     *
+     * | 是什么 | @source |
+     * |---|---|
+     * | 入口 `_rich4_ui_sale_entry` | VA 0x004284be |
+     * | 主窗口过程 `fcn_00427c21` | VA 0x00427c21 |
+     * | **底图重绘** `fcn_004249c2` | VA 0x004249c2 |
+     * | **详情框** 窗口过程 `fcn_0042704e` | VA 0x0042704e |
+     * | 賣股票 选物窗 `fcn_004258c1` | VA 0x004258c1 |
+--- packages/client/src/board-screen.ts:1403
+    }
+    
+    /** 图号 → 本屏底图（`Panel.mkf` #73）*/
+    function art(env: UiScreenEnv, index: number): Sprite | null {
+      return boardSprite(env, 'Panel.mkf', BOARD_RESOURCE, index);
+    }
+    
+    /** 底图 + 四位玩家的头像 + 已挂的格子 @source `fcn_004249c2` */
+    function drawBoard(ctx: CanvasRenderingContext2D, env: UiScreenEnv, view: BoardView): void {
+      blit(ctx, art(env, BOARD_PANEL_CHUNK), BOARD_PANEL_AT.x, BOARD_PANEL_AT.y);
+
+======================================================================
+### 0x43f351   （1 处引用）
+--- packages/client/src/god-slot.ts:36
+     * ```
+     *
+     * ## 状态机（`fcn_0043f23e`，每格 **0x1e = 30 ms**，`cmp ebx,0x1e / jb`）
+     *
+     * | 状态 | 干什么 | @source |
+     * |---|---|---|
+     * | 1 | `fcn_0043ef3e(variant, 0xf, 0)` —— 四位一起滚 | `loc_0043f33f` |
+     * | 2 | 同上 + 画**拉杆**（`fcn_00456418(Panel#67 图 4)` 落在摇杆那一点）+ 音效 **1**（`0x482322`）→ 状态 3、计数清零 | `loc_0043f351` |
+     * | 3 | 滚；计数到 **4** 才往下 | `loc_0043f45d` |
+     * | 4..7 | **逐槽停**：`fcn_0043ef3e(variant, 0xf, 1)` → `(0xe, 2)` → `(0xc, 3)` → `(8, 4)`，每次都等它返回 1（= 那一槽停稳）再进下一状态 | `loc_0043f55f` / `0x43f57f` / `0x43f59f` / `0x43f5bd` |
+
+======================================================================
+### 0x43f45d   （2 处引用）
+--- packages/client/src/god-slot.ts:37
+     *
+     * ## 状态机（`fcn_0043f23e`，每格 **0x1e = 30 ms**，`cmp ebx,0x1e / jb`）
+     *
+     * | 状态 | 干什么 | @source |
+     * |---|---|---|
+     * | 1 | `fcn_0043ef3e(variant, 0xf, 0)` —— 四位一起滚 | `loc_0043f33f` |
+     * | 2 | 同上 + 画**拉杆**（`fcn_00456418(Panel#67 图 4)` 落在摇杆那一点）+ 音效 **1**（`0x482322`）→ 状态 3、计数清零 | `loc_0043f351` |
+     * | 3 | 滚；计数到 **4** 才往下 | `loc_0043f45d` |
+     * | 4..7 | **逐槽停**：`fcn_0043ef3e(variant, 0xf, 1)` → `(0xe, 2)` → `(0xc, 3)` → `(8, 4)`，每次都等它返回 1（= 那一槽停稳）再进下一状态 | `loc_0043f55f` / `0x43f57f` / `0x43f59f` / `0x43f5bd` |
+     * | 8 | 停循环音（`fcn_004542e9`）→ 状态 9 | `loc_0043f5dd` |
+--- packages/client/src/god-slot.ts:157
+    export const GOD_SLOT_LEVER_SOUND = 1;
+    /** 一格 = 0x1e = 30 ms @source `loc_0043f709` 的 `cmp ebx,0x1e / jb` */
+    export const GOD_SLOT_TICK_MS = 0x1e;
+    /** 状态 < 3 时每 10 格重掷一次数字 @source loc_0043f2d7 的 `div 0xa` */
+    export const GOD_SLOT_REROLL_TICKS = 10;
+    /** 真人不动手时，计数到 0x28 = 40 格自动推进到「拉杆」@source loc_0043f318 */
+    export const GOD_SLOT_AUTO_TICKS = 0x28;
+    /** 每一槽停稳要几格（原版 state 3 的 `cmp [esp+0xb0], 4`）@source loc_0043f45d */
+    export const GOD_SLOT_SETTLE_TICKS = 4;
+    /** 全停之后停留多久才收屏（本引擎的收尾时长；原版靠「再点一下」）*/
+
+======================================================================
+### 0x427816   （1 处引用）
+--- packages/client/src/board-screen.ts:315
+        { x: 0x1f, y: 0xbc },
+        { x: 0x1f, y: 0xdc },
+      ],
+    };
+    
+    /**
+     * 详情框里**值**的落点（框内坐标）。逐条照四个分支：
+     * 股票 VA 0x0042728e、地產 VA 0x00427469、道具 VA 0x0042771a、卡片 VA 0x00427816。
+     * `align`：`center` = flag 2（正中）、`right` = flag 6（右中）。
+     */
+
+======================================================================
+### 0x416355   （6 处引用）
+--- packages/client/src/hud.ts:918
+        ctx.textBaseline = 'top';
+        for (let i = 0; i < PANEL_ROW_LABEL_Y.length; i++) {
+          ctx.fillText(labels[i]!, PANEL_ROW_LABEL_X, PANEL_ROW_LABEL_Y[i]!);
+        }
+    
+        // 三行数值 —— 每页算的量不同，见 core 的 `panelValues`；文字由调用方
+        // （client/panel.ts 的 `panelRows`）按各页的格式排好再传进来
+        // @source VA 0x004162d4 / 0x00416355 / 0x0041646c / 0x004165e1
+        ctx.font = `${PANEL_VALUE_SIZE}px ${FONT_FAMILY}`;
+        ctx.textAlign = 'right';
+--- packages/client/src/panel.ts:16
+     * | 页 | 行1 | 行2 | 行3 |
+     * |---|---|---|---|
+     * | 資金 | `num_to_currency_string` | 同左 | 同左 |
+     * | 地產 | `itoa` | 同左 | 同左 |
+     * | 股票 | `num_to_currency_string` | 同左 | `itoa` |
+     * | 其他 | `itoa` | `num_to_currency_string` | `sprintf("%d天")` |
+     *
+     * @source 四个页处理函数 VA 0x004162d4 / 0x00416355 / 0x0041646c / 0x004165e1；
+     *   货币格式串是 `"$%d"` 那一类（`rich4_num_to_currency_string`，VA 0x00452793），
+     *   天数是 `"%d天"`（串表 `0x463902`）。
+--- packages/core/src/state/panel.test.ts:64
+          landOwner: [0, 1, 1],
+          // ★ 連鎖店的判据是**地块的 type（+0x18）**，不是 level —— 见 `assetCounts`
+          landType: [0, 0, 1],
+          facilityOwner: [0, 1],
+          facilityLevel: [0, 1],
+        });
+        const v = panelValues(state, topoWith([L1, L2], [F1]), 0);
+        // 土地 = 2 块地 + 1 个设施 = 3（@source VA 0x00416355 的 `[esp+0xac]`）
+        expect(v.estate[0]).toBe(3);
+        // 連鎖店 = type≠0 的地块数 = 1
+--- packages/core/src/state/panel.ts:67
+     *       cmp byte [eax+0x18], 0 / je +            ; type（連鎖店/房屋）
+     *       inc esi                                   ; 行2 連鎖店 = type ≠ 0
+     *       cmp byte [eax+0x1a], 0 / je skip          ; level
+     *       inc edi                                   ; 行3 房屋 = type==0 且 level ≠ 0
+     * 设施: inc [esp+0x80] / cmp byte [eax+0x1a],0 / inc ebp   ; 行4 設施 = level ≠ 0
+     * ```
+     * ★ 两个循环共用累加器，所以**行1「土地」其实是不動產总数**（地块 + 设施），
+     *   侧栏地產页的「土地」行也是这么算的（VA 0x00416355 的 `[esp+0xac]`）。
+     * ★ 行2 的判据是**地块的 `type`（+0x18）**，不是 `level` —— `land.h` 写明
+     *   `+0x18: chained store or house`。
+
+======================================================================
+### 0x437c25   （4 处引用）
+--- packages/client/src/monthly-screen.ts:67
+     * 两个入口都从 `[0x48c42a] = 0` 起：`WM_TIMER(0x113)` 与 `WM_USER+5(0x405)`。
+     * `SetTimer(hwnd, 0x32, timer, 0)` = **50ms** 一拍，状态机每拍走一步：
+     *
+     * | 状态 | 做什么 | @source |
+     * |---|---|---|
+     * | 0 | 只画结算屏（全部行）| 0x0043802c 附近 |
+     * | 1 | 把图 1 在 `(70,24)` 那块 **70×24** 原样盖到 `(24,70)`（裁切拷贝，非缩放）| 0x00437fff |
+     * | 2 | `fcn_00437c25` 重画全部行 | 0x004380d5 |
+     * | 5 | 每 **20 拍**（1 秒）点亮一行（`[0x48c425] == 0x14` → `fcn_00437c25`）| 0x0043829c |
+     * | 6 | 30 拍后评獎（`fcn_00437d1a` + `fcn_00437dfe`）| 0x004382de |
+--- packages/client/src/monthly-screen.ts:68
+     * `SetTimer(hwnd, 0x32, timer, 0)` = **50ms** 一拍，状态机每拍走一步：
+     *
+     * | 状态 | 做什么 | @source |
+     * |---|---|---|
+     * | 0 | 只画结算屏（全部行）| 0x0043802c 附近 |
+     * | 1 | 把图 1 在 `(70,24)` 那块 **70×24** 原样盖到 `(24,70)`（裁切拷贝，非缩放）| 0x00437fff |
+     * | 2 | `fcn_00437c25` 重画全部行 | 0x004380d5 |
+     * | 5 | 每 **20 拍**（1 秒）点亮一行（`[0x48c425] == 0x14` → `fcn_00437c25`）| 0x0043829c |
+     * | 6 | 30 拍后评獎（`fcn_00437d1a` + `fcn_00437dfe`）| 0x004382de |
+     * | 7 | 铺 **4 列竖栏**（图 15..18）+ **4 块窄板**（图 11..14）+ `loc_0043849e` 的逐列头像 | 0x004383dc |
+--- packages/client/src/monthly-screen.ts:373
+     */
+    export const MONTHLY_SOUND_STEP = 27;
+    export const MONTHLY_SOUND_DETAIL = 60;
+    export const MONTHLY_SOUND_CLOSE = 28;
+    
+    /**
+     * 頒獎屏那 4 列的 **x** @source `[0x475930 + 8×人数 + 2×槽]`
+     *   （`fcn_00437c25` 的 `movsx eax, word [esi + eax*2 + 0x475930]`，
+     *   4 人局 = `{60,180,300,420}`）。
+     *
+--- packages/core/src/rules/monthly.ts:7
+    /*
+     * 每月结算与颁奖
+     * SPDX-License-Identifier: GPL-3.0-or-later
+     *
+     * 这是 Q5 扫描发现的**最大缺口**：整条「每月自动结算 → 存款利息 →
+     * 月度奖项评选 → 颁奖」的链路，在 rich4-re 的已命名文件里完全没有，
+     * 只存在于未拆分的 rich4.asm（fcn_00437c25 / 00437d1a / 00437dfe /
+     * 00437e61 / 00439bfa，L16568–19256 约 2700 行）。
+     *
+
+======================================================================
+### 0x4053d9   （2 处引用）
+--- packages/client/src/setup.ts:336
+    }
+    
+    /**
+     * 按下。
+     *
+     * ★ 角色格与地图行是**按下即生效**（原版 0x201 那条分支）；
+     *   两颗按钮与六条下拉只**记下按下状态**（贴按下图 / 抬手才弹浮窗）。
+     * @source `VA 0x00405339`（角色）、`VA 0x004055b9`（地图）、`VA 0x004053d9`／`0x004054d8`（按钮与下拉）
+     */
+    export function setupDown(s: SetupState, x: number, y: number): SetupState {
+--- packages/client/src/setup.ts:787
+      for (let menu = 0; menu < 6; menu++) {
+        const y = PANEL.y + CONFIG_ROW_Y[menu]!;
+        text(ctx, CONFIG_TITLES[menu]!, px0 + CONFIG_LABEL_X, y, CONFIG_FONT, 'left', LABEL_COLOR, '#101010', true);
+        text(ctx, menuItems(s, menu)[menuValue(s, menu)] ?? '', px0 + CONFIG_VALUE_X, y, CONFIG_FONT, 'right', VALUE_COLOR);
+      }
+    
+      // ③ 按下不放：两颗按钮换按下图，六条下拉的蓝三角换成黄三角
+      //    @source `VA 0x004053d9`（按钮）、`VA 0x004054b5`（三角）
+      let downImg = -1;
+      if (s.pressed === 1) downImg = SETUP_UI.okDown;
+
+======================================================================
+### 0x40fc57   （1 处引用）
+--- packages/client/src/options.ts:263
+      music: { x: 66, y: 82 },
+      sound: { x: 66, y: 114 },
+      autoSave: { x: 98, y: 146 },
+    } as const;
+    /** 視窗三选一的灯：x 固定 218（`x + 0xda`），y 查表 `0x474c92` = 218 / 250 / 281 */
+    export const WINDOW_LAMP = { x: 218, y: [218, 250, 281] as const };
+    
+    /** 樂曲列表的行几何 @source `fcn_0040fc57` */
+    export const TRACK_ROWS = {
+      /** 行高与行数 */
+
+======================================================================
+### 0x42f32c   （2 处引用）
+--- packages/client/src/lottery-screen.test.ts:127
+      });
+    });
+    
+    // ============================================================
+    //  版面
+    // ============================================================
+    
+    describe('版面 @source 0x42f32c / 0x42f417 / 0x42f974 / 0x42f3fe', () => {
+      it('★ 底图在 (0,0)', () => {
+        expect(LOT_BG_AT).toEqual({ x: 0, y: 0 });
+--- packages/client/src/lottery-screen.ts:641
+      ctx.drawImage(frame, LOT_BONUS_AT.x, LOT_BONUS_AT.y);
+      return true;
+    }
+    
+    /**
+     * 画整屏。
+     *
+     * 顺序照原版：起跑馬燈（`fcn_0042f32c` 那一下，@0x42f3fe）→ 建屏（底图 → 貓女郎
+     * → 气泡）+ 窗口过程那半（蓝板 → 金额字形 → 眨眼/嘴贴片）+ 買中时（粉笔弧 → 換图 2）。
+     *
+
+======================================================================
+### 0x410838   （2 处引用）
+--- packages/client/src/main.ts:2634
+        return;
+      }
+      closeOptionsSub();
+      requestRender();
+    }
+    
+    /**
+     * YES/NO 框的结果落地 —— 原版 `fcn_00410838` 的 `cmp eax,1 / jne`：
+     * **答「是」才做**，答「否」（含右键）直接回去。
+     */
+--- packages/client/src/main.ts:2721
+    function isAlivePlayer(p: { whoPlays: number }): boolean {
+      return (p.whoPlays & 0x03) !== 0;
+    }
+    
+    /**
+     * 右上角三颗黄钮（抬手才算）。
+     *
+     * @source `fcn_00410838`：`[0x48bb58]`（= 入口参数）非 0 就是**遊戲中**进来，
+     *   先弹一个 Yes/No 确认框（`_rich4_ui_yesno(0x140, 0xc8)` = 画在 (320,200)），
+     *   答「是」才把 `[0x474d74] − 2`（1 重新遊戲 / 2 認輸投降 / 3 結束遊戲）抛回去；
+
+======================================================================
+### 0x4391ee   （1 处引用）
+--- packages/client/src/monthly-screen.test.ts:1721
+          expect(exeBuf.includes(pat), r.at).toBe(true);
+        }
+        // 反例：把 src 与 dst 换开就找不到（证明上面那串不是「碰巧」）
+        expect(exeBuf.includes(pushPattern([0x19a, 0xba, 0x18, 0x46, 0x46, 0x18]))).toBe(false);
+      });
+    
+      it('★ 另有**一处真位移**（`图 29`，不在上面四条里）：源 80×40@(0x34,0x32)、目标是那一支自己的头像局部量', () => {
+        // `loc_004391ee`（`[0x48c42d] == 4` 那支、且 `ebx == 3` 才走）：
+        //   push 0x28 / 0x50 / 0x32 / 0x34 / [esp+0xd4] / [esp+0xd4] + 图 29
+        expect(exeBuf.length === 0 || exeBuf.includes(pushPattern([0x28, 0x50, 0x32, 0x34]))).toBe(true);
+
+======================================================================
+### 0x4054d8   （1 处引用）
+--- packages/client/src/setup.ts:336
+    }
+    
+    /**
+     * 按下。
+     *
+     * ★ 角色格与地图行是**按下即生效**（原版 0x201 那条分支）；
+     *   两颗按钮与六条下拉只**记下按下状态**（贴按下图 / 抬手才弹浮窗）。
+     * @source `VA 0x00405339`（角色）、`VA 0x004055b9`（地图）、`VA 0x004053d9`／`0x004054d8`（按钮与下拉）
+     */
+    export function setupDown(s: SetupState, x: number, y: number): SetupState {
+
+======================================================================
+### 0x431222   （2 处引用）
+--- packages/client/src/lottery-draw-screen.ts:562
+     * 帧表本体在 `0x00475660`（dump 出来 = `3 4 3 | 8 7 8 10 | 16 17 16 15 | 31 | 0 0 0 0 0 0 0 | ff ff ff ff`）：
+     * 槽 2 的表在 **+3**、槽 3 在 **+7**、槽 4 在 **+10**、槽 5 在 **+12**。
+     *
+     * ★ 原来的表把**前两项对调**了：槽 1（低 4 位 = 1）读的是表 +3 = `8,7,8,10`，
+     *   槽 2（低 4 位 = 2）读的是表 +7 = `16,17,16,15` —— 本模块按这个来。
+     *
+     * 矩形四角是**闭区间的端点**（`x1 − x0 + 1` 才是宽度），@source 0x00431157 的
+     * `0x200/0x66/0x232/0x76`（右眼）、0x00431222 的 `0x34/0x59/0x66/0x73`（左眼）。
+     */
+    export const FACE_SLOT_RECT = {
+--- packages/client/src/lottery-draw-screen.ts:578
+      [], // 0 = 空档（表 +0 那两字节是 `0x1f`/`0`，不是帧表）
+      [8, 7, 8, 10], // 槽 1 → 表 +3
+      [16, 17, 16, 15], // 槽 2 → 表 +7
+      [9, 10], // 槽 3 → 表 +10
+      [14, 15], // 槽 4 → 表 +12
+    ];
+    
+    /** 每个槽的帧数与「该槽结束」的条件位（主 nibble 的下一位）@source 0x00431157 `/ 00431222` */
+    const FACE_SLOT_BIT = [0, 1, 2, 4, 8] as const;
+    
+
+======================================================================
+### 0x42d299   （2 处引用）
+--- packages/client/src/shop-screen.ts:18
+     * 所以这一屏用到的图**可以穷举**：
+     *
+     * | 是什么 | @source |
+     * |---|---|
+     * | 底图 = 资源 10 图 0（卡片店）/ 图 16（道具店），落点 (0,0) | 0x42d2f2 前 |
+     * | 左侧货架栏 = 图 1 / 图 17（222×462），落点 `(滑入 x, 10)` | 0x42d75e |
+     * | 老板娘 = 图 2 / 图 18，锚点落 **(320,240)** | 0x42d2f2 / 0x42d32c |
+     * | 对话气泡 = 图 15（270×219），落点 (120,10) | 0x42d299 尾 |
+     * | 三角切页钮 = 图 13/29（常态）、图 14/30（按下），(542,13) | 0x42d64f / 0x42de4c |
+     * | EXIT = 图 35（常态）/ 图 36（按下），(556,246) | 0x42d75e / 0x42de4c |
+--- packages/client/src/shop-screen.ts:674
+    function shopSprite(sprite: ShopSprite, index: number): Sprite | null {
+      return sprite('Panel.mkf', SHOP_RESOURCE, index, SHOP_KEYED.has(index));
+    }
+    
+    /**
+     * 画整屏。
+     *
+     * 顺序照原版：`fcn_0042d299`（底图 → 老板娘）+ `loc_0042d75e`（货架栏 → 格子 → 两个钮）
+     * + `loc_0042d499`（點數）+ 气泡（原版最后画，压在老板娘身上）。
+     *
+
+======================================================================
+### 0x417c67   （6 处引用）
+--- packages/client/src/main.ts:489
+    let topo: MapTopology;
+    let state: GameState;
+    let camera: Camera;
+    let hoverNode: number | null = null;
+    /**
+     * 名牌浮标（Q-HOVER-1）—— 原版棋盘窗口过程在 `WM_LBUTTONDOWN` 上画、
+     * 在 `WM_LBUTTONUP` / `WM_MOUSEMOVE` 上擦（VA 0x004186bd → `fcn_00417559`，
+     * 擦除是 `fcn_00417c67`）。所以它**只在按住左键期间**挂在屏幕上。
+     */
+    let nodeTip: TipModel | null = null;
+--- packages/client/src/main.ts:6011
+    // ============================================================
+    
+    function bindInput(): void {
+      canvas.addEventListener('mousemove', (e) => {
+        const p = eventToStage(e);
+        if (p === null) return;
+    
+        // ── 名牌浮标：鼠标一动就擦（原版 0x200 那一支 `loc_00418b63` → `fcn_00417c67`）──
+        if (nodeTip !== null) {
+          nodeTip = null;
+--- packages/client/src/main.ts:6813
+        if (bx < 0 || by < 0 || bx >= LAYOUT.board.w || by >= LAYOUT.board.h) return;
+    
+        // ── 名牌浮标（Q-HOVER-1）────────────────────────────────
+        // 原版在棋盘窗口过程的 `WM_LBUTTONDOWN` 那一支里画（VA 0x004186a7）：
+        // `x < 0x1b8` 且 `y > 0x28`（= 棋盘格内、工具栏之下）就查光标底下是什么，
+        // 命中就放一声 `0x482322`（音效 1）并弹一块 `Data.mkf` 517 的名牌。
+        // ★ 弹在**这一拍**，不是 `click` —— 浏览器 `click` 排在 `mouseup` 之后，
+        //   而原版抬手那一下就把名牌擦了（`loc_00418878` → `fcn_00417c67`）。
+        // ★ 整屏/模态（訊息框、过场、保釋、拾取）盖着棋盘时不弹。
+        if (
+--- packages/client/src/main.ts:6833
+            nodeTip = m;
+            requestRender();
+          }
+        }
+    
+      });
+      window.addEventListener('mouseup', (e) => {
+        // 名牌浮标：抬手就擦（原版 `loc_00418878` → `fcn_00417c67` 把底图贴回去）
+        if (nodeTip !== null) {
+          nodeTip = null;
+
+======================================================================
+### 0x412851   （2 处引用）
+--- packages/client/src/minigame-screen.ts:29
+     *   `read_mkf(panel_mkf, 0x4f=79, 0, 0)` → 数字表（0..9 小号 15×28、10..19 大号 43..60×75..80）。
+     *
+     * ## 三屏的资源与玩法（逐条带 VA）
+     *
+     * ### 一、企鵝挖寶（VA 0x00415215，载入 0x4e..0x5a）
+     * - 底板/图标 = **80**（图 0 底图、1/2 光标、3 冰屋、4..8 = 寶物图标 `类型+3` @0x0041466f）；
+     *   走行 = **82**（`方向*4 + 子帧`，8 向 × 4 帧 @0x004126c2）；
+     *   挖掘 = **83**（同索引 @0x00412851）；结算高/低 = **84 / 85**；
+     *   五种寶物的「挖到」动画 = **86..90**（表 `0x48bd14`，`[0x48bd10 + 类型*4]`）。
+     * - **命中表 = 81**：640×480 的 8bpp，**每个像素的值就是格号**（0..80，0 = 不在棋盘上）。
+--- packages/client/src/minigame-screen.ts:525
+      const onlyC = tryStep(dc, 0);
+      if (onlyC !== null && onlyC !== from) return onlyC;
+      const onlyR = tryStep(0, dr);
+      if (onlyR !== null && onlyR !== from) return onlyR;
+      return null;
+    }
+    
+    /** 挖开一格 @source `loc_00412851` 的尾巴 0x00412925：读数 → 计数 → 播「挖到」动画 */
+    function penguinReveal(st: PenguinGame, cell: number): PenguinGame {
+      const type = st.board[cell] ?? 0;
+
+======================================================================
+### 0x435ea2   （5 处引用）
+--- packages/client/src/bank-dynamic.test.ts:265
+        ui = step(ui, { kind: 'bubbleEnd' }).ui;
+        expect(ui.st).toBe(LOAN_ST.repayAsk);
+        ui = step(ui, { kind: 'formClosed', amount: 500, cash: 100, deposit: 200 }).ui;
+        expect(ui.st).toBe(LOAN_ST.repayIn);
+        expect(ui.bubble).toBe(LOAN_MSG.noCash);
+      });
+    
+      it('★ EXIT 在**抬手**才收场；右键一样 @source loc_00435ea2 / loc_00435f6d', () => {
+        const base = { ...loanStart(false), st: LOAN_ST.ready };
+        const down = press(base, 0);
+--- packages/client/src/bank-dynamic.ts:686
+    
+    /** 状态机收到的**事件** */
+    export type LoanEvent =
+      /** 0x113 定时器：气泡到点（`fcn_0044ee18` 返回真）*/
+      | { kind: 'bubbleEnd' }
+      /** 左键按下 @source `loc_00435c12`（`0x201/0x203`）*/
+      | { kind: 'press'; btn: number; frozen: boolean; hasLoan: boolean; chairman: boolean; overLimit: boolean }
+      /** 左键抬起 @source `loc_00435ea2`（`0x202`）*/
+      | { kind: 'release' }
+      /**
+--- packages/client/src/bank-dynamic.ts:853
+              ui: { ...ui, financeOpen: false, st: LOAN_ST.ready, bubble: LOAN_MSG.financeBye },
+              effect: { kind: 'financeClosed', ok: false },
+            };
+          }
+          return same();
+        }
+        case 'release': {
+          // @source loc_00435ea2：只有「按的是 EXIT」且还没在道别时才收场
+          if (ui.pressed === 1 && ui.st !== LOAN_ST.bye) {
+            return { ui: { ...ui, pressed: 0, st: LOAN_ST.bye, bubble: LOAN_MSG.bye }, effect: null };
+--- packages/client/src/bank-dynamic.ts:1092
+    /** 月份 → 季节图号 @source 表 `0x475218`（在 `@rich4/core` 里叫 `sceneOfMonth`/`MONTH_SCENE`）*/
+    export const LOAN_MONTH_SCENE: readonly number[] = [3, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3];
+    
+    /**
+     * EXIT 那颗钮的按下 / 复原图。
+     *
+     * @source `loc_00435cca`（按下）：`fcn_00456418(屏, 图 19, 548, 431)`；
+     *   `loc_00435ea2`（抬手）：`fcn_00456418(屏, 图 18, 548, 431)` —— 都画在
+     *   命中表里 EXIT 那一格的左上角（图 18/19 都是 80×40、锚点 (0,0)）。
+     * ★ 四颗钮里**只有 EXIT** 有按下图；申請/償還/窗那三颗没有。
+
+======================================================================
+### 0x44e881   （6 处引用）
+--- packages/client/src/help-screen.ts:92
+     *   上一版把「上/下滚画在 (170,43/59)」记成了事实 —— 那是**上一章/下一章**那一对。
+     *
+     * 左列那 8 行另有一条**逐行**的判据（`loc_0044e621`：x (26,92) + 每行 36 高），
+     * `hitHelp` 先认它（`{ label: 0, cell: 格号 }`），再认六条矩形 —— 见 `hitHelpChip`。
+     *
+     * ## 两组各管什么
+     *
+     * - **条目 1**（上一章 / 下一章，`loc_0044e668` / `loc_0044e881`）：改章号
+     *   `[0x476018]`；跳章时把 `[0x47601c]` 清零（回到该章开头）。
+     * - **条目 2**（上滚 / 下滚，`loc_0044e6eb` / `loc_0044e944`）：改章节内行偏移
+--- packages/client/src/help-screen.ts:433
+     * ⚠️ **旧版那张表有两处误读，已删**：
+     *   · 把 **+0x0C**（资源数）当成 `maxScroll`，读出
+     *     `0 / 22 / 0 / 12 / 1 / 0 / 739 / 95`。但 +0x0C 就是**资源数**：上面那组
+     *     区间接续关系 8/8 成立（1→2→8→20→23→39→57→87→100），而且取正文那一步
+     *     `read_mkf(help, entry.res + scroll)` @0x44e179 是按资源走的 —— 若把
+     *     739 之类的数当行偏移，语意完全对不上。
+     *   · 把 **+0x10** 当成「左列格高 `h`」。+0x10 是**滚动位置**：下滚 @0x44e944、
+     *     上滚 @0x44e881 都直接 `add/sub` 这个 dword，exe 初值全 0；它跟左列格高
+     *     没关系。旧版那个 `h` 字段绘制时也没用到，故一并**删除**（不是改良绘制）。
+     *
+--- packages/client/src/help-screen.ts:1736
+    
+    /**
+     * 夹取章节内行偏移到 `[0, maxScroll]`。
+     *
+     * @source 0x44e944 的下滚分支：`edx = [entry+0x0C] − 8`（exe 口径 = **资源数 − 8**，
+     *   本模块把它换成当章的 `maxScroll = 行数 − 8`，见 `HELP_CHAPTERS` 那段）；
+     *   够走一步就走 8，走不过去就**直接落到 maxScroll**（不做取整）。
+     * @source 0x44e881 的上滚分支：`maxScroll <= 0` 就什么都不做，否则退 8 或归 0。
+     */
+    export function clampScroll(chapter: number, scroll: number): number {
+--- packages/client/src/help-screen.ts:2154
+     * 画整屏。
+     *
+     * 顺序照原版：底图（@0x44e024）→ 选中章的章名条（@0x44e04d）→ 左列那 8 行的
+     * 格图（@0x44e2f0 / 选中 @0x44e33c，**本模块不画**，见 `drawHelpScreen` 里那段）
+     * → 中部两颗三角（@0x44e11f / @0x44e14e）→ 左列八行章名（@0x44e08c / @0x44e092）
+     * → 右列分项标题（@0x44e0db）→ 正文（@0x44e1be）。
+     *
+     * ★ 三角的显示条件也照原版：**上滚**只在 `scroll > 0` 时画（@0x44e881 的
+     *   `edx <= 0` 那条支路），**下滚**只在还有内容时画（@0x44e6eb 里
+     *   `[0x48c5ec] == 0` 就不画）。
+
+======================================================================
+### 0x40d4e5   （1 处引用）
+--- packages/core/src/rules/blocking.ts:78
+     * 参与递减的计数器、归零掩码，以及各自的释放函数地址。
+     *
+     * 恰好是 `+0x32..+0x35` 这四个字节——与 `isBlocked` 一次性比较
+     * `dword [player+0x32]` 的那一组完全一致。
+     */
+    export const TICKED_COUNTERS: readonly (readonly [keyof BlockingDays, number, string])[] = [
+      ['inHotel', 0xff, '0x0040d6be'],
+      ['disappearing', DISAPPEARING_MASK, '0x0040d4e5'],
+      ['inPrison', 0xff, '0x0043d7bf'],
+      ['inHospital', 0xff, '0x0043ee6e'],
+
+======================================================================
+### 0x4020fa   （2 处引用）
+--- packages/client/src/picking.ts:24
+     * |---|---|---|
+     * | 光标底下**能选** | 换成**该道具/该卡自己的光标**（路障→STOP 牌子、地雷→尖刺球…）| VA 0x4465ba |
+     * | 光标底下**不能选** | 换成**红叉**（图 5）| VA 0x4465f4 |
+     * | 光标贴近棋盘四边 | 换成方向箭头（**34 / 40 / 38 / …**）并**把镜头往那个方向推** | VA 0x44609b 起 |
+     *
+     * 指针图集是 **`Data.mkf` 资源 0**（43 张；0/1/2 = 路障/地雷/定時炸彈、
+     * 5 = 红叉、12 = 卡片、34..40 = 八个方向的滚动箭头）
+     * @source VA 0x4020fa `read_mkf(data_mkf, 0, …)`。
+     *
+     * ★ 上一轮卡里写的「候选格描边」是**我们自己想的**，原版没有 —— 按 exe 改成指针。
+--- packages/client/src/picking.ts:243
+      if ((classes & PICK_CLASS.facility) !== 0 && ref.kind === 'facility') {
+        const f = topo.facilities?.find((x) => x.id === ref.index);
+        if (f !== undefined) return { x: f.x, y: f.y };
+      }
+      return { x: node.x, y: node.y };
+    }
+    
+    /** 指针图集 @source VA 0x4020fa 的 `read_mkf(data_mkf, 0, 0, 0)` */
+    export const CURSOR_ARCHIVE = 'Data.mkf' as const;
+    export const CURSOR_RESOURCE = 0;
+
+======================================================================
+### 0x4055b9   （1 处引用）
+--- packages/client/src/setup.ts:336
+    }
+    
+    /**
+     * 按下。
+     *
+     * ★ 角色格与地图行是**按下即生效**（原版 0x201 那条分支）；
+     *   两颗按钮与六条下拉只**记下按下状态**（贴按下图 / 抬手才弹浮窗）。
+     * @source `VA 0x00405339`（角色）、`VA 0x004055b9`（地图）、`VA 0x004053d9`／`0x004054d8`（按钮与下拉）
+     */
+    export function setupDown(s: SetupState, x: number, y: number): SetupState {
+
+======================================================================
+### 0x44e6eb   （5 处引用）
+--- packages/client/src/help-screen.ts:94
+     * 左列那 8 行另有一条**逐行**的判据（`loc_0044e621`：x (26,92) + 每行 36 高），
+     * `hitHelp` 先认它（`{ label: 0, cell: 格号 }`），再认六条矩形 —— 见 `hitHelpChip`。
+     *
+     * ## 两组各管什么
+     *
+     * - **条目 1**（上一章 / 下一章，`loc_0044e668` / `loc_0044e881`）：改章号
+     *   `[0x476018]`；跳章时把 `[0x47601c]` 清零（回到该章开头）。
+     * - **条目 2**（上滚 / 下滚，`loc_0044e6eb` / `loc_0044e944`）：改章节内行偏移
+     *   `[0x47601c]`，**步长 8**（= 一屏 8 行），夹在 `[0, entry(i).maxScroll]`。
+     *
+--- packages/client/src/help-screen.ts:1719
+    }
+    
+    // ============================================================
+    //  翻章 / 翻页
+    // ============================================================
+    
+    /**
+     * 每按一次上/下滚走的行数 = 一屏 14 行 @source 0x44e6eb / 0x44e944 的 `8`
+     * （exe 那个 `8` 是**资源**步长，本模块按行滚，见 `HELP_CHAPTERS` 那段与 D-045-2）。
+     */
+--- packages/client/src/help-screen.ts:2155
+     *
+     * 顺序照原版：底图（@0x44e024）→ 选中章的章名条（@0x44e04d）→ 左列那 8 行的
+     * 格图（@0x44e2f0 / 选中 @0x44e33c，**本模块不画**，见 `drawHelpScreen` 里那段）
+     * → 中部两颗三角（@0x44e11f / @0x44e14e）→ 左列八行章名（@0x44e08c / @0x44e092）
+     * → 右列分项标题（@0x44e0db）→ 正文（@0x44e1be）。
+     *
+     * ★ 三角的显示条件也照原版：**上滚**只在 `scroll > 0` 时画（@0x44e881 的
+     *   `edx <= 0` 那条支路），**下滚**只在还有内容时画（@0x44e6eb 里
+     *   `[0x48c5ec] == 0` 就不画）。
+     */
+--- packages/client/src/help-screen.ts:2286
+      }
+    }
+    
+    /**
+     * 把一次命中作用到屏状态上（章号 / 行偏移）。
+     *
+     * @source 回调的跳表 `ref_0044e3e3`（`loc_0044e621` 左列格 / `loc_0044e668` /
+     *   `loc_0044e6eb` / `loc_0044e881` / `loc_0044e944` 五个落点）。
+     */
+    export function applyHelpHit(hit: { label: number; cell: number }, env: UiScreenEnv): void {
+
+======================================================================
+### 0x410969   （1 处引用）
+--- packages/client/src/main.ts:2267
+      // 这三类按下只贴图，动作留到抬手
+      if (hit.kind === 'cancel' || hit.kind === 'ok' || hit.kind === 'side') {
+        requestRender();
+        return;
+      }
+    
+      // ⚠️ 音量**不**当场变 —— 原版也是按「確定」写回 cfg 之后音乐/音效才跟着走
+      //   （`fcn_00410969` 里的 `fcn_004549cf` / `fcn_0045497b`）。
+      optionsDraft = applyOptionsHit(optionsDraft, hit);
+      requestRender();
+
+======================================================================
+### 0x4387f9   （2 处引用）
+--- packages/client/src/monthly-screen.test.ts:114
+        // 资源的图号仍然照实记下来（6..9 = 3D 的 1/2/3/4、10 = 金币），
+        // 但 `loc_00439cd7` 里没有任何一处贴它们 —— 本轮已从绘制里删掉。
+        expect(MONTHLY_CHUNK.digitFirst).toBe(6);
+        expect(MONTHLY_CHUNK.digitFirst + 3).toBe(9);
+        expect(MONTHLY_CHUNK.coin).toBe(10);
+      });
+    
+      it('★ 4 块窄板 = 图 11..14、4 列竖栏 = 图 15..18 @source 0x0043849e / 0x004387f9', () => {
+        expect(MONTHLY_CHUNK.barFirst).toBe(11);
+        expect(MONTHLY_CHUNK.columnFirst).toBe(15);
+--- packages/client/src/monthly-screen.ts:94
+     * | 槽 | 帧 | 图像 | 尺寸 | 落点 x |
+     * |---|---|---|---|---|
+     * | 0 | 16 | 11 | 160×71 | 16 |
+     * | 1 | 17 | 12 | 159×71 | 17 |
+     * | 2 | 15 | 13 | 159×71 | 15 |
+     * | 3 | 16 | 14 | 159×71 | 16 |
+     *
+     * ### 頒獎屏 4 列 @source `loc_0043849e` / `loc_004387f9`
+     *
+     * ```asm
+
+======================================================================
+### 0x431157   （2 处引用）
+--- packages/client/src/lottery-draw-screen.ts:561
+     *
+     * 帧表本体在 `0x00475660`（dump 出来 = `3 4 3 | 8 7 8 10 | 16 17 16 15 | 31 | 0 0 0 0 0 0 0 | ff ff ff ff`）：
+     * 槽 2 的表在 **+3**、槽 3 在 **+7**、槽 4 在 **+10**、槽 5 在 **+12**。
+     *
+     * ★ 原来的表把**前两项对调**了：槽 1（低 4 位 = 1）读的是表 +3 = `8,7,8,10`，
+     *   槽 2（低 4 位 = 2）读的是表 +7 = `16,17,16,15` —— 本模块按这个来。
+     *
+     * 矩形四角是**闭区间的端点**（`x1 − x0 + 1` 才是宽度），@source 0x00431157 的
+     * `0x200/0x66/0x232/0x76`（右眼）、0x00431222 的 `0x34/0x59/0x66/0x73`（左眼）。
+     */
+--- packages/client/src/lottery-draw-screen.ts:578
+      [], // 0 = 空档（表 +0 那两字节是 `0x1f`/`0`，不是帧表）
+      [8, 7, 8, 10], // 槽 1 → 表 +3
+      [16, 17, 16, 15], // 槽 2 → 表 +7
+      [9, 10], // 槽 3 → 表 +10
+      [14, 15], // 槽 4 → 表 +12
+    ];
+    
+    /** 每个槽的帧数与「该槽结束」的条件位（主 nibble 的下一位）@source 0x00431157 `/ 00431222` */
+    const FACE_SLOT_BIT = [0, 1, 2, 4, 8] as const;
+    
+
+======================================================================
+### 0x427469   （1 处引用）
+--- packages/client/src/board-screen.ts:315
+        { x: 0x1f, y: 0xbc },
+        { x: 0x1f, y: 0xdc },
+      ],
+    };
+    
+    /**
+     * 详情框里**值**的落点（框内坐标）。逐条照四个分支：
+     * 股票 VA 0x0042728e、地產 VA 0x00427469、道具 VA 0x0042771a、卡片 VA 0x00427816。
+     * `align`：`center` = flag 2（正中）、`right` = flag 6（右中）。
+     */
+
+======================================================================
+### 0x40d8d3   （1 处引用）
+--- packages/client/src/main.ts:1874
+    
+    /** 正在放的移动音效号（null = 没在放）—— 整趟走完由 `syncMoveSound()` 停掉 */
+    let moveSoundPlaying: number | null = null;
+    
+    /**
+     * 走子整趟结束时把移动音效停掉。
+     *
+     * @source `fcn_0040d7c4` 的 state 1（走子段，VA 0x0040d8d3）：`[0x48baf8] == 0`
+     *   （整趟走完）那一次才 `rich4_stop_sound_effect`（0x0040d8dc），索引是同一个
+     *   `[0x4749d4]`。逐格**不**停 —— 原版就是「每格 Play、整趟完 Stop」。
+
+======================================================================
+### 0x405339   （1 处引用）
+--- packages/client/src/setup.ts:336
+    }
+    
+    /**
+     * 按下。
+     *
+     * ★ 角色格与地图行是**按下即生效**（原版 0x201 那条分支）；
+     *   两颗按钮与六条下拉只**记下按下状态**（贴按下图 / 抬手才弹浮窗）。
+     * @source `VA 0x00405339`（角色）、`VA 0x004055b9`（地图）、`VA 0x004053d9`／`0x004054d8`（按钮与下拉）
+     */
+    export function setupDown(s: SetupState, x: number, y: number): SetupState {
+
+======================================================================
+### 0x432951   （6 处引用）
+--- packages/client/src/magic-screen.test.ts:495
+        // 起转盘的节拍从**这一刻**算，不是从开屏算
+        expect(p.spin.at).toBe(spinStart);
+        expect(MAGIC_TURN_LINE).toBe('#0040嘿～輪到你了！');
+      });
+    
+      it('★★ `greet = false`（「動畫過程」关掉）：三句不说，但**摇签那一拍照走**（只摇 1 拍）', () => {
+        const p = magicPlaybackStart(4, 0, false, '土地最多的人');
+        // @source `loc_00432951`：关掉时 `[0x48c3a1] = 1` ⇒ 只摇 1 拍
+        expect(p.phase).toBe('roll');
+        expect(p.rollTicks).toBe(MAGIC_ROLL_TICKS_FAST);
+--- packages/client/src/magic-screen.ts:19
+     * | 是什么 | @source |
+     * |---|---|
+     * | 底图 = `Panel.mkf` **#18** 图 0（640×480），传 (0,0) | 0x00432511（`+0xc` = 图 0） |
+     * | 女巫抬手的姿势 = 图 2，锚点落 **(317,238)** | 0x00432aec `add eax, 0x18`（18/12 = 图 2） |
+     * | 女巫常态 / 眨眼 = 图 6，锚点落 **(324,238)** | 0x00432b0f `add eax, 0x48`（72/12 = 图 6） |
+     * | 中央字框 = 图 1 ▶ 图 7（284×210），落 (241,140) | 0x00432511 `+0x18` / 0x00432aec |
+     * | 十二个功能图标 = 图 11..34（**每个功能两张**） | 0x00432cfd `[0x48c398+0xc+(k+0x16)*12]` |
+     * | 悬停的另一个框 = 图 4（60×18），落 (241,140) | 0x00432951 `+0x30` |
+     *
+     * ⚠️ **图 11..34 的读数有冲突**：悬停那两处都写作 `imageIndex = k + 0x16` 与
+--- packages/client/src/magic-screen.ts:96
+     *
+     * | 图 | 是什么 | 用在哪 | @source |
+     * |---|---|---|---|
+     * | 0 | 640×480 整屏底图（五芒星 + 十二个图标 + 女巫剪影） | 铺场 | 0x00432511 |
+     * | 1 | 165×213 女巫抱水晶球（抬手姿势） | 铺场 | 0x00432511 `+0x18` |
+     * | 2 | 284×210 女巫抬手（含水晶球） | 常态/眨眼 | 0x00432aec `+0x24` |
+     * | 3 | 60×35 长条文字框 | 开场白 | 0x00432894 起 |
+     * | 4 | 60×18 长条文字框 | 提示 | 0x00432951 `+0x30` |
+     * | 5 | 60×21 长条文字框 | 文本 | 0x004329ef |
+     * | 6 / 7 | 142×120 锦缎框（红 / 绿） | 中央字框 | 0x00432511 起 |
+--- packages/client/src/magic-screen.ts:190
+     *   (0x8c,0xf1) —— 那是**女巫**的位置（图 1），不是字框的位置。于是结果字固定
+     *   画在五芒星中心 (320,238) 而框在 (140,241) 附近，**字整个落在框外约 107 px**。
+     *   原版框与字**同点**，由 `magicIconAt(option)` 决定。
+     */
+    export function magicFrameAt(option: number): { x: number; y: number } {
+      return magicIconAt(option);
+    }
+    /** 悬停时那个（另一张）锦缎框的落点 @source 0x00432951 `push 0xdf` / `push 0xbc` */
+    export const MAGIC_FRAME_ALT_AT = { x: 0xbc, y: 0xdf } as const;
+    /**
+
+======================================================================
+### 0x432511   （8 处引用）
+--- packages/client/src/magic-screen.test.ts:133
+      const rad = (deg * Math.PI) / 180;
+      return {
+        x: Math.round(MAGIC_CENTER.x + r * Math.cos(rad)),
+        y: Math.round(MAGIC_CENTER.y - r * Math.sin(rad)),
+      };
+    }
+    
+    describe('用到的图 @source magic_house 0x00432511 / 0x00432cfd', () => {
+      it('★ 底图与十二个功能图标都在 Panel.mkf 资源 18', () => {
+        expect(MAGIC_RESOURCE).toBe(18);
+--- packages/client/src/magic-screen.ts:14
+     *   所以本模块是**回放这次结果**的演出：`event(before, after, env)` 察觉
+     *   「刚刚落了一次魔法屋」，反推出转盘落点，播完自己关。
+     *
+     * ## 出处（窗口过程 VA 0x004325c2；入口 `magic_house` VA 0x0043380a）
+     *
+     * | 是什么 | @source |
+     * |---|---|
+     * | 底图 = `Panel.mkf` **#18** 图 0（640×480），传 (0,0) | 0x00432511（`+0xc` = 图 0） |
+     * | 女巫抬手的姿势 = 图 2，锚点落 **(317,238)** | 0x00432aec `add eax, 0x18`（18/12 = 图 2） |
+     * | 女巫常态 / 眨眼 = 图 6，锚点落 **(324,238)** | 0x00432b0f `add eax, 0x48`（72/12 = 图 6） |
+--- packages/client/src/magic-screen.ts:17
+     * ## 出处（窗口过程 VA 0x004325c2；入口 `magic_house` VA 0x0043380a）
+     *
+     * | 是什么 | @source |
+     * |---|---|
+     * | 底图 = `Panel.mkf` **#18** 图 0（640×480），传 (0,0) | 0x00432511（`+0xc` = 图 0） |
+     * | 女巫抬手的姿势 = 图 2，锚点落 **(317,238)** | 0x00432aec `add eax, 0x18`（18/12 = 图 2） |
+     * | 女巫常态 / 眨眼 = 图 6，锚点落 **(324,238)** | 0x00432b0f `add eax, 0x48`（72/12 = 图 6） |
+     * | 中央字框 = 图 1 ▶ 图 7（284×210），落 (241,140) | 0x00432511 `+0x18` / 0x00432aec |
+     * | 十二个功能图标 = 图 11..34（**每个功能两张**） | 0x00432cfd `[0x48c398+0xc+(k+0x16)*12]` |
+     * | 悬停的另一个框 = 图 4（60×18），落 (241,140) | 0x00432951 `+0x30` |
+--- packages/client/src/magic-screen.ts:92
+    export const MAGIC_RESOURCE = 18;
+    
+    /**
+     * 图号 —— **逐张看过** `assets-clean/Panel/0018_*.png` 之后落的表。
+     *
+     * | 图 | 是什么 | 用在哪 | @source |
+     * |---|---|---|---|
+     * | 0 | 640×480 整屏底图（五芒星 + 十二个图标 + 女巫剪影） | 铺场 | 0x00432511 |
+     * | 1 | 165×213 女巫抱水晶球（抬手姿势） | 铺场 | 0x00432511 `+0x18` |
+     * | 2 | 284×210 女巫抬手（含水晶球） | 常态/眨眼 | 0x00432aec `+0x24` |
+
+======================================================================
+### 0x4242cd   （4 处引用）
+--- packages/client/src/asset-sheet.ts:31
+     * | 头像（`map.mkf` 的角色图，锚点 (60,100)） | VA 0x4230bf |
+     * | 神明图标（图 `13+obj` @(60,188)）与「N天」@(60,234) | VA 0x4231a1 / 0x42321f |
+     * | 三颗下钻钮（图 12 = 97×40 按下底） | 命中 VA 0x424163；按下底 VA 0x42419f |
+     * | 视图 0 的八条数值 + 中列四条计数 | `loc_004232f3`（VA 0x4232f3）|
+     * | 视图 0 右下 15 格道具欄 / 卡片欄 | VA 0x4236da / 0x4237b3 |
+     * | 视图 1 的 5 个种类格（图 11 = 75×33 选中底） | 命中 VA 0x423ebb；绘制 VA 0x423883 |
+     * | 视图 1 的数据行（5 列） | `fcn_004225a3`（VA 0x4225a3），取数 `fcn_00423b3b`（VA 0x423b3b）|
+     * | 视图 1 的两颗翻页箭头（图 7 / 图 8） | 命中 VA 0x423f36；按下 VA 0x42424e / 0x4242cd |
+     * | 视图 2 的 12 行股票 | `loc_004238b1`（VA 0x4238b1）|
+     * | 关屏 | 右键 `WM_RBUTTONUP` VA 0x424409；EXIT 钮 VA 0x4241f2 |
+--- packages/client/src/asset-sheet.ts:280
+      return null;
+    }
+    
+    /**
+     * 视图 1 右边那两颗翻页箭头（30×30）。
+     *
+     * @source 命中 VA 0x423f36；按下时盖 **图 7**（上）/ **图 8**（下）
+     *   @source VA 0x42424e / 0x4242cd；抬手走 `fcn_004225a3(kind, 2 | 1)`
+     *   —— **上箭头 = 上一页（参数 2）、下箭头 = 下一页（参数 1）**。
+     */
+--- packages/client/src/asset-sheet.ts:725
+        if (x !== undefined) blackText(ctx, labels[i]!, x, y, SHEET_LABEL_SIZE, 'center');
+      }
+    }
+    
+    /**
+     * 视图 1：5 个种类格 + 数据行 + 两颗翻页箭头。
+     *
+     * @source 种类格 VA 0x423883；行 VA 0x4225a3；箭头 VA 0x42424e / 0x4242cd。
+     */
+    function drawEstateList(
+--- packages/client/src/main.ts:6931
+          sheetUi = { ...sheetUi, btn: null, exit: false, arrow: null };
+          if (exit) closeAssets();
+          else if (btn !== null) {
+            assetView = btn;
+            resetSheetPage();
+            requestRender();
+          } else if (arrow !== null) {
+            // 上箭头 = 上一页、下箭头 = 下一页 @source VA 0x42424e / 0x4242cd
+            pageEstateList(arrow === 'up' ? -1 : 1);
+          }
+
+======================================================================
+### 0x4106c1   （4 处引用）
+--- packages/client/src/main.ts:2215
+    /**
+     * 設定屏用到的四个音效号 —— **全都从 `0x48231a` 那张指针表里读出来的**
+     * （`play_sound_effect(0, &entry)` 取 `[entry]` 当号）：
+     *
+     * | 号 | 表项 | 谁在用 |
+     * |---|---|---|
+     * | 1 | `0x482322` | 几乎每一颗控件（`fcn_00410537/572/5b9/f4`、`fcn_004107xx`） |
+     * | 2 | `0x48232a` | 確 定（`fcn_004106c1` 的 `(idx−7)^1 = 0`） |
+     * | 3 | `0x48233a` | 樂曲列表在「音樂關著」时（`fcn_00410668` 的 `loc_004106b0`） |
+     * | 4 | `0x482332` | 取 消（`fcn_004106c1` 的 `(idx−7)^1 = 1`） |
+--- packages/client/src/main.ts:2217
+     * （`play_sound_effect(0, &entry)` 取 `[entry]` 当号）：
+     *
+     * | 号 | 表项 | 谁在用 |
+     * |---|---|---|
+     * | 1 | `0x482322` | 几乎每一颗控件（`fcn_00410537/572/5b9/f4`、`fcn_004107xx`） |
+     * | 2 | `0x48232a` | 確 定（`fcn_004106c1` 的 `(idx−7)^1 = 0`） |
+     * | 3 | `0x48233a` | 樂曲列表在「音樂關著」时（`fcn_00410668` 的 `loc_004106b0`） |
+     * | 4 | `0x482332` | 取 消（`fcn_004106c1` 的 `(idx−7)^1 = 1`） |
+     */
+    const OPTION_SOUND = { click: 1, ok: 2, denied: 3, cancel: 4 } as const;
+--- packages/client/src/options.ts:19
+     *   每个 `graph_st` 12 字节，见 `csrc/mkf/graph_struct.h`）：
+     *
+     * | 图 | 尺寸 | 角色 | @source |
+     * |---|---|---|---|
+     * | 0 | 347×363 | 主面板底图 | `fcn_0040fd49` 第一笔 |
+     * | 1 | 328×336 | 熱鍵頁底图 | `fcn_00410158` 第一笔 |
+     * | 2 | 199×220 | 日期頁底图 | `fcn_004119e3` / `fcn_0040ff4b` |
+     * | 3 | 62×30 | 取消钮按下 | `fcn_004106c1`（`idx−4 = 3`） |
+     * | 4 | 62×30 | 確定钮按下 | `fcn_004106c1`（`idx−4 = 4`） |
+     * | 5 | 15×16 | **点亮的格子** | `fcn_0040fd49` 的三条进度条 |
+--- packages/client/src/options.ts:20
+     *
+     * | 图 | 尺寸 | 角色 | @source |
+     * |---|---|---|---|
+     * | 0 | 347×363 | 主面板底图 | `fcn_0040fd49` 第一笔 |
+     * | 1 | 328×336 | 熱鍵頁底图 | `fcn_00410158` 第一笔 |
+     * | 2 | 199×220 | 日期頁底图 | `fcn_004119e3` / `fcn_0040ff4b` |
+     * | 3 | 62×30 | 取消钮按下 | `fcn_004106c1`（`idx−4 = 3`） |
+     * | 4 | 62×30 | 確定钮按下 | `fcn_004106c1`（`idx−4 = 4`） |
+     * | 5 | 15×16 | **点亮的格子** | `fcn_0040fd49` 的三条进度条 |
+     * | 6 | 101×36 | 右上角钮按下 | `fcn_004105f4` |
+
+======================================================================
+### 0x44e668   （3 处引用）
+--- packages/client/src/help-screen.ts:92
+     *   上一版把「上/下滚画在 (170,43/59)」记成了事实 —— 那是**上一章/下一章**那一对。
+     *
+     * 左列那 8 行另有一条**逐行**的判据（`loc_0044e621`：x (26,92) + 每行 36 高），
+     * `hitHelp` 先认它（`{ label: 0, cell: 格号 }`），再认六条矩形 —— 见 `hitHelpChip`。
+     *
+     * ## 两组各管什么
+     *
+     * - **条目 1**（上一章 / 下一章，`loc_0044e668` / `loc_0044e881`）：改章号
+     *   `[0x476018]`；跳章时把 `[0x47601c]` 清零（回到该章开头）。
+     * - **条目 2**（上滚 / 下滚，`loc_0044e6eb` / `loc_0044e944`）：改章节内行偏移
+--- packages/client/src/help-screen.ts:2285
+        helpTextLeft(ctx, line, ox + at.x, oy + at.y, HELP_FONT_SIZE);
+      }
+    }
+    
+    /**
+     * 把一次命中作用到屏状态上（章号 / 行偏移）。
+     *
+     * @source 回调的跳表 `ref_0044e3e3`（`loc_0044e621` 左列格 / `loc_0044e668` /
+     *   `loc_0044e6eb` / `loc_0044e881` / `loc_0044e944` 五个落点）。
+     */
+--- packages/client/src/help-screen.ts:2300
+        if (hit.cell === helpState.chapter && helpState.scroll === 0) return;
+        helpState.chapter = hit.cell;
+        helpState.scroll = 0;
+        env.requestRender();
+        return;
+      }
+      if (hit.label === 1) {
+        // 上一章 / 下一章 @source loc_0044e668（退 8 行）/ loc_0044e881（进 8 行）
+        const next = clampChapter(helpState.chapter + (hit.cell === 0 ? -1 : 1));
+        if (next === helpState.chapter) return;
+
+======================================================================
+### 0x42424e   （4 处引用）
+--- packages/client/src/asset-sheet.ts:31
+     * | 头像（`map.mkf` 的角色图，锚点 (60,100)） | VA 0x4230bf |
+     * | 神明图标（图 `13+obj` @(60,188)）与「N天」@(60,234) | VA 0x4231a1 / 0x42321f |
+     * | 三颗下钻钮（图 12 = 97×40 按下底） | 命中 VA 0x424163；按下底 VA 0x42419f |
+     * | 视图 0 的八条数值 + 中列四条计数 | `loc_004232f3`（VA 0x4232f3）|
+     * | 视图 0 右下 15 格道具欄 / 卡片欄 | VA 0x4236da / 0x4237b3 |
+     * | 视图 1 的 5 个种类格（图 11 = 75×33 选中底） | 命中 VA 0x423ebb；绘制 VA 0x423883 |
+     * | 视图 1 的数据行（5 列） | `fcn_004225a3`（VA 0x4225a3），取数 `fcn_00423b3b`（VA 0x423b3b）|
+     * | 视图 1 的两颗翻页箭头（图 7 / 图 8） | 命中 VA 0x423f36；按下 VA 0x42424e / 0x4242cd |
+     * | 视图 2 的 12 行股票 | `loc_004238b1`（VA 0x4238b1）|
+     * | 关屏 | 右键 `WM_RBUTTONUP` VA 0x424409；EXIT 钮 VA 0x4241f2 |
+--- packages/client/src/asset-sheet.ts:280
+      return null;
+    }
+    
+    /**
+     * 视图 1 右边那两颗翻页箭头（30×30）。
+     *
+     * @source 命中 VA 0x423f36；按下时盖 **图 7**（上）/ **图 8**（下）
+     *   @source VA 0x42424e / 0x4242cd；抬手走 `fcn_004225a3(kind, 2 | 1)`
+     *   —— **上箭头 = 上一页（参数 2）、下箭头 = 下一页（参数 1）**。
+     */
+--- packages/client/src/asset-sheet.ts:725
+        if (x !== undefined) blackText(ctx, labels[i]!, x, y, SHEET_LABEL_SIZE, 'center');
+      }
+    }
+    
+    /**
+     * 视图 1：5 个种类格 + 数据行 + 两颗翻页箭头。
+     *
+     * @source 种类格 VA 0x423883；行 VA 0x4225a3；箭头 VA 0x42424e / 0x4242cd。
+     */
+    function drawEstateList(
+--- packages/client/src/main.ts:6931
+          sheetUi = { ...sheetUi, btn: null, exit: false, arrow: null };
+          if (exit) closeAssets();
+          else if (btn !== null) {
+            assetView = btn;
+            resetSheetPage();
+            requestRender();
+          } else if (arrow !== null) {
+            // 上箭头 = 上一页、下箭头 = 下一页 @source VA 0x42424e / 0x4242cd
+            pageEstateList(arrow === 'up' ? -1 : 1);
+          }
+
+======================================================================
+### 0x40defe   （1 处引用）
+--- packages/client/src/main.ts:1922
+      const count = sprites?.imageCount('Data.mkf', characterSetBase(me.character, me.trafficMethod) + CHARACTER_POSE.dice) ?? 0;
+      return count > 0 ? Math.max(1, count >> 3) : 9;
+    }
+    
+    /**
+     * 「该掷骰了」的唯一入口。
+     *
+     * ★ 原版**先播预动作再掷**，不是掷完再补动画：`fcn_0040defe` 把状态设成
+     *   2（掷骰），角色播「手持骰子的走路」；数满每向帧数那一 tick 才调
+     *   `fcn_00419572` 去 `rand()%6+1` 并播滚骰影片。所以要在这里拦一道。
+
+======================================================================
+### 0x4026e2   （3 处引用）
+--- packages/client/src/bgm-wiring.test.ts:53
+        expect(auction).toContain('ui_auction.asm:3139');
+        const draw = readFileSync(new URL('./lottery-draw-screen.ts', import.meta.url), 'utf8');
+        expect(draw).toContain("env.music?.('midi09.mid')");
+        expect(draw).toContain('ui_letou.asm:3063');
+      });
+    
+      it('★★ 標題畫面那一首（id 0 ⇒ `midi01.mid`）在 `enterTitleScreen` 里点，且**每次进都点**', () => {
+        // @source `ui_main.asm:187`（`fcn_004026e2`）：画标题 → `fcn_00454acb` 停 →
+        //   `fcn_004549cf(0)` ⇒ MIDI01。另一处同实参在 `ui_main.asm:483`。
+        expect(src).toContain('function enterTitleScreen(): void {');
+--- packages/client/src/main.ts:2985
+    
+    /** 第一次用户手势：把音效与音乐一起解锁 */
+    function unlockAudio(): void {
+      sound.unlock();
+      music.unlock();
+      if (!musicStarted) {
+        musicStarted = true;
+        // ★ 第一次手势时人在標題畫面 → 点的是標題那一首（`fcn_004026e2` 的 `fcn_004549cf(0)`），
+        //   不是 `Midi.txt` 清单的第一首；清单只在棋盘/其它没点名曲子的场合当兜底。
+        if (screen === 'title') void playTrackFile('midi01.mid');
+--- packages/client/src/main.ts:4159
+      }
+      requestRender();
+    }
+    
+    /**
+     * 回／進**標題畫面** —— 顺手点标题那一首。
+     *
+     * @source `ui_main.asm:187`（函数 `fcn_004026e2`）：`fcn_00402460(0)` 画标题 →
+     *   `fcn_00454acb()`（**先停**当前曲）→ `rich4_ui_options_entry(0)` →
+     *   `fcn_004549cf(0)`（★ id 0 ⇒ 文件名表 `0x47e793` 第 0 项 ⇒ **`MIDI01.MID`**）。
+
+======================================================================
+### 0x4105f4   （1 处引用）
+--- packages/client/src/options.ts:22
+     * |---|---|---|---|
+     * | 0 | 347×363 | 主面板底图 | `fcn_0040fd49` 第一笔 |
+     * | 1 | 328×336 | 熱鍵頁底图 | `fcn_00410158` 第一笔 |
+     * | 2 | 199×220 | 日期頁底图 | `fcn_004119e3` / `fcn_0040ff4b` |
+     * | 3 | 62×30 | 取消钮按下 | `fcn_004106c1`（`idx−4 = 3`） |
+     * | 4 | 62×30 | 確定钮按下 | `fcn_004106c1`（`idx−4 = 4`） |
+     * | 5 | 15×16 | **点亮的格子** | `fcn_0040fd49` 的三条进度条 |
+     * | 6 | 101×36 | 右上角钮按下 | `fcn_004105f4` |
+     * | 7/8 | 16×16 | 上/下箭头（带红底） | 日期頁 |
+     * | 9 | 15×15 | **亮着的灯** | `fcn_0040fd49` 的四处灯 + 視窗三选一 |
+
+======================================================================
+### 0x41ac3c   （3 处引用）
+--- packages/client/src/wheel-screen.test.ts:507
+        expect(cue!.value).toBe(0);
+        // 隨機數動了（轉盤真的轉了）→ 起播；但一毛錢都沒收
+        expect(after.rngState).not.toBe(before.rngState);
+        expect(after.companyFunds[s.com.id]).toBe(before.companyFunds[s.com.id]);
+      });
+    
+      runMap('★ 保險公司：轉盤 3，反推的天數 = after 的保險期增量（& 0x7f）', () => {
+        // @source loc_0041ac3c：`push 3`；`+0x3e = (+0x3e + 盤上那個數) & 0x7f`（0x0041aa0e）
+        const s = companyScene(INDUSTRY.insurance);
+        if (s === null) return;
+--- packages/client/src/wheel-screen.ts:389
+    // ============================================================
+    
+    /** 這次要回放什麼 */
+    export interface WheelCue {
+      /**
+       * 這一趟是哪一支開的盤：
+       * - `facility` —— 旅館 / 購物中心（業主收費，@source 0x0041a44e / 0x0041a4aa）；
+       * - `company`  —— 航空公司 / 保險公司（企業收費，@source 0x0041abc4 / 0x0041a9fe、0x0041ac3c）。
+       */
+      kind: 'facility' | 'company';
+--- packages/client/src/wheel-screen.ts:458
+     *
+     * 同一個 `fcn_0044090e` / `fcn_0043f7c6` 也服務這兩種上市企業，入口在
+     * `rich4_player_core_actions.asm` 的 **0x0041ab6d**（踩到**別人的**公司）：
+     *
+     * | 行業 | 轉盤 | @source |
+     * |---|---|---|
+     * | 1 航空 | **0**（`Panel.mkf` 68）| `loc_0041abb0`：`xor ebp,ebp` → `push ebp`（0x0041abc4）|
+     * | 4 保險 | **3**（`Panel.mkf` 71）| `loc_0041ac3c`：`push 3` |
+     *
+     * 前置條件與設施那支同構：**別人的**公司（董事長不是 0 也不是我）、
+
+======================================================================
+### 0x423c48   （1 处引用）
+--- packages/client/src/board-screen.ts:967
+     * @source `fcn_00423b3b(玩家, 分类)` 的跳表 `0x423b27`（5 支）：
+     *
+     * | 分类 | 页签名（表 `0x4753d4`）| 收什么 | 判据 |
+     * |---|---|---|---|
+     * | 0 | 全  部 | **地块 + 設施** | 只看 owner == 玩家 + 1 |
+     * | 1 | 住宅區 | **只地块** | 同上，**不再筛等级/类型**（0x423bd1）|
+     * | 2 | 商業區 | **只設施** | 同上（0x423c0a）|
+     * | 3 | 房  屋 | 只地块 | owner 且 `+0x1a`(等级) **!= 0** 且 `+0x18`(类型) **== 0**（0x423c48）|
+     * | 4 | 連鎖店 | 只地块 | owner 且 `+0x1a` **!= 0** 且 `+0x18` **!= 0**（0x423c90）|
+     *
+
+======================================================================
+### 0x410e78   （3 处引用）
+--- packages/client/src/main.ts:2404
+      if (sub === null) return;
+      if (sub.kind === 'date') {
+        const dx = sx - DATE_AT.x;
+        const dy = sy - DATE_AT.y;
+        const hit = hitDatePage(dx, dy, sub.draft);
+        if (hit === null) {
+          // 命中格块但没落在任何一天上（格与格之间有 2~3px 空档）：原版照样先放
+          // 「按下」音再找格（`0x410e78` 的 `play_sound_effect` 在最前面）。
+          if (hitDateControl(dx, dy) === DATE_CTRL.GRID) sound.play('Effect.mkf', OPTION_SOUND.click);
+          return;
+--- packages/client/src/main.ts:2416
+        if (hit.kind === 'spin' || hit.kind === 'day' || hit.ctrl === DATE_CTRL.TODAY) {
+          sound.play('Effect.mkf', OPTION_SOUND.click);
+        } else if (hit.ctrl === DATE_CTRL.CANCEL) {
+          sound.play('Effect.mkf', OPTION_SOUND.cancel);
+        } else {
+          sound.play('Effect.mkf', OPTION_SOUND.ok);
+        }
+        // 日曆格是**按下就选中并整屏重画** @source 0x410e78
+        const draft = hit.kind === 'day' ? applyDateHit(sub.draft, hit, sub.today) : sub.draft;
+        optionsSub = { ...sub, draft, pressed: hit.ctrl };
+--- packages/client/src/options-pages.ts:281
+      return null;
+    }
+    
+    /**
+     * 「按下」在日期頁上命中了什么。
+     *
+     * @source `0x410bc8`（WM_LBUTTONDOWN）：先按 `0x474ce8` 找控件、命中格块（7）
+     *   再按天的命中框细分（`0x410e78`），然后走跳表 `0x410a87`；
+     *   `null` = 原版把 `[0x474d78]` 留成 8+ 直接什么都不做。
+     */
+
+======================================================================
+### 0x44e944   （8 处引用）
+--- packages/client/src/help-screen.ts:94
+     * 左列那 8 行另有一条**逐行**的判据（`loc_0044e621`：x (26,92) + 每行 36 高），
+     * `hitHelp` 先认它（`{ label: 0, cell: 格号 }`），再认六条矩形 —— 见 `hitHelpChip`。
+     *
+     * ## 两组各管什么
+     *
+     * - **条目 1**（上一章 / 下一章，`loc_0044e668` / `loc_0044e881`）：改章号
+     *   `[0x476018]`；跳章时把 `[0x47601c]` 清零（回到该章开头）。
+     * - **条目 2**（上滚 / 下滚，`loc_0044e6eb` / `loc_0044e944`）：改章节内行偏移
+     *   `[0x47601c]`，**步长 8**（= 一屏 8 行），夹在 `[0, entry(i).maxScroll]`。
+     *
+--- packages/client/src/help-screen.ts:139
+     * | 3 | 房 地 產 | 20..22 | 3 | 190 | 176 |
+     * | 4 | 特殊地點 | 23..38 | 16 | 79 | 65 |
+     * | 5 | 特殊人物 | 39..56 | 18 | 112 | 98 |
+     * | 6 | 卡  片 | 57..86 | 30 | 338 | 324 |
+     * | 7 | 道  具 | 87..99 | 13 | 148 | 134 |
+     *
+     * ⚠️ **`maxScroll` 是「行数 − 14」，不是 exe 里那个 `entry.count − 8`**。exe 的下滚
+     *   夹取 @0x44e944 是 `edx = [entry+0x0C] − 8`（`<= 8` 就不滚），而 `[entry+0x0C]`
+     *   是**资源数**；本模块的 `scroll` 按**行**走（步长 = 一屏 14 行）。两者的等价
+     *   前提是「滚动单位 = 资源」—— 这一条**尚未定案**，登记在
+--- packages/client/src/help-screen.ts:409
+     * | +0x04 | 另一个指针（未解，本模块不用） | — |
+     * | +0x08 | **起始资源号** | 1, 2, 8, 20, 23, 39, 57, 87 |
+     * | +0x0C | **该章占几个资源** | 1, 6, 12, 3, 16, 18, 30, 13 |
+     * | +0x10 | **当前滚动位置**（运行时会写它） | 全 0 |
+     *
+     * ★ 这组数与 `help.mkf` 的资源区间严丝合缝（8/8）：第 i 章 = 资源
+     *   `start .. start+count−1`，且 `start[i+1] == start[i]+count[i]`。滚动夹取在
+     *   **0x0044e944**：`max = [entry+0x0C] − 8`，`if ([entry+0x0C] <= 8) 不滚`。
+     *
+     * 权威 dump（可以自己复跑核对）：
+--- packages/client/src/help-screen.ts:432
+     *
+     * ⚠️ **旧版那张表有两处误读，已删**：
+     *   · 把 **+0x0C**（资源数）当成 `maxScroll`，读出
+     *     `0 / 22 / 0 / 12 / 1 / 0 / 739 / 95`。但 +0x0C 就是**资源数**：上面那组
+     *     区间接续关系 8/8 成立（1→2→8→20→23→39→57→87→100），而且取正文那一步
+     *     `read_mkf(help, entry.res + scroll)` @0x44e179 是按资源走的 —— 若把
+     *     739 之类的数当行偏移，语意完全对不上。
+     *   · 把 **+0x10** 当成「左列格高 `h`」。+0x10 是**滚动位置**：下滚 @0x44e944、
+     *     上滚 @0x44e881 都直接 `add/sub` 这个 dword，exe 初值全 0；它跟左列格高
+     *     没关系。旧版那个 `h` 字段绘制时也没用到，故一并**删除**（不是改良绘制）。
+
+======================================================================
+### 0x42420b   （1 处引用）
+--- packages/client/src/main.ts:3468
+    type Screen =
+      | 'title' | 'setup' | 'options' | 'saveload' | 'lobby' | 'aiSettings' | 'intro' | 'assets'
+      | 'inventory' | 'stock' | 'game';
+    let screen: Screen = 'title';
+    
+    /**
+     * 個人資產表屏（T-022）当前看的是哪个视图（0 資產總表 / 1 地產清單 / 2 股票清單）。
+     * @source 原版 `[0x4753fc]`，由窗口过程的状态机置（VA 0x42420b `[0x48c284]−2`）。
+     */
+    let assetView = 0;
+
+======================================================================
+### 0x423c90   （1 处引用）
+--- packages/client/src/board-screen.ts:968
+     *
+     * | 分类 | 页签名（表 `0x4753d4`）| 收什么 | 判据 |
+     * |---|---|---|---|
+     * | 0 | 全  部 | **地块 + 設施** | 只看 owner == 玩家 + 1 |
+     * | 1 | 住宅區 | **只地块** | 同上，**不再筛等级/类型**（0x423bd1）|
+     * | 2 | 商業區 | **只設施** | 同上（0x423c0a）|
+     * | 3 | 房  屋 | 只地块 | owner 且 `+0x1a`(等级) **!= 0** 且 `+0x18`(类型) **== 0**（0x423c48）|
+     * | 4 | 連鎖店 | 只地块 | owner 且 `+0x1a` **!= 0** 且 `+0x18` **!= 0**（0x423c90）|
+     *
+     * ★ 先前本模块给每件东西只记**一个** `tab`（连锁 → 4、等级 0 → 1、其余 → 3），
+
+======================================================================
+### 0x431117   （2 处引用）
+--- packages/client/src/lottery-draw-screen.ts:550
+    
+    /**
+     * 两个主持人的脸是**贴片拼的**：`0x48c350` 一个 dword 当调色盘，
+     * 低 4 位 = 当前在动的那一个槽，其余每个 4 位段 = 该槽的帧号。
+     *
+     * | 槽 | 贴片矩形（**宽度是开区间**）| 帧表（图号）| 抽中的概率 |
+     * |---|---|---|---|
+     * | 1 | 右眼 (512,510..562,535) | 8,7,8,10 | 1/64 @source 0x00431117 |
+     * | 2 | 左眼 (52,524..102,548) | 16,17,16,15 | 1/64 @source 0x00431138 |
+     * | 3 | 右眼变体 | 9,10 | 2/64 @source 0x00431141 |
+--- packages/client/src/lottery-draw-screen.ts:616
+    }
+    
+    /**
+     * 推进一帧脸。
+     *
+     * @param rnd 取 `[0,1)` 的随机数（原版是 `_libc_rand()`，注入进来只为单测能钉死）
+     *
+     * ★ **原版是 `rand()>>9` 抽的**（`0x00431117` 一带）：落 0 / 1 / 2-3 / 4-5 时
+     *   分别启动槽 1/2/3/4，其余 58/64 不动 —— 平均 0.9 秒才跳一次。这里改成
+     *   **按帧号推**（用同一个 `hash32`，与 `core` 的 `facePartsAt` 同源），
+
+======================================================================
+### 0x423c0a   （1 处引用）
+--- packages/client/src/board-screen.ts:966
+     *
+     * @source `fcn_00423b3b(玩家, 分类)` 的跳表 `0x423b27`（5 支）：
+     *
+     * | 分类 | 页签名（表 `0x4753d4`）| 收什么 | 判据 |
+     * |---|---|---|---|
+     * | 0 | 全  部 | **地块 + 設施** | 只看 owner == 玩家 + 1 |
+     * | 1 | 住宅區 | **只地块** | 同上，**不再筛等级/类型**（0x423bd1）|
+     * | 2 | 商業區 | **只設施** | 同上（0x423c0a）|
+     * | 3 | 房  屋 | 只地块 | owner 且 `+0x1a`(等级) **!= 0** 且 `+0x18`(类型) **== 0**（0x423c48）|
+     * | 4 | 連鎖店 | 只地块 | owner 且 `+0x1a` **!= 0** 且 `+0x18` **!= 0**（0x423c90）|
+
+======================================================================
+### 0x410537   （3 处引用）
+--- packages/client/src/main.ts:2214
+    
+    /**
+     * 設定屏用到的四个音效号 —— **全都从 `0x48231a` 那张指针表里读出来的**
+     * （`play_sound_effect(0, &entry)` 取 `[entry]` 当号）：
+     *
+     * | 号 | 表项 | 谁在用 |
+     * |---|---|---|
+     * | 1 | `0x482322` | 几乎每一颗控件（`fcn_00410537/572/5b9/f4`、`fcn_004107xx`） |
+     * | 2 | `0x48232a` | 確 定（`fcn_004106c1` 的 `(idx−7)^1 = 0`） |
+     * | 3 | `0x48233a` | 樂曲列表在「音樂關著」时（`fcn_00410668` 的 `loc_004106b0`） |
+--- packages/client/src/options.ts:245
+      { x: 66, y: 114, w: 15, h: 15 },  // 11 音 效 灯
+      { x: 98, y: 146, w: 15, h: 15 },  // 12 自動存檔 灯
+      { x: 217, y: 214, w: 107, h: 22 },// 13 日、月曆（整行可点）
+      { x: 217, y: 246, w: 107, h: 22 },// 14 縮小地圖（整行可点）
+      { x: 217, y: 278, w: 107, h: 22 },// 15 組合畫面（整行可点）
+    ];
+    
+    /** 格子图 15×16，步进 16（@source `fcn_00410537`：`(relx − 81) >> 4`） */
+    export const CELL = { w: 15, h: 16, pitch: 16 } as const;
+    /** 三条进度条第一格的 x 与各自第一格的 y */
+--- packages/client/src/options.ts:369
+      return controlHit(ctrl, x, y);
+    }
+    
+    /** 控件号 → 语义命中（按下/松手都走这里） */
+    export function controlHit(ctrl: number, x: number, y: number): OptionsHit | null {
+      switch (ctrl) {
+        case CONTROL.SPEED_BAR:
+          // @source fcn_00410537：(relx − 81) >> 4，不 +1
+          return { kind: 'bar', ctrl, field: 'speed', value: clamp(Math.floor((x - 81) / 16), 0, 2) };
+        case CONTROL.MUSIC_BAR:
+
+======================================================================
+### 0x423bd1   （2 处引用）
+--- packages/client/src/board-screen.test.ts:502
+        } as never;
+        const L = (id: number): number => ESTATE_LAND_BASE + id;
+        const F = (id: number): number => ESTATE_FACILITY_BASE + id;
+        // 页签 0「全部」：地块与設施都收
+        for (const id of [L(1), L(2), L(3), L(4), F(1)]) {
+          expect(estateTabMatches(state, id, 0), `全部 ${id}`).toBe(true);
+        }
+        // 页签 1「住宅區」：**只地块、不再筛等级/类型**（原版 0x423bd1 就只看 owner）
+        //   ⇒ 等级 0 的、已建的、连锁店的地块**全在**这一页
+        for (const id of [L(1), L(2), L(3), L(4)]) expect(estateTabMatches(state, id, 1)).toBe(true);
+--- packages/client/src/board-screen.ts:965
+     * 地產清单五个页签的**筛选** —— 逐条照 `fcn_00423b3b`（VA 0x00423b3b）译。
+     *
+     * @source `fcn_00423b3b(玩家, 分类)` 的跳表 `0x423b27`（5 支）：
+     *
+     * | 分类 | 页签名（表 `0x4753d4`）| 收什么 | 判据 |
+     * |---|---|---|---|
+     * | 0 | 全  部 | **地块 + 設施** | 只看 owner == 玩家 + 1 |
+     * | 1 | 住宅區 | **只地块** | 同上，**不再筛等级/类型**（0x423bd1）|
+     * | 2 | 商業區 | **只設施** | 同上（0x423c0a）|
+     * | 3 | 房  屋 | 只地块 | owner 且 `+0x1a`(等级) **!= 0** 且 `+0x18`(类型) **== 0**（0x423c48）|
+
+======================================================================
+### 0x410f85   （1 处引用）
+--- packages/client/src/options-pages.ts:333
+      return null;
+    }
+    
+    /**
+     * 把一次命中落到日期上（**抬手**才走这里；按下只画按下图）。
+     *
+     * @source 抬手跳表 `0x410aa7`：
+     *   - `0x410f85` 月 −（`dec bl`，减到 0 就回 12）
+     *   - `0x410fb3` 月 +（`cmp ah,0xd` → 回 1）
+     *   - `0x410fff` 年 −（`cmp ebx,0x7ce / jle` → 1998 就不再减）
+
+======================================================================
+### 0x4079f9   （1 处引用）
+--- packages/client/src/render.ts:470
+     * 原版绘制槽的排序键。
+     *
+     * @source VA 0x004097cf 起：
+     * ```asm
+     * edx = 屏幕Y ; shl edx,4 ; and edx,0xfff0   ; 屏幕 Y 的低 12 位左移 4，低 4 位留给类别
+     * add edx, 槽号<<16                           ; 高 16 位记槽号，排序后 shr 16 取回
+     * or  byte [..], 类别
+     * qsort(0x48a44c, 槽数, 4, _compare_int16_lt) ; VA 0x004079f9：只比**低 16 位有符号 int16**
+     * ```
+     * ⇒ **按屏幕 Y 升序**（等距视角的画家顺序），同 Y 时按类别分先后。
+
+======================================================================
+### 0x4464c3   （4 处引用）
+--- packages/core/src/cards/land-cards.ts:99
+    /**
+     * 拆除卡(12) / 怪獸卡(11) 的**目标限制** —— 不能打自己的，也不能打空地。
+     *
+     * ★ 2026-09-16 补（Q-CARD-1 §4 ①）：原版在**拾取窗**里就把这两种目标挡掉（红叉），
+     *   我们先前只在效果里判「有没有变化」，于是 UI 会让你选自己的地、选空地块。
+     *
+     * @source 拾取跳表 `ref_00445e2d`（VA 0x00445e2d）的**组 4**（`loc_00446457`，
+     *   怪獸卡 `0xe0c0506`）与**组 5**（`loc_004464c3`，拆除卡 `0xe0c0626`），两组同形：
+     * ```asm
+     * cmp code, 0x7d0 / jle → 不是地块，转設施那支（0xfa0 < code < 0x1770）
+--- packages/core/src/cards/registry.test.ts:947
+        const ctx = facCtx(12, makeFacility({ id: 1, type: 1, level: 1, owner: 0 }));
+        const r = useCard(ctx, 12, { kind: 'facility', facilityId: 1 });
+        expect(r.facilities[0]).toMatchObject({ type: 0, level: 0 });
+        expect(r.hostilityDeltas).toEqual([]); // 无主不记
+      });
+    
+      // ★ 2026-09-16 补：拆除卡与怪獸卡共用**同一条**拾取规则
+      //   （`demolishLikeTargetAllowed`，@source 拾取跳表 VA 0x00446457 / 0x004464c3），
+      //   但先前只有怪獸卡那一组有用例 —— 这四条把拆除卡那一半逐条钉住。
+      it('★ 拆除卡：0 级設施（空地）→ targetNotAllowed 且不扣卡', () => {
+--- packages/core/src/cards/registry.ts:872
+            break;
+          }
+          if (target.kind === 'facility') {
+            // 拆除卡設施段 VA 0x00443cee..0x00443d1d：单个拆一级，
+            //   拆到 0 级退回公園；敌意平坦 30×物价指数（不按级），无主不记
+            const fac = facilities.find((f) => f.id === target.facilityId) ?? null;
+            if (fac === null) return fail('facilityOutOfRange');
+            // ★ 不能打自己的 / 不能打空地 @source 拾取跳表组 5 `loc_004464c3`
+            if (!demolishLikeTargetAllowed(fac.owner, fac.level, cur)) return fail('targetNotAllowed');
+            // ★ 无变化（level==0）也照样记平坦敌意、照样算成功
+--- packages/core/src/cards/registry.ts:886
+            if (r.victim >= 0) {
+              hostilityDeltas = [{ from: r.victim, to: cur, delta: r.hostilityDelta }];
+            }
+            if (r.releasesConfined) players = releaseConfinedPlayers(players);
+            break;
+          }
+          if (targetLand === null) return fail('landNotFound');
+          // ★ 不能打自己的 / 不能打空地（同設施那支，@source 拾取跳表组 5 `loc_004464c3`）
+          if (!demolishLikeTargetAllowed(targetLand.owner, targetLand.level, cur)) {
+            return fail('targetNotAllowed');
+
+======================================================================
+### 0x42faf8   （2 处引用）
+--- packages/client/src/lottery-screen.ts:82
+     * | 状态 | 做什么 | @source |
+     * |---|---|---|
+     * | 0 | 建屏（画 0/1/8 + 起 Panel#14）| 0x42f885（`WM_CREATE` 0x401）|
+     * | 1 | 说 `#0011`「哈囉！一券在手…」| `0x4755f8` |
+     * | 2 | 说 `#0012`「只要一千元…」| `0x4755fc` |
+     * | 3 | 说 `#0013`「請圈選您的幸運號碼～」→ **可以点号** | `0x475600` |
+     * | 4 | 说 `#0014`「拜拜！祝您中獎！」| `0x475604` |
+     * | 5 | 关屏 | 0x42faf8 `_Post_0402_Message(0)` |
+     *
+     * 现金 < 1000 时 `WM_CREATE` 直接 `PostMessage(0x405, 4, 4)`（0x42f8d8）：状态置 4
+--- packages/client/src/lottery-screen.ts:872
+          case 'price':
+            ui.phase = 'pick';
+            break;
+          case 'noCash':
+            ui.phase = 'closing';
+            break;
+          case 'closing':
+            // 说完 `#0016` 就关屏（原版 0x42faf8：收掉定时器 + `_Post_0402_Message(0)`）
+            ui.dismissed = true;
+            break;
+
+======================================================================
+### 0x446457   （4 处引用）
+--- packages/core/src/cards/land-cards.ts:98
+    
+    /**
+     * 拆除卡(12) / 怪獸卡(11) 的**目标限制** —— 不能打自己的，也不能打空地。
+     *
+     * ★ 2026-09-16 补（Q-CARD-1 §4 ①）：原版在**拾取窗**里就把这两种目标挡掉（红叉），
+     *   我们先前只在效果里判「有没有变化」，于是 UI 会让你选自己的地、选空地块。
+     *
+     * @source 拾取跳表 `ref_00445e2d`（VA 0x00445e2d）的**组 4**（`loc_00446457`，
+     *   怪獸卡 `0xe0c0506`）与**组 5**（`loc_004464c3`，拆除卡 `0xe0c0626`），两组同形：
+     * ```asm
+--- packages/core/src/cards/registry.test.ts:775
+        expect(r.ok).toBe(true);
+        expect(r.facilities[0]).toMatchObject({ level: 0, type: 0, owner: 3 });
+        expect(r.hostilityDeltas).toEqual([{ from: 2, to: 0, delta: 2 * 30 * 1 }]);
+        expect(r.players[0]!.cards).toEqual([]);
+      });
+    
+      // ★ 2026-09-16 订正（Q-CARD-1 §4①）：原版在**拾取窗**就把「空地 / 自己的」挡掉
+      //   （拾取跳表组 4 `loc_00446457`：`[+0x1a] == 0` 或 `[+0x19] == 我+1` → 红叉），
+      //   所以这里应当在**目标校验**就被拒（`targetNotAllowed`），不是效果算下来没变化。
+      it('0 级設施 → fail(targetNotAllowed) 且不扣卡', () => {
+--- packages/core/src/cards/registry.test.ts:947
+        const ctx = facCtx(12, makeFacility({ id: 1, type: 1, level: 1, owner: 0 }));
+        const r = useCard(ctx, 12, { kind: 'facility', facilityId: 1 });
+        expect(r.facilities[0]).toMatchObject({ type: 0, level: 0 });
+        expect(r.hostilityDeltas).toEqual([]); // 无主不记
+      });
+    
+      // ★ 2026-09-16 补：拆除卡与怪獸卡共用**同一条**拾取规则
+      //   （`demolishLikeTargetAllowed`，@source 拾取跳表 VA 0x00446457 / 0x004464c3），
+      //   但先前只有怪獸卡那一组有用例 —— 这四条把拆除卡那一半逐条钉住。
+      it('★ 拆除卡：0 级設施（空地）→ targetNotAllowed 且不扣卡', () => {
+--- packages/core/src/cards/registry.ts:737
+        // ── 地块目标 ───────────────────────────────────────
+        case 11: {
+          // 怪獸卡 VA 0x00443917：敌意先按原等级算（level×30×物价指数，无主不记），
+          //   再 mutate mode 2 夷平 —— 地块与設施两条路径完全同构
+          if (target.kind === 'facility') {
+            const fac = facilities.find((f) => f.id === target.facilityId) ?? null;
+            if (fac === null) return fail('facilityOutOfRange');
+            // ★ 不能打自己的 / 不能打空地 @source 拾取跳表组 4 `loc_00446457`
+            if (!demolishLikeTargetAllowed(fac.owner, fac.level, cur)) return fail('targetNotAllowed');
+            // ★ 不设「无变化就早退」的闸门：原版对无主/已夷平的记录**照样**
+
+======================================================================
+### 0x411081   （2 处引用）
+--- packages/client/src/main.ts:2489
+        if (ctrl === DATE_CTRL.CANCEL) {
+          // 抛 −1 —— 什么都不拷回（`0x41104c`）
+          closeOptionsSub();
+          requestRender();
+          return;
+        }
+        if (ctrl === DATE_CTRL.OK) {
+          // 抛回日期（`0x411081`）→ 存进 `[0x48bb50]` / `RICH4.CFG+8`（`[0x497160]`）
+          optionsDate = { ...sub.draft };
+          // ★ 2026-09-16 接线：`RICH4.CFG+8` 就是**当前游戏日期**的存放处
+--- packages/client/src/options-pages.ts:338
+     *
+     * @source 抬手跳表 `0x410aa7`：
+     *   - `0x410f85` 月 −（`dec bl`，减到 0 就回 12）
+     *   - `0x410fb3` 月 +（`cmp ah,0xd` → 回 1）
+     *   - `0x410fff` 年 −（`cmp ebx,0x7ce / jle` → 1998 就不再减）
+     *   - `0x41101a` 年 +
+     *   - `0x411036` 「熱 鍵」= `[0x48bb84] = [0x48bb5c]`（今天的日期）
+     *   - `0x41104c` 取消 = 抛 −1（什么都不拷回）/ `0x411081` 確定 = 抛出日期
+     *
+     * ★ 天**不夹取**：月改小了也可能留着 31 号（原版也不夹；绘制循环按当月天数画，
+
+======================================================================
+### 0x410fb3   （1 处引用）
+--- packages/client/src/options-pages.ts:334
+    }
+    
+    /**
+     * 把一次命中落到日期上（**抬手**才走这里；按下只画按下图）。
+     *
+     * @source 抬手跳表 `0x410aa7`：
+     *   - `0x410f85` 月 −（`dec bl`，减到 0 就回 12）
+     *   - `0x410fb3` 月 +（`cmp ah,0xd` → 回 1）
+     *   - `0x410fff` 年 −（`cmp ebx,0x7ce / jle` → 1998 就不再减）
+     *   - `0x41101a` 年 +
+
+======================================================================
+### 0x4107f3   （1 处引用）
+--- packages/client/src/options.ts:399
+        case CONTROL.SOUND_LAMP:
+          return { kind: 'lamp', ctrl, field: 'sound' };
+        case CONTROL.AUTOSAVE_LAMP:
+          return { kind: 'lamp', ctrl, field: 'autoSave' };
+        case CONTROL.WINDOW_0:
+        case CONTROL.WINDOW_1:
+        case CONTROL.WINDOW_2:
+          // @source fcn_004107f3：`[0x474d74] − 0xd`
+          return { kind: 'window', ctrl, value: ctrl - CONTROL.WINDOW_0 };
+        default:
+
+======================================================================
+### 0x410572   （1 处引用）
+--- packages/client/src/options.ts:372
+    /** 控件号 → 语义命中（按下/松手都走这里） */
+    export function controlHit(ctrl: number, x: number, y: number): OptionsHit | null {
+      switch (ctrl) {
+        case CONTROL.SPEED_BAR:
+          // @source fcn_00410537：(relx − 81) >> 4，不 +1
+          return { kind: 'bar', ctrl, field: 'speed', value: clamp(Math.floor((x - 81) / 16), 0, 2) };
+        case CONTROL.MUSIC_BAR:
+          // @source fcn_00410572：(relx − 89) >> 4 再 +1 → 1..4（0 只能靠灯关）
+          return { kind: 'bar', ctrl, field: 'music', value: clamp(Math.floor((x - 89) / 16) + 1, 1, 4) };
+        case CONTROL.SOUND_BAR:
+
+======================================================================
+### 0x4105b9   （1 处引用）
+--- packages/client/src/options.ts:375
+        case CONTROL.SPEED_BAR:
+          // @source fcn_00410537：(relx − 81) >> 4，不 +1
+          return { kind: 'bar', ctrl, field: 'speed', value: clamp(Math.floor((x - 81) / 16), 0, 2) };
+        case CONTROL.MUSIC_BAR:
+          // @source fcn_00410572：(relx − 89) >> 4 再 +1 → 1..4（0 只能靠灯关）
+          return { kind: 'bar', ctrl, field: 'music', value: clamp(Math.floor((x - 89) / 16) + 1, 1, 4) };
+        case CONTROL.SOUND_BAR:
+          // @source fcn_004105b9：同上
+          return { kind: 'bar', ctrl, field: 'sound', value: clamp(Math.floor((x - 89) / 16) + 1, 1, 4) };
+        case CONTROL.SIDE_0:
+
+======================================================================
+### 0x4298cc   （2 处引用）
+--- packages/client/src/stock-screen.ts:229
+      shares: 504,
+      cost: 609,
+    } as const;
+    
+    /** 顶带右上的存款 @source `loc_004297f7` 的 `push 0x21c / push 0x18` */
+    export const STOCK_CASH = { x: 540, y: 24 } as const;
+    
+    /** 漲停／跌停那个底色框 @source `loc_004298cc` 的 `0x90 / 0x59 / 0x14` */
+    export const STOCK_STATUS_BOX = { x: 144, w: 89, h: 20 } as const;
+    
+--- packages/client/src/stock-screen.ts:509
+    //  颜色
+    // ============================================================
+    
+    /**
+     * 涨跌类 → **成交價那一格**的字色 / 底色框。
+     *
+     * @source 跳表 `ref_004297cf`（`jmp dword [eax*4 + 0x4297cf]`，索引 = `fcn_004295ea` 的返回）：
+     *   `loc_004298b9` 0 漲红 / `loc_004298cc` 1 漲停白+暗红框 / `loc_004298f8` 2 跌绿 /
+     *   `loc_00429908` 3 跌停**黑**+暗绿框 / `loc_00429934` 4 平白。
+     *
+
+======================================================================
+### 0x429908   （1 处引用）
+--- packages/client/src/stock-screen.ts:510
+    // ============================================================
+    
+    /**
+     * 涨跌类 → **成交價那一格**的字色 / 底色框。
+     *
+     * @source 跳表 `ref_004297cf`（`jmp dword [eax*4 + 0x4297cf]`，索引 = `fcn_004295ea` 的返回）：
+     *   `loc_004298b9` 0 漲红 / `loc_004298cc` 1 漲停白+暗红框 / `loc_004298f8` 2 跌绿 /
+     *   `loc_00429908` 3 跌停**黑**+暗绿框 / `loc_00429934` 4 平白。
+     *
+     * ⚠️ 这张表**只管成交價那一格**（绘制在 x=0xe1，@source VA 0x0042994c 那一段）。
+
+======================================================================
+### 0x41e15a   （2 处引用）
+--- packages/client/src/ai-settings.ts:235
+    export const AI_RATIO_STEP = 10;
+    
+    /**
+     * 滑槽两端那两颗箭头 —— **不是装饰，是 ±10 的档位钮**，也是 100% 的唯一来路。
+     *
+     * @source 表 `0x4752ae` 索引 7..10：`(298,328,309,350) (392,328,403,350) (298,361,309,383) (392,361,403,383)`
+     *   （屏幕）→ 相对 `x 196..207`（左）/ `290..301`（右）。
+     *   按下后走 `loc_0041e15a`（−10，`>10` 才减，否则归 0）与 `loc_0041e191`（+10，`<90` 才加，否则 100）。
+     *
+     * ★ 拖动区是 `310 < x < 390`（**两端都不含**）→ 拖到最右只到 `(389−310)/8×10 = 90`；
+--- packages/client/src/ai-settings.ts:458
+          row.personality = hit.value;
+          break;
+        case 'ratio':
+          if (hit.which === 'cash') row.cashRatio = hit.value;
+          else row.stockRatio = hit.value;
+          break;
+        case 'ratioStep': {
+          // @source `loc_0041e15a`（−10，>10 才减否则归 0）/ `loc_0041e191`（+10，<90 才加否则 100）
+          const cur = hit.which === 'cash' ? row.cashRatio : row.stockRatio;
+          const next = Math.max(0, Math.min(100, cur + hit.delta));
+
+======================================================================
+### 0x41e191   （2 处引用）
+--- packages/client/src/ai-settings.ts:235
+    export const AI_RATIO_STEP = 10;
+    
+    /**
+     * 滑槽两端那两颗箭头 —— **不是装饰，是 ±10 的档位钮**，也是 100% 的唯一来路。
+     *
+     * @source 表 `0x4752ae` 索引 7..10：`(298,328,309,350) (392,328,403,350) (298,361,309,383) (392,361,403,383)`
+     *   （屏幕）→ 相对 `x 196..207`（左）/ `290..301`（右）。
+     *   按下后走 `loc_0041e15a`（−10，`>10` 才减，否则归 0）与 `loc_0041e191`（+10，`<90` 才加，否则 100）。
+     *
+     * ★ 拖动区是 `310 < x < 390`（**两端都不含**）→ 拖到最右只到 `(389−310)/8×10 = 90`；
+--- packages/client/src/ai-settings.ts:458
+          row.personality = hit.value;
+          break;
+        case 'ratio':
+          if (hit.which === 'cash') row.cashRatio = hit.value;
+          else row.stockRatio = hit.value;
+          break;
+        case 'ratioStep': {
+          // @source `loc_0041e15a`（−10，>10 才减否则归 0）/ `loc_0041e191`（+10，<90 才加否则 100）
+          const cur = hit.which === 'cash' ? row.cashRatio : row.stockRatio;
+          const next = Math.max(0, Math.min(100, cur + hit.delta));
+
+======================================================================
+### 0x412651   （4 处引用）
+--- packages/client/src/minigame-screen.test.ts:278
+        expect(st.phase).toBe('end');
+        expect(st.ticks).toBe(0);
+        for (let i = 0; i < 64; i++) st = penguinStep(st, 1000);
+        expect(st.phase).toBe('score');
+        expect(st.scoreUntil).toBe(1000 + MINI_END_MS);
+      });
+    
+      it('点一格 → 走过去 → 挖开：走一格 4 个 tick @0x00412651', () => {
+        const base = penguinStart(5);
+        const start: typeof base = { ...base, phase: 'play', intro: 0 };
+--- packages/client/src/minigame-screen.test.ts:301
+        for (let i = 0; i < 4; i++) st = penguinStep(st, 0);
+        expect(st.dig).toBe(0);
+        expect(st.dug[target]).toBe(1);
+        // 挖过的格土堆就不画了
+        expect(st.mound[target]).toBe(0);
+      });
+    
+      it('朝向按 @0x00412651 的四条分支算', () => {
+        expect(penguinDir(1, 0)).toBe(3);
+        expect(penguinDir(1, -1)).toBe(4);
+--- packages/client/src/minigame-screen.ts:329
+    /** 入场 tick 数 @source `mov dword [0x48bd7c], 0xa` @0x004148b1 */
+    export const PENGUIN_INTRO_TICKS = 10;
+    /** 游戏 tick 数 @source `mov dword [0x48bd2c], 0x96` @0x004148ab */
+    export const PENGUIN_PLAY_TICKS = 0x96;
+    /** 结算姿势的分数线 @source `cmp ecx, 0x28 / 0x37` @0x00414986 */
+    export const PENGUIN_END_LO_SCORE = 0x28;
+    export const PENGUIN_END_HI_SCORE = 0x37;
+    /** 单格走行/挖掘的子帧数 @source `test byte [0x48bcc4], 3` @0x00412651 */
+    export const PENGUIN_SUB_FRAMES = 4;
+    /** 开局时企鵝在哪一格 @source `[0x48bd04] = 0x20000 (列 2)`、`[0x48bd08] = 0x60000 (行 6)` @0x004148a2 */
+--- packages/client/src/minigame-screen.ts:406
+    /** 计分 @source `fcn_00413a4a` @0x00413d6a —— `counts` 按类型下标（1..5） */
+    export function penguinScore(counts: readonly number[]): number {
+      let sum = 0;
+      for (let t = 1; t < PENGUIN_VALUE.length; t++) sum += (counts[t] ?? 0) * (PENGUIN_VALUE[t] ?? 0);
+      return sum;
+    }
+    
+    /** 走行的朝向（0..7）@source `loc_00412651` VA 0x00412651 的四条分支 */
+    export function penguinDir(dcol: number, drow: number): number {
+      if (dcol > 0) return (3 - drow) & 7;
+
+======================================================================
+### 0x42aec4   （4 处引用）
+--- packages/client/src/main.ts:987
+        globalMapId: state.globalMapId,
+        holidayArt,
+        dueDays: due === null ? null : loanDueDays(today, due, dayNumberSince1998),
+      };
+    }
+    
+    // ── 股市屏（T-030）────────────────────────────────────────
+    /** 现在看的是哪一页（0 行情 / 1 持股） —— 点页码牌换 @source loc_0042aec4 */
+    let stockPage = 0;
+    let stockHover: number | null = null;
+--- packages/client/src/main.ts:6514
+            }
+            return;
+          }
+          const plate = hitStockPlate(q.x, q.y);
+          if (plate !== null) {
+            log('▶ 股市：' + ['換頁', '買進', '賣出', '上市公司資訊', '離開'][plate]);
+            if (plate === STOCK_PLATE_PAGE) {
+              // @source `loc_0042aec4`：换页并把选中清掉
+              stockPage = stockPage === 0 ? 1 : 0;
+              stockSel = null;
+--- packages/client/src/stock-screen.ts:19
+     * |---|---|---|
+     * | 0 | 640×480 | **股價表页**（绿桌布）—— 六列表头烘在上面 |
+     * | 1 | 640×480 | **持股页**（黄桌布）—— 同一张桌子换个色 |
+     * | 2 | 587×375 | 「上市公司資訊」那张详情卡（**本卡没做**，见 T-030b）|
+     * | 3..28 | 80×112 | 26 张企业图标（详情卡左上的框里用）|
+     *
+     * ★ **两张 640×480 是「两页」**，不是两个状态：点第 1 块牌子（页码牌）
+     *   `[0x48c2ec] ^= 1` 换页（@source `loc_0042aec4`），`fcn_004297f7(page)`
+     *   把 chunk[page] 整张贴上去再画这一页的动态值。
+     *   ⚠️ 两页的**标题是反的**：图 0 的标题写着 `持有股數表` 却是行情表，
+--- packages/client/src/stock-screen.ts:31
+     * ## 顶带五块牌子 —— 表 `0x4754c8`（每项 16 字节 x0,y0,x1,y1）
+     *
+     * 命中在 `loc_0042ad6c`（0x200 mousemove）与 `loc_0042ae26`（点击），
+     * 判定 `x0 < x < x1 && y0 < y < y1`；表里的顺序就是跳表 `ref_0042aaeb` 的下标。
+     *
+     * | # | 矩形 | 是什么 | @source |
+     * |---|---|---|---|
+     * | 0 | (16,9)-(124,39) | 页码牌 —— 点一下换页 | `loc_0042aec4` |
+     * | 1 | (128,9)-(198,39) | **買進** | `loc_0042aee4` |
+     * | 2 | (202,9)-(272,39) | **賣出** | `loc_0042afff` |
+
+======================================================================
+### 0x4329ef   （4 处引用）
+--- packages/client/src/magic-screen.ts:97
+     * | 图 | 是什么 | 用在哪 | @source |
+     * |---|---|---|---|
+     * | 0 | 640×480 整屏底图（五芒星 + 十二个图标 + 女巫剪影） | 铺场 | 0x00432511 |
+     * | 1 | 165×213 女巫抱水晶球（抬手姿势） | 铺场 | 0x00432511 `+0x18` |
+     * | 2 | 284×210 女巫抬手（含水晶球） | 常态/眨眼 | 0x00432aec `+0x24` |
+     * | 3 | 60×35 长条文字框 | 开场白 | 0x00432894 起 |
+     * | 4 | 60×18 长条文字框 | 提示 | 0x00432951 `+0x30` |
+     * | 5 | 60×21 长条文字框 | 文本 | 0x004329ef |
+     * | 6 / 7 | 142×120 锦缎框（红 / 绿） | 中央字框 | 0x00432511 起 |
+     * | 8 | 280×173 长条锦缎框 | 结果条 | 0x00432a85 |
+--- packages/client/src/magic-screen.ts:445
+    export const MAGIC_ROLL_TICKS_FAST = 1;
+    
+    /**
+     * 抽中的**条件名**在字框里停多久 —— 恰好一拍。
+     *
+     * @source 状态 5 是 `loc_00432719` 抽完写进去的那一句
+     *   （`fcn_0044ecb6([0x4756b8 + 条件下标*4])`），下一个 `0x113` 就推进状态 6；
+     *   状态 6 一到就把字框换成 `#0040`（`loc_004329ef`）。
+     */
+    export const MAGIC_CRITERION_MS = MAGIC_TIMER_MS;
+--- packages/client/src/magic-screen.ts:451
+     *   （`fcn_0044ecb6([0x4756b8 + 条件下标*4])`），下一个 `0x113` 就推进状态 6；
+     *   状态 6 一到就把字框换成 `#0040`（`loc_004329ef`）。
+     */
+    export const MAGIC_CRITERION_MS = MAGIC_TIMER_MS;
+    
+    /**
+     * 「輪到你了」那一句 —— 状态 6 写进字框。
+     * @source `loc_004329ef`：`cmp byte [0x48c3a5], 0 / jne loc_00432944` ⇒ **动画关掉不写**；
+     *   开着则 `push [0x4756a0]` → `fcn_0044ecb6`（串 `#0040嘿～輪到你了！`）。
+     */
+--- packages/client/src/magic-screen.ts:610
+     * 这一拍字框里该写哪一句 —— 纯函数（画的时候直接用）。
+     *
+     * | 阶段 | 写什么 | @source |
+     * |---|---|---|
+     * | `greet` | 入口三句的第 `greet` 句 | `loc_004326b9` 起那三处 `fcn_0044ecb6` |
+     * | `roll` | 仍是最后那句（`#0039你來決定他們的命運～`）—— 原版摇签那 10 拍不换字 | `loc_00432951` |
+     * | `criterion` | **抽中的条件名**（`[0x4756b8 + 下标*4]`）| `loc_00432719` 尾 |
+     * | `spin` | `#0040嘿～輪到你了！` | `loc_004329ef` |
+     * | `hold` | `#0041天靈靈地靈靈～` | `loc_00432fea` |
+     */
+
+======================================================================
+### 0x43f55f   （1 处引用）
+--- packages/client/src/god-slot.ts:38
+     * ## 状态机（`fcn_0043f23e`，每格 **0x1e = 30 ms**，`cmp ebx,0x1e / jb`）
+     *
+     * | 状态 | 干什么 | @source |
+     * |---|---|---|
+     * | 1 | `fcn_0043ef3e(variant, 0xf, 0)` —— 四位一起滚 | `loc_0043f33f` |
+     * | 2 | 同上 + 画**拉杆**（`fcn_00456418(Panel#67 图 4)` 落在摇杆那一点）+ 音效 **1**（`0x482322`）→ 状态 3、计数清零 | `loc_0043f351` |
+     * | 3 | 滚；计数到 **4** 才往下 | `loc_0043f45d` |
+     * | 4..7 | **逐槽停**：`fcn_0043ef3e(variant, 0xf, 1)` → `(0xe, 2)` → `(0xc, 3)` → `(8, 4)`，每次都等它返回 1（= 那一槽停稳）再进下一状态 | `loc_0043f55f` / `0x43f57f` / `0x43f59f` / `0x43f5bd` |
+     * | 8 | 停循环音（`fcn_004542e9`）→ 状态 9 | `loc_0043f5dd` |
+     * | 9 | 收尾：把四个数字拼成 `c4*1000+c5*100+c6*10+c7` 当返回值 | `loc_0043f6fa` |
+
+======================================================================
+### 0x43f57f   （1 处引用）
+--- packages/client/src/god-slot.ts:38
+     * ## 状态机（`fcn_0043f23e`，每格 **0x1e = 30 ms**，`cmp ebx,0x1e / jb`）
+     *
+     * | 状态 | 干什么 | @source |
+     * |---|---|---|
+     * | 1 | `fcn_0043ef3e(variant, 0xf, 0)` —— 四位一起滚 | `loc_0043f33f` |
+     * | 2 | 同上 + 画**拉杆**（`fcn_00456418(Panel#67 图 4)` 落在摇杆那一点）+ 音效 **1**（`0x482322`）→ 状态 3、计数清零 | `loc_0043f351` |
+     * | 3 | 滚；计数到 **4** 才往下 | `loc_0043f45d` |
+     * | 4..7 | **逐槽停**：`fcn_0043ef3e(variant, 0xf, 1)` → `(0xe, 2)` → `(0xc, 3)` → `(8, 4)`，每次都等它返回 1（= 那一槽停稳）再进下一状态 | `loc_0043f55f` / `0x43f57f` / `0x43f59f` / `0x43f5bd` |
+     * | 8 | 停循环音（`fcn_004542e9`）→ 状态 9 | `loc_0043f5dd` |
+     * | 9 | 收尾：把四个数字拼成 `c4*1000+c5*100+c6*10+c7` 当返回值 | `loc_0043f6fa` |
+
+======================================================================
+### 0x43f5bd   （1 处引用）
+--- packages/client/src/god-slot.ts:38
+     * ## 状态机（`fcn_0043f23e`，每格 **0x1e = 30 ms**，`cmp ebx,0x1e / jb`）
+     *
+     * | 状态 | 干什么 | @source |
+     * |---|---|---|
+     * | 1 | `fcn_0043ef3e(variant, 0xf, 0)` —— 四位一起滚 | `loc_0043f33f` |
+     * | 2 | 同上 + 画**拉杆**（`fcn_00456418(Panel#67 图 4)` 落在摇杆那一点）+ 音效 **1**（`0x482322`）→ 状态 3、计数清零 | `loc_0043f351` |
+     * | 3 | 滚；计数到 **4** 才往下 | `loc_0043f45d` |
+     * | 4..7 | **逐槽停**：`fcn_0043ef3e(variant, 0xf, 1)` → `(0xe, 2)` → `(0xc, 3)` → `(8, 4)`，每次都等它返回 1（= 那一槽停稳）再进下一状态 | `loc_0043f55f` / `0x43f57f` / `0x43f59f` / `0x43f5bd` |
+     * | 8 | 停循环音（`fcn_004542e9`）→ 状态 9 | `loc_0043f5dd` |
+     * | 9 | 收尾：把四个数字拼成 `c4*1000+c5*100+c6*10+c7` 当返回值 | `loc_0043f6fa` |
+
+======================================================================
+### 0x43f59f   （1 处引用）
+--- packages/client/src/god-slot.ts:38
+     * ## 状态机（`fcn_0043f23e`，每格 **0x1e = 30 ms**，`cmp ebx,0x1e / jb`）
+     *
+     * | 状态 | 干什么 | @source |
+     * |---|---|---|
+     * | 1 | `fcn_0043ef3e(variant, 0xf, 0)` —— 四位一起滚 | `loc_0043f33f` |
+     * | 2 | 同上 + 画**拉杆**（`fcn_00456418(Panel#67 图 4)` 落在摇杆那一点）+ 音效 **1**（`0x482322`）→ 状态 3、计数清零 | `loc_0043f351` |
+     * | 3 | 滚；计数到 **4** 才往下 | `loc_0043f45d` |
+     * | 4..7 | **逐槽停**：`fcn_0043ef3e(variant, 0xf, 1)` → `(0xe, 2)` → `(0xc, 3)` → `(8, 4)`，每次都等它返回 1（= 那一槽停稳）再进下一状态 | `loc_0043f55f` / `0x43f57f` / `0x43f59f` / `0x43f5bd` |
+     * | 8 | 停循环音（`fcn_004542e9`）→ 状态 9 | `loc_0043f5dd` |
+     * | 9 | 收尾：把四个数字拼成 `c4*1000+c5*100+c6*10+c7` 当返回值 | `loc_0043f6fa` |
+
+======================================================================
+### 0x4298b9   （1 处引用）
+--- packages/client/src/stock-screen.ts:509
+    //  颜色
+    // ============================================================
+    
+    /**
+     * 涨跌类 → **成交價那一格**的字色 / 底色框。
+     *
+     * @source 跳表 `ref_004297cf`（`jmp dword [eax*4 + 0x4297cf]`，索引 = `fcn_004295ea` 的返回）：
+     *   `loc_004298b9` 0 漲红 / `loc_004298cc` 1 漲停白+暗红框 / `loc_004298f8` 2 跌绿 /
+     *   `loc_00429908` 3 跌停**黑**+暗绿框 / `loc_00429934` 4 平白。
+     *
+
+======================================================================
+### 0x41101a   （1 处引用）
+--- packages/client/src/options-pages.ts:336
+    /**
+     * 把一次命中落到日期上（**抬手**才走这里；按下只画按下图）。
+     *
+     * @source 抬手跳表 `0x410aa7`：
+     *   - `0x410f85` 月 −（`dec bl`，减到 0 就回 12）
+     *   - `0x410fb3` 月 +（`cmp ah,0xd` → 回 1）
+     *   - `0x410fff` 年 −（`cmp ebx,0x7ce / jle` → 1998 就不再减）
+     *   - `0x41101a` 年 +
+     *   - `0x411036` 「熱 鍵」= `[0x48bb84] = [0x48bb5c]`（今天的日期）
+     *   - `0x41104c` 取消 = 抛 −1（什么都不拷回）/ `0x411081` 確定 = 抛出日期
+
+======================================================================
+### 0x410fff   （2 处引用）
+--- packages/client/src/options-pages.test.ts:174
+          expect(h).not.toBeNull();
+          return h!;
+        };
+        // 月 −：1 月 → 12 月
+        expect(applyDateHit(draft, hit(80, 25), draft).month).toBe(12);
+        // 月 +：12 月 → 1 月
+        expect(applyDateHit({ ...draft, month: 12 }, hit(80, 35), { ...draft, month: 12 }).month).toBe(1);
+        // 年 −：1998 不再减（@source 0x410fff 的 `cmp ebx,0x7ce / jle`）
+        expect(applyDateHit({ ...draft, year: DATE_MIN_YEAR }, hit(165, 25), draft).year).toBe(
+          DATE_MIN_YEAR,
+--- packages/client/src/options-pages.ts:335
+    
+    /**
+     * 把一次命中落到日期上（**抬手**才走这里；按下只画按下图）。
+     *
+     * @source 抬手跳表 `0x410aa7`：
+     *   - `0x410f85` 月 −（`dec bl`，减到 0 就回 12）
+     *   - `0x410fb3` 月 +（`cmp ah,0xd` → 回 1）
+     *   - `0x410fff` 年 −（`cmp ebx,0x7ce / jle` → 1998 就不再减）
+     *   - `0x41101a` 年 +
+     *   - `0x411036` 「熱 鍵」= `[0x48bb84] = [0x48bb5c]`（今天的日期）
+
+======================================================================
+### 0x4299af   （3 处引用）
+--- packages/client/src/stock-screen.ts:75
+     * | 2 跌 | 0x00ff00 绿 | — | |
+     * | 3 **跌停** | 0x101010 黑 | 0x00d000 暗绿，同一矩形 | **不能賣出**（`跌停無法賣出！`）|
+     * | 4 平 | 0xf0f0f0 白 | — | |
+     *
+     * ⚠️ `create_font` 的第 2 个参数是 **RGB**（函数内部再按 `RRGGBB → BBGGRR` 翻成
+     * COLORREF，@source VA 0x44f9e1 起那一串 `and/shl/or`）。
+     * 持股那两列：**该股有对应企业时字色是 `0xf0f0`**（= RGB 青），否则 `0xf0f0f0` 白
+     * （@source `loc_0042b7a9` / `loc_004299af`）。原版这里多半想写 `0xf0f000`（黄），
+     * 但字节就是 `68 f0 f0 00 00` —— 照抄，不替它改。
+     *
+--- packages/client/src/stock-screen.ts:536
+    
+    /**
+     * 涨跌类 → **涨跌列与交易量列**的字色 —— 与 `stockStatusColor()` 是**两张不同的表**。
+     *
+     * ★ 2026-09-16 订正：原版在这里**第二次**跳转（`cmp ebx,4 / ja … / jmp [ebx*4 + 0x4297e3]`），
+     *   表 `ref_004297e3` 只分三类：
+     *   ```
+     *   0 漲 / 1 漲停 → loc_004299af  红 0xff0000
+     *   2 跌 / 3 跌停 → loc_004299bf  绿 0x00ff00      ← 跌停是**绿字**，不是黑字
+     *   4 平          → loc_004299cf  白 0xf0f0f0
+--- packages/client/src/stock-screen.ts:543
+     *   0 漲 / 1 漲停 → loc_004299af  红 0xff0000
+     *   2 跌 / 3 跌停 → loc_004299bf  绿 0x00ff00      ← 跌停是**绿字**，不是黑字
+     *   4 平          → loc_004299cf  白 0xf0f0f0
+     *   ```
+     *   ⇒ 「成交價那格是黑字+暗绿框」与「涨跌列是绿字」**同时成立**，互不矛盾。
+     *   交易量列紧跟在涨跌列之后画、中间没有新建字体（@source VA 0x00429a66 起），所以同色。
+     *
+     * @source VA 0x004299af / 0x004299bf / 0x004299cf（各自 `create_font(0x10, fg, 0x101010, 3, 1)`）
+     */
+    export function stockTrendColor(status: number): string {
+
+======================================================================
+### 0x40a9a4   （3 处引用）
+--- packages/client/src/big-map-screen.ts:17
+     * ## 窗口过程的三条分支（其余一律 `DefWindowProc`）
+     *
+     * | msg | 做什么 | @source |
+     * |---|---|---|
+     * | `0x401` WM_USER+1 | 开窗初始化：`fcn_0040a4e1(1)` 把图 1 从原始副本刷回工作面并补画地块/设施/企业的图标，`fcn_00402460(1)` 开脏矩形记账，`InvalidateRect` | 0x0040a82b |
+     * | `0xf` WM_PAINT | 见下 | 0x0040a86d |
+     * | `0x205` WM_RBUTTONUP | `fcn_00402460(0)` + `Post_0402_Message(0)` ⇒ **关窗** | 0x0040a854 |
+     * | 其余 | `DefWindowProc` ⇒ **左键不关、中键不关、键盘不关，只有右键抬起关** | 0x0040a9a4 |
+     *
+     * 入口付完窗口过程后还有一句 `fcn_00415e70(1)`（0x0040a9c9）—— 收尾时
+--- packages/client/src/big-map-screen.ts:168
+      return character + PORTRAIT_RESOURCE_BASE;
+    }
+    
+    /**
+     * 模态期间**仍然认**的热键 —— 原版一个都不认。
+     *
+     * 窗口过程只认 `0x401` / `0xf` / `0x205` 三条，键盘消息一律落到
+     * `DefWindowProc`（VA 0x0040a9a4）：**键盘关不掉这扇窗，也推不开别的屏**。
+     * 「地圖」再按一次同样什么都不做（它不是开关）。
+     */
+--- packages/client/src/big-map-screen.ts:249
+            env.sprite('map.mkf', bigMapMarkerResource(m.character), BIG_MAP_MARKER_IMAGE, true),
+            m.x,
+            m.y,
+          );
+        }
+      },
+    
+      // 左键按下/抬起**什么都不做** —— 原版 0x201/0x202 走 DefWindowProc（@0x0040a9a4）。
+      down() {
+        /* 原版没有反应 */
+
+======================================================================
+### 0x4241f2   （1 处引用）
+--- packages/client/src/asset-sheet.ts:33
+     * | 三颗下钻钮（图 12 = 97×40 按下底） | 命中 VA 0x424163；按下底 VA 0x42419f |
+     * | 视图 0 的八条数值 + 中列四条计数 | `loc_004232f3`（VA 0x4232f3）|
+     * | 视图 0 右下 15 格道具欄 / 卡片欄 | VA 0x4236da / 0x4237b3 |
+     * | 视图 1 的 5 个种类格（图 11 = 75×33 选中底） | 命中 VA 0x423ebb；绘制 VA 0x423883 |
+     * | 视图 1 的数据行（5 列） | `fcn_004225a3`（VA 0x4225a3），取数 `fcn_00423b3b`（VA 0x423b3b）|
+     * | 视图 1 的两颗翻页箭头（图 7 / 图 8） | 命中 VA 0x423f36；按下 VA 0x42424e / 0x4242cd |
+     * | 视图 2 的 12 行股票 | `loc_004238b1`（VA 0x4238b1）|
+     * | 关屏 | 右键 `WM_RBUTTONUP` VA 0x424409；EXIT 钮 VA 0x4241f2 |
+     *
+     * ⚠️ **原版没有「鼠标悬停高亮」**：三颗钮的高亮（图 12）与 EXIT 的按下图只在
+
+======================================================================
+### 0x44ff2a   （5 处引用）
+--- packages/client/src/hud.test.ts:149
+    
+      it('月份（「12月」最宽）居中后仍在区内', () => {
+        const half = (2 * digitW + hanW) / 2;
+        expect(CAL.monthText.x + half).toBeLessThan(CONTENT_RIGHT);
+      });
+    
+      it('★ 星期名（竖排，只占一个字宽）与日号都是**正中**（flag 3 / 2）', () => {
+        // flag 3 与 flag 2 在 0x44faa0 的跳表里指向同一段 `0x44FF2A`：
+        // `x -= 宽/2` 之后**顺序落入** `0x44FF35` 再 `y -= 高/2` —— 即**两轴都居中**。
+        // 星期名是**竖排**（需求方实机截图），所以块宽 = 一个字。
+--- packages/client/src/hud.ts:111
+     *   jmp [eax*4 + 0x44faa0]`，即**按 `flag − 1` 索引**的 7 路跳表；
+     *   `esi` = 文字宽 + 1、`ebx` = 文字高 + 1，`[esp+0xac]` = x、`[esp+0xb0]` = y。
+     *
+     *   | flag | 目标 | 做什么 |
+     *   |---|---|---|
+     *   | 0 | （`ja` 跳过）| 不调整 → **左上** |
+     *   | 1 | `0x44FF21` | `x -= 宽` → 右上 |
+     *   | **2 / 3 / 4** | `0x44FF2A` → **落入** `0x44FF35` | `x -= 宽/2` 后**接着** `y -= 高/2` → **正中** |
+     *   | 5 | `0x44FF35` | 左·垂直居中 |
+     *   | 6 | `0x44FF42` | 右·垂直居中 |
+--- packages/client/src/hud.ts:116
+     *   | 0 | （`ja` 跳过）| 不调整 → **左上** |
+     *   | 1 | `0x44FF21` | `x -= 宽` → 右上 |
+     *   | **2 / 3 / 4** | `0x44FF2A` → **落入** `0x44FF35` | `x -= 宽/2` 后**接着** `y -= 高/2` → **正中** |
+     *   | 5 | `0x44FF35` | 左·垂直居中 |
+     *   | 6 | `0x44FF42` | 右·垂直居中 |
+     *   | 7 | `0x44FF4B` | 水平居中·底对齐 |
+     *
+     * ★ **flag 2/3/4 两轴都居中**：三条表项指向同一个 `0x44FF2A`，而那一段是
+     *   `mov eax,esi / sar eax,1 / sub [esp+0xac],eax`，紧跟着**顺序**执行
+     *   `0x44FF35` 的 `mov eax,ebx / sar eax,1 / sub [esp+0xb0],eax`
+--- packages/client/src/lottery-draw-screen.ts:999
+        // ④ 持号数字
+        for (const d of tallyDigits(lottery, p)) {
+          drawKeyed(ctx, sprite('Panel.mkf', DRAW_DIGIT_RESOURCE, d.digit, true), d.x, d.y);
+        }
+      }
+    }
+    
+    /** flag 2（正中）的文字 @source 跳表 `0x44faa0` 第 2 项（VA 0x0044ff2a）*/
+    function centerText(
+      ctx: CanvasRenderingContext2D,
+
+======================================================================
+### 0x411036   （2 处引用）
+--- packages/client/src/options-pages.ts:36
+     * - 键名表 = `0x47edfa`（8 字节一项：dword 键号 + dword 名字指针），78 项
+     * - 熱鍵頁三个钮 = 串表 `0x474b2c`（原始設定 / 取 消 / 確 定），落点 (52,296) 起 +113
+     * - YES/NO 框 = 资源 440（96×48，图 0 素框 / 1 左半亮 / 2 右半亮），画在中心 (320,200)
+     *
+     * ## 三条「原版自己就是这样，照做」的怪癖
+     *
+     * 1. **日期頁最左那颗钮写着「熱 鍵」，按下去却是「回到今天」** ——
+     *    标签表 `0x474cc8[0]` = `0x46375e`（'熱 鍵'），而它的抬手处理 `0x411036`
+     *    是 `mov eax,[0x48bb5c] ; mov [0x48bb84],eax`，而 `[0x48bb5c]` 是入口
+     *    `0x411a5d` 存进去的**系统今天**（`fcn_00458331` 取 DOS 日期）。照做。
+--- packages/client/src/options-pages.ts:337
+     * 把一次命中落到日期上（**抬手**才走这里；按下只画按下图）。
+     *
+     * @source 抬手跳表 `0x410aa7`：
+     *   - `0x410f85` 月 −（`dec bl`，减到 0 就回 12）
+     *   - `0x410fb3` 月 +（`cmp ah,0xd` → 回 1）
+     *   - `0x410fff` 年 −（`cmp ebx,0x7ce / jle` → 1998 就不再减）
+     *   - `0x41101a` 年 +
+     *   - `0x411036` 「熱 鍵」= `[0x48bb84] = [0x48bb5c]`（今天的日期）
+     *   - `0x41104c` 取消 = 抛 −1（什么都不拷回）/ `0x411081` 確定 = 抛出日期
+     *
+
+======================================================================
+### 0x41076e   （2 处引用）
+--- packages/client/src/options.test.ts:360
+      it('音樂/音效的灯是「0 = 關」的开关，关掉再开回到 4（不是 3）', () => {
+        const off = applyOptionsHit(DEFAULT_OPTIONS, {
+          kind: 'lamp',
+          ctrl: CONTROL.MUSIC_LAMP,
+          field: 'music',
+        });
+        expect(off.music).toBe(0);
+        // @source fcn_0041076e / fcn_0041079c：`mov byte [0x48bb4a], 4`
+        expect(
+          applyOptionsHit(off, { kind: 'lamp', ctrl: CONTROL.MUSIC_LAMP, field: 'music' }).music,
+--- packages/client/src/options.ts:423
+    export function applyOptionsHit(o: GameOptions, hit: OptionsHit): GameOptions {
+      switch (hit.kind) {
+        case 'bar':
+          return { ...o, [hit.field]: hit.value };
+        case 'lamp':
+          if (hit.field === 'animation') return { ...o, animation: !o.animation };
+          if (hit.field === 'autoSave') return { ...o, autoSave: !o.autoSave };
+          // @source fcn_0041076e / fcn_0041079c：0 ↔ 4（不是 0 ↔ 3）
+          return { ...o, [hit.field]: o[hit.field] === 0 ? 4 : 0 };
+        case 'window':
+
+======================================================================
+### 0x41079c   （2 处引用）
+--- packages/client/src/options.test.ts:360
+      it('音樂/音效的灯是「0 = 關」的开关，关掉再开回到 4（不是 3）', () => {
+        const off = applyOptionsHit(DEFAULT_OPTIONS, {
+          kind: 'lamp',
+          ctrl: CONTROL.MUSIC_LAMP,
+          field: 'music',
+        });
+        expect(off.music).toBe(0);
+        // @source fcn_0041076e / fcn_0041079c：`mov byte [0x48bb4a], 4`
+        expect(
+          applyOptionsHit(off, { kind: 'lamp', ctrl: CONTROL.MUSIC_LAMP, field: 'music' }).music,
+--- packages/client/src/options.ts:423
+    export function applyOptionsHit(o: GameOptions, hit: OptionsHit): GameOptions {
+      switch (hit.kind) {
+        case 'bar':
+          return { ...o, [hit.field]: hit.value };
+        case 'lamp':
+          if (hit.field === 'animation') return { ...o, animation: !o.animation };
+          if (hit.field === 'autoSave') return { ...o, autoSave: !o.autoSave };
+          // @source fcn_0041076e / fcn_0041079c：0 ↔ 4（不是 0 ↔ 3）
+          return { ...o, [hit.field]: o[hit.field] === 0 ? 4 : 0 };
+        case 'window':
+
+======================================================================
+### 0x43f33f   （1 处引用）
+--- packages/client/src/god-slot.ts:35
+     * 004408f9  fcn_00451edb([0x48c51c], 0, 0x28)                ; 贴回浮窗
+     * ```
+     *
+     * ## 状态机（`fcn_0043f23e`，每格 **0x1e = 30 ms**，`cmp ebx,0x1e / jb`）
+     *
+     * | 状态 | 干什么 | @source |
+     * |---|---|---|
+     * | 1 | `fcn_0043ef3e(variant, 0xf, 0)` —— 四位一起滚 | `loc_0043f33f` |
+     * | 2 | 同上 + 画**拉杆**（`fcn_00456418(Panel#67 图 4)` 落在摇杆那一点）+ 音效 **1**（`0x482322`）→ 状态 3、计数清零 | `loc_0043f351` |
+     * | 3 | 滚；计数到 **4** 才往下 | `loc_0043f45d` |
+
+======================================================================
+### 0x44ff4b   （1 处引用）
+--- packages/client/src/hud.ts:114
+     *   | flag | 目标 | 做什么 |
+     *   |---|---|---|
+     *   | 0 | （`ja` 跳过）| 不调整 → **左上** |
+     *   | 1 | `0x44FF21` | `x -= 宽` → 右上 |
+     *   | **2 / 3 / 4** | `0x44FF2A` → **落入** `0x44FF35` | `x -= 宽/2` 后**接着** `y -= 高/2` → **正中** |
+     *   | 5 | `0x44FF35` | 左·垂直居中 |
+     *   | 6 | `0x44FF42` | 右·垂直居中 |
+     *   | 7 | `0x44FF4B` | 水平居中·底对齐 |
+     *
+     * ★ **flag 2/3/4 两轴都居中**：三条表项指向同一个 `0x44FF2A`，而那一段是
+
+======================================================================
+### 0x410d84   （1 处引用）
+--- packages/client/src/main.ts:2408
+        const hit = hitDatePage(dx, dy, sub.draft);
+        if (hit === null) {
+          // 命中格块但没落在任何一天上（格与格之间有 2~3px 空档）：原版照样先放
+          // 「按下」音再找格（`0x410e78` 的 `play_sound_effect` 在最前面）。
+          if (hitDateControl(dx, dy) === DATE_CTRL.GRID) sound.play('Effect.mkf', OPTION_SOUND.click);
+          return;
+        }
+        // 音效表 `0x48231a`：微调与日曆格 = 1、熱鍵 = 1、取消 = 4、確定 = 2 @source 0x410d84 起
+        if (hit.kind === 'spin' || hit.kind === 'day' || hit.ctrl === DATE_CTRL.TODAY) {
+          sound.play('Effect.mkf', OPTION_SOUND.click);
+
+======================================================================
+### 0x42b0c2   （1 处引用）
+--- packages/client/src/stock-screen.ts:35
+     *
+     * | # | 矩形 | 是什么 | @source |
+     * |---|---|---|---|
+     * | 0 | (16,9)-(124,39) | 页码牌 —— 点一下换页 | `loc_0042aec4` |
+     * | 1 | (128,9)-(198,39) | **買進** | `loc_0042aee4` |
+     * | 2 | (202,9)-(272,39) | **賣出** | `loc_0042afff` |
+     * | 3 | (276,9)-(410,39) | **上市公司資訊** | `loc_0042b0b7` |
+     * | 4 | (552,8)-(623,40) | **EXIT**（小人 + 红门那张图烘在图里）| `loc_0042b0c2` |
+     *
+     * `買進`/`賣出`/`上市公司資訊` 三个字是**运行时**画的：`fcn_004296c1` 里
+
+======================================================================
+### 0x4298f8   （1 处引用）
+--- packages/client/src/stock-screen.ts:509
+    //  颜色
+    // ============================================================
+    
+    /**
+     * 涨跌类 → **成交價那一格**的字色 / 底色框。
+     *
+     * @source 跳表 `ref_004297cf`（`jmp dword [eax*4 + 0x4297cf]`，索引 = `fcn_004295ea` 的返回）：
+     *   `loc_004298b9` 0 漲红 / `loc_004298cc` 1 漲停白+暗红框 / `loc_004298f8` 2 跌绿 /
+     *   `loc_00429908` 3 跌停**黑**+暗绿框 / `loc_00429934` 4 平白。
+     *
+
+======================================================================
+### 0x4299bf   （2 处引用）
+--- packages/client/src/stock-screen.ts:537
+    /**
+     * 涨跌类 → **涨跌列与交易量列**的字色 —— 与 `stockStatusColor()` 是**两张不同的表**。
+     *
+     * ★ 2026-09-16 订正：原版在这里**第二次**跳转（`cmp ebx,4 / ja … / jmp [ebx*4 + 0x4297e3]`），
+     *   表 `ref_004297e3` 只分三类：
+     *   ```
+     *   0 漲 / 1 漲停 → loc_004299af  红 0xff0000
+     *   2 跌 / 3 跌停 → loc_004299bf  绿 0x00ff00      ← 跌停是**绿字**，不是黑字
+     *   4 平          → loc_004299cf  白 0xf0f0f0
+     *   ```
+--- packages/client/src/stock-screen.ts:543
+     *   0 漲 / 1 漲停 → loc_004299af  红 0xff0000
+     *   2 跌 / 3 跌停 → loc_004299bf  绿 0x00ff00      ← 跌停是**绿字**，不是黑字
+     *   4 平          → loc_004299cf  白 0xf0f0f0
+     *   ```
+     *   ⇒ 「成交價那格是黑字+暗绿框」与「涨跌列是绿字」**同时成立**，互不矛盾。
+     *   交易量列紧跟在涨跌列之后画、中间没有新建字体（@source VA 0x00429a66 起），所以同色。
+     *
+     * @source VA 0x004299af / 0x004299bf / 0x004299cf（各自 `create_font(0x10, fg, 0x101010, 3, 1)`）
+     */
+    export function stockTrendColor(status: number): string {
+
+======================================================================
+### 0x43f6fa   （1 处引用）
+--- packages/client/src/god-slot.ts:40
+     * | 状态 | 干什么 | @source |
+     * |---|---|---|
+     * | 1 | `fcn_0043ef3e(variant, 0xf, 0)` —— 四位一起滚 | `loc_0043f33f` |
+     * | 2 | 同上 + 画**拉杆**（`fcn_00456418(Panel#67 图 4)` 落在摇杆那一点）+ 音效 **1**（`0x482322`）→ 状态 3、计数清零 | `loc_0043f351` |
+     * | 3 | 滚；计数到 **4** 才往下 | `loc_0043f45d` |
+     * | 4..7 | **逐槽停**：`fcn_0043ef3e(variant, 0xf, 1)` → `(0xe, 2)` → `(0xc, 3)` → `(8, 4)`，每次都等它返回 1（= 那一槽停稳）再进下一状态 | `loc_0043f55f` / `0x43f57f` / `0x43f59f` / `0x43f5bd` |
+     * | 8 | 停循环音（`fcn_004542e9`）→ 状态 9 | `loc_0043f5dd` |
+     * | 9 | 收尾：把四个数字拼成 `c4*1000+c5*100+c6*10+c7` 当返回值 | `loc_0043f6fa` |
+     *
+     * 每格还会：`[0x48c504+i]` 每格 **+1**（`cmp ch,0x14 / jb`，0..19 循环）；
+
+======================================================================
+### 0x429934   （1 处引用）
+--- packages/client/src/stock-screen.ts:510
+    // ============================================================
+    
+    /**
+     * 涨跌类 → **成交價那一格**的字色 / 底色框。
+     *
+     * @source 跳表 `ref_004297cf`（`jmp dword [eax*4 + 0x4297cf]`，索引 = `fcn_004295ea` 的返回）：
+     *   `loc_004298b9` 0 漲红 / `loc_004298cc` 1 漲停白+暗红框 / `loc_004298f8` 2 跌绿 /
+     *   `loc_00429908` 3 跌停**黑**+暗绿框 / `loc_00429934` 4 平白。
+     *
+     * ⚠️ 这张表**只管成交價那一格**（绘制在 x=0xe1，@source VA 0x0042994c 那一段）。
+
+======================================================================
+### 0x4299cf   （2 处引用）
+--- packages/client/src/stock-screen.ts:538
+     * 涨跌类 → **涨跌列与交易量列**的字色 —— 与 `stockStatusColor()` 是**两张不同的表**。
+     *
+     * ★ 2026-09-16 订正：原版在这里**第二次**跳转（`cmp ebx,4 / ja … / jmp [ebx*4 + 0x4297e3]`），
+     *   表 `ref_004297e3` 只分三类：
+     *   ```
+     *   0 漲 / 1 漲停 → loc_004299af  红 0xff0000
+     *   2 跌 / 3 跌停 → loc_004299bf  绿 0x00ff00      ← 跌停是**绿字**，不是黑字
+     *   4 平          → loc_004299cf  白 0xf0f0f0
+     *   ```
+     *   ⇒ 「成交價那格是黑字+暗绿框」与「涨跌列是绿字」**同时成立**，互不矛盾。
+--- packages/client/src/stock-screen.ts:543
+     *   0 漲 / 1 漲停 → loc_004299af  红 0xff0000
+     *   2 跌 / 3 跌停 → loc_004299bf  绿 0x00ff00      ← 跌停是**绿字**，不是黑字
+     *   4 平          → loc_004299cf  白 0xf0f0f0
+     *   ```
+     *   ⇒ 「成交價那格是黑字+暗绿框」与「涨跌列是绿字」**同时成立**，互不矛盾。
+     *   交易量列紧跟在涨跌列之后画、中间没有新建字体（@source VA 0x00429a66 起），所以同色。
+     *
+     * @source VA 0x004299af / 0x004299bf / 0x004299cf（各自 `create_font(0x10, fg, 0x101010, 3, 1)`）
+     */
+    export function stockTrendColor(status: number): string {
+
+======================================================================
+### 0x411b46   （1 处引用）
+--- packages/client/src/main.ts:2654
+    }
+    
+    /**
+     * 遊戲中那三颗答「是」之后的路 —— `[0x474d74] − 2`：1 重新遊戲 / 2 認輸投降 / 3 結束遊戲。
+     *
+     * @source `0x411e4b` 起那张三路跳表：1 → `0x411aa3`（重开）、
+     *   2 → `0x411ae0`（该玩家退出，原版只在 3 人以上的联机里真做）、
+     *   3 → `0x411b46`（存 CFG 后退回标题）。
+     */
+    function applyOptionsOutcome(outcome: OptionsOutcome): void {
+
+======================================================================
+### 0x42b0b7   （4 处引用）
+--- packages/client/src/main.ts:1038
+    function stockCommercial(stockIndex: number): { type: number; stockIndex: number } | null {
+      const comm = state.market.stocks[stockIndex]?.commercialIndex ?? 0;
+      if (comm === 0) return null;
+      const c = map.commercials.find((x) => x.id === comm);
+      return c === undefined ? null : { type: c.type, stockIndex: c.stockIndex };
+    }
+    
+    /** 开详情卡 @source `loc_0042b0b7`（上市公司資訊）/ `loc_0042b1a4`（再点选中那行）*/
+    function openStockDetail(stockIndex: number): void {
+      stockDetail = stockIndex;
+--- packages/client/src/main.ts:6523
+              stockSel = null;
+              requestRender();
+            } else if (plate === STOCK_PLATE_BUY) {
+              stockTrade('buy');
+            } else if (plate === STOCK_PLATE_SELL) {
+              stockTrade('sell');
+            } else if (plate === STOCK_PLATE_INFO) {
+              // @source `loc_0042b0b7`：没选行就什么都不做，选了就开那张卡
+              if (stockSel !== null) openStockDetail(stockSel);
+            } else if (plate === STOCK_PLATE_EXIT) {
+--- packages/client/src/stock-detail.ts:6
+    /*
+     * 股市 —— **上市公司資訊**详情卡（T-030b）
+     * SPDX-License-Identifier: GPL-3.0-or-later
+     *
+     * 股市屏（T-030）里点「上市公司資訊」、或在选中那一行上再点一下会开这张卡
+     * （@source `loc_0042b0b7` / `loc_0042b1a4` 都 `PostMessage(0x40b)`，
+     * 由 `loc_0042b203` → `Wait_0402_Message(fcn_00429d65, 选中行−1)` 打开）。
+     *
+--- packages/client/src/stock-screen.ts:34
+     * 判定 `x0 < x < x1 && y0 < y < y1`；表里的顺序就是跳表 `ref_0042aaeb` 的下标。
+     *
+     * | # | 矩形 | 是什么 | @source |
+     * |---|---|---|---|
+     * | 0 | (16,9)-(124,39) | 页码牌 —— 点一下换页 | `loc_0042aec4` |
+     * | 1 | (128,9)-(198,39) | **買進** | `loc_0042aee4` |
+     * | 2 | (202,9)-(272,39) | **賣出** | `loc_0042afff` |
+     * | 3 | (276,9)-(410,39) | **上市公司資訊** | `loc_0042b0b7` |
+     * | 4 | (552,8)-(623,40) | **EXIT**（小人 + 红门那张图烘在图里）| `loc_0042b0c2` |
+     *
+
+======================================================================
+### 0x43fa19   （4 处引用）
+--- packages/client/src/wheel-screen.test.ts:169
+      });
+    
+      it('★「動畫過程」關掉時只有落點那一幀', () => {
+        expect(wheelFrameSequence(3, 7, false)).toEqual([7]);
+        expect(wheelFrameSequence(0, 0, false)).toEqual([0]);
+      });
+    
+      it('★ 一幀最短 36ms、快轉段 40 幀、停好之後再等 40 幀才關屏 @source 0x0043faab / 0x0043f84f / 0x0043fa19', () => {
+        expect(WHEEL_FRAME_MS).toBe(0x24);
+        expect(WHEEL_FAST_STEPS).toBe(0x28);
+--- packages/client/src/wheel-screen.test.ts:677
+        logs: [] as string[],
+        renders: 0,
+        effects: [] as string[],
+      };
+      return env as unknown as FakeEnv;
+    }
+    
+    describe('★ 屏幕：起播 → 走到落點 → 停一下關屏 @source 0x0043fa19', () => {
+      runMap('★ 一次 settle 就起播，並在 WHEEL_HOLD_MS 之後關屏', () => {
+        resetWheelScreen();
+--- packages/client/src/wheel-screen.ts:38
+     * | 氣泡文字 = 表 `0x475cf8` 的第 `轉盤` 項，`sprintf(buf, 該串, 地主名)`，畫在 **(220,140) flag 4（正中）** | 0x00440a20 / 0x00440a35 |
+     * | 字級 **0x10 = 16**、內文 `0xf0f0f0`、陰影 `0x101010`（1px 右下）| 0x0044094e `_rich4_create_font`；陰影畫法 0x0044fc31 起 |
+     * | 起點槽 `[0x48c50c] = rand() % 12`；每格 `+1 % 12`（順時針一格一格走）| 0x0043f7da `call rand` / 0x0043f7eb / 0x0043f127 |
+     * | 停在**第一個非 `0xff` 的格子** | 0x0043f9fa `cmp byte [eax+0x475d0c], 0xff` |
+     * | 一幀最短 **0x24 = 36ms** | 0x0043faab `cmp esi, 0x24 / jb` |
+     * | 快轉段 **0x28 = 40 幀**（之後才進減速）| 0x0043f861 `cmp ebp, 0x28` / 0x0043f84f 判是不是真人 |
+     * | 減速：延遲 1..5，**每一檔走 3 格**進下一檔 | 0x0043f9c7 起 `[esp+0x30] = 3` |
+     * | 停在落點後再等 **0x28 = 40 幀**才關屏 | 0x0043fa19 `cmp ebp, 0x28` |
+     * | 真人（`whoPlays == 1` 且不夢遊）**點一下**就把狀態機往前推（`1→2` / `5→6`）| 0x0043fa66 起 |
+     * | 音效 = `Effect.mkf` **52**（0x34）**循環**播，落地那一下停 | 0x475d4c；起 0x0043f80d、落地 0x0043fa0a、釋放 0x00440a85 |
+--- packages/client/src/wheel-screen.ts:236
+    export const WHEEL_FRAME_MS = 0x24;
+    /** 快轉段 40 幀 @source 0x0043f861 `cmp ebp, 0x28 / jb`（0x0043f84f 判的是「是不是真人」）*/
+    export const WHEEL_FAST_STEPS = 0x28;
+    /** 減速段每一檔走 3 格 @source 0x0043f9d2 `mov [esp+0x30], 3` */
+    export const WHEEL_SLOW_EVERY = 3;
+    /** 減速最多到 5 倍慢 @source 0x0043f9df `cmp [esp+0x34], 5 / jl` */
+    export const WHEEL_MAX_DELAY = 5;
+    /** 停在落點後再等 0x28 = 40 幀才關屏 @source 0x0043fa19 `cmp ebp, 0x28 / jne` */
+    export const WHEEL_HOLD_FRAMES = 0x28;
+    export const WHEEL_HOLD_MS = WHEEL_HOLD_FRAMES * WHEEL_FRAME_MS;
+
+======================================================================
+### 0x44ff21   （1 处引用）
+--- packages/client/src/hud.ts:110
+     * @source `VA 0x0044fabc` 的末段：`lea eax,[flag-1] / cmp eax,6 / ja skip /
+     *   jmp [eax*4 + 0x44faa0]`，即**按 `flag − 1` 索引**的 7 路跳表；
+     *   `esi` = 文字宽 + 1、`ebx` = 文字高 + 1，`[esp+0xac]` = x、`[esp+0xb0]` = y。
+     *
+     *   | flag | 目标 | 做什么 |
+     *   |---|---|---|
+     *   | 0 | （`ja` 跳过）| 不调整 → **左上** |
+     *   | 1 | `0x44FF21` | `x -= 宽` → 右上 |
+     *   | **2 / 3 / 4** | `0x44FF2A` → **落入** `0x44FF35` | `x -= 宽/2` 后**接着** `y -= 高/2` → **正中** |
+     *   | 5 | `0x44FF35` | 左·垂直居中 |
+
+======================================================================
+### 0x44ff42   （1 处引用）
+--- packages/client/src/hud.ts:113
+     *
+     *   | flag | 目标 | 做什么 |
+     *   |---|---|---|
+     *   | 0 | （`ja` 跳过）| 不调整 → **左上** |
+     *   | 1 | `0x44FF21` | `x -= 宽` → 右上 |
+     *   | **2 / 3 / 4** | `0x44FF2A` → **落入** `0x44FF35` | `x -= 宽/2` 后**接着** `y -= 高/2` → **正中** |
+     *   | 5 | `0x44FF35` | 左·垂直居中 |
+     *   | 6 | `0x44FF42` | 右·垂直居中 |
+     *   | 7 | `0x44FF4B` | 水平居中·底对齐 |
+     *
+
+======================================================================
+### 0x42b3ca   （1 处引用）
+--- packages/client/src/shares-screen.ts:283
+     * ```
+     * 每次 WM_TIMER（VA 0x0042b4db，先过 `cmp byte [0x46cb01], 0 / je`）把
+     * `[0x48c2f2]` 加一，`cmp ecx, 3` 到 3 就自己投一条 `0x202`：
+     * ```asm
+     * 0042b4f8  mov  ecx, [0x48c2f2]
+     * 0042b4ff  mov  [0x48c2f2], ecx
+     * 0042b505  cmp  ecx, 3
+     * 0042b508  jne  0x42b3ca
+     * 0042b50e  push 0; push 0; push 0x202; push ebx; call PostMessage
+     * ```
+
+======================================================================
+### 0x43f883   （2 处引用）
+--- packages/client/src/wheel-screen.test.ts:219
+        }
+        expect(wheelSpinLanded(s)).toBe(true);
+        expect(wheelSlotAt(s.start, s.step)).toBe(9);
+        // 已經停了就不再動
+        expect(wheelSpinTick(s, now + 100000)).toBe(s);
+      });
+    
+      it('★ 天使：快轉段用常態那張，進減速段換成轉動那張 @source 0x0043f883(arg 0) / 0x0043f9b9(arg 1)', () => {
+        const total = wheelSpinSteps(0, 5);
+        expect(wheelAngelChunk(0, total)).toBe(WHEEL_CHUNK.angelIdle);
+--- packages/client/src/wheel-screen.ts:309
+      if (!animate) return [stop];
+      const total = wheelSpinSteps(start, stop);
+      const out: number[] = [];
+      for (let step = 0; step <= total; step++) out.push(wheelSlotAt(start, step));
+      return out;
+    }
+    
+    /** 天使這一幀用哪張圖：還在快轉段就是常態那張，進了減速段換成轉動那張 @source 0x0043f883(arg 0) / 0x0043f9b9(arg 1) */
+    export function wheelAngelChunk(step: number, total: number): number {
+      return step < wheelSlowFrom(total) ? WHEEL_CHUNK.angelIdle : WHEEL_CHUNK.angelSpin;
+
+======================================================================
+### 0x42ae26   （1 处引用）
+--- packages/client/src/stock-screen.ts:26
+     *   `[0x48c2ec] ^= 1` 换页（@source `loc_0042aec4`），`fcn_004297f7(page)`
+     *   把 chunk[page] 整张贴上去再画这一页的动态值。
+     *   ⚠️ 两页的**标题是反的**：图 0 的标题写着 `持有股數表` 却是行情表，
+     *   图 1 写着 `股 價 表` 却是持股表。这里是照抄原版（字烘在图里）。
+     *
+     * ## 顶带五块牌子 —— 表 `0x4754c8`（每项 16 字节 x0,y0,x1,y1）
+     *
+     * 命中在 `loc_0042ad6c`（0x200 mousemove）与 `loc_0042ae26`（点击），
+     * 判定 `x0 < x < x1 && y0 < y < y1`；表里的顺序就是跳表 `ref_0042aaeb` 的下标。
+     *
+

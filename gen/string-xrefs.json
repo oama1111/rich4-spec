@@ -1,0 +1,3628 @@
+{
+ "4608780": [
+  {
+   "func": 4465445,
+   "insn_va": 4466166,
+   "mnemonic": "push",
+   "op": "0x46530c"
+  }
+ ],
+ "4608942": [
+  {
+   "func": 4476709,
+   "insn_va": 4476863,
+   "mnemonic": "push",
+   "op": "0x4653ae"
+  },
+  {
+   "func": 4476991,
+   "insn_va": 4477240,
+   "mnemonic": "push",
+   "op": "0x4653ae"
+  }
+ ],
+ "4609060": [
+  {
+   "func": 4493002,
+   "insn_va": 4493020,
+   "mnemonic": "push",
+   "op": "0x465424"
+  }
+ ],
+ "4609082": [
+  {
+   "func": 4493125,
+   "insn_va": 4493160,
+   "mnemonic": "push",
+   "op": "0x46543a"
+  }
+ ],
+ "4609108": [
+  {
+   "func": 4493318,
+   "insn_va": 4493336,
+   "mnemonic": "push",
+   "op": "0x465454"
+  }
+ ],
+ "4609132": [
+  {
+   "func": 4493441,
+   "insn_va": 4493476,
+   "mnemonic": "push",
+   "op": "0x46546c"
+  }
+ ],
+ "4609160": [
+  {
+   "func": 4493629,
+   "insn_va": 4493658,
+   "mnemonic": "push",
+   "op": "0x465488"
+  }
+ ],
+ "4609213": [
+  {
+   "func": 4494560,
+   "insn_va": 4494719,
+   "mnemonic": "push",
+   "op": "0x4654bd"
+  }
+ ],
+ "4609400": [
+  {
+   "func": 4496508,
+   "insn_va": 4496546,
+   "mnemonic": "push",
+   "op": "0x465578"
+  }
+ ],
+ "4609426": [
+  {
+   "func": 4496508,
+   "insn_va": 4496706,
+   "mnemonic": "push",
+   "op": "0x465592"
+  },
+  {
+   "func": 4496870,
+   "insn_va": 4497282,
+   "mnemonic": "push",
+   "op": "0x465592"
+  },
+  {
+   "func": 4497449,
+   "insn_va": 4497788,
+   "mnemonic": "push",
+   "op": "0x465592"
+  }
+ ],
+ "4609663": [
+  {
+   "func": 4499168,
+   "insn_va": 4499327,
+   "mnemonic": "push",
+   "op": "0x46567f"
+  }
+ ],
+ "4609687": [
+  {
+   "func": 4499742,
+   "insn_va": 4499982,
+   "mnemonic": "push",
+   "op": "0x465697"
+  }
+ ],
+ "4609775": [
+  {
+   "func": 4501129,
+   "insn_va": 4501150,
+   "mnemonic": "push",
+   "op": "0x4656ef"
+  }
+ ],
+ "4609803": [
+  {
+   "func": 4501211,
+   "insn_va": 4501249,
+   "mnemonic": "push",
+   "op": "0x46570b"
+  }
+ ],
+ "4609831": [
+  {
+   "func": 4501211,
+   "insn_va": 4501420,
+   "mnemonic": "push",
+   "op": "0x465727"
+  }
+ ],
+ "4609878": [
+  {
+   "func": 4501589,
+   "insn_va": 4501606,
+   "mnemonic": "push",
+   "op": "0x465756"
+  }
+ ],
+ "4609904": [
+  {
+   "func": 4501664,
+   "insn_va": 4501680,
+   "mnemonic": "push",
+   "op": "0x465770"
+  }
+ ],
+ "4609928": [
+  {
+   "func": 4501713,
+   "insn_va": 4501795,
+   "mnemonic": "push",
+   "op": "0x465788"
+  }
+ ],
+ "4609954": [
+  {
+   "func": 4501923,
+   "insn_va": 4502042,
+   "mnemonic": "push",
+   "op": "0x4657a2"
+  }
+ ],
+ "4610164": [
+  {
+   "func": 4503029,
+   "insn_va": 4503134,
+   "mnemonic": "push",
+   "op": "0x465874"
+  }
+ ],
+ "4610325": [
+  {
+   "func": 4505110,
+   "insn_va": 4505224,
+   "mnemonic": "push",
+   "op": "0x465915"
+  }
+ ],
+ "4610347": [
+  {
+   "func": 4505521,
+   "insn_va": 4505632,
+   "mnemonic": "push",
+   "op": "0x46592b"
+  }
+ ],
+ "4610369": [
+  {
+   "func": 4505832,
+   "insn_va": 4505886,
+   "mnemonic": "push",
+   "op": "0x465941"
+  }
+ ],
+ "4610505": [
+  {
+   "func": 4506551,
+   "insn_va": 4506846,
+   "mnemonic": "push",
+   "op": "0x4659c9"
+  }
+ ],
+ "4720714": [
+  {
+   "func": 4506551,
+   "insn_va": 4507061,
+   "mnemonic": "mov",
+   "op": "ebp, dword ptr [ebx + eax*4 + 0x48084a]"
+  },
+  {
+   "func": 4511619,
+   "insn_va": 4511842,
+   "mnemonic": "mov",
+   "op": "ecx, dword ptr [edx + eax*8 + 0x48084a]"
+  },
+  {
+   "func": 4518448,
+   "insn_va": 4518488,
+   "mnemonic": "mov",
+   "op": "ebp, dword ptr [edx + eax*8 + 0x48084a]"
+  },
+  {
+   "func": 4518448,
+   "insn_va": 4518536,
+   "mnemonic": "mov",
+   "op": "edi, dword ptr [ebx + eax*4 + 0x48084a]"
+  },
+  {
+   "func": 4280853,
+   "insn_va": 4281534,
+   "mnemonic": "mov",
+   "op": "esi, dword ptr [ebx + eax*4 + 0x48084a]"
+  },
+  {
+   "func": 4256641,
+   "insn_va": 4257952,
+   "mnemonic": "mov",
+   "op": "ebp, dword ptr [eax + ebx*8 + 0x48084a]"
+  },
+  {
+   "func": 4257982,
+   "insn_va": 4258385,
+   "mnemonic": "mov",
+   "op": "esi, dword ptr [ebx + eax*4 + 0x48084a]"
+  },
+  {
+   "func": 4307869,
+   "insn_va": 4308179,
+   "mnemonic": "mov",
+   "op": "edx, dword ptr [ebx + eax*8 + 0x48084a]"
+  },
+  {
+   "func": 4307724,
+   "insn_va": 4307839,
+   "mnemonic": "mov",
+   "op": "edi, dword ptr [ebx + eax*8 + 0x48084a]"
+  },
+  {
+   "func": 4305284,
+   "insn_va": 4305408,
+   "mnemonic": "mov",
+   "op": "ecx, dword ptr [ebx + eax*4 + 0x48084a]"
+  }
+ ],
+ "4610520": [
+  {
+   "func": 4507096,
+   "insn_va": 4507126,
+   "mnemonic": "push",
+   "op": "0x4659d8"
+  }
+ ],
+ "4610542": [
+  {
+   "func": 4507373,
+   "insn_va": 4507403,
+   "mnemonic": "push",
+   "op": "0x4659ee"
+  }
+ ],
+ "4610564": [
+  {
+   "func": 4507631,
+   "insn_va": 4507662,
+   "mnemonic": "push",
+   "op": "0x465a04"
+  }
+ ],
+ "4610622": [
+  {
+   "func": 4508230,
+   "insn_va": 4508249,
+   "mnemonic": "push",
+   "op": "0x465a3e"
+  }
+ ],
+ "4610640": [
+  {
+   "func": 4508499,
+   "insn_va": 4508518,
+   "mnemonic": "push",
+   "op": "0x465a50"
+  }
+ ],
+ "4610662": [
+  {
+   "func": 4508755,
+   "insn_va": 4508786,
+   "mnemonic": "push",
+   "op": "0x465a66"
+  }
+ ],
+ "4610684": [
+  {
+   "func": 4509036,
+   "insn_va": 4509071,
+   "mnemonic": "push",
+   "op": "0x465a7c"
+  }
+ ],
+ "4610708": [
+  {
+   "func": 4509081,
+   "insn_va": 4509139,
+   "mnemonic": "push",
+   "op": "0x465a94"
+  }
+ ],
+ "4610765": [
+  {
+   "func": 4509805,
+   "insn_va": 4509900,
+   "mnemonic": "push",
+   "op": "0x465acd"
+  }
+ ],
+ "4610816": [
+  {
+   "func": 4510117,
+   "insn_va": 4510166,
+   "mnemonic": "push",
+   "op": "0x465b00"
+  }
+ ],
+ "4610869": [
+  {
+   "func": 4510244,
+   "insn_va": 4510297,
+   "mnemonic": "push",
+   "op": "0x465b35"
+  }
+ ],
+ "4610889": [
+  {
+   "func": 4510523,
+   "insn_va": 4510580,
+   "mnemonic": "push",
+   "op": "0x465b49"
+  }
+ ],
+ "4610909": [
+  {
+   "func": 4510683,
+   "insn_va": 4510740,
+   "mnemonic": "push",
+   "op": "0x465b5d"
+  }
+ ],
+ "4610929": [
+  {
+   "func": 4510750,
+   "insn_va": 4510808,
+   "mnemonic": "push",
+   "op": "0x465b71"
+  }
+ ],
+ "4610951": [
+  {
+   "func": 4510818,
+   "insn_va": 4510876,
+   "mnemonic": "push",
+   "op": "0x465b87"
+  }
+ ],
+ "4610973": [
+  {
+   "func": 4510886,
+   "insn_va": 4510941,
+   "mnemonic": "push",
+   "op": "0x465b9d"
+  }
+ ],
+ "4610995": [
+  {
+   "func": 4510951,
+   "insn_va": 4511009,
+   "mnemonic": "push",
+   "op": "0x465bb3"
+  }
+ ],
+ "4611015": [
+  {
+   "func": 4511019,
+   "insn_va": 4511076,
+   "mnemonic": "push",
+   "op": "0x465bc7"
+  }
+ ],
+ "4611033": [
+  {
+   "func": 4511086,
+   "insn_va": 4511143,
+   "mnemonic": "push",
+   "op": "0x465bd9"
+  }
+ ],
+ "4611051": [
+  {
+   "func": 4511153,
+   "insn_va": 4511210,
+   "mnemonic": "push",
+   "op": "0x465beb"
+  }
+ ],
+ "4611069": [
+  {
+   "func": 4511220,
+   "insn_va": 4511276,
+   "mnemonic": "push",
+   "op": "0x465bfd"
+  }
+ ],
+ "4611087": [
+  {
+   "func": 4511286,
+   "insn_va": 4511341,
+   "mnemonic": "push",
+   "op": "0x465c0f"
+  }
+ ],
+ "4611107": [
+  {
+   "func": 4511351,
+   "insn_va": 4511370,
+   "mnemonic": "push",
+   "op": "0x465c23"
+  }
+ ],
+ "4611129": [
+  {
+   "func": 4511619,
+   "insn_va": 4511651,
+   "mnemonic": "push",
+   "op": "0x465c39"
+  }
+ ],
+ "4611155": [
+  {
+   "func": 4511951,
+   "insn_va": 4511987,
+   "mnemonic": "push",
+   "op": "0x465c53"
+  }
+ ],
+ "4611177": [
+  {
+   "func": 4511997,
+   "insn_va": 4512033,
+   "mnemonic": "push",
+   "op": "0x465c69"
+  }
+ ],
+ "4611199": [
+  {
+   "func": 4512043,
+   "insn_va": 4512079,
+   "mnemonic": "push",
+   "op": "0x465c7f"
+  }
+ ],
+ "4608649": [
+  {
+   "func": 4459180,
+   "insn_va": 4459352,
+   "mnemonic": "push",
+   "op": "0x465289"
+  },
+  {
+   "func": 4455140,
+   "insn_va": 4455681,
+   "mnemonic": "push",
+   "op": "0x465289"
+  },
+  {
+   "func": 4455140,
+   "insn_va": 4456006,
+   "mnemonic": "push",
+   "op": "0x465289"
+  }
+ ],
+ "4608166": [
+  {
+   "func": 4439525,
+   "insn_va": 4441059,
+   "mnemonic": "push",
+   "op": "0x4650a6"
+  }
+ ],
+ "4608080": [
+  {
+   "func": 4439525,
+   "insn_va": 4441081,
+   "mnemonic": "push",
+   "op": "0x465050"
+  },
+  {
+   "func": 4439525,
+   "insn_va": 4441171,
+   "mnemonic": "push",
+   "op": "0x465050"
+  },
+  {
+   "func": 4439525,
+   "insn_va": 4441455,
+   "mnemonic": "push",
+   "op": "0x465050"
+  },
+  {
+   "func": 4433152,
+   "insn_va": 4433323,
+   "mnemonic": "push",
+   "op": "0x465050"
+  },
+  {
+   "func": 4433152,
+   "insn_va": 4433493,
+   "mnemonic": "push",
+   "op": "0x465050"
+  },
+  {
+   "func": 4432605,
+   "insn_va": 4433988,
+   "mnemonic": "push",
+   "op": "0x465050"
+  }
+ ],
+ "4608846": [
+  {
+   "func": 4474730,
+   "insn_va": 4474932,
+   "mnemonic": "push",
+   "op": "0x46534e"
+  }
+ ],
+ "4608861": [
+  {
+   "func": 4474730,
+   "insn_va": 4475027,
+   "mnemonic": "push",
+   "op": "0x46535d"
+  }
+ ],
+ "4608879": [
+  {
+   "func": 4474730,
+   "insn_va": 4475331,
+   "mnemonic": "push",
+   "op": "0x46536f"
+  }
+ ],
+ "4604070": [
+  {
+   "func": 4371855,
+   "insn_va": 4371915,
+   "mnemonic": "push",
+   "op": "0x4640a6"
+  }
+ ],
+ "4604081": [
+  {
+   "func": 4371855,
+   "insn_va": 4371943,
+   "mnemonic": "push",
+   "op": "0x4640b1"
+  }
+ ],
+ "4604090": [
+  {
+   "func": 4371855,
+   "insn_va": 4371971,
+   "mnemonic": "push",
+   "op": "0x4640ba"
+  },
+  {
+   "func": 4371855,
+   "insn_va": 4372483,
+   "mnemonic": "push",
+   "op": "0x4640ba"
+  }
+ ],
+ "4604099": [
+  {
+   "func": 4371855,
+   "insn_va": 4372002,
+   "mnemonic": "push",
+   "op": "0x4640c3"
+  },
+  {
+   "func": 4371855,
+   "insn_va": 4372725,
+   "mnemonic": "push",
+   "op": "0x4640c3"
+  }
+ ],
+ "4604106": [
+  {
+   "func": 4371855,
+   "insn_va": 4372033,
+   "mnemonic": "push",
+   "op": "0x4640ca"
+  }
+ ],
+ "4604111": [
+  {
+   "func": 4371855,
+   "insn_va": 4372064,
+   "mnemonic": "push",
+   "op": "0x4640cf"
+  },
+  {
+   "func": 4371855,
+   "insn_va": 4372821,
+   "mnemonic": "push",
+   "op": "0x4640cf"
+  }
+ ],
+ "4604118": [
+  {
+   "func": 4371855,
+   "insn_va": 4372095,
+   "mnemonic": "push",
+   "op": "0x4640d6"
+  }
+ ],
+ "4604127": [
+  {
+   "func": 4371855,
+   "insn_va": 4372126,
+   "mnemonic": "push",
+   "op": "0x4640df"
+  }
+ ],
+ "4604136": [
+  {
+   "func": 4371855,
+   "insn_va": 4372194,
+   "mnemonic": "push",
+   "op": "0x4640e8"
+  },
+  {
+   "func": 4371855,
+   "insn_va": 4372249,
+   "mnemonic": "push",
+   "op": "0x4640e8"
+  }
+ ],
+ "4604145": [
+  {
+   "func": 4371855,
+   "insn_va": 4372567,
+   "mnemonic": "push",
+   "op": "0x4640f1"
+  }
+ ],
+ "4604154": [
+  {
+   "func": 4371855,
+   "insn_va": 4372598,
+   "mnemonic": "push",
+   "op": "0x4640fa"
+  }
+ ],
+ "4604163": [
+  {
+   "func": 4371855,
+   "insn_va": 4372629,
+   "mnemonic": "push",
+   "op": "0x464103"
+  },
+  {
+   "func": 4373143,
+   "insn_va": 4373436,
+   "mnemonic": "push",
+   "op": "0x464103"
+  }
+ ],
+ "4604172": [
+  {
+   "func": 4371855,
+   "insn_va": 4372660,
+   "mnemonic": "push",
+   "op": "0x46410c"
+  }
+ ],
+ "4604181": [
+  {
+   "func": 4371855,
+   "insn_va": 4372694,
+   "mnemonic": "push",
+   "op": "0x464115"
+  }
+ ],
+ "4604190": [
+  {
+   "func": 4371855,
+   "insn_va": 4372756,
+   "mnemonic": "push",
+   "op": "0x46411e"
+  }
+ ],
+ "4604197": [
+  {
+   "func": 4371855,
+   "insn_va": 4372790,
+   "mnemonic": "push",
+   "op": "0x464125"
+  }
+ ],
+ "4604204": [
+  {
+   "func": 4371855,
+   "insn_va": 4372852,
+   "mnemonic": "push",
+   "op": "0x46412c"
+  }
+ ],
+ "4604211": [
+  {
+   "func": 4371855,
+   "insn_va": 4372886,
+   "mnemonic": "push",
+   "op": "0x464133"
+  }
+ ],
+ "4604218": [
+  {
+   "func": 4371855,
+   "insn_va": 4372920,
+   "mnemonic": "push",
+   "op": "0x46413a"
+  }
+ ],
+ "4604227": [
+  {
+   "func": 4371855,
+   "insn_va": 4372954,
+   "mnemonic": "push",
+   "op": "0x464143"
+  }
+ ],
+ "4604236": [
+  {
+   "func": 4371855,
+   "insn_va": 4373012,
+   "mnemonic": "push",
+   "op": "0x46414c"
+  }
+ ],
+ "4604255": [
+  {
+   "func": 4371855,
+   "insn_va": 4373046,
+   "mnemonic": "push",
+   "op": "0x46415f"
+  }
+ ],
+ "4608773": [
+  {
+   "func": 4475488,
+   "insn_va": 4475662,
+   "mnemonic": "push",
+   "op": "0x465305"
+  },
+  {
+   "func": 4463530,
+   "insn_va": 4463782,
+   "mnemonic": "push",
+   "op": "0x465305"
+  },
+  {
+   "func": 4463530,
+   "insn_va": 4464080,
+   "mnemonic": "push",
+   "op": "0x465305"
+  }
+ ],
+ "4612256": [
+  {
+   "func": 4520408,
+   "insn_va": 4520557,
+   "mnemonic": "push",
+   "op": "0x4660a0"
+  }
+ ],
+ "4606878": [
+  {
+   "func": 4418314,
+   "insn_va": 4418758,
+   "mnemonic": "push",
+   "op": "0x464b9e"
+  }
+ ],
+ "4720762": [
+  {
+   "func": 4519271,
+   "insn_va": 4519324,
+   "mnemonic": "mov",
+   "op": "ebp, dword ptr [edx + eax*8 + 0x48087a]"
+  },
+  {
+   "func": 4519271,
+   "insn_va": 4519401,
+   "mnemonic": "mov",
+   "op": "edi, dword ptr [ebx + eax*4 + 0x48087a]"
+  }
+ ],
+ "4720770": [
+  {
+   "func": 4519271,
+   "insn_va": 4519439,
+   "mnemonic": "mov",
+   "op": "ecx, dword ptr [edx + eax*8 + 0x480882]"
+  }
+ ],
+ "4602101": [
+  {
+   "func": 4284265,
+   "insn_va": 4284788,
+   "mnemonic": "push",
+   "op": "0x4638f5"
+  }
+ ],
+ "4602144": [
+  {
+   "func": 4292134,
+   "insn_va": 4292309,
+   "mnemonic": "push",
+   "op": "0x463920"
+  },
+  {
+   "func": 4292134,
+   "insn_va": 4292691,
+   "mnemonic": "push",
+   "op": "0x463920"
+  }
+ ],
+ "4602151": [
+  {
+   "func": 4292134,
+   "insn_va": 4292340,
+   "mnemonic": "push",
+   "op": "0x463927"
+  },
+  {
+   "func": 4292134,
+   "insn_va": 4292736,
+   "mnemonic": "push",
+   "op": "0x463927"
+  }
+ ],
+ "4602158": [
+  {
+   "func": 4292134,
+   "insn_va": 4292371,
+   "mnemonic": "push",
+   "op": "0x46392e"
+  }
+ ],
+ "4602165": [
+  {
+   "func": 4292134,
+   "insn_va": 4292399,
+   "mnemonic": "push",
+   "op": "0x463935"
+  }
+ ],
+ "4602124": [
+  {
+   "func": 4292134,
+   "insn_va": 4292430,
+   "mnemonic": "push",
+   "op": "0x46390c"
+  },
+  {
+   "func": 4289881,
+   "insn_va": 4290653,
+   "mnemonic": "push",
+   "op": "0x46390c"
+  }
+ ],
+ "4602172": [
+  {
+   "func": 4292134,
+   "insn_va": 4292461,
+   "mnemonic": "push",
+   "op": "0x46393c"
+  }
+ ],
+ "4602179": [
+  {
+   "func": 4292134,
+   "insn_va": 4292489,
+   "mnemonic": "push",
+   "op": "0x463943"
+  }
+ ],
+ "4602186": [
+  {
+   "func": 4292134,
+   "insn_va": 4292520,
+   "mnemonic": "push",
+   "op": "0x46394a"
+  }
+ ],
+ "4602193": [
+  {
+   "func": 4292134,
+   "insn_va": 4292551,
+   "mnemonic": "push",
+   "op": "0x463951"
+  }
+ ],
+ "4602200": [
+  {
+   "func": 4292134,
+   "insn_va": 4292579,
+   "mnemonic": "push",
+   "op": "0x463958"
+  }
+ ],
+ "4602207": [
+  {
+   "func": 4292134,
+   "insn_va": 4292610,
+   "mnemonic": "push",
+   "op": "0x46395f"
+  }
+ ],
+ "4602214": [
+  {
+   "func": 4292134,
+   "insn_va": 4292641,
+   "mnemonic": "push",
+   "op": "0x463966"
+  }
+ ],
+ "4613342": [
+  {
+   "func": 4541740,
+   "insn_va": 4541782,
+   "mnemonic": "push",
+   "op": "0x4664de"
+  },
+  {
+   "func": 4541740,
+   "insn_va": 4541827,
+   "mnemonic": "push",
+   "op": "0x4664de"
+  },
+  {
+   "func": 4540879,
+   "insn_va": 4541089,
+   "mnemonic": "push",
+   "op": "0x4664de"
+  },
+  {
+   "func": 4541841,
+   "insn_va": 4542059,
+   "mnemonic": "push",
+   "op": "0x4664de"
+  }
+ ],
+ "4613471": [
+  {
+   "func": 4541740,
+   "insn_va": 4541809,
+   "mnemonic": "push",
+   "op": "0x46655f"
+  }
+ ],
+ "4613284": [
+  {
+   "func": 4540879,
+   "insn_va": 4540983,
+   "mnemonic": "push",
+   "op": "0x4664a4"
+  },
+  {
+   "func": 4541388,
+   "insn_va": 4541486,
+   "mnemonic": "push",
+   "op": "0x4664a4"
+  },
+  {
+   "func": 4541841,
+   "insn_va": 4541944,
+   "mnemonic": "push",
+   "op": "0x4664a4"
+  }
+ ],
+ "4613312": [
+  {
+   "func": 4540879,
+   "insn_va": 4541035,
+   "mnemonic": "push",
+   "op": "0x4664c0"
+  },
+  {
+   "func": 4541388,
+   "insn_va": 4541538,
+   "mnemonic": "push",
+   "op": "0x4664c0"
+  },
+  {
+   "func": 4541841,
+   "insn_va": 4542004,
+   "mnemonic": "push",
+   "op": "0x4664c0"
+  }
+ ],
+ "4712307": [
+  {
+   "func": 4541388,
+   "insn_va": 4541479,
+   "mnemonic": "mov",
+   "op": "ebp, dword ptr [esi + 0x47e773]"
+  },
+  {
+   "func": 4541388,
+   "insn_va": 4541526,
+   "mnemonic": "mov",
+   "op": "eax, dword ptr [esi + 0x47e773]"
+  },
+  {
+   "func": 4541841,
+   "insn_va": 4541936,
+   "mnemonic": "mov",
+   "op": "esi, dword ptr [eax*4 + 0x47e773]"
+  },
+  {
+   "func": 4541841,
+   "insn_va": 4541991,
+   "mnemonic": "mov",
+   "op": "edi, dword ptr [eax*4 + 0x47e773]"
+  }
+ ],
+ "4613398": [
+  {
+   "func": 4541388,
+   "insn_va": 4541603,
+   "mnemonic": "push",
+   "op": "0x466516"
+  }
+ ],
+ "4613422": [
+  {
+   "func": 4541388,
+   "insn_va": 4541666,
+   "mnemonic": "push",
+   "op": "0x46652e"
+  }
+ ],
+ "4613442": [
+  {
+   "func": 4541388,
+   "insn_va": 4541697,
+   "mnemonic": "push",
+   "op": "0x466542"
+  },
+  {
+   "func": 4542299,
+   "insn_va": 4542350,
+   "mnemonic": "push",
+   "op": "0x466542"
+  }
+ ],
+ "4600684": [
+  {
+   "func": 4255515,
+   "insn_va": 4255625,
+   "mnemonic": "push",
+   "op": "0x46336c"
+  }
+ ],
+ "4600705": [
+  {
+   "func": 4255716,
+   "insn_va": 4255826,
+   "mnemonic": "push",
+   "op": "0x463381"
+  }
+ ],
+ "4600718": [
+  {
+   "func": 4255875,
+   "insn_va": 4255985,
+   "mnemonic": "push",
+   "op": "0x46338e"
+  }
+ ],
+ "4600768": [
+  {
+   "func": 4256085,
+   "insn_va": 4256195,
+   "mnemonic": "push",
+   "op": "0x4633c0"
+  }
+ ],
+ "4602114": [
+  {
+   "func": 4285921,
+   "insn_va": 4285979,
+   "mnemonic": "push",
+   "op": "0x463902"
+  },
+  {
+   "func": 4285921,
+   "insn_va": 4286147,
+   "mnemonic": "push",
+   "op": "0x463902"
+  }
+ ],
+ "4720818": [
+  {
+   "func": 4225090,
+   "insn_va": 4225350,
+   "mnemonic": "mov",
+   "op": "ebp, dword ptr [edx + eax*8 + 0x4808b2]"
+  }
+ ],
+ "4741496": [
+  {
+   "func": 4543941,
+   "insn_va": 4543966,
+   "mnemonic": "call",
+   "op": "dword ptr [eax*4 + 0x485978]"
+  }
+ ],
+ "4602119": [
+  {
+   "func": 4286908,
+   "insn_va": 4287918,
+   "mnemonic": "push",
+   "op": "0x463907"
+  }
+ ],
+ "4601881": [
+  {
+   "func": 4289881,
+   "insn_va": 4290635,
+   "mnemonic": "push",
+   "op": "0x463819"
+  },
+  {
+   "func": 4289881,
+   "insn_va": 4290982,
+   "mnemonic": "push",
+   "op": "0x463819"
+  }
+ ],
+ "4289861": [
+  {
+   "func": 4289881,
+   "insn_va": 4291007,
+   "mnemonic": "jmp",
+   "op": "dword ptr [ecx*4 + 0x417545]"
+  }
+ ],
+ "4602136": [
+  {
+   "func": 4289881,
+   "insn_va": 4291397,
+   "mnemonic": "push",
+   "op": "0x463918"
+  }
+ ],
+ "4613498": [
+  {
+   "func": 4541841,
+   "insn_va": 4542100,
+   "mnemonic": "push",
+   "op": "0x46657a"
+  }
+ ],
+ "4613365": [
+  {
+   "func": 4541210,
+   "insn_va": 4541246,
+   "mnemonic": "push",
+   "op": "0x4664f5"
+  }
+ ],
+ "4613385": [
+  {
+   "func": 4541210,
+   "insn_va": 4541359,
+   "mnemonic": "push",
+   "op": "0x466509"
+  }
+ ],
+ "4720722": [
+  {
+   "func": 4518448,
+   "insn_va": 4518570,
+   "mnemonic": "mov",
+   "op": "ecx, dword ptr [edx + eax*8 + 0x480852]"
+  },
+  {
+   "func": 4298937,
+   "insn_va": 4303893,
+   "mnemonic": "mov",
+   "op": "edi, dword ptr [edx + eax*8 + 0x480852]"
+  },
+  {
+   "func": 4305438,
+   "insn_va": 4305549,
+   "mnemonic": "mov",
+   "op": "esi, dword ptr [edx + eax*8 + 0x480852]"
+  }
+ ],
+ "4718362": [
+  {
+   "func": 4291206,
+   "insn_va": 4291288,
+   "mnemonic": "mov",
+   "op": "ebx, dword ptr [eax*8 + 0x47ff1a]"
+  },
+  {
+   "func": 4311119,
+   "insn_va": 4312554,
+   "mnemonic": "mov",
+   "op": "ebp, dword ptr [eax*8 + 0x47ff1a]"
+  }
+ ],
+ "4613247": [
+  {
+   "func": 4541173,
+   "insn_va": 4541189,
+   "mnemonic": "push",
+   "op": "0x46647f"
+  },
+  {
+   "func": 4540655,
+   "insn_va": 4540684,
+   "mnemonic": "push",
+   "op": "0x46647f"
+  }
+ ],
+ "4613526": [
+  {
+   "func": 4542202,
+   "insn_va": 4542232,
+   "mnemonic": "push",
+   "op": "0x466596"
+  }
+ ],
+ "4613542": [
+  {
+   "func": 4542202,
+   "insn_va": 4542244,
+   "mnemonic": "push",
+   "op": "0x4665a6"
+  }
+ ],
+ "4755212": [
+  {
+   "func": 4554000,
+   "insn_va": 4554043,
+   "mnemonic": "mov",
+   "op": "dl, byte ptr [edx + 0x488f0c]"
+  }
+ ],
+ "4612246": [
+  {
+   "func": 4516665,
+   "insn_va": 4516668,
+   "mnemonic": "push",
+   "op": "0x466096"
+  }
+ ],
+ "4603103": [
+  {
+   "func": 4318021,
+   "insn_va": 4318117,
+   "mnemonic": "push",
+   "op": "0x463cdf"
+  }
+ ],
+ "4603110": [
+  {
+   "func": 4318021,
+   "insn_va": 4318151,
+   "mnemonic": "push",
+   "op": "0x463ce6"
+  }
+ ],
+ "4603123": [
+  {
+   "func": 4318021,
+   "insn_va": 4318206,
+   "mnemonic": "push",
+   "op": "0x463cf3"
+  }
+ ],
+ "4603132": [
+  {
+   "func": 4318021,
+   "insn_va": 4318237,
+   "mnemonic": "push",
+   "op": "0x463cfc"
+  }
+ ],
+ "4603141": [
+  {
+   "func": 4318021,
+   "insn_va": 4318271,
+   "mnemonic": "push",
+   "op": "0x463d05"
+  }
+ ],
+ "4603148": [
+  {
+   "func": 4318021,
+   "insn_va": 4318305,
+   "mnemonic": "push",
+   "op": "0x463d0c"
+  }
+ ],
+ "4603155": [
+  {
+   "func": 4318021,
+   "insn_va": 4318339,
+   "mnemonic": "push",
+   "op": "0x463d13"
+  }
+ ],
+ "4603162": [
+  {
+   "func": 4318021,
+   "insn_va": 4318373,
+   "mnemonic": "push",
+   "op": "0x463d1a"
+  }
+ ],
+ "4603167": [
+  {
+   "func": 4318021,
+   "insn_va": 4318407,
+   "mnemonic": "push",
+   "op": "0x463d1f"
+  }
+ ],
+ "4603172": [
+  {
+   "func": 4318021,
+   "insn_va": 4318441,
+   "mnemonic": "push",
+   "op": "0x463d24"
+  }
+ ],
+ "4603177": [
+  {
+   "func": 4318021,
+   "insn_va": 4318475,
+   "mnemonic": "push",
+   "op": "0x463d29"
+  }
+ ],
+ "4603182": [
+  {
+   "func": 4318021,
+   "insn_va": 4318527,
+   "mnemonic": "push",
+   "op": "0x463d2e"
+  }
+ ],
+ "4603187": [
+  {
+   "func": 4318021,
+   "insn_va": 4318561,
+   "mnemonic": "push",
+   "op": "0x463d33"
+  }
+ ],
+ "4600024": [
+  {
+   "func": 4210036,
+   "insn_va": 4210193,
+   "mnemonic": "push",
+   "op": "0x4630d8"
+  },
+  {
+   "func": 4205253,
+   "insn_va": 4205267,
+   "mnemonic": "push",
+   "op": "0x4630d8"
+  },
+  {
+   "func": 4206545,
+   "insn_va": 4206564,
+   "mnemonic": "push",
+   "op": "0x4630d8"
+  },
+  {
+   "func": 4207510,
+   "insn_va": 4208096,
+   "mnemonic": "push",
+   "op": "0x4630d8"
+  }
+ ],
+ "4600041": [
+  {
+   "func": 4210036,
+   "insn_va": 4210567,
+   "mnemonic": "push",
+   "op": "0x4630e9"
+  },
+  {
+   "func": 4207510,
+   "insn_va": 4207801,
+   "mnemonic": "push",
+   "op": "0x4630e9"
+  }
+ ],
+ "4600046": [
+  {
+   "func": 4210036,
+   "insn_va": 4210660,
+   "mnemonic": "push",
+   "op": "0x4630ee"
+  },
+  {
+   "func": 4207510,
+   "insn_va": 4207894,
+   "mnemonic": "push",
+   "op": "0x4630ee"
+  }
+ ],
+ "4608997": [
+  {
+   "func": 4488599,
+   "insn_va": 4489300,
+   "mnemonic": "push",
+   "op": "0x4653e5"
+  }
+ ],
+ "4603674": [
+  {
+   "func": 4359358,
+   "insn_va": 4359471,
+   "mnemonic": "push",
+   "op": "0x463f1a"
+  }
+ ],
+ "4603683": [
+  {
+   "func": 4359358,
+   "insn_va": 4359502,
+   "mnemonic": "push",
+   "op": "0x463f23"
+  }
+ ],
+ "4603692": [
+  {
+   "func": 4359358,
+   "insn_va": 4359533,
+   "mnemonic": "push",
+   "op": "0x463f2c"
+  }
+ ],
+ "4603701": [
+  {
+   "func": 4359358,
+   "insn_va": 4359561,
+   "mnemonic": "push",
+   "op": "0x463f35"
+  },
+  {
+   "func": 4359358,
+   "insn_va": 4359648,
+   "mnemonic": "push",
+   "op": "0x463f35"
+  },
+  {
+   "func": 4359358,
+   "insn_va": 4359766,
+   "mnemonic": "push",
+   "op": "0x463f35"
+  }
+ ],
+ "4603708": [
+  {
+   "func": 4359358,
+   "insn_va": 4359589,
+   "mnemonic": "push",
+   "op": "0x463f3c"
+  },
+  {
+   "func": 4359358,
+   "insn_va": 4359707,
+   "mnemonic": "push",
+   "op": "0x463f3c"
+  },
+  {
+   "func": 4359358,
+   "insn_va": 4359856,
+   "mnemonic": "push",
+   "op": "0x463f3c"
+  }
+ ],
+ "4603715": [
+  {
+   "func": 4359358,
+   "insn_va": 4359620,
+   "mnemonic": "push",
+   "op": "0x463f43"
+  },
+  {
+   "func": 4359358,
+   "insn_va": 4359738,
+   "mnemonic": "push",
+   "op": "0x463f43"
+  },
+  {
+   "func": 4359358,
+   "insn_va": 4359887,
+   "mnemonic": "push",
+   "op": "0x463f43"
+  }
+ ],
+ "4603722": [
+  {
+   "func": 4359358,
+   "insn_va": 4359676,
+   "mnemonic": "push",
+   "op": "0x463f4a"
+  }
+ ],
+ "4603729": [
+  {
+   "func": 4359358,
+   "insn_va": 4359794,
+   "mnemonic": "push",
+   "op": "0x463f51"
+  }
+ ],
+ "4603736": [
+  {
+   "func": 4359358,
+   "insn_va": 4359825,
+   "mnemonic": "push",
+   "op": "0x463f58"
+  }
+ ],
+ "4603743": [
+  {
+   "func": 4359358,
+   "insn_va": 4359945,
+   "mnemonic": "push",
+   "op": "0x463f5f"
+  },
+  {
+   "func": 4359358,
+   "insn_va": 4359979,
+   "mnemonic": "push",
+   "op": "0x463f5f"
+  },
+  {
+   "func": 4359358,
+   "insn_va": 4360013,
+   "mnemonic": "push",
+   "op": "0x463f5f"
+  }
+ ],
+ "4613550": [
+  {
+   "func": 4542278,
+   "insn_va": 4542292,
+   "mnemonic": "push",
+   "op": "0x4665ae"
+  }
+ ],
+ "4608644": [
+  {
+   "func": 4453853,
+   "insn_va": 4454036,
+   "mnemonic": "push",
+   "op": "0x465284"
+  }
+ ],
+ "4757028": [
+  {
+   "func": 4574823,
+   "insn_va": 4574921,
+   "mnemonic": "mov",
+   "op": "al, byte ptr [ebx + 0x489624]"
+  }
+ ],
+ "4757068": [
+  {
+   "func": 4575093,
+   "insn_va": 4575138,
+   "mnemonic": "mov",
+   "op": "dl, byte ptr [edx + 0x48964c]"
+  }
+ ],
+ "4757140": [
+  {
+   "func": 4576014,
+   "insn_va": 4576026,
+   "mnemonic": "call",
+   "op": "dword ptr [0x489694]"
+  },
+  {
+   "func": 4575927,
+   "insn_va": 4575931,
+   "mnemonic": "mov",
+   "op": "dword ptr [0x489694], eax"
+  }
+ ],
+ "4612368": [
+  {
+   "func": 4522750,
+   "insn_va": 4522834,
+   "mnemonic": "push",
+   "op": "0x466110"
+  }
+ ],
+ "4712460": [
+  {
+   "func": 4205253,
+   "insn_va": 4205480,
+   "mnemonic": "mov",
+   "op": "edx, dword ptr [edx + 0x47e80c]"
+  },
+  {
+   "func": 4211260,
+   "insn_va": 4211826,
+   "mnemonic": "mov",
+   "op": "ecx, dword ptr [eax + 0x47e80c]"
+  },
+  {
+   "func": 4490564,
+   "insn_va": 4490680,
+   "mnemonic": "mov",
+   "op": "edx, dword ptr [edx + 0x47e80c]"
+  },
+  {
+   "func": 4222439,
+   "insn_va": 4223709,
+   "mnemonic": "add",
+   "op": "eax, 0x47e80c"
+  }
+ ],
+ "4603472": [
+  {
+   "func": 4347354,
+   "insn_va": 4347418,
+   "mnemonic": "push",
+   "op": "0x463e50"
+  }
+ ],
+ "4639369": [
+  {
+   "func": 4575937,
+   "insn_va": 4575974,
+   "mnemonic": "push",
+   "op": "0x46ca89"
+  }
+ ],
+ "4601703": [
+  {
+   "func": 4267904,
+   "insn_va": 4267910,
+   "mnemonic": "push",
+   "op": "0x463767"
+  },
+  {
+   "func": 4267663,
+   "insn_va": 4267672,
+   "mnemonic": "push",
+   "op": "0x463767"
+  }
+ ],
+ "4600256": [
+  {
+   "func": 4225746,
+   "insn_va": 4225755,
+   "mnemonic": "push",
+   "op": "0x4631c0"
+  }
+ ],
+ "4600264": [
+  {
+   "func": 4225746,
+   "insn_va": 4226001,
+   "mnemonic": "push",
+   "op": "0x4631c8"
+  }
+ ],
+ "4603487": [
+  {
+   "func": 4347484,
+   "insn_va": 4347709,
+   "mnemonic": "push",
+   "op": "0x463e5f"
+  }
+ ],
+ "4639220": [
+  {
+   "func": 4573726,
+   "insn_va": 4573766,
+   "mnemonic": "push",
+   "op": "0x46c9f4"
+  }
+ ],
+ "4639227": [
+  {
+   "func": 4573726,
+   "insn_va": 4573810,
+   "mnemonic": "push",
+   "op": "0x46c9fb"
+  }
+ ],
+ "4612272": [
+  {
+   "func": 4522266,
+   "insn_va": 4522350,
+   "mnemonic": "push",
+   "op": "0x4660b0"
+  },
+  {
+   "func": 4522266,
+   "insn_va": 4522505,
+   "mnemonic": "push",
+   "op": "0x4660b0"
+  },
+  {
+   "func": 4522266,
+   "insn_va": 4522699,
+   "mnemonic": "push",
+   "op": "0x4660b0"
+  }
+ ],
+ "4612277": [
+  {
+   "func": 4522266,
+   "insn_va": 4522355,
+   "mnemonic": "push",
+   "op": "0x4660b5"
+  }
+ ],
+ "4612295": [
+  {
+   "func": 4522266,
+   "insn_va": 4522380,
+   "mnemonic": "push",
+   "op": "0x4660c7"
+  }
+ ],
+ "4612304": [
+  {
+   "func": 4522266,
+   "insn_va": 4522425,
+   "mnemonic": "push",
+   "op": "0x4660d0"
+  }
+ ],
+ "4612317": [
+  {
+   "func": 4522266,
+   "insn_va": 4522510,
+   "mnemonic": "push",
+   "op": "0x4660dd"
+  }
+ ],
+ "4612336": [
+  {
+   "func": 4522266,
+   "insn_va": 4522586,
+   "mnemonic": "push",
+   "op": "0x4660f0"
+  }
+ ],
+ "4612349": [
+  {
+   "func": 4522266,
+   "insn_va": 4522704,
+   "mnemonic": "push",
+   "op": "0x4660fd"
+  }
+ ],
+ "4713982": [
+  {
+   "func": 4260184,
+   "insn_va": 4260393,
+   "mnemonic": "mov",
+   "op": "ebp, dword ptr [eax + 0x47edfe]"
+  },
+  {
+   "func": 4260184,
+   "insn_va": 4260486,
+   "mnemonic": "mov",
+   "op": "edx, dword ptr [eax + 0x47edfe]"
+  }
+ ],
+ "4602615": [
+  {
+   "func": 4309345,
+   "insn_va": 4309710,
+   "mnemonic": "push",
+   "op": "0x463af7"
+  }
+ ],
+ "4601741": [
+  {
+   "func": 4276606,
+   "insn_va": 4276861,
+   "mnemonic": "push",
+   "op": "0x46378d"
+  },
+  {
+   "func": 4276606,
+   "insn_va": 4276999,
+   "mnemonic": "push",
+   "op": "0x46378d"
+  },
+  {
+   "func": 4276606,
+   "insn_va": 4277138,
+   "mnemonic": "push",
+   "op": "0x46378d"
+  },
+  {
+   "func": 4276606,
+   "insn_va": 4277275,
+   "mnemonic": "push",
+   "op": "0x46378d"
+  },
+  {
+   "func": 4274762,
+   "insn_va": 4275015,
+   "mnemonic": "push",
+   "op": "0x46378d"
+  },
+  {
+   "func": 4274762,
+   "insn_va": 4275153,
+   "mnemonic": "push",
+   "op": "0x46378d"
+  },
+  {
+   "func": 4274762,
+   "insn_va": 4275292,
+   "mnemonic": "push",
+   "op": "0x46378d"
+  },
+  {
+   "func": 4274762,
+   "insn_va": 4275430,
+   "mnemonic": "push",
+   "op": "0x46378d"
+  }
+ ],
+ "4606593": [
+  {
+   "func": 4407686,
+   "insn_va": 4407720,
+   "mnemonic": "push",
+   "op": "0x464a81"
+  }
+ ],
+ "4606602": [
+  {
+   "func": 4407686,
+   "insn_va": 4407754,
+   "mnemonic": "push",
+   "op": "0x464a8a"
+  }
+ ],
+ "4606611": [
+  {
+   "func": 4407686,
+   "insn_va": 4407881,
+   "mnemonic": "push",
+   "op": "0x464a93"
+  },
+  {
+   "func": 4407686,
+   "insn_va": 4408301,
+   "mnemonic": "push",
+   "op": "0x464a93"
+  }
+ ],
+ "4606620": [
+  {
+   "func": 4407686,
+   "insn_va": 4408054,
+   "mnemonic": "push",
+   "op": "0x464a9c"
+  },
+  {
+   "func": 4408466,
+   "insn_va": 4410573,
+   "mnemonic": "push",
+   "op": "0x464a9c"
+  }
+ ],
+ "4606629": [
+  {
+   "func": 4407686,
+   "insn_va": 4408132,
+   "mnemonic": "push",
+   "op": "0x464aa5"
+  },
+  {
+   "func": 4408466,
+   "insn_va": 4410712,
+   "mnemonic": "push",
+   "op": "0x464aa5"
+  }
+ ],
+ "4606638": [
+  {
+   "func": 4407686,
+   "insn_va": 4408184,
+   "mnemonic": "push",
+   "op": "0x464aae"
+  }
+ ],
+ "4606651": [
+  {
+   "func": 4407686,
+   "insn_va": 4408215,
+   "mnemonic": "push",
+   "op": "0x464abb"
+  }
+ ],
+ "4606664": [
+  {
+   "func": 4407686,
+   "insn_va": 4408246,
+   "mnemonic": "push",
+   "op": "0x464ac8"
+  }
+ ],
+ "4605396": [
+  {
+   "func": 4391491,
+   "insn_va": 4393851,
+   "mnemonic": "push",
+   "op": "0x4645d4"
+  },
+  {
+   "func": 4387863,
+   "insn_va": 4388099,
+   "mnemonic": "push",
+   "op": "0x4645d4"
+  }
+ ],
+ "4675104": [
+  {
+   "func": 4391491,
+   "insn_va": 4394804,
+   "mnemonic": "mov",
+   "op": "edi, dword ptr [0x475620]"
+  }
+ ],
+ "4675100": [
+  {
+   "func": 4391491,
+   "insn_va": 4395229,
+   "mnemonic": "mov",
+   "op": "eax, dword ptr [0x47561c]"
+  }
+ ],
+ "4601950": [
+  {
+   "func": 4301758,
+   "insn_va": 4302128,
+   "mnemonic": "push",
+   "op": "0x46385e"
+  }
+ ],
+ "4600120": [
+  {
+   "func": 4211972,
+   "insn_va": 4212117,
+   "mnemonic": "push",
+   "op": "0x463138"
+  }
+ ],
+ "4600129": [
+  {
+   "func": 4211972,
+   "insn_va": 4212146,
+   "mnemonic": "push",
+   "op": "0x463141"
+  }
+ ],
+ "4600138": [
+  {
+   "func": 4211972,
+   "insn_va": 4212175,
+   "mnemonic": "push",
+   "op": "0x46314a"
+  }
+ ],
+ "4600147": [
+  {
+   "func": 4211972,
+   "insn_va": 4212204,
+   "mnemonic": "push",
+   "op": "0x463153"
+  }
+ ],
+ "4600156": [
+  {
+   "func": 4211972,
+   "insn_va": 4212233,
+   "mnemonic": "push",
+   "op": "0x46315c"
+  }
+ ],
+ "4600165": [
+  {
+   "func": 4211972,
+   "insn_va": 4212261,
+   "mnemonic": "push",
+   "op": "0x463165"
+  }
+ ],
+ "4600177": [
+  {
+   "func": 4211972,
+   "insn_va": 4212419,
+   "mnemonic": "push",
+   "op": "0x463171"
+  },
+  {
+   "func": 4213671,
+   "insn_va": 4213630,
+   "mnemonic": "push",
+   "op": "0x463171"
+  }
+ ],
+ "4613095": [
+  {
+   "func": 4539834,
+   "insn_va": 4539878,
+   "mnemonic": "push",
+   "op": "0x4663e7"
+  }
+ ],
+ "4613130": [
+  {
+   "func": 4539834,
+   "insn_va": 4539925,
+   "mnemonic": "push",
+   "op": "0x46640a"
+  }
+ ],
+ "4613159": [
+  {
+   "func": 4539834,
+   "insn_va": 4539946,
+   "mnemonic": "push",
+   "op": "0x466427"
+  }
+ ],
+ "4613191": [
+  {
+   "func": 4539834,
+   "insn_va": 4540281,
+   "mnemonic": "push",
+   "op": "0x466447"
+  },
+  {
+   "func": 4540655,
+   "insn_va": 4540721,
+   "mnemonic": "push",
+   "op": "0x466447"
+  },
+  {
+   "func": 4540795,
+   "insn_va": 4540811,
+   "mnemonic": "push",
+   "op": "0x466447"
+  }
+ ],
+ "4676812": [
+  {
+   "func": 4449916,
+   "insn_va": 4450212,
+   "mnemonic": "mov",
+   "op": "edx, dword ptr [0x475ccc]"
+  }
+ ],
+ "4676820": [
+  {
+   "func": 4449916,
+   "insn_va": 4450239,
+   "mnemonic": "mov",
+   "op": "eax, dword ptr [0x475cd4]"
+  }
+ ],
+ "4637788": [
+  {
+   "func": 4564687,
+   "insn_va": 4564688,
+   "mnemonic": "push",
+   "op": "0x46c45c"
+  }
+ ],
+ "4637799": [
+  {
+   "func": 4564687,
+   "insn_va": 4564706,
+   "mnemonic": "push",
+   "op": "0x46c467"
+  }
+ ],
+ "4603244": [
+  {
+   "func": 4335329,
+   "insn_va": 4335499,
+   "mnemonic": "push",
+   "op": "0x463d6c"
+  },
+  {
+   "func": 4336151,
+   "insn_va": 4336306,
+   "mnemonic": "push",
+   "op": "0x463d6c"
+  },
+  {
+   "func": 4337343,
+   "insn_va": 4337427,
+   "mnemonic": "push",
+   "op": "0x463d6c"
+  }
+ ],
+ "4603412": [
+  {
+   "func": 4335329,
+   "insn_va": 4335684,
+   "mnemonic": "push",
+   "op": "0x463e14"
+  },
+  {
+   "func": 4336151,
+   "insn_va": 4336478,
+   "mnemonic": "push",
+   "op": "0x463e14"
+  },
+  {
+   "func": 4336573,
+   "insn_va": 4336905,
+   "mnemonic": "push",
+   "op": "0x463e14"
+  },
+  {
+   "func": 4336979,
+   "insn_va": 4337269,
+   "mnemonic": "push",
+   "op": "0x463e14"
+  },
+  {
+   "func": 4337343,
+   "insn_va": 4337610,
+   "mnemonic": "push",
+   "op": "0x463e14"
+  }
+ ],
+ "4603423": [
+  {
+   "func": 4335329,
+   "insn_va": 4335736,
+   "mnemonic": "push",
+   "op": "0x463e1f"
+  },
+  {
+   "func": 4335329,
+   "insn_va": 4336126,
+   "mnemonic": "push",
+   "op": "0x463e1f"
+  },
+  {
+   "func": 4336151,
+   "insn_va": 4336527,
+   "mnemonic": "push",
+   "op": "0x463e1f"
+  },
+  {
+   "func": 4336573,
+   "insn_va": 4336954,
+   "mnemonic": "push",
+   "op": "0x463e1f"
+  },
+  {
+   "func": 4336979,
+   "insn_va": 4337318,
+   "mnemonic": "push",
+   "op": "0x463e1f"
+  },
+  {
+   "func": 4337343,
+   "insn_va": 4337657,
+   "mnemonic": "push",
+   "op": "0x463e1f"
+  }
+ ],
+ "4757292": [
+  {
+   "func": 4581571,
+   "insn_va": 4581571,
+   "mnemonic": "call",
+   "op": "dword ptr [0x48972c]"
+  },
+  {
+   "func": 4581593,
+   "insn_va": 4581633,
+   "mnemonic": "mov",
+   "op": "ecx, dword ptr [0x48972c]"
+  },
+  {
+   "func": 4581593,
+   "insn_va": 4581639,
+   "mnemonic": "mov",
+   "op": "dword ptr [0x48972c], eax"
+  }
+ ],
+ "4613265": [
+  {
+   "func": 4540655,
+   "insn_va": 4540702,
+   "mnemonic": "push",
+   "op": "0x466491"
+  }
+ ],
+ "4639376": [
+  {
+   "func": 4581668,
+   "insn_va": 4581675,
+   "mnemonic": "push",
+   "op": "0x46ca90"
+  }
+ ],
+ "4639388": [
+  {
+   "func": 4581668,
+   "insn_va": 4581965,
+   "mnemonic": "push",
+   "op": "0x46ca9c"
+  }
+ ],
+ "4608519": [
+  {
+   "func": 4450724,
+   "insn_va": 4451296,
+   "mnemonic": "push",
+   "op": "0x465207"
+  }
+ ],
+ "4600016": [
+  {
+   "func": 4205053,
+   "insn_va": 4205180,
+   "mnemonic": "push",
+   "op": "0x4630d0"
+  }
+ ],
+ "4608099": [
+  {
+   "func": 4434551,
+   "insn_va": 4435796,
+   "mnemonic": "push",
+   "op": "0x465063"
+  },
+  {
+   "func": 4434551,
+   "insn_va": 4436685,
+   "mnemonic": "push",
+   "op": "0x465063"
+  }
+ ],
+ "4608152": [
+  {
+   "func": 4434551,
+   "insn_va": 4437198,
+   "mnemonic": "push",
+   "op": "0x465098"
+  }
+ ],
+ "4676436": [
+  {
+   "func": 4434551,
+   "insn_va": 4437416,
+   "mnemonic": "mov",
+   "op": "edx, dword ptr [eax*4 + 0x475b54]"
+  }
+ ],
+ "4676024": [
+  {
+   "func": 4426662,
+   "insn_va": 4427044,
+   "mnemonic": "mov",
+   "op": "edx, dword ptr [eax*4 + 0x4759b8]"
+  }
+ ],
+ "4603440": [
+  {
+   "func": 4344932,
+   "insn_va": 4345102,
+   "mnemonic": "push",
+   "op": "0x463e30"
+  },
+  {
+   "func": 4345697,
+   "insn_va": 4345853,
+   "mnemonic": "push",
+   "op": "0x463e30"
+  },
+  {
+   "func": 4346894,
+   "insn_va": 4346978,
+   "mnemonic": "push",
+   "op": "0x463e30"
+  }
+ ],
+ "4603447": [
+  {
+   "func": 4344932,
+   "insn_va": 4345287,
+   "mnemonic": "push",
+   "op": "0x463e37"
+  },
+  {
+   "func": 4345697,
+   "insn_va": 4346038,
+   "mnemonic": "push",
+   "op": "0x463e37"
+  },
+  {
+   "func": 4346112,
+   "insn_va": 4346456,
+   "mnemonic": "push",
+   "op": "0x463e37"
+  },
+  {
+   "func": 4346530,
+   "insn_va": 4346820,
+   "mnemonic": "push",
+   "op": "0x463e37"
+  },
+  {
+   "func": 4346894,
+   "insn_va": 4347163,
+   "mnemonic": "push",
+   "op": "0x463e37"
+  }
+ ],
+ "4603458": [
+  {
+   "func": 4344932,
+   "insn_va": 4345339,
+   "mnemonic": "push",
+   "op": "0x463e42"
+  },
+  {
+   "func": 4344932,
+   "insn_va": 4345672,
+   "mnemonic": "push",
+   "op": "0x463e42"
+  },
+  {
+   "func": 4345697,
+   "insn_va": 4346087,
+   "mnemonic": "push",
+   "op": "0x463e42"
+  },
+  {
+   "func": 4346112,
+   "insn_va": 4346505,
+   "mnemonic": "push",
+   "op": "0x463e42"
+  },
+  {
+   "func": 4346530,
+   "insn_va": 4346869,
+   "mnemonic": "push",
+   "op": "0x463e42"
+  },
+  {
+   "func": 4346894,
+   "insn_va": 4347212,
+   "mnemonic": "push",
+   "op": "0x463e42"
+  }
+ ],
+ "4603465": [
+  {
+   "func": 4344932,
+   "insn_va": 4345448,
+   "mnemonic": "push",
+   "op": "0x463e49"
+  },
+  {
+   "func": 4346112,
+   "insn_va": 4346235,
+   "mnemonic": "push",
+   "op": "0x463e49"
+  }
+ ],
+ "4675680": [
+  {
+   "func": 4410785,
+   "insn_va": 4411020,
+   "mnemonic": "mov",
+   "op": "esi, dword ptr [0x475860]"
+  }
+ ],
+ "4675688": [
+  {
+   "func": 4410785,
+   "insn_va": 4411165,
+   "mnemonic": "mov",
+   "op": "eax, dword ptr [0x475868]"
+  }
+ ],
+ "4600199": [
+  {
+   "func": 4222439,
+   "insn_va": 4222495,
+   "mnemonic": "push",
+   "op": "0x463187"
+  },
+  {
+   "func": 4224449,
+   "insn_va": 4224470,
+   "mnemonic": "push",
+   "op": "0x463187"
+  }
+ ],
+ "4756680": [
+  {
+   "func": 4566563,
+   "insn_va": 4566563,
+   "mnemonic": "call",
+   "op": "dword ptr [0x4894c8]"
+  },
+  {
+   "func": 4566607,
+   "insn_va": 4566608,
+   "mnemonic": "call",
+   "op": "dword ptr [0x4894c8]"
+  }
+ ],
+ "4756684": [
+  {
+   "func": 4566607,
+   "insn_va": 4566614,
+   "mnemonic": "call",
+   "op": "dword ptr [0x4894cc]"
+  }
+ ],
+ "4608664": [
+  {
+   "func": 4460573,
+   "insn_va": 4460914,
+   "mnemonic": "push",
+   "op": "0x465298"
+  },
+  {
+   "func": 4457175,
+   "insn_va": 4457549,
+   "mnemonic": "push",
+   "op": "0x465298"
+  },
+  {
+   "func": 4457175,
+   "insn_va": 4457860,
+   "mnemonic": "push",
+   "op": "0x465298"
+  }
+ ],
+ "4603430": [
+  {
+   "func": 4337776,
+   "insn_va": 4338064,
+   "mnemonic": "push",
+   "op": "0x463e26"
+  },
+  {
+   "func": 4337776,
+   "insn_va": 4338888,
+   "mnemonic": "push",
+   "op": "0x463e26"
+  }
+ ],
+ "4602772": [
+  {
+   "func": 4313513,
+   "insn_va": 4313753,
+   "mnemonic": "push",
+   "op": "0x463b94"
+  }
+ ],
+ "4602789": [
+  {
+   "func": 4313513,
+   "insn_va": 4313765,
+   "mnemonic": "push",
+   "op": "0x463ba5"
+  }
+ ],
+ "4601751": [
+  {
+   "func": 4280853,
+   "insn_va": 4281458,
+   "mnemonic": "push",
+   "op": "0x463797"
+  }
+ ],
+ "4675648": [
+  {
+   "func": 4412126,
+   "insn_va": 4412217,
+   "mnemonic": "mov",
+   "op": "esi, dword ptr [0x475840]"
+  }
+ ],
+ "4608361": [
+  {
+   "func": 4444932,
+   "insn_va": 4445492,
+   "mnemonic": "push",
+   "op": "0x465169"
+  }
+ ],
+ "4602545": [
+  {
+   "func": 4305965,
+   "insn_va": 4306518,
+   "mnemonic": "push",
+   "op": "0x463ab1"
+  }
+ ],
+ "4576418": [
+  {
+   "func": 4576438,
+   "insn_va": 4576580,
+   "mnemonic": "jmp",
+   "op": "dword ptr cs:[eax*4 + 0x45d4a2]"
+  }
+ ],
+ "4720766": [
+  {
+   "func": 4314457,
+   "insn_va": 4314834,
+   "mnemonic": "mov",
+   "op": "edx, dword ptr [esi + eax*8 + 0x48087e]"
+  }
+ ],
+ "4600228": [
+  {
+   "func": 4224449,
+   "insn_va": 4224968,
+   "mnemonic": "push",
+   "op": "0x4631a4"
+  }
+ ],
+ "4600239": [
+  {
+   "func": 4224449,
+   "insn_va": 4224982,
+   "mnemonic": "push",
+   "op": "0x4631af"
+  }
+ ],
+ "4600247": [
+  {
+   "func": 4224449,
+   "insn_va": 4225002,
+   "mnemonic": "push",
+   "op": "0x4631b7"
+  }
+ ],
+ "4599812": [
+  {
+   "func": 4199894,
+   "insn_va": 4199939,
+   "mnemonic": "push",
+   "op": "0x463004"
+  },
+  {
+   "func": 4199894,
+   "insn_va": 4200012,
+   "mnemonic": "push",
+   "op": "0x463004"
+  }
+ ],
+ "4599818": [
+  {
+   "func": 4199894,
+   "insn_va": 4199944,
+   "mnemonic": "push",
+   "op": "0x46300a"
+  }
+ ],
+ "4599844": [
+  {
+   "func": 4199894,
+   "insn_va": 4200017,
+   "mnemonic": "push",
+   "op": "0x463024"
+  }
+ ],
+ "4599870": [
+  {
+   "func": 4199894,
+   "insn_va": 4200225,
+   "mnemonic": "push",
+   "op": "0x46303e"
+  }
+ ],
+ "4599879": [
+  {
+   "func": 4199894,
+   "insn_va": 4200243,
+   "mnemonic": "push",
+   "op": "0x463047"
+  }
+ ],
+ "4599892": [
+  {
+   "func": 4199894,
+   "insn_va": 4200261,
+   "mnemonic": "push",
+   "op": "0x463054"
+  }
+ ],
+ "4599902": [
+  {
+   "func": 4199894,
+   "insn_va": 4200279,
+   "mnemonic": "push",
+   "op": "0x46305e"
+  }
+ ],
+ "4720782": [
+  {
+   "func": 4519463,
+   "insn_va": 4519595,
+   "mnemonic": "mov",
+   "op": "ecx, dword ptr [edx + eax*8 + 0x48088e]"
+  }
+ ],
+ "4720778": [
+  {
+   "func": 4519463,
+   "insn_va": 4519637,
+   "mnemonic": "mov",
+   "op": "esi, dword ptr [edx + eax*8 + 0x48088a]"
+  }
+ ],
+ "4603616": [
+  {
+   "func": 4355629,
+   "insn_va": 4355672,
+   "mnemonic": "push",
+   "op": "0x463ee0"
+  },
+  {
+   "func": 4355629,
+   "insn_va": 4355791,
+   "mnemonic": "push",
+   "op": "0x463ee0"
+  },
+  {
+   "func": 4354702,
+   "insn_va": 4354983,
+   "mnemonic": "push",
+   "op": "0x463ee0"
+  },
+  {
+   "func": 4354702,
+   "insn_va": 4355102,
+   "mnemonic": "push",
+   "op": "0x463ee0"
+  },
+  {
+   "func": 4355866,
+   "insn_va": 4356021,
+   "mnemonic": "push",
+   "op": "0x463ee0"
+  },
+  {
+   "func": 4355866,
+   "insn_va": 4356390,
+   "mnemonic": "push",
+   "op": "0x463ee0"
+  },
+  {
+   "func": 4356118,
+   "insn_va": 4356273,
+   "mnemonic": "push",
+   "op": "0x463ee0"
+  }
+ ],
+ "4603639": [
+  {
+   "func": 4355629,
+   "insn_va": 4356529,
+   "mnemonic": "push",
+   "op": "0x463ef7"
+  }
+ ],
+ "4603645": [
+  {
+   "func": 4355629,
+   "insn_va": 4356566,
+   "mnemonic": "push",
+   "op": "0x463efd"
+  }
+ ],
+ "4612462": [
+  {
+   "func": 4527735,
+   "insn_va": 4527766,
+   "mnemonic": "push",
+   "op": "0x46616e"
+  }
+ ],
+ "4612489": [
+  {
+   "func": 4527735,
+   "insn_va": 4527816,
+   "mnemonic": "push",
+   "op": "0x466189"
+  }
+ ],
+ "4612518": [
+  {
+   "func": 4527735,
+   "insn_va": 4527899,
+   "mnemonic": "push",
+   "op": "0x4661a6"
+  }
+ ],
+ "4612532": [
+  {
+   "func": 4527735,
+   "insn_va": 4527917,
+   "mnemonic": "push",
+   "op": "0x4661b4"
+  }
+ ],
+ "4603901": [
+  {
+   "func": 4363969,
+   "insn_va": 4364172,
+   "mnemonic": "push",
+   "op": "0x463ffd"
+  }
+ ],
+ "4603906": [
+  {
+   "func": 4363969,
+   "insn_va": 4364196,
+   "mnemonic": "push",
+   "op": "0x464002"
+  }
+ ],
+ "4605401": [
+  {
+   "func": 4388547,
+   "insn_va": 4388691,
+   "mnemonic": "push",
+   "op": "0x4645d9"
+  },
+  {
+   "func": 4392069,
+   "insn_va": 4392499,
+   "mnemonic": "push",
+   "op": "0x4645d9"
+  },
+  {
+   "func": 4392703,
+   "insn_va": 4393063,
+   "mnemonic": "push",
+   "op": "0x4645d9"
+  }
+ ],
+ "4677336": [
+  {
+   "func": 4503263,
+   "insn_va": 4503453,
+   "mnemonic": "mov",
+   "op": "eax, dword ptr [edi*4 + 0x475ed8]"
+  }
+ ],
+ "4603919": [
+  {
+   "func": 4364279,
+   "insn_va": 4364895,
+   "mnemonic": "push",
+   "op": "0x46400f"
+  }
+ ],
+ "4603748": [
+  {
+   "func": 4364279,
+   "insn_va": 4365110,
+   "mnemonic": "push",
+   "op": "0x463f64"
+  },
+  {
+   "func": 4365669,
+   "insn_va": 4366593,
+   "mnemonic": "push",
+   "op": "0x463f64"
+  }
+ ],
+ "4675256": [
+  {
+   "func": 4405258,
+   "insn_va": 4405637,
+   "mnemonic": "mov",
+   "op": "eax, dword ptr [eax*4 + 0x4756b8]"
+  },
+  {
+   "func": 4400578,
+   "insn_va": 4401150,
+   "mnemonic": "mov",
+   "op": "edx, dword ptr [eax*4 + 0x4756b8]"
+  },
+  {
+   "func": 4400578,
+   "insn_va": 4403218,
+   "mnemonic": "mov",
+   "op": "ebx, dword ptr [eax*4 + 0x4756b8]"
+  }
+ ],
+ "4601807": [
+  {
+   "func": 4282482,
+   "insn_va": 4282489,
+   "mnemonic": "push",
+   "op": "0x4637cf"
+  }
+ ],
+ "4601816": [
+  {
+   "func": 4282482,
+   "insn_va": 4282671,
+   "mnemonic": "push",
+   "op": "0x4637d8"
+  }
+ ],
+ "4720774": [
+  {
+   "func": 4257982,
+   "insn_va": 4258323,
+   "mnemonic": "mov",
+   "op": "ebp, dword ptr [ebx + eax*8 + 0x480886]"
+  },
+  {
+   "func": 4298937,
+   "insn_va": 4299278,
+   "mnemonic": "mov",
+   "op": "edi, dword ptr [edx + eax*8 + 0x480886]"
+  },
+  {
+   "func": 4298937,
+   "insn_va": 4303690,
+   "mnemonic": "mov",
+   "op": "ecx, dword ptr [edx + eax*8 + 0x480886]"
+  }
+ ],
+ "4757300": [
+  {
+   "func": 4585768,
+   "insn_va": 4585967,
+   "mnemonic": "cmp",
+   "op": "esi, dword ptr [ebp + 0x489734]"
+  },
+  {
+   "func": 4574360,
+   "insn_va": 4574405,
+   "mnemonic": "mov",
+   "op": "dword ptr [0x489734], edx"
+  }
+ ],
+ "4604264": [
+  {
+   "func": 4373143,
+   "insn_va": 4373245,
+   "mnemonic": "push",
+   "op": "0x464168"
+  }
+ ],
+ "4604277": [
+  {
+   "func": 4373143,
+   "insn_va": 4373294,
+   "mnemonic": "push",
+   "op": "0x464175"
+  }
+ ],
+ "4604282": [
+  {
+   "func": 4373143,
+   "insn_va": 4373322,
+   "mnemonic": "push",
+   "op": "0x46417a"
+  }
+ ],
+ "4604287": [
+  {
+   "func": 4373143,
+   "insn_va": 4373467,
+   "mnemonic": "push",
+   "op": "0x46417f"
+  }
+ ],
+ "4612648": [
+  {
+   "func": 4537173,
+   "insn_va": 4537226,
+   "mnemonic": "push",
+   "op": "0x466228"
+  }
+ ],
+ "4612698": [
+  {
+   "func": 4537173,
+   "insn_va": 4537287,
+   "mnemonic": "push",
+   "op": "0x46625a"
+  },
+  {
+   "func": 4537173,
+   "insn_va": 4537392,
+   "mnemonic": "push",
+   "op": "0x46625a"
+  },
+  {
+   "func": 4537173,
+   "insn_va": 4537519,
+   "mnemonic": "push",
+   "op": "0x46625a"
+  }
+ ],
+ "4612704": [
+  {
+   "func": 4537173,
+   "insn_va": 4537292,
+   "mnemonic": "push",
+   "op": "0x466260"
+  }
+ ],
+ "4612743": [
+  {
+   "func": 4537173,
+   "insn_va": 4537397,
+   "mnemonic": "push",
+   "op": "0x466287"
+  }
+ ],
+ "4612787": [
+  {
+   "func": 4537173,
+   "insn_va": 4537524,
+   "mnemonic": "push",
+   "op": "0x4662b3"
+  }
+ ],
+ "4599988": [
+  {
+   "func": 4201372,
+   "insn_va": 4201414,
+   "mnemonic": "push",
+   "op": "0x4630b4"
+  }
+ ],
+ "4599999": [
+  {
+   "func": 4201372,
+   "insn_va": 4201465,
+   "mnemonic": "mov",
+   "op": "ebp, 0x4630bf"
+  }
+ ],
+ "4600005": [
+  {
+   "func": 4201372,
+   "insn_va": 4201599,
+   "mnemonic": "push",
+   "op": "0x4630c5"
+  }
+ ],
+ "4607574": [
+  {
+   "func": 4430842,
+   "insn_va": 4431171,
+   "mnemonic": "push",
+   "op": "0x464e56"
+  },
+  {
+   "func": 4423265,
+   "insn_va": 4427442,
+   "mnemonic": "push",
+   "op": "0x464e56"
+  }
+ ],
+ "4607639": [
+  {
+   "func": 4430842,
+   "insn_va": 4431332,
+   "mnemonic": "push",
+   "op": "0x464e97"
+  }
+ ],
+ "4606554": [
+  {
+   "func": 4406638,
+   "insn_va": 4406744,
+   "mnemonic": "push",
+   "op": "0x464a5a"
+  }
+ ],
+ "4606561": [
+  {
+   "func": 4406638,
+   "insn_va": 4406773,
+   "mnemonic": "push",
+   "op": "0x464a61"
+  }
+ ],
+ "4606568": [
+  {
+   "func": 4406638,
+   "insn_va": 4406802,
+   "mnemonic": "push",
+   "op": "0x464a68"
+  }
+ ],
+ "4601746": [
+  {
+   "func": 4275975,
+   "insn_va": 4276228,
+   "mnemonic": "push",
+   "op": "0x463792"
+  }
+ ],
+ "4606575": [
+  {
+   "func": 4407076,
+   "insn_va": 4407514,
+   "mnemonic": "push",
+   "op": "0x464a6f"
+  }
+ ],
+ "4606580": [
+  {
+   "func": 4407076,
+   "insn_va": 4407628,
+   "mnemonic": "push",
+   "op": "0x464a74"
+  }
+ ],
+ "4514787": [
+  {
+   "func": 4514827,
+   "insn_va": 4515354,
+   "mnemonic": "jmp",
+   "op": "dword ptr [eax*4 + 0x44e3e3]"
+  }
+ ],
+ "4608505": [
+  {
+   "func": 4446759,
+   "insn_va": 4449591,
+   "mnemonic": "push",
+   "op": "0x4651f9"
+  }
+ ],
+ "4608514": [
+  {
+   "func": 4446759,
+   "insn_va": 4449614,
+   "mnemonic": "push",
+   "op": "0x465202"
+  }
+ ],
+ "4676816": [
+  {
+   "func": 4446759,
+   "insn_va": 4450596,
+   "mnemonic": "mov",
+   "op": "edx, dword ptr [0x475cd0]"
+  }
+ ],
+ "4606702": [
+  {
+   "func": 4415540,
+   "insn_va": 4415893,
+   "mnemonic": "push",
+   "op": "0x464aee"
+  }
+ ],
+ "4607434": [
+  {
+   "func": 4423265,
+   "insn_va": 4424623,
+   "mnemonic": "push",
+   "op": "0x464dca"
+  }
+ ],
+ "4607460": [
+  {
+   "func": 4423265,
+   "insn_va": 4425404,
+   "mnemonic": "mov",
+   "op": "eax, 0x464de4"
+  },
+  {
+   "func": 4423265,
+   "insn_va": 4427320,
+   "mnemonic": "push",
+   "op": "0x464de4"
+  }
+ ],
+ "4607471": [
+  {
+   "func": 4423265,
+   "insn_va": 4425432,
+   "mnemonic": "mov",
+   "op": "eax, 0x464def"
+  }
+ ],
+ "4607486": [
+  {
+   "func": 4423265,
+   "insn_va": 4425528,
+   "mnemonic": "mov",
+   "op": "eax, 0x464dfe"
+  }
+ ],
+ "4607501": [
+  {
+   "func": 4423265,
+   "insn_va": 4425624,
+   "mnemonic": "mov",
+   "op": "eax, 0x464e0d"
+  }
+ ],
+ "4607516": [
+  {
+   "func": 4423265,
+   "insn_va": 4425673,
+   "mnemonic": "mov",
+   "op": "eax, 0x464e1c"
+  }
+ ],
+ "4607521": [
+  {
+   "func": 4423265,
+   "insn_va": 4426324,
+   "mnemonic": "mov",
+   "op": "eax, 0x464e21"
+  }
+ ],
+ "4607545": [
+  {
+   "func": 4423265,
+   "insn_va": 4426652,
+   "mnemonic": "push",
+   "op": "0x464e39"
+  }
+ ],
+ "4607567": [
+  {
+   "func": 4423265,
+   "insn_va": 4427347,
+   "mnemonic": "push",
+   "op": "0x464e4f"
+  }
+ ],
+ "4607581": [
+  {
+   "func": 4423265,
+   "insn_va": 4427537,
+   "mnemonic": "push",
+   "op": "0x464e5d"
+  }
+ ],
+ "4675652": [
+  {
+   "func": 4411490,
+   "insn_va": 4413339,
+   "mnemonic": "mov",
+   "op": "ebp, dword ptr [0x475844]"
+  }
+ ],
+ "4411474": [
+  {
+   "func": 4411490,
+   "insn_va": 4414659,
+   "mnemonic": "jmp",
+   "op": "dword ptr [eax*4 + 0x435052]"
+  }
+ ],
+ "4608320": [
+  {
+   "func": 4442795,
+   "insn_va": 4443607,
+   "mnemonic": "push",
+   "op": "0x465140"
+  }
+ ],
+ "4608329": [
+  {
+   "func": 4442795,
+   "insn_va": 4443630,
+   "mnemonic": "push",
+   "op": "0x465149"
+  }
+ ],
+ "4603552": [
+  {
+   "func": 4348097,
+   "insn_va": 4349621,
+   "mnemonic": "push",
+   "op": "0x463ea0"
+  }
+ ],
+ "4718370": [
+  {
+   "func": 4457175,
+   "insn_va": 4457578,
+   "mnemonic": "mov",
+   "op": "ebp, dword ptr [eax*8 + 0x47ff22]"
+  }
+ ],
+ "4608085": [
+  {
+   "func": 4432605,
+   "insn_va": 4434044,
+   "mnemonic": "push",
+   "op": "0x465055"
+  }
+ ],
+ "4608094": [
+  {
+   "func": 4432605,
+   "insn_va": 4434067,
+   "mnemonic": "push",
+   "op": "0x46505e"
+  }
+ ],
+ "4600182": [
+  {
+   "func": 4219113,
+   "insn_va": 4220261,
+   "mnemonic": "push",
+   "op": "0x463176"
+  }
+ ],
+ "4340955": [
+  {
+   "func": 4340979,
+   "insn_va": 4342251,
+   "mnemonic": "jmp",
+   "op": "dword ptr [eax*4 + 0x423cdb]"
+  }
+ ],
+ "4369131": [
+  {
+   "func": 4369151,
+   "insn_va": 4370109,
+   "mnemonic": "jmp",
+   "op": "dword ptr [eax*4 + 0x42aaeb]"
+  }
+ ],
+ "4638463": [
+  {
+   "func": 4564824,
+   "insn_va": 4565136,
+   "mnemonic": "push",
+   "op": "0x46c6ff"
+  }
+ ],
+ "4638814": [
+  {
+   "func": 4564824,
+   "insn_va": 4565248,
+   "mnemonic": "push",
+   "op": "0x46c85e"
+  }
+ ],
+ "4612376": [
+  {
+   "func": 4527471,
+   "insn_va": 4527547,
+   "mnemonic": "push",
+   "op": "0x466118"
+  }
+ ],
+ "4612397": [
+  {
+   "func": 4527471,
+   "insn_va": 4527602,
+   "mnemonic": "push",
+   "op": "0x46612d"
+  }
+ ],
+ "4612432": [
+  {
+   "func": 4527471,
+   "insn_va": 4527647,
+   "mnemonic": "push",
+   "op": "0x466150"
+  }
+ ],
+ "4675024": [
+  {
+   "func": 4379519,
+   "insn_va": 4384717,
+   "mnemonic": "mov",
+   "op": "ebx, dword ptr [eax*8 + 0x4755d0]"
+  }
+ ],
+ "4316541": [
+  {
+   "func": 4316585,
+   "insn_va": 4317392,
+   "mnemonic": "jmp",
+   "op": "dword ptr [eax*4 + 0x41dd7d]"
+  }
+ ],
+ "4675220": [
+  {
+   "func": 4400578,
+   "insn_va": 4400845,
+   "mnemonic": "mov",
+   "op": "edx, dword ptr [0x475694]"
+  }
+ ],
+ "4599913": [
+  {
+   "func": 4200925,
+   "insn_va": 4201024,
+   "mnemonic": "push",
+   "op": "0x463069"
+  }
+ ],
+ "4599924": [
+  {
+   "func": 4200925,
+   "insn_va": 4201051,
+   "mnemonic": "push",
+   "op": "0x463074"
+  }
+ ],
+ "4599935": [
+  {
+   "func": 4200925,
+   "insn_va": 4201083,
+   "mnemonic": "push",
+   "op": "0x46307f"
+  }
+ ],
+ "4599955": [
+  {
+   "func": 4200925,
+   "insn_va": 4201149,
+   "mnemonic": "push",
+   "op": "0x463093"
+  }
+ ],
+ "4599965": [
+  {
+   "func": 4200925,
+   "insn_va": 4201176,
+   "mnemonic": "push",
+   "op": "0x46309d"
+  }
+ ],
+ "4599975": [
+  {
+   "func": 4200925,
+   "insn_va": 4201207,
+   "mnemonic": "push",
+   "op": "0x4630a7"
+  }
+ ],
+ "4602251": [
+  {
+   "func": 4298937,
+   "insn_va": 4299351,
+   "mnemonic": "mov",
+   "op": "eax, 0x46398b"
+  },
+  {
+   "func": 4298937,
+   "insn_va": 4301150,
+   "mnemonic": "push",
+   "op": "0x46398b"
+  }
+ ],
+ "4602463": [
+  {
+   "func": 4298937,
+   "insn_va": 4303851,
+   "mnemonic": "push",
+   "op": "0x463a5f"
+  }
+ ],
+ "4602510": [
+  {
+   "func": 4305438,
+   "insn_va": 4305501,
+   "mnemonic": "push",
+   "op": "0x463a8e"
+  }
+ ],
+ "4602536": [
+  {
+   "func": 4307193,
+   "insn_va": 4307286,
+   "mnemonic": "push",
+   "op": "0x463aa8"
+  },
+  {
+   "func": 4307193,
+   "insn_va": 4307640,
+   "mnemonic": "push",
+   "op": "0x463aa8"
+  },
+  {
+   "func": 4305666,
+   "insn_va": 4305757,
+   "mnemonic": "push",
+   "op": "0x463aa8"
+  }
+ ],
+ "4602579": [
+  {
+   "func": 4307869,
+   "insn_va": 4308119,
+   "mnemonic": "push",
+   "op": "0x463ad3"
+  },
+  {
+   "func": 4307724,
+   "insn_va": 4307790,
+   "mnemonic": "push",
+   "op": "0x463ad3"
+  }
+ ],
+ "4603611": [
+  {
+   "func": 4354702,
+   "insn_va": 4354800,
+   "mnemonic": "push",
+   "op": "0x463edb"
+  }
+ ],
+ "4604055": [
+  {
+   "func": 4370431,
+   "insn_va": 4370512,
+   "mnemonic": "mov",
+   "op": "eax, 0x464097"
+  }
+ ],
+ "4675072": [
+  {
+   "func": 4389573,
+   "insn_va": 4389580,
+   "mnemonic": "mov",
+   "op": "edx, dword ptr [0x475600]"
+  }
+ ],
+ "4606009": [
+  {
+   "func": 4399325,
+   "insn_va": 4399394,
+   "mnemonic": "push",
+   "op": "0x464839"
+  }
+ ],
+ "4611223": [
+  {
+   "func": 4512089,
+   "insn_va": 4512125,
+   "mnemonic": "push",
+   "op": "0x465c97"
+  }
+ ],
+ "4756800": [
+  {
+   "func": 4561922,
+   "insn_va": 4561895,
+   "mnemonic": "mov",
+   "op": "dword ptr [0x489540], edx"
+  }
+ ],
+ "4756804": [
+  {
+   "func": 4561922,
+   "insn_va": 4561901,
+   "mnemonic": "mov",
+   "op": "dword ptr [0x489544], ebx"
+  }
+ ],
+ "4757288": [
+  {
+   "func": 4581593,
+   "insn_va": 4581613,
+   "mnemonic": "mov",
+   "op": "esi, dword ptr [0x489728]"
+  },
+  {
+   "func": 4581593,
+   "insn_va": 4581619,
+   "mnemonic": "mov",
+   "op": "dword ptr [0x489728], ecx"
+  }
+ ],
+ "4639428": [
+  {
+   "func": 4585448,
+   "insn_va": 4585539,
+   "mnemonic": "mov",
+   "op": "esi, 0x46cac4"
+  }
+ ],
+ "4605999": [
+  {
+   "func": 4398951,
+   "insn_va": 4399252,
+   "mnemonic": "push",
+   "op": "0x46482f"
+  },
+  {
+   "func": 4399705,
+   "insn_va": 4399985,
+   "mnemonic": "push",
+   "op": "0x46482f"
+  },
+  {
+   "func": 4400171,
+   "insn_va": 4400359,
+   "mnemonic": "push",
+   "op": "0x46482f"
+  }
+ ],
+ "4602497": [
+  {
+   "func": 4305284,
+   "insn_va": 4305347,
+   "mnemonic": "push",
+   "op": "0x463a81"
+  }
+ ],
+ "4602523": [
+  {
+   "func": 4305571,
+   "insn_va": 4305633,
+   "mnemonic": "push",
+   "op": "0x463a9b"
+  }
+ ],
+ "4603621": [
+  {
+   "func": 4355177,
+   "insn_va": 4355242,
+   "mnemonic": "push",
+   "op": "0x463ee5"
+  }
+ ],
+ "4675656": [
+  {
+   "func": 4414792,
+   "insn_va": 4414853,
+   "mnemonic": "mov",
+   "op": "edi, dword ptr [0x475848]"
+  }
+ ],
+ "4675108": [
+  {
+   "func": 4393184,
+   "insn_va": 4393191,
+   "mnemonic": "mov",
+   "op": "ebx, dword ptr [0x475624]"
+  }
+ ],
+ "4675068": [
+  {
+   "func": 4389512,
+   "insn_va": 4389519,
+   "mnemonic": "mov",
+   "op": "ecx, dword ptr [0x4755fc]"
+  }
+ ]
+}

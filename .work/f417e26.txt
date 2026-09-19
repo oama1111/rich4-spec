@@ -1,0 +1,976 @@
+  …[confident] 已处理 200 个函数，队列 333
+  …[confident] 已处理 400 个函数，队列 50
+  …[confident] 已处理 600 个函数，队列 5
+  …[speculative] 已处理 800 个函数，队列 185
+  …[speculative] 已处理 1000 个函数，队列 307
+  孤儿收容：305 个入口（不可达库代码/死代码）
+  分支块补全：新增 14157 条指令
+  遍历完成：1459 个函数，跳表 69 个，驳回投机候选 80 个
+# 函数 0x00417e26  指令 964  字节 3606  结尾 jmp
+# 被调用 1 处: 0x0041906a
+
+  00417e26  push     ebx
+  00417e27  push     esi
+  00417e28  push     edi
+  00417e29  push     ebp
+  00417e2a  sub      esp, 0x24
+  00417e2d  mov      esi, dword ptr [esp + 0x38]
+  00417e31  mov      eax, dword ptr [esp + 0x3c]
+  00417e35  mov      ecx, dword ptr [esp + 0x40]
+  00417e39  mov      edx, dword ptr [esp + 0x44]
+  00417e3d  cmp      dword ptr [0x475118], 0   ← 全局
+  00417e44  jne      0x417e56   → 0x00417e56
+  00417e46  push     edx
+  00417e47  push     ecx
+  00417e48  push     eax
+  00417e49  push     esi
+  00417e4a  call     dword ptr cs:[0x4622d8]
+  00417e51  jmp      0x418c32   → 0x00418c32
+  00417e56  mov      ebx, edx
+  00417e58  shr      ebx, 0x10
+  00417e5b  and      ebx, 0xffff
+  00417e61  cmp      eax, 0x201
+  00417e66  jb       0x417e95   → 0x00417e95
+  00417e68  jbe      0x418151   → 0x00418151
+  00417e6e  cmp      eax, 0x203
+  00417e73  jb       0x4186cb   → 0x004186cb
+  00417e79  jbe      0x418151   → 0x00418151
+  00417e7f  cmp      eax, 0x205
+  00417e84  jb       0x417e46   → 0x00417e46
+  00417e86  jbe      0x418893   → 0x00418893
+  00417e8c  cmp      eax, 0x401
+  00417e91  je       0x417eba   → 0x00417eba
+  00417e93  jmp      0x417e46   → 0x00417e46
+  00417e95  cmp      eax, 0x113
+  00417e9a  jb       0x417eaf   → 0x00417eaf
+  00417e9c  jbe      0x418b7a   → 0x00418b7a
+  00417ea2  cmp      eax, 0x200
+  00417ea7  je       0x418910   → 0x00418910
+  00417ead  jmp      0x417e46   → 0x00417e46
+  00417eaf  cmp      eax, 0xf
+  00417eb2  je       0x418bb9   → 0x00418bb9
+  00417eb8  jmp      0x417e46   → 0x00417e46
+  00417eba  push     1
+  00417ebc  push     2
+  00417ebe  push     0
+  00417ec0  push     0x101010
+  00417ec5  push     0xc
+  00417ec7  call     0x44f9d8   → 0x0044f9d8
+  00417ecc  add      esp, 0x14
+  00417ecf  push     0
+  00417ed1  push     0x50
+  00417ed3  push     0xa
+  00417ed5  push     0x463920
+  00417eda  mov      eax, dword ptr [0x48be0c]   ← 全局
+  00417edf  add      eax, 0xc
+  00417ee2  push     eax
+  00417ee3  call     0x44fabc   → 0x0044fabc
+  00417ee8  add      esp, 0x14
+  00417eeb  push     0
+  00417eed  push     0x91
+  00417ef2  push     0xa
+  00417ef4  push     0x463927
+  00417ef9  mov      eax, dword ptr [0x48be0c]   ← 全局
+  00417efe  add      eax, 0xc
+  00417f01  push     eax
+  00417f02  call     0x44fabc   → 0x0044fabc
+  00417f07  add      esp, 0x14
+  00417f0a  push     0
+  00417f0c  push     0xd0
+  00417f11  push     0xa
+  00417f13  push     0x46392e
+  00417f18  mov      eax, dword ptr [0x48be0c]   ← 全局
+  00417f1d  add      eax, 0xc
+  00417f20  push     eax
+  00417f21  call     0x44fabc   → 0x0044fabc
+  00417f26  add      esp, 0x14
+  00417f29  push     0
+  00417f2b  push     0x50
+  00417f2d  push     0xa
+  00417f2f  push     0x463935
+  00417f34  mov      eax, dword ptr [0x48be0c]   ← 全局
+  00417f39  add      eax, 0x18
+  00417f3c  push     eax
+  00417f3d  call     0x44fabc   → 0x0044fabc
+  00417f42  add      esp, 0x14
+  00417f45  push     0
+  00417f47  push     0x91
+  00417f4c  push     0xa
+  00417f4e  push     0x46390c
+  00417f53  mov      eax, dword ptr [0x48be0c]   ← 全局
+  00417f58  add      eax, 0x18
+  00417f5b  push     eax
+  00417f5c  call     0x44fabc   → 0x0044fabc
+  00417f61  add      esp, 0x14
+  00417f64  push     0
+  00417f66  push     0xd0
+  00417f6b  push     0xa
+  00417f6d  push     0x46393c
+  00417f72  mov      eax, dword ptr [0x48be0c]   ← 全局
+  00417f77  add      eax, 0x18
+  00417f7a  push     eax
+  00417f7b  call     0x44fabc   → 0x0044fabc
+  00417f80  add      esp, 0x14
+  00417f83  push     0
+  00417f85  push     0x50
+  00417f87  push     0xa
+  00417f89  push     0x463943
+  00417f8e  mov      eax, dword ptr [0x48be0c]   ← 全局
+  00417f93  add      eax, 0x24
+  00417f96  push     eax
+  00417f97  call     0x44fabc   → 0x0044fabc
+  00417f9c  add      esp, 0x14
+  00417f9f  push     0
+  00417fa1  push     0x91
+  00417fa6  push     0xa
+  00417fa8  push     0x46394a
+  00417fad  mov      eax, dword ptr [0x48be0c]   ← 全局
+  00417fb2  add      eax, 0x24
+  00417fb5  push     eax
+  00417fb6  call     0x44fabc   → 0x0044fabc
+  00417fbb  add      esp, 0x14
+  00417fbe  push     0
+  00417fc0  push     0xd0
+  00417fc5  push     0xa
+  00417fc7  push     0x463951
+  00417fcc  mov      eax, dword ptr [0x48be0c]   ← 全局
+  00417fd1  add      eax, 0x24
+  00417fd4  push     eax
+  00417fd5  call     0x44fabc   → 0x0044fabc
+  00417fda  add      esp, 0x14
+  00417fdd  push     0
+  00417fdf  push     0x50
+  00417fe1  push     0xa
+  00417fe3  push     0x463958
+  00417fe8  mov      eax, dword ptr [0x48be0c]   ← 全局
+  00417fed  add      eax, 0x30
+  00417ff0  push     eax
+  00417ff1  call     0x44fabc   → 0x0044fabc
+  00417ff6  add      esp, 0x14
+  00417ff9  push     0
+  00417ffb  push     0x91
+  00418000  push     0xa
+  00418002  push     0x46395f
+  00418007  mov      eax, dword ptr [0x48be0c]   ← 全局
+  0041800c  add      eax, 0x30
+  0041800f  push     eax
+  00418010  call     0x44fabc   → 0x0044fabc
+  00418015  add      esp, 0x14
+  00418018  push     0
+  0041801a  push     0xd0
+  0041801f  push     0xa
+  00418021  push     0x463966
+  00418026  mov      eax, dword ptr [0x48be0c]   ← 全局
+  0041802b  add      eax, 0x30
+  0041802e  push     eax
+  0041802f  call     0x44fabc   → 0x0044fabc
+  00418034  add      esp, 0x14
+  00418037  xor      edi, edi
+  00418039  mov      dword ptr [0x48be24], edi   ← 全局
+  0041803f  push     1
+  00418041  push     2
+  00418043  push     edi
+  00418044  push     0x101010
+  00418049  push     0xc
+  0041804b  call     0x44f9d8   → 0x0044f9d8
+  00418050  add      esp, 0x14
+  00418053  push     0x463920
+  00418058  lea      eax, [esp + 4]
+  0041805c  push     eax
+  0041805d  call     0x452946   → 0x00452946
+  00418062  add      esp, 8
+  00418065  push     edi
+  00418066  push     0x28
+  00418068  push     0x5a
+  0041806a  lea      eax, [esp + 0xc]
+  0041806e  push     eax
+  0041806f  mov      eax, dword ptr [0x48be0c]   ← 全局
+  00418074  add      eax, 0x3c
+  00418077  push     eax
+  00418078  call     0x44fabc   → 0x0044fabc
+  0041807d  add      esp, 0x14
+  00418080  push     0x463927
+  00418085  lea      eax, [esp + 4]
+  00418089  push     eax
+  0041808a  call     0x452946   → 0x00452946
+  0041808f  add      esp, 8
+  00418092  push     edi
+  00418093  push     0x3e
+  00418095  push     0x5a
+  00418097  lea      eax, [esp + 0xc]
+  0041809b  push     eax
+  0041809c  mov      eax, dword ptr [0x48be0c]   ← 全局
+  004180a1  add      eax, 0x3c
+  004180a4  push     eax
+  004180a5  call     0x44fabc   → 0x0044fabc
+  004180aa  add      esp, 0x14
+  004180ad  mov      eax, dword ptr [0x475284]   ← 全局
+  004180b2  mov      dword ptr [0x48bdec], eax   ← 全局
+  004180b7  mov      eax, dword ptr [0x475288]   ← 全局
+  004180bc  mov      dword ptr [0x48bde8], eax   ← 全局
+  004180c1  mov      eax, dword ptr [0x48be04]   ← 全局
+  004180c6  movsx    edx, word ptr [eax + 0xc]
+  004180ca  mov      dword ptr [0x48bdd8], edx   ← 全局
+  004180d0  movsx    eax, word ptr [eax + 0xe]
+  004180d4  mov      dword ptr [0x48bddc], eax   ← 全局
+  004180d9  mov      dword ptr [0x48bdd4], edi   ← 全局
+  004180df  push     edi
+  004180e0  push     0x1f4
+  004180e5  mov      eax, dword ptr [0x46cad8]   ← 全局
+  004180ea  push     eax
+  004180eb  push     esi
+  004180ec  call     dword ptr cs:[0x462324]
+  004180f3  mov      dword ptr [0x48bdc8], eax   ← 全局
+  004180f8  mov      dword ptr [0x48bdd0], edi   ← 全局
+  004180fe  mov      dword ptr [0x475270], edi   ← 全局
+  00418104  push     0x1e0
+  00418109  push     0x1b8
+  0041810e  push     0x28
+  00418110  push     edi
+  00418111  call     0x45577c   → 0x0045577c
+  00418116  add      esp, 0x10
+  00418119  mov      dword ptr [0x48bde4], 0xffffffff   ← 全局
+  00418123  xor      ah, ah
+  00418125  mov      byte ptr [0x48be28], ah   ← 全局
+  0041812b  xor      dl, dl
+  0041812d  mov      byte ptr [0x48be29], dl   ← 全局
+  00418133  xor      dh, dh
+  00418135  mov      byte ptr [0x48be2a], dh   ← 全局
+  0041813b  mov      byte ptr [0x46cafe], 1   ← 全局
+  00418142  push     edi
+  00418143  push     edi
+  00418144  push     esi
+  00418145  call     dword ptr cs:[0x4622f8]
+  0041814c  jmp      0x418c30   → 0x00418c30
+  00418151  cmp      byte ptr [0x46cafd], 0   ← 全局
+  00418158  je       0x418c30   → 0x00418c30
+  0041815e  xor      esi, esi
+  00418160  mov      si, dx
+  00418163  shr      edx, 0x10
+  00418166  and      edx, 0xffff
+  0041816c  and      edx, 0xffff
+  00418172  mov      ecx, dword ptr [0x475284]   ← 全局
+  00418178  cmp      esi, ecx
+  0041817a  jl       0x4182fa   → 0x004182fa
+  00418180  mov      ebx, dword ptr [0x48bdd8]   ← 全局
+  00418186  lea      eax, [ecx + ebx]
+  00418189  cmp      esi, eax
+  0041818b  jg       0x4182fa   → 0x004182fa
+  00418191  mov      edi, dword ptr [0x475288]   ← 全局
+  00418197  cmp      edx, edi
+  00418199  jl       0x4182fa   → 0x004182fa
+  0041819f  mov      ebp, dword ptr [0x48bddc]   ← 全局
+  004181a5  lea      eax, [edi + ebp]
+  004181a8  cmp      edx, eax
+  004181aa  jg       0x4182fa   → 0x004182fa
+  004181b0  mov      ebx, esi
+  004181b2  sub      ebx, ecx
+  004181b4  sub      edx, edi
+  004181b6  mov      esi, edx
+  004181b8  mov      eax, dword ptr [0x48bdd8]   ← 全局
+  004181bd  imul     eax, edx
+  004181c0  add      eax, ebx
+  004181c2  mov      edx, dword ptr [0x48be08]   ← 全局
+  004181c8  add      eax, edx
+  004181ca  mov      dl, byte ptr [eax]
+  004181cc  add      dl, 0xa
+  004181cf  mov      byte ptr [0x48be28], dl   ← 全局
+  004181d5  mov      al, byte ptr [eax]
+  004181d7  add      al, 0xa
+  004181d9  cmp      al, 0xc
+  004181db  jb       0x4181f0   → 0x004181f0
+  004181dd  jbe      0x4182b5   → 0x004182b5
+  004181e3  cmp      al, 0xd
+  004181e5  je       0x4182cd   → 0x004182cd
+  004181eb  jmp      0x418c30   → 0x00418c30
+  004181f0  cmp      al, 0xb
+  004181f2  jne      0x418c30   → 0x00418c30
+  004181f8  imul     eax, dword ptr [0x49910c], 0x68   ← 全局
+  004181ff  cmp      byte ptr [eax + 0x496ba0], 0   ← 全局
+  00418206  jne      0x418c30   → 0x00418c30
+  0041820c  push     0
+  0041820e  push     0x482322
+  00418213  call     0x4542ce   → 0x004542ce
+  00418218  add      esp, 8
+  0041821b  imul     eax, dword ptr [0x49910c], 0x68   ← 全局
+  00418222  mov      al, byte ptr [eax + 0x496b79]   ← 全局
+  00418228  cmp      al, 1
+  0041822a  jb       0x4182a6   → 0x004182a6
+  00418230  jbe      0x41823b   → 0x0041823b
+  00418232  cmp      al, 2
+  00418234  je       0x418274   → 0x00418274
+  00418236  jmp      0x4182a6   → 0x004182a6
+  0041823b  xor      ebx, ebx
+  0041823d  mov      ebp, dword ptr [0x49910c]   ← 全局
+  00418243  jmp      0x41824b   → 0x0041824b
+  00418245  inc      ebx
+  00418246  cmp      ebx, 2
+  00418249  jge      0x4182a6   → 0x004182a6
+  0041824b  mov      eax, ebx
+  0041824d  shl      eax, 2
+  00418250  add      eax, ebx
+  00418252  shl      eax, 2
+  00418255  sub      eax, ebx
+  00418257  lea      edx, [eax + 0x10]
+  0041825a  cmp      esi, edx
+  0041825c  jl       0x418245   → 0x00418245
+  0041825e  add      eax, 0x20
+  00418261  cmp      esi, eax
+  00418263  jg       0x418245   → 0x00418245
+  00418265  mov      dl, bl
+  00418267  inc      dl
+  00418269  imul     eax, ebp, 0x68
+  0041826c  mov      byte ptr [eax + 0x496b7a], dl   ← 全局
+  00418272  jmp      0x418245   → 0x00418245
+  00418274  xor      ebx, ebx
+  00418276  mov      edi, dword ptr [0x49910c]   ← 全局
+  0041827c  jmp      0x418284   → 0x00418284
+  0041827e  inc      ebx
+  0041827f  cmp      ebx, 3
+  00418282  jge      0x4182a6   → 0x004182a6
+  00418284  mov      eax, ebx
+  00418286  shl      eax, 4
+  00418289  lea      edx, [eax + 9]
+  0041828c  cmp      esi, edx
+  0041828e  jl       0x41827e   → 0x0041827e
+  00418290  add      eax, 0x19
+  00418293  cmp      esi, eax
+  00418295  jg       0x41827e   → 0x0041827e
+  00418297  mov      dl, bl
+  00418299  inc      dl
+  0041829b  imul     eax, edi, 0x68
+  0041829e  mov      byte ptr [eax + 0x496b7a], dl   ← 全局
+  004182a4  jmp      0x41827e   → 0x0041827e
+  004182a6  push     1
+  004182a8  call     0x417191   → 0x00417191
+  004182ad  add      esp, 4
+  004182b0  jmp      0x418c30   → 0x00418c30
+  004182b5  mov      dword ptr [0x48be2b], ebx   ← 全局
+  004182bb  mov      dword ptr [0x48be2f], esi   ← 全局
+  004182c1  mov      byte ptr [0x48be2a], 1   ← 全局
+  004182c8  jmp      0x418c30   → 0x00418c30
+  004182cd  push     0
+  004182cf  push     0x482322
+  004182d4  call     0x4542ce   → 0x004542ce
+  004182d9  add      esp, 8
+  004182dc  push     0
+  004182de  call     0x402460   → 0x00402460
+  004182e3  add      esp, 4
+  004182e6  call     0x419703   → 0x00419703
+  004182eb  call     0x41d546   → 0x0041d546
+  004182f0  call     0x40dd1f   → 0x0040dd1f
+  004182f5  jmp      0x418c30   → 0x00418c30
+  004182fa  cmp      byte ptr [0x49715d], 2   ← 全局
+  00418301  je       0x41835f   → 0x0041835f
+  00418303  cmp      esi, 0x268
+  00418309  jl       0x41835f   → 0x0041835f
+  0041830b  cmp      edx, 0x118
+  00418311  jge      0x41835f   → 0x0041835f
+  00418313  mov      ebx, 0x46
+  00418318  mov      eax, edx
+  0041831a  sar      edx, 0x1f
+  0041831d  idiv     ebx
+  0041831f  mov      ebx, eax
+  00418321  mov      eax, dword ptr [0x49910c]   ← 全局
+  00418326  mov      al, byte ptr [eax + 0x48be24]   ← 全局
+  0041832c  and      eax, 0xff
+  00418331  cmp      eax, ebx
+  00418333  je       0x418c30   → 0x00418c30
+  00418339  push     0
+  0041833b  push     0x482322
+  00418340  call     0x4542ce   → 0x004542ce
+  00418345  add      esp, 8
+  00418348  mov      eax, dword ptr [0x49910c]   ← 全局
+  0041834d  mov      byte ptr [eax + 0x48be24], bl   ← 全局
+  00418353  push     1
+  00418355  call     0x415f69   → 0x00415f69
+  0041835a  jmp      0x4182ad   → 0x004182ad
+  0041835f  cmp      byte ptr [0x49715d], 1   ← 全局
+  00418366  je       0x418415   → 0x00418415
+  0041836c  cmp      esi, 0x1b8
+  00418372  jle      0x418415   → 0x00418415
+  00418378  cmp      edx, 0x118
+  0041837e  jle      0x418415   → 0x00418415
+  00418384  cmp      edx, 0x120
+  0041838a  jl       0x418c30   → 0x00418c30
+  00418390  cmp      edx, 0x13a
+  00418396  jg       0x418c30   → 0x00418c30
+  0041839c  cmp      esi, 0x1c0
+  004183a2  jl       0x4183d8   → 0x004183d8
+  004183a4  cmp      esi, 0x1da
+  004183aa  jg       0x4183d8   → 0x004183d8
+  004183ac  cmp      byte ptr [0x497164], 0   ← 全局
+  004183b3  je       0x4183d8   → 0x004183d8
+  004183b5  push     0
+  004183b7  push     0x482322
+  004183bc  call     0x4542ce   → 0x004542ce
+  004183c1  add      esp, 8
+  004183c4  xor      bl, bl
+  004183c6  mov      byte ptr [0x497164], bl   ← 全局
+  004183cc  push     1
+  004183ce  call     0x4169bc   → 0x004169bc
+  004183d3  jmp      0x4182ad   → 0x004182ad
+  004183d8  cmp      esi, 0x1de
+  004183de  jl       0x418c30   → 0x00418c30
+  004183e4  cmp      esi, 0x1f8
+  004183ea  jg       0x418c30   → 0x00418c30
+  004183f0  cmp      byte ptr [0x497164], 0   ← 全局
+  004183f7  jne      0x418c30   → 0x00418c30
+  004183fd  push     0
+  004183ff  push     0x482322
+  00418404  call     0x4542ce   → 0x004542ce
+  00418409  add      esp, 8
+  0041840c  mov      byte ptr [0x497164], 1   ← 全局
+  00418413  jmp      0x4183cc   → 0x004183cc
+  00418415  mov      ch, byte ptr [0x49715d]   ← 全局
+  0041841b  test     ch, ch
+  0041841d  je       0x418670   → 0x00418670
+  00418423  cmp      esi, 0x1b8
+  00418429  jle      0x418670   → 0x00418670
+  0041842f  xor      eax, eax
+  00418431  mov      al, ch
+  00418433  shl      eax, 2
+  00418436  mov      ecx, dword ptr [eax + 0x4752aa]   ← 全局
+  0041843c  cmp      edx, ecx
+  0041843e  jle      0x418670   → 0x00418670
+  00418444  lea      ebx, [ecx + 0xc8]
+  0041844a  cmp      edx, ebx
+  0041844c  jge      0x418670   → 0x00418670
+  00418452  lea      ebx, [esi - 0x1b8]
+  00418458  mov      esi, edx
+  0041845a  sub      esi, ecx
+  0041845c  cmp      ebx, 3
+  0041845f  jl       0x418591   → 0x00418591
+  00418465  cmp      ebx, 0x35
+  00418468  jg       0x418591   → 0x00418591
+  0041846e  cmp      esi, 3
+  00418471  jl       0x418591   → 0x00418591
+  00418477  cmp      esi, 0x1c
+  0041847a  jg       0x418591   → 0x00418591
+  00418480  push     0
+  00418482  push     0x482322
+  00418487  call     0x4542ce   → 0x004542ce
+  0041848c  add      esp, 8
+  0041848f  lea      edx, [ebx - 3]
+  00418492  mov      ebx, 0x19
+  00418497  mov      eax, edx
+  00418499  sar      edx, 0x1f
+  0041849c  idiv     ebx
+  0041849e  inc      eax
+  0041849f  mov      byte ptr [0x48be28], al   ← 全局
+  004184a4  xor      eax, eax
+  004184a6  mov      al, byte ptr [0x48be28]   ← 全局
+  004184ab  lea      edx, [eax - 1]
+  004184ae  mov      eax, edx
+  004184b0  shl      eax, 2
+  004184b3  sub      eax, edx
+  004184b5  shl      eax, 3
+  004184b8  add      eax, edx
+  004184ba  lea      edx, [eax + 0x1bb]
+  004184c0  mov      dword ptr [esp + 0x14], edx
+  004184c4  add      eax, 0x1d4
+  004184c9  mov      dword ptr [esp + 0x1c], eax
+  004184cd  xor      edx, edx
+  004184cf  mov      dl, byte ptr [0x49715d]   ← 全局
+  004184d5  mov      eax, dword ptr [edx*4 + 0x4752aa]   ← 全局
+  004184dc  add      eax, 3
+  004184df  mov      dword ptr [esp + 0x18], eax
+  004184e3  mov      eax, dword ptr [edx*4 + 0x4752aa]   ← 全局
+  004184ea  add      eax, 0x1c
+  004184ed  mov      dword ptr [esp + 0x20], eax
+  004184f1  mov      eax, dword ptr [0x48a0e0]   ← 全局
+  004184f6  mov      edx, dword ptr [eax]
+  004184f8  push     0
+  004184fa  push     1
+  004184fc  push     0x48a068
+  00418501  push     0
+  00418503  push     eax
+  00418504  call     dword ptr [edx + 0x64]
+  00418507  mov      ecx, dword ptr [esp + 0x18]
+  0041850b  push     ecx
+  0041850c  mov      ebx, dword ptr [esp + 0x18]
+  00418510  push     ebx
+  00418511  xor      edx, edx
+  00418513  mov      dl, byte ptr [0x48be28]   ← 全局
+  00418519  add      edx, 0x11
+  0041851c  mov      eax, edx
+  0041851e  shl      eax, 2
+  00418521  sub      eax, edx
+  00418523  mov      edx, eax
+  00418525  shl      edx, 2
+  00418528  mov      eax, dword ptr [0x48bad8]   ← 全局
+  0041852d  add      eax, 0xc
+  00418530  add      eax, edx
+  00418532  push     eax
+  00418533  mov      esi, dword ptr [0x48a08c]   ← 全局
+  00418539  push     esi
+  0041853a  call     0x456418   → 0x00456418
+  0041853f  add      esp, 0x10
+  00418542  mov      eax, dword ptr [0x48a0e0]   ← 全局
+  00418547  mov      edx, dword ptr [eax]
+  00418549  push     0
+  0041854b  push     eax
+  0041854c  call     dword ptr [edx + 0x80]
+  00418552  lea      eax, [esp + 0x14]
+  00418556  push     eax
+  00418557  call     0x40235d   → 0x0040235d
+  0041855c  add      esp, 4
+  0041855f  mov      eax, dword ptr [0x48a0dc]   ← 全局
+  00418564  mov      edx, dword ptr [eax]
+  00418566  push     0x10
+  00418568  lea      ebx, [esp + 0x18]
+  0041856c  push     ebx
+  0041856d  mov      edi, dword ptr [0x48a0e0]   ← 全局
+  00418573  push     edi
+  00418574  mov      ebp, dword ptr [esp + 0x24]
+  00418578  push     ebp
+  00418579  mov      ecx, dword ptr [esp + 0x24]
+  0041857d  push     ecx
+  0041857e  push     eax
+  0041857f  call     dword ptr [edx + 0x1c]
+  00418582  lea      eax, [esp + 0x14]
+  00418586  push     eax
+  00418587  call     0x402250   → 0x00402250
+  0041858c  jmp      0x4182ad   → 0x004182ad
+  00418591  mov      byte ptr [0x48be29], 1   ← 全局
+  00418598  mov      eax, ebx
+  0041859a  shl      eax, 2
+  0041859d  sub      eax, ebx
+  0041859f  shl      eax, 0xd
+  004185a2  mov      ebx, eax
+  004185a4  shl      eax, 5
+  004185a7  sub      eax, ebx
+  004185a9  mov      ebx, eax
+  004185ab  sar      ebx, 0x10
+  004185ae  mov      eax, esi
+  004185b0  shl      eax, 2
+  004185b3  sub      eax, esi
+  004185b5  shl      eax, 0xd
+  004185b8  mov      esi, eax
+  004185ba  shl      eax, 5
+  004185bd  sub      eax, esi
+  004185bf  mov      esi, eax
+  004185c1  sar      esi, 0x10
+  004185c4  cmp      ebx, dword ptr [0x48be1c]   ← 全局
+  004185ca  jne      0x4185d8   → 0x004185d8
+  004185cc  cmp      esi, dword ptr [0x48be20]   ← 全局
+  004185d2  je       0x418656   → 0x00418656
+  004185d8  mov      dword ptr [0x48be18], 1   ← 全局
+  004185e2  mov      dword ptr [0x48be1c], ebx   ← 全局
+  004185e8  mov      dword ptr [0x48be20], esi   ← 全局
+  004185ee  cmp      ebx, 0xdc
+  004185f4  jge      0x418602   → 0x00418602
+  004185f6  mov      dword ptr [0x48be1c], 0xdc   ← 全局
+  00418600  jmp      0x418614   → 0x00418614
+  00418602  cmp      ebx, 0x824
+  00418608  jle      0x418614   → 0x00418614
+  0041860a  mov      dword ptr [0x48be1c], 0x824   ← 全局
+  00418614  mov      edi, dword ptr [0x48be20]   ← 全局
+  0041861a  cmp      edi, 0xdc
+  00418620  jge      0x41862e   → 0x0041862e
+  00418622  mov      dword ptr [0x48be20], 0xdc   ← 全局
+  0041862c  jmp      0x418640   → 0x00418640
+  0041862e  cmp      edi, 0x824
+  00418634  jle      0x418640   → 0x00418640
+  00418636  mov      dword ptr [0x48be20], 0x824   ← 全局
+  00418640  push     1
+  00418642  call     0x416e6d   → 0x00416e6d
+  00418647  add      esp, 4
+  0041864a  push     1
+  0041864c  call     0x415e70   → 0x00415e70
+  00418651  jmp      0x4182ad   → 0x004182ad
+  00418656  cmp      dword ptr [0x48be18], 0   ← 全局
+  0041865d  je       0x418c30   → 0x00418c30
+  00418663  xor      edx, edx
+  00418665  mov      dword ptr [0x48be18], edx   ← 全局
+  0041866b  jmp      0x418c30   → 0x00418c30
+  00418670  cmp      esi, 0x1b8
+  00418676  jge      0x4186a7   → 0x004186a7
+  00418678  cmp      edx, 0x28
+  0041867b  jge      0x4186a7   → 0x004186a7
+  0041867d  push     0
+  0041867f  push     0x482322
+  00418684  call     0x4542ce   → 0x004542ce
+  00418689  add      esp, 8
+  0041868c  mov      ebx, 0x28
+  00418691  mov      eax, esi
+  00418693  mov      edx, esi
+  00418695  sar      edx, 0x1f
+  00418698  idiv     ebx
+  0041869a  add      eax, 0x64
+  0041869d  mov      byte ptr [0x48be28], al   ← 全局
+  004186a2  jmp      0x418c30   → 0x00418c30
+  004186a7  cmp      esi, 0x1b8
+  004186ad  jge      0x418c30   → 0x00418c30
+  004186b3  cmp      edx, 0x28
+  004186b6  jle      0x418c30   → 0x00418c30
+  004186bc  push     edx
+  004186bd  push     esi
+  004186be  call     0x417559   → 0x00417559
+  004186c3  add      esp, 8
+  004186c6  jmp      0x418c30   → 0x00418c30
+  004186cb  cmp      byte ptr [0x46cafd], 0   ← 全局
+  004186d2  je       0x418c30   → 0x00418c30
+  004186d8  cmp      byte ptr [0x48be29], 0   ← 全局
+  004186df  je       0x4186f3   → 0x004186f3
+  004186e1  push     1
+  004186e3  call     0x4024a9   → 0x004024a9
+  004186e8  add      esp, 4
+  004186eb  xor      dh, dh
+  004186ed  mov      byte ptr [0x48be29], dh   ← 全局
+  004186f3  mov      bl, byte ptr [0x48be28]   ← 全局
+  004186f9  cmp      bl, 1
+  004186fc  je       0x418707   → 0x00418707
+  004186fe  cmp      bl, 2
+  00418701  jne      0x418855   → 0x00418855
+  00418707  cmp      byte ptr [0x48be28], 1   ← 全局
+  0041870e  jne      0x41873b   → 0x0041873b
+  00418710  mov      esi, dword ptr [0x499088]   ← 全局
+  00418716  dec      esi
+  00418717  mov      dword ptr [0x499088], esi   ← 全局
+  0041871d  mov      edi, esi
+  0041871f  and      edi, 7
+  00418722  mov      dword ptr [0x499088], edi   ← 全局
+  00418728  mov      ebp, 0xffffffff
+  0041872d  mov      dword ptr [0x474930], ebp   ← 全局
+  00418733  mov      dword ptr [0x474934], ebp   ← 全局
+  00418739  jmp      0x418762   → 0x00418762
+  0041873b  mov      eax, dword ptr [0x499088]   ← 全局
+  00418740  inc      eax
+  00418741  mov      dword ptr [0x499088], eax   ← 全局
+  00418746  mov      edx, eax
+  00418748  and      edx, 7
+  0041874b  mov      dword ptr [0x499088], edx   ← 全局
+  00418751  mov      ecx, 0xffffffff
+  00418756  mov      dword ptr [0x474930], ecx   ← 全局
+  0041875c  mov      dword ptr [0x474934], ecx   ← 全局
+  00418762  xor      edx, edx
+  00418764  mov      dl, byte ptr [0x48be28]   ← 全局
+  0041876a  dec      edx
+  0041876b  mov      eax, edx
+  0041876d  shl      eax, 2
+  00418770  sub      eax, edx
+  00418772  shl      eax, 3
+  00418775  add      eax, edx
+  00418777  lea      edx, [eax + 0x1bb]
+  0041877d  mov      dword ptr [esp + 0x14], edx
+  00418781  add      eax, 0x1d4
+  00418786  mov      dword ptr [esp + 0x1c], eax
+  0041878a  xor      edx, edx
+  0041878c  mov      dl, byte ptr [0x49715d]   ← 全局
+  00418792  mov      eax, dword ptr [edx*4 + 0x4752aa]   ← 全局
+  00418799  add      eax, 3
+  0041879c  mov      dword ptr [esp + 0x18], eax
+  004187a0  mov      eax, dword ptr [edx*4 + 0x4752aa]   ← 全局
+  004187a7  add      eax, 0x1c
+  004187aa  mov      dword ptr [esp + 0x20], eax
+  004187ae  mov      eax, dword ptr [0x48a0e0]   ← 全局
+  004187b3  mov      edx, dword ptr [eax]
+  004187b5  push     0
+  004187b7  push     1
+  004187b9  push     0x48a068
+  004187be  push     0
+  004187c0  push     eax
+  004187c1  call     dword ptr [edx + 0x64]
+  004187c4  mov      edx, dword ptr [esp + 0x18]
+  004187c8  push     edx
+  004187c9  mov      ecx, dword ptr [esp + 0x18]
+  004187cd  push     ecx
+  004187ce  xor      edx, edx
+  004187d0  mov      dl, byte ptr [0x48be28]   ← 全局
+  004187d6  add      edx, 0x13
+  004187d9  mov      eax, edx
+  004187db  shl      eax, 2
+  004187de  sub      eax, edx
+  004187e0  mov      edx, eax
+  004187e2  shl      edx, 2
+  004187e5  mov      eax, dword ptr [0x48bad8]   ← 全局
+  004187ea  add      eax, 0xc
+  004187ed  add      eax, edx
+  004187ef  push     eax
+  004187f0  mov      ebx, dword ptr [0x48a08c]   ← 全局
+  004187f6  push     ebx
+  004187f7  call     0x456418   → 0x00456418
+  004187fc  add      esp, 0x10
+  004187ff  mov      eax, dword ptr [0x48a0e0]   ← 全局
+  00418804  mov      edx, dword ptr [eax]
+  00418806  push     0
+  00418808  push     eax
+  00418809  call     dword ptr [edx + 0x80]
+  0041880f  lea      eax, [esp + 0x14]
+  00418813  push     eax
+  00418814  call     0x40235d   → 0x0040235d
+  00418819  add      esp, 4
+  0041881c  mov      eax, dword ptr [0x48a0dc]   ← 全局
+  00418821  mov      edx, dword ptr [eax]
+  00418823  push     0x10
+  00418825  lea      ebx, [esp + 0x18]
+  00418829  push     ebx
+  0041882a  mov      esi, dword ptr [0x48a0e0]   ← 全局
+  00418830  push     esi
+  00418831  mov      edi, dword ptr [esp + 0x24]
+  00418835  push     edi
+  00418836  mov      ebp, dword ptr [esp + 0x24]
+  0041883a  push     ebp
+  0041883b  push     eax
+  0041883c  call     dword ptr [edx + 0x1c]
+  0041883f  lea      eax, [esp + 0x14]
+  00418843  push     eax
+  00418844  call     0x402250   → 0x00402250
+  00418849  add      esp, 4
+  0041884c  push     1
+  0041884e  call     0x415e70   → 0x00415e70
+  00418853  jmp      0x418875   → 0x00418875
+  00418855  cmp      bl, 0xc
+  00418858  jne      0x418863   → 0x00418863
+  0041885a  xor      al, al
+  0041885c  mov      byte ptr [0x48be2a], al   ← 全局
+  00418861  jmp      0x418878   → 0x00418878
+  00418863  cmp      bl, 0x64
+  00418866  jb       0x418878   → 0x00418878
+  00418868  xor      eax, eax
+  0041886a  mov      al, bl
+  0041886c  sub      eax, 0x64
+  0041886f  push     eax
+  00418870  call     0x417d65   → 0x00417d65
+  00418875  add      esp, 4
+  00418878  cmp      dword ptr [0x475270], 0   ← 全局
+  0041887f  je       0x418886   → 0x00418886
+  00418881  call     0x417c67   → 0x00417c67
+  00418886  xor      dl, dl
+  00418888  mov      byte ptr [0x48be28], dl   ← 全局
+  0041888e  jmp      0x418c30   → 0x00418c30
+  00418893  xor      esi, esi
+  00418895  mov      si, dx
+  00418898  xor      edx, edx
+  0041889a  mov      dx, bx
+  0041889d  cmp      byte ptr [0x46cafd], 0   ← 全局
+  004188a4  je       0x418c30   → 0x00418c30
+  004188aa  cmp      dword ptr [0x48be18], 0   ← 全局
+  004188b1  je       0x418c30   → 0x00418c30
+  004188b7  mov      cl, byte ptr [0x49715d]   ← 全局
+  004188bd  test     cl, cl
+  004188bf  je       0x418c30   → 0x00418c30
+  004188c5  cmp      esi, 0x1b8
+  004188cb  jle      0x418c30   → 0x00418c30
+  004188d1  xor      ebx, ebx
+  004188d3  cmp      cl, 1
+  004188d6  jne      0x4188e5   → 0x004188e5
+  004188d8  cmp      edx, 0x118
+  004188de  jle      0x4188e5   → 0x004188e5
+  004188e0  mov      ebx, 1
+  004188e5  cmp      byte ptr [0x49715d], 2   ← 全局
+  004188ec  jne      0x4188fb   → 0x004188fb
+  004188ee  cmp      edx, 0x50
+  004188f1  jle      0x4188fb   → 0x004188fb
+  004188f3  cmp      edx, 0x118
+  004188f9  jl       0x418903   → 0x00418903
+  004188fb  test     ebx, ebx
+  004188fd  je       0x418c30   → 0x00418c30
+  00418903  xor      ebp, ebp
+  00418905  mov      dword ptr [0x48be18], ebp   ← 全局
+  0041890b  jmp      0x418640   → 0x00418640
+  00418910  cmp      byte ptr [0x46cafd], 0   ← 全局
+  00418917  je       0x418c30   → 0x00418c30
+  0041891d  xor      esi, esi
+  0041891f  mov      si, dx
+  00418922  xor      edx, edx
+  00418924  mov      dx, bx
+  00418927  cmp      byte ptr [0x48be29], 0   ← 全局
+  0041892e  je       0x418a73   → 0x00418a73
+  00418934  cmp      byte ptr [0x49715d], 1   ← 全局
+  0041893b  jne      0x41895b   → 0x0041895b
+  0041893d  cmp      esi, 0x1b8
+  00418943  jle      0x41895b   → 0x0041895b
+  00418945  cmp      edx, 0x118
+  0041894b  jle      0x41895b   → 0x0041895b
+  0041894d  lea      ebx, [esi - 0x1b8]
+  00418953  lea      esi, [edx - 0x118]
+  00418959  jmp      0x41899b   → 0x0041899b
+  0041895b  cmp      byte ptr [0x49715d], 2   ← 全局
+  00418962  jne      0x418984   → 0x00418984
+  00418964  cmp      esi, 0x1b8
+  0041896a  jle      0x418984   → 0x00418984
+  0041896c  cmp      edx, 0x50
+  0041896f  jle      0x418984   → 0x00418984
+  00418971  cmp      edx, 0x118
+  00418977  jge      0x418984   → 0x00418984
+  00418979  lea      ebx, [esi - 0x1b8]
+  0041897f  lea      esi, [edx - 0x50]
+  00418982  jmp      0x41899b   → 0x0041899b
+  00418984  push     1
+  00418986  call     0x4024a9   → 0x004024a9
+  0041898b  add      esp, 4
+  0041898e  xor      cl, cl
+  00418990  mov      byte ptr [0x48be29], cl   ← 全局
+  00418996  jmp      0x418c30   → 0x00418c30
+  0041899b  cmp      byte ptr [0x48be29], 0   ← 全局
+  004189a2  je       0x418c30   → 0x00418c30
+  004189a8  mov      eax, ebx
+  004189aa  shl      eax, 2
+  004189ad  sub      eax, ebx
+  004189af  shl      eax, 0xd
+  004189b2  mov      ebx, eax
+  004189b4  shl      eax, 5
+  004189b7  sub      eax, ebx
+  004189b9  mov      ebx, eax
+  004189bb  sar      ebx, 0x10
+  004189be  mov      eax, esi
+  004189c0  shl      eax, 2
+  004189c3  sub      eax, esi
+  004189c5  shl      eax, 0xd
+  004189c8  mov      esi, eax
+  004189ca  shl      eax, 5
+  004189cd  sub      eax, esi
+  004189cf  mov      esi, eax
+  004189d1  sar      esi, 0x10
+  004189d4  cmp      ebx, dword ptr [0x48be1c]   ← 全局
+  004189da  jne      0x4189e8   → 0x004189e8
+  004189dc  cmp      esi, dword ptr [0x48be20]   ← 全局
+  004189e2  je       0x418656   → 0x00418656
+  004189e8  mov      dword ptr [0x48be1c], ebx   ← 全局
+  004189ee  mov      dword ptr [0x48be20], esi   ← 全局
+  004189f4  cmp      ebx, 0xdc
+  004189fa  jge      0x418a08   → 0x00418a08
+  004189fc  mov      dword ptr [0x48be1c], 0xdc   ← 全局
+  00418a06  jmp      0x418a1a   → 0x00418a1a
+  00418a08  cmp      ebx, 0x824
+  00418a0e  jle      0x418a1a   → 0x00418a1a
+  00418a10  mov      dword ptr [0x48be1c], 0x824   ← 全局
+  00418a1a  mov      esi, dword ptr [0x48be20]   ← 全局
+  00418a20  cmp      esi, 0xdc
+  00418a26  jge      0x418a34   → 0x00418a34
+  00418a28  mov      dword ptr [0x48be20], 0xdc   ← 全局
+  00418a32  jmp      0x418a46   → 0x00418a46
+  00418a34  cmp      esi, 0x824
+  00418a3a  jle      0x418a46   → 0x00418a46
+  00418a3c  mov      dword ptr [0x48be20], 0x824   ← 全局
+  00418a46  push     1
+  00418a48  call     0x416e6d   → 0x00416e6d
+  00418a4d  add      esp, 4
+  00418a50  push     1
+  00418a52  call     0x415e70   → 0x00415e70
+  00418a57  add      esp, 4
+  00418a5a  push     0
+  00418a5c  call     0x4024a9   → 0x004024a9
+  00418a61  add      esp, 4
+  00418a64  mov      dword ptr [0x48be18], 1   ← 全局
+  00418a6e  jmp      0x418c30   → 0x00418c30
+  00418a73  cmp      byte ptr [0x48be2a], 0   ← 全局
+  00418a7a  je       0x418b0a   → 0x00418b0a
+  00418a80  mov      edi, dword ptr [0x48be2b]   ← 全局
+  00418a86  mov      ebx, esi
+  00418a88  sub      ebx, edi
+  00418a8a  mov      ebp, dword ptr [0x48be2f]   ← 全局
+  00418a90  mov      esi, edx
+  00418a92  sub      esi, ebp
+  00418a94  cmp      ebx, dword ptr [0x475284]   ← 全局
+  00418a9a  jne      0x418aa8   → 0x00418aa8
+  00418a9c  cmp      esi, dword ptr [0x475288]   ← 全局
+  00418aa2  je       0x418c30   → 0x00418c30
+  00418aa8  mov      dword ptr [0x475284], ebx   ← 全局
+  00418aae  mov      dword ptr [0x475288], esi   ← 全局
+  00418ab4  test     ebx, ebx
+  00418ab6  jge      0x418ac0   → 0x00418ac0
+  00418ab8  xor      ecx, ecx
+  00418aba  mov      dword ptr [0x475284], ecx   ← 全局
+  00418ac0  mov      eax, 0x280
+  00418ac5  sub      eax, dword ptr [0x48bdd8]   ← 全局
+  00418acb  cmp      eax, dword ptr [0x475284]   ← 全局
+  00418ad1  jge      0x418ad8   → 0x00418ad8
+  00418ad3  mov      dword ptr [0x475284], eax   ← 全局
+  00418ad8  cmp      dword ptr [0x475288], 0   ← 全局
+  00418adf  jge      0x418ae9   → 0x00418ae9
+  00418ae1  xor      ebp, ebp
+  00418ae3  mov      dword ptr [0x475288], ebp   ← 全局
+  00418ae9  mov      eax, 0x1e0
+  00418aee  sub      eax, dword ptr [0x48bddc]   ← 全局
+  00418af4  cmp      eax, dword ptr [0x475288]   ← 全局
+  00418afa  jge      0x4182a6   → 0x004182a6
+  00418b00  mov      dword ptr [0x475288], eax   ← 全局
+  00418b05  jmp      0x4182a6   → 0x004182a6
+  00418b0a  cmp      esi, 0x1b8
+  00418b10  jge      0x418b46   → 0x00418b46
+  00418b12  cmp      edx, 0x28
+  00418b15  jge      0x418b46   → 0x00418b46
+  00418b17  mov      ebx, 0x28
+  00418b1c  mov      eax, esi
+  00418b1e  mov      edx, esi
+  00418b20  sar      edx, 0x1f
+  00418b23  idiv     ebx
+  00418b25  mov      ebx, eax
+  00418b27  cmp      eax, dword ptr [0x48bde4]   ← 全局
+  00418b2d  je       0x418b63   → 0x00418b63
+  00418b2f  push     0
+  00418b31  push     0x48231a
+  00418b36  call     0x4542ce   → 0x004542ce
+  00418b3b  add      esp, 8
+  00418b3e  mov      dword ptr [0x48bde4], ebx   ← 全局
+  00418b44  jmp      0x418b59   → 0x00418b59
+  00418b46  cmp      dword ptr [0x48bde4], -1   ← 全局
+  00418b4d  je       0x418b63   → 0x00418b63
+  00418b4f  mov      dword ptr [0x48bde4], 0xffffffff   ← 全局
+  00418b59  push     1
+  00418b5b  call     0x415d31   → 0x00415d31
+  00418b60  add      esp, 4
+  00418b63  cmp      dword ptr [0x475270], 0   ← 全局
+  00418b6a  je       0x418c30   → 0x00418c30
+  00418b70  call     0x417c67   → 0x00417c67
+  00418b75  jmp      0x418c30   → 0x00418c30
+  00418b7a  cmp      ecx, dword ptr [0x46cad8]   ← 全局
+  00418b80  jne      0x418c30   → 0x00418c30
+  00418b86  cmp      byte ptr [0x46cb01], 0   ← 全局
+  00418b8d  je       0x418c30   → 0x00418c30
+  00418b93  cmp      byte ptr [0x46cafd], 0   ← 全局
+  00418b9a  je       0x418c30   → 0x00418c30
+  00418ba0  cmp      dword ptr [0x475270], 0   ← 全局
+  00418ba7  jne      0x418c30   → 0x00418c30
+  00418bad  xor      byte ptr [0x48bdd4], 1   ← 全局
+  00418bb4  jmp      0x4182a6   → 0x004182a6
+  00418bb9  push     0
+  00418bbb  call     0x415d31   → 0x00415d31
+  00418bc0  add      esp, 4
+  00418bc3  push     0
+  00418bc5  call     0x415e70   → 0x00415e70
+  00418bca  add      esp, 4
+  00418bcd  mov      al, byte ptr [0x49715d]   ← 全局
+  00418bd2  cmp      al, 1
+  00418bd4  jb       0x418bde   → 0x00418bde
+  00418bd6  jbe      0x418bf5   → 0x00418bf5
+  00418bd8  cmp      al, 2
+  00418bda  je       0x418c08   → 0x00418c08
+  00418bdc  jmp      0x418c26   → 0x00418c26
+  00418bde  test     al, al
+  00418be0  jne      0x418c26   → 0x00418c26
+  00418be2  push     0
+  00418be4  call     0x415f69   → 0x00415f69
+  00418be9  add      esp, 4
+  00418bec  push     0
+  00418bee  call     0x4169bc   → 0x004169bc
+  00418bf3  jmp      0x418c23   → 0x00418c23
+  00418bf5  push     0
+  00418bf7  call     0x415f69   → 0x00415f69
+  00418bfc  add      esp, 4
+  00418bff  push     0
+  00418c01  call     0x416e6d   → 0x00416e6d
+  00418c06  jmp      0x418c23   → 0x00418c23
+  00418c08  push     0
+  00418c0a  call     0x4166f8   → 0x004166f8
+  00418c0f  add      esp, 4
+  00418c12  push     0
+  00418c14  call     0x416e6d   → 0x00416e6d
+  00418c19  add      esp, 4
+  00418c1c  push     0
+  00418c1e  call     0x4169bc   → 0x004169bc
+  00418c23  add      esp, 4
+  00418c26  push     0
+  00418c28  push     esi
+  00418c29  call     dword ptr cs:[0x462340]
+  00418c30  xor      eax, eax
+  00418c32  add      esp, 0x24
+  00418c35  pop      ebp
+  00418c36  pop      edi
+  00418c37  pop      esi
+  00418c38  pop      ebx
+  00418c39  ret      0x10
+

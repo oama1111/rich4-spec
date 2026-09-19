@@ -1,0 +1,1656 @@
+===== 0x4020fa  sub_004020fa  50 条 =====
+  callees: loc_004021b1, mkf_read_resource, sub_00451a5a, USER32!ShowCursor, WINMM!timeSetEvent
+  globals: 0x0046cb10, 0x0048a0e4, 0x0048a0e8, 0x0048a179, 0x0048a17a, 0x0048a178, 0x0048a168, 0x0046232c, 0x0048a0f8, 0x0048a0dc, 0x0048a108, 0x0046cb14, 0x00462474, 0x0048a16c
+     004020fa  mov     edx, dword ptr [0x46cb10]   ← 全局
+     00402100  test    edx, edx
+     00402102  jne     0x4021b1   → loc_004021b1
+     00402108  push    edx
+     00402109  push    edx
+     0040210a  push    edx
+     0040210b  mov     ecx, dword ptr [0x48a0e4]   ← 全局
+     00402111  push    ecx
+     00402112  call    0x450441   → mkf_read_resource
+     00402117  add     esp, 0x10
+     0040211a  mov     dword ptr [0x46cb10], eax   ← 全局
+     0040211f  push    0
+     00402121  push    0
+     00402123  push    0x20
+    ... 余 36 条
+
+===== 0x4026e2  sub_004026e2  33 条 =====
+  callees: sub_00402460, sub_00454acb, sub_00411b53, sub_004549cf, blitRect, sub_00402617
+  globals: 0x0048a0e0, 0x0048a180, 0x0048a08c
+     004026e2  push    0
+     004026e4  call    0x402460   → sub_00402460
+     004026e9  add     esp, 4
+     004026ec  call    0x454acb   → sub_00454acb
+     004026f1  push    0
+     004026f3  call    0x411b53   → sub_00411b53
+     004026f8  add     esp, 4
+     004026fb  push    0
+     004026fd  call    0x4549cf   → sub_004549cf
+     00402702  add     esp, 4
+     00402705  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     0040270a  mov     edx, dword ptr [eax]
+     0040270c  push    0
+     0040270e  push    1
+    ... 余 19 条
+
+===== 0x405339  sub_00405339  37 条 =====
+  callees: loc_00404fdf, loc_0040539e, sub_00404d0a, sub_4542ce, sub_0040423c, loc_00405afc, sub_00404d82, loc_00405384
+  globals: 0x0048a410, 0x0046cb3c, 0x0048a40d
+     00405339  movsx   eax, byte ptr [0x48a410]   ← 全局
+     00405340  cmp     eax, -1
+     00405343  je      0x404fdf   → loc_00404fdf
+     00405349  cmp     byte ptr [eax + 0x4990f4], 0   ← 全局
+     00405350  jne     0x40539e   → loc_0040539e
+     00405352  mov     ebx, dword ptr [0x46cb3c]   ← 全局
+     00405358  add     ebx, 2
+     0040535b  movsx   edx, byte ptr [0x48a40d]   ← 全局
+     00405362  cmp     edx, ebx
+     00405364  jge     0x40539e   → loc_0040539e
+     00405366  mov     byte ptr [eax + 0x4990f4], 1   ← 全局
+     0040536d  push    eax
+     0040536e  push    edx
+     0040536f  call    0x404d0a   → sub_00404d0a
+    ... 余 23 条
+
+===== 0x4053d9  sub_004053d9  73 条 =====
+  callees: sub_00456280, sub_0045643d, USER32!InvalidateRect
+  globals: 0x0048a40e, 0x0048a3b8, 0x0048a3a0, 0x0048a0e0, 0x0048a08c, 0x004622f8
+     004053d9  mov     byte ptr [0x48a40e], bl   ← 全局
+     004053df  mov     esi, ebx
+     004053e1  shl     esi, 3
+     004053e4  movsx   eax, word ptr [esi + 0x46cc1a]   ← 全局
+     004053eb  sub     eax, 0xa
+     004053ee  push    eax
+     004053ef  movsx   eax, word ptr [esi + 0x46cc18]   ← 全局
+     004053f6  sub     eax, 0x1bd
+     004053fb  push    eax
+     004053fc  lea     edx, [ebx + 1]
+     004053ff  mov     eax, edx
+     00405401  shl     eax, 2
+     00405404  sub     eax, edx
+     00405406  mov     edx, eax
+    ... 余 59 条
+
+===== 0x4054d8  sub_004054d8  63 条 =====
+  callees: sub_00456280, sub_0045643d, USER32!InvalidateRect, sub_004054cb
+  globals: 0x0048a40e, 0x0048a3b8, 0x0048a3a0, 0x0048a0e0, 0x0048a08c, 0x004622f8
+     004054d8  mov     byte ptr [0x48a40e], bl   ← 全局
+     004054de  movsx   eax, word ptr [ebx*8 + 0x46cc1a]   ← 全局
+     004054e6  sub     eax, 0xa
+     004054e9  push    eax
+     004054ea  movsx   eax, word ptr [ebx*8 + 0x46cc18]   ← 全局
+     004054f2  sub     eax, 0x1bd
+     004054f7  push    eax
+     004054f8  mov     eax, dword ptr [0x48a3b8]   ← 全局
+     004054fd  add     eax, 0x3c
+     00405500  push    eax
+     00405501  mov     edi, dword ptr [0x48a3a0]   ← 全局
+     00405507  push    edi
+     00405508  call    0x456280   → sub_00456280
+     0040550d  add     esp, 0x10
+    ... 余 49 条
+
+===== 0x4055b9  sub_004055b9  47 条 =====
+  callees: loc_00404fdf, sub_4542ce, sub_00456280, sub_004562a5, mkf_read_resource, sub_004552b7, loc_00404fd3
+  globals: 0x0046cb54, 0x0048a390, 0x0048a3a0, 0x0048a3b8, 0x0048a358, 0x004991b6, 0x0048a3b0, 0x0048a354
+     004055b9  sub     ebx, 9
+     004055bc  cmp     ebx, dword ptr [0x46cb54]   ← 全局
+     004055c2  je      0x404fdf   → loc_00404fdf
+     004055c8  push    0
+     004055ca  push    0x482322
+     004055cf  call    0x4542ce   → sub_4542ce
+     004055d4  add     esp, 8
+     004055d7  mov     dword ptr [0x46cb54], ebx   ← 全局
+     004055dd  push    0xf
+     004055df  push    0x8a
+     004055e4  mov     ebx, dword ptr [0x48a390]   ← 全局
+     004055ea  push    ebx
+     004055eb  mov     esi, dword ptr [0x48a3a0]   ← 全局
+     004055f1  push    esi
+    ... 余 33 条
+
+===== 0x4079f9  sub_004079f9  20 条 =====
+  callees: loc_00407a1a, loc_00407a29
+     004079f9  push    ebx
+     004079fa  push    esi
+     004079fb  xor     eax, eax
+     004079fd  mov     ebx, dword ptr [esp + 0xc]
+     00407a01  mov     bx, word ptr [ebx]
+     00407a04  mov     edx, dword ptr [esp + 0x10]
+     00407a08  mov     dx, word ptr [edx]
+     00407a0b  movsx   esi, bx
+     00407a0e  movsx   ecx, dx
+     00407a11  cmp     esi, ecx
+     00407a13  jle     0x407a1a   → loc_00407a1a
+     00407a15  mov     eax, 1
+     00407a1a  movsx   ecx, bx
+     00407a1d  movsx   edx, dx
+    ... 余 6 条
+
+===== 0x40a9a4  sub_0040a9a4  9 条 =====
+  callees: USER32!DefWindowProcA, loc_0040a99a
+  globals: 0x004622d8
+     0040a9a4  mov     ecx, dword ptr [esp + 0x30]
+     0040a9a8  push    ecx
+     0040a9a9  mov     ebx, dword ptr [esp + 0x30]
+     0040a9ad  push    ebx
+     0040a9ae  push    eax
+     0040a9af  mov     esi, dword ptr [esp + 0x30]
+     0040a9b3  push    esi
+     0040a9b4  call    dword ptr cs:[0x4622d8]   → USER32!DefWindowProcA
+     0040a9bb  jmp     0x40a99a   → loc_0040a99a
+
+===== 0x40d4e5  sub_0040d4e5  63 条 =====
+  callees: sub_0041906a, sub_0040b93b, loc_0040d567, mkf_read_resource, loc_0040d588, sub_0045144f, my_free
+  globals: 0x00498e80, 0x0048a0e4
+     0040d4e5  push    ebx
+     0040d4e6  push    edi
+     0040d4e7  push    ebp
+     0040d4e8  sub     esp, 4
+     0040d4eb  mov     cl, byte ptr [esp + 0x14]
+     0040d4ef  mov     ebx, 0x100
+     0040d4f4  shl     ebx, cl
+     0040d4f6  push    1
+     0040d4f8  call    0x41906a   → sub_0041906a
+     0040d4fd  add     esp, 4
+     0040d500  imul    edx, dword ptr [esp + 0x14], 0x68
+     0040d505  xor     eax, eax
+     0040d507  mov     al, byte ptr [edx + 0x496b9b]   ← 全局
+     0040d50d  mov     dword ptr [esp], eax
+    ... 余 49 条
+
+===== 0x40d8d3  sub_0040d8d3  38 条 =====
+  callees: loc_0040d932, sub_004542e9, loc_0040d916, loc_0040d947, sub_0041b42d, loc_0040d966, sub_0040c05c, sub_00416e6d, loc_0040d88e
+  globals: 0x0048baf8, 0x004749d4, 0x0049910c, 0x0048bb00
+     0040d8d3  cmp     dword ptr [0x48baf8], 0   ← 全局
+     0040d8da  jne     0x40d932   → loc_0040d932
+     0040d8dc  mov     eax, dword ptr [0x4749d4]   ← 全局
+     0040d8e1  shl     eax, 3
+     0040d8e4  add     eax, 0x48234a
+     0040d8e9  push    eax
+     0040d8ea  call    0x4542e9   → sub_004542e9
+     0040d8ef  add     esp, 4
+     0040d8f2  mov     ebp, dword ptr [0x49910c]   ← 全局
+     0040d8f8  cmp     ebp, 4
+     0040d8fb  jge     0x40d916   → loc_0040d916
+     0040d8fd  imul    eax, ebp, 0x68
+     0040d900  cmp     byte ptr [eax + 0x496ba8], 0   ← 全局
+     0040d907  je      0x40d916   → loc_0040d916
+    ... 余 24 条
+
+===== 0x40defe  sub_0040defe  25 条 =====
+  callees: loc_0040df41, loc_0040df30, loc_0040df3e
+  globals: 0x0049910c, 0x0046caf8, 0x0046caf9
+     0040defe  mov     edx, dword ptr [0x49910c]   ← 全局
+     0040df04  cmp     edx, 4
+     0040df07  jge     0x40df41   → loc_0040df41
+     0040df09  imul    eax, edx, 0x68
+     0040df0c  cmp     byte ptr [eax + 0x496b7d], 1   ← 全局
+     0040df13  jne     0x40df30   → loc_0040df30
+     0040df15  cmp     dword ptr [eax + 0x496b9a], 0   ← 全局
+     0040df1c  jne     0x40df30   → loc_0040df30
+     0040df1e  cmp     byte ptr [eax + 0x496b9f], 0   ← 全局
+     0040df25  jne     0x40df30   → loc_0040df30
+     0040df27  cmp     byte ptr [eax + 0x496b9e], 0   ← 全局
+     0040df2e  je      0x40df41   → loc_0040df41
+     0040df30  imul    eax, dword ptr [0x49910c], 0x34   ← 全局
+     0040df37  or      byte ptr [eax + 0x498ea0], 0x80   ← 全局
+    ... 余 11 条
+
+===== 0x40fc57  sub_0040fc57  83 条 =====
+  callees: sub_00454f5b, sub_0044f9d8, sub_0045643d, loc_0040fd05, drawText_colorcode, loc_0040fd31, loc_0040fce0, sub_004561be
+  globals: 0x0048a0e0, 0x0048a08c, 0x0046caf4, 0x0048bb60
+     0040fc57  push    ebx
+     0040fc58  push    esi
+     0040fc59  push    edi
+     0040fc5a  push    ebp
+     0040fc5b  sub     esp, 4
+     0040fc5e  mov     ebp, dword ptr [esp + 0x18]
+     0040fc62  mov     edi, dword ptr [esp + 0x1c]
+     0040fc66  call    0x454f5b   → sub_00454f5b
+     0040fc6b  mov     dword ptr [esp], eax
+     0040fc6e  push    1
+     0040fc70  push    3
+     0040fc72  push    0x101010
+     0040fc77  push    0xf0f0f0
+     0040fc7c  push    0xc
+    ... 余 69 条
+
+===== 0x410158  sub_00410158  152 条 =====
+  callees: sub_00456418, loc_004102db, sub_0044f9d8, loc_0041023d, loc_00410213, loc_004101f2, sub_00457d96, loc_0041029a, loc_0041027a, loc_00410259, sub_004582fc, loc_004102b3, drawText_colorcode, loc_004102cc, loc_004102ee, loc_004101af, loc_004101bd, USER32!InvalidateRect
+  globals: 0x0048a0e0, 0x0048bb60, 0x0048a08c, 0x0048a0d4, 0x004622f8
+     00410158  push    ebx
+     00410159  push    esi
+     0041015a  push    edi
+     0041015b  push    ebp
+     0041015c  sub     esp, 0x38
+     0041015f  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     00410164  mov     edx, dword ptr [eax]
+     00410166  push    0
+     00410168  push    1
+     0041016a  push    0x48a068
+     0041016f  push    0
+     00410171  push    eax
+     00410172  call    dword ptr [edx + 0x64]
+     00410175  mov     edx, dword ptr [esp + 0x50]
+    ... 余 138 条
+
+===== 0x410537  sub_00410537  18 条 =====
+  callees: sub_4542ce, loc_004105ac
+  globals: 0x00474b92, 0x0048bb48, 0x0048bb78, 0x0048bb74
+     00410537  push    0
+     00410539  push    0x482322
+     0041053e  call    0x4542ce   → sub_4542ce
+     00410543  add     esp, 8
+     00410546  mov     esi, dword ptr [0x474b92]   ← 全局
+     0041054c  mov     edx, ebx
+     0041054e  sub     edx, esi
+     00410550  mov     eax, edx
+     00410552  sar     edx, 0x1f
+     00410555  shl     edx, 4
+     00410558  sbb     eax, edx
+     0041055a  sar     eax, 4
+     0041055d  mov     byte ptr [0x48bb48], al   ← 全局
+     00410562  mov     edi, dword ptr [0x48bb78]   ← 全局
+    ... 余 4 条
+
+===== 0x410572  sub_00410572  14 条 =====
+  callees: sub_4542ce
+  globals: 0x00474ba2, 0x0048bb4a
+     00410572  push    0
+     00410574  push    0x482322
+     00410579  call    0x4542ce   → sub_4542ce
+     0041057e  add     esp, 8
+     00410581  mov     edx, dword ptr [0x474ba2]   ← 全局
+     00410587  sub     ebx, edx
+     00410589  mov     edx, ebx
+     0041058b  mov     eax, ebx
+     0041058d  sar     edx, 0x1f
+     00410590  shl     edx, 4
+     00410593  sbb     eax, edx
+     00410595  sar     eax, 4
+     00410598  inc     eax
+     00410599  mov     byte ptr [0x48bb4a], al   ← 全局
+
+===== 0x4105b9  sub_004105b9  14 条 =====
+  callees: sub_4542ce
+  globals: 0x00474bb2, 0x0048bb4b
+     004105b9  push    0
+     004105bb  push    0x482322
+     004105c0  call    0x4542ce   → sub_4542ce
+     004105c5  add     esp, 8
+     004105c8  mov     edi, dword ptr [0x474bb2]   ← 全局
+     004105ce  mov     edx, ebx
+     004105d0  sub     edx, edi
+     004105d2  mov     eax, edx
+     004105d4  sar     edx, 0x1f
+     004105d7  shl     edx, 4
+     004105da  sbb     eax, edx
+     004105dc  sar     eax, 4
+     004105df  inc     eax
+     004105e0  mov     byte ptr [0x48bb4b], al   ← 全局
+
+===== 0x4105f4  sub_004105f4  25 条 =====
+  callees: sub_4542ce
+  globals: 0x0048a0e0, 0x00474d74, 0x0048bb78, 0x0048bb74, 0x0048bb60, 0x0048a08c
+     004105f4  push    0
+     004105f6  push    0x482322
+     004105fb  call    0x4542ce   → sub_4542ce
+     00410600  add     esp, 8
+     00410603  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     00410608  mov     edx, dword ptr [eax]
+     0041060a  push    0
+     0041060c  push    1
+     0041060e  push    0x48a068
+     00410613  push    0
+     00410615  push    eax
+     00410616  call    dword ptr [edx + 0x64]
+     00410619  mov     eax, dword ptr [0x474d74]   ← 全局   "ÿÿÿÿÿÿÿÿ"
+     0041061e  shl     eax, 4
+    ... 余 11 条
+
+===== 0x4106c1  sub_004106c1  40 条 =====
+  callees: sub_4542ce, sub_0041064b
+  globals: 0x00474d74, 0x0048a0e0, 0x0048bb78, 0x0048bb74, 0x0048bb60, 0x0048a08c
+     004106c1  push    0
+     004106c3  mov     eax, dword ptr [0x474d74]   ← 全局   "ÿÿÿÿÿÿÿÿ"
+     004106c8  sub     eax, 7
+     004106cb  xor     al, 1
+     004106cd  shl     eax, 3
+     004106d0  add     eax, 0x10
+     004106d3  add     eax, 0x48231a
+     004106d8  push    eax
+     004106d9  call    0x4542ce   → sub_4542ce
+     004106de  add     esp, 8
+     004106e1  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     004106e6  mov     edx, dword ptr [eax]
+     004106e8  push    0
+     004106ea  push    1
+    ... 余 26 条
+
+===== 0x41076e  sub_0041076e  5 条 =====
+  callees: loc_00410781, loc_00410788
+  globals: 0x0048bb4a
+     0041076e  cmp     byte ptr [0x48bb4a], 0   ← 全局
+     00410775  je      0x410781   → loc_00410781
+     00410777  xor     cl, cl
+     00410779  mov     byte ptr [0x48bb4a], cl   ← 全局
+     0041077f  jmp     0x410788   → loc_00410788
+
+===== 0x41079c  sub_0041079c  5 条 =====
+  callees: loc_004107af, loc_004107b6
+  globals: 0x0048bb4b
+     0041079c  cmp     byte ptr [0x48bb4b], 0   ← 全局
+     004107a3  je      0x4107af   → loc_004107af
+     004107a5  xor     dh, dh
+     004107a7  mov     byte ptr [0x48bb4b], dh   ← 全局
+     004107ad  jmp     0x4107b6   → loc_004107b6
+
+===== 0x4107f3  sub_004107f3  12 条 =====
+  callees: sub_4542ce, loc_004105ac
+  globals: 0x00474d74, 0x0048bb4d, 0x0048bb78, 0x0048bb74
+     004107f3  push    0
+     004107f5  push    0x482322
+     004107fa  call    0x4542ce   → sub_4542ce
+     004107ff  add     esp, 8
+     00410802  mov     al, byte ptr [0x474d74]   ← 全局   "ÿÿÿÿÿÿÿÿ"
+     00410807  sub     al, 0xd
+     00410809  mov     byte ptr [0x48bb4d], al   ← 全局
+     0041080e  mov     eax, dword ptr [0x48bb78]   ← 全局
+     00410813  push    eax
+     00410814  mov     edx, dword ptr [0x48bb74]   ← 全局
+     0041081a  push    edx
+     0041081b  jmp     0x4105ac   → loc_004105ac
+
+===== 0x410838  sub_00410838  67 条 =====
+  callees: sub_00456418, sub_0040235d, sub_00402250, sub_00410927, sub_00453a32, loc_004104a5, sub_00402460
+  globals: 0x0048a0e0, 0x0048bb78, 0x0048bb74, 0x0048bb58, 0x0048bb60, 0x0048a08c, 0x0048a0dc, 0x00474d74
+     00410838  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     0041083d  mov     edx, dword ptr [eax]
+     0041083f  push    0
+     00410841  push    1
+     00410843  push    0x48a068
+     00410848  push    0
+     0041084a  push    eax
+     0041084b  call    dword ptr [edx + 0x64]
+     0041084e  mov     eax, dword ptr [0x48bb78]   ← 全局
+     00410853  add     eax, 2
+     00410856  push    eax
+     00410857  mov     eax, dword ptr [0x48bb74]   ← 全局
+     0041085c  add     eax, 0xa8
+     00410861  push    eax
+    ... 余 53 条
+
+===== 0x410969  sub_00410969  53 条 =====
+  callees: sub_00456de8, sub_00411f80, loc_004109b5, loc_004109ae, sub_00454edc, loc_004109e2, sub_00454acb, loc_004109d5, sub_00454d91, loc_004109df, sub_004549cf, loc_004109f9, sub_0045497b, sub_00402460, loc_00410a15, loc_0041091a
+  globals: 0x0049715a, 0x0049715d, 0x0047e772
+     00410969  xor     ebx, ebx
+     0041096b  mov     bl, byte ptr [0x49715a]   ← 全局
+     00410971  movzx   esi, byte ptr [0x49715d]   ← 全局
+     00410978  push    0x10
+     0041097a  push    0x48bb48
+     0041097f  push    0x497158
+     00410984  call    0x456de8   → sub_00456de8
+     00410989  add     esp, 0xc
+     0041098c  call    0x411f80   → sub_00411f80
+     00410991  cmp     byte ptr [0x49715a], 0   ← 全局
+     00410998  jne     0x4109b5   → loc_004109b5
+     0041099a  test    ebx, ebx
+     0041099c  je      0x4109b5   → loc_004109b5
+     0041099e  test    byte ptr [0x47e772], 0x80   ← 全局
+    ... 余 39 条
+
+===== 0x410d84  sub_00410d84  5 条 =====
+  callees: loc_00410d95, loc_00410d9d
+  globals: 0x00474d78
+     00410d84  mov     eax, dword ptr [0x474d78]   ← 全局   "ÿÿÿÿ"
+     00410d89  cmp     eax, 4
+     00410d8c  jne     0x410d95   → loc_00410d95
+     00410d8e  mov     eax, 1
+     00410d93  jmp     0x410d9d   → loc_00410d9d
+
+===== 0x410e78  sub_00410e78  21 条 =====
+  callees: sub_4542ce, loc_00410ebe, loc_00410ee9
+  globals: 0x0048bb08, 0x0048bb0a, 0x0048bb84
+     00410e78  push    0
+     00410e7a  push    0x482322
+     00410e7f  call    0x4542ce   → sub_4542ce
+     00410e84  add     esp, 8
+     00410e87  movsx   eax, word ptr [0x48bb08]   ← 全局
+     00410e8e  movsx   edx, word ptr [0x48bb0a]   ← 全局
+     00410e95  mov     ecx, 1
+     00410e9a  lea     edi, [eax - 0xa]
+     00410e9d  cmp     ebx, edi
+     00410e9f  jl      0x410ebe   → loc_00410ebe
+     00410ea1  lea     edi, [edx - 8]
+     00410ea4  cmp     esi, edi
+     00410ea6  jl      0x410ebe   → loc_00410ebe
+     00410ea8  lea     edi, [eax + 0xa]
+    ... 余 7 条
+
+===== 0x410f85  sub_00410f85  14 条 =====
+  callees: loc_00410f9c, loc_00410fe1, loc_0040ff4b
+  globals: 0x0048bb85, 0x0048bb80, 0x0048bb7c, 0x0048bb84
+     00410f85  mov     bl, byte ptr [0x48bb85]   ← 全局
+     00410f8b  dec     bl
+     00410f8d  mov     byte ptr [0x48bb85], bl   ← 全局
+     00410f93  jne     0x410f9c   → loc_00410f9c
+     00410f95  mov     byte ptr [0x48bb85], 0xc   ← 全局
+     00410f9c  mov     edx, dword ptr [0x48bb80]   ← 全局
+     00410fa2  push    edx
+     00410fa3  mov     ecx, dword ptr [0x48bb7c]   ← 全局
+     00410fa9  push    ecx
+     00410faa  mov     ebx, dword ptr [0x48bb84]   ← 全局
+     00410fb0  push    ebx
+     00410fb1  jmp     0x410fe1   → loc_00410fe1
+     00410fe1  call    0x40ff4b   → loc_0040ff4b
+     00410fe6  add     esp, 0xc
+
+===== 0x410fb3  sub_00410fb3  12 条 =====
+  callees: loc_00410fcd
+  globals: 0x0048bb85, 0x0048bb80, 0x0048bb7c, 0x0048bb84
+     00410fb3  mov     ah, byte ptr [0x48bb85]   ← 全局
+     00410fb9  inc     ah
+     00410fbb  mov     byte ptr [0x48bb85], ah   ← 全局
+     00410fc1  cmp     ah, 0xd
+     00410fc4  jne     0x410fcd   → loc_00410fcd
+     00410fc6  mov     byte ptr [0x48bb85], 1   ← 全局
+     00410fcd  mov     esi, dword ptr [0x48bb80]   ← 全局
+     00410fd3  push    esi
+     00410fd4  mov     edi, dword ptr [0x48bb7c]   ← 全局
+     00410fda  push    edi
+     00410fdb  mov     eax, dword ptr [0x48bb84]   ← 全局
+     00410fe0  push    eax
+
+===== 0x410fff  sub_00410fff  7 条 =====
+  callees: loc_00410f9c
+  globals: 0x0048bb86
+     00410fff  xor     ebx, ebx
+     00411001  mov     bx, word ptr [0x48bb86]   ← 全局
+     00411008  cmp     ebx, 0x7ce
+     0041100e  jle     0x410f9c   → loc_00410f9c
+     00411010  dec     ebx
+     00411011  mov     word ptr [0x48bb86], bx   ← 全局
+     00411018  jmp     0x410f9c   → loc_00410f9c
+
+===== 0x41101a  sub_0041101a  8 条 =====
+  callees: loc_00410fda
+  globals: 0x0048bb86
+     0041101a  xor     ebx, ebx
+     0041101c  mov     bx, word ptr [0x48bb86]   ← 全局
+     00411023  inc     ebx
+     00411024  mov     word ptr [0x48bb86], bx   ← 全局
+     0041102b  mov     esi, dword ptr [esp + 0x44]
+     0041102f  push    esi
+     00411030  mov     edi, dword ptr [esp + 0x44]
+     00411034  jmp     0x410fda   → loc_00410fda
+
+===== 0x411036  sub_00411036  7 条 =====
+  callees: loc_00410fe0
+  globals: 0x0048bb5c, 0x0048bb84
+     00411036  mov     eax, dword ptr [0x48bb5c]   ← 全局
+     0041103b  mov     dword ptr [0x48bb84], eax   ← 全局
+     00411040  mov     edx, dword ptr [esp + 0x44]
+     00411044  push    edx
+     00411045  mov     ecx, dword ptr [esp + 0x44]
+     00411049  push    ecx
+     0041104a  jmp     0x410fe0   → loc_00410fe0
+
+===== 0x411081  sub_00411081  14 条 =====
+  callees: sub_00402460, sub_00451edb, loc_00411074
+  globals: 0x0048bb80, 0x0048bb7c, 0x0048bb88, 0x0048bb84
+     00411081  push    0
+     00411083  call    0x402460   → sub_00402460
+     00411088  add     esp, 4
+     0041108b  mov     edx, dword ptr [0x48bb80]   ← 全局
+     00411091  push    edx
+     00411092  mov     ecx, dword ptr [0x48bb7c]   ← 全局
+     00411098  push    ecx
+     00411099  mov     ebx, dword ptr [0x48bb88]   ← 全局
+     0041109f  push    ebx
+     004110a0  call    0x451edb   → sub_00451edb
+     004110a5  add     esp, 0xc
+     004110a8  mov     esi, dword ptr [0x48bb84]   ← 全局
+     004110ae  push    esi
+     004110af  jmp     0x411074   → loc_00411074
+
+===== 0x411b46  sub_00411b46  3 条 =====
+  callees: sub_00411f80
+  globals: 0x0046caf9
+     00411b46  call    0x411f80   → sub_00411f80
+     00411b4b  mov     byte ptr [0x46caf9], 1   ← 全局
+     00411b52  ret     
+
+===== 0x412287  sub_00412287  85 条 =====
+  callees: loc_004123aa, sub_00458276, loc_0041234c, loc_0041239f, loc_00412327, loc_00412379
+  globals: 0x0048bd04, 0x0048bcfc, 0x0048bd08, 0x0048bd00, 0x0048bd10, 0x0048bd0c, 0x0048bd5b
+     00412287  push    ebx
+     00412288  push    esi
+     00412289  push    edi
+     0041228a  mov     esi, dword ptr [0x48bd04]   ← 全局
+     00412290  add     esi, dword ptr [0x48bcfc]   ← 全局
+     00412296  mov     ebx, dword ptr [0x48bd08]   ← 全局
+     0041229c  mov     ecx, dword ptr [0x48bd00]   ← 全局
+     004122a2  add     ebx, ecx
+     004122a4  mov     eax, ebx
+     004122a6  shr     eax, 0x10
+     004122a9  and     eax, 0xffff
+     004122ae  xor     edx, edx
+     004122b0  mov     dx, ax
+     004122b3  mov     eax, edx
+    ... 余 71 条
+
+===== 0x412651  sub_00412651  13 条 =====
+  callees: loc_004126b7, loc_0041267a, loc_00412694
+  globals: 0x0048bcc4
+     00412651  test    byte ptr [0x48bcc4], 3   ← 全局
+     00412658  jne     0x4126b7   → loc_004126b7
+     0041265a  mov     esi, dword ptr [esp + 0x40]
+     0041265e  sub     esi, dword ptr [esp + 0x48]
+     00412662  mov     edi, dword ptr [esp + 0x3c]
+     00412666  sub     edi, ebp
+     00412668  test    esi, esi
+     0041266a  jle     0x41267a   → loc_0041267a
+     0041266c  lea     eax, [edi + 1]
+     0041266f  mov     edx, 4
+     00412674  sub     edx, eax
+     00412676  mov     eax, edx
+     00412678  jmp     0x412694   → loc_00412694
+
+===== 0x412851  sub_00412851  56 条 =====
+  callees: loc_004128a5, sub_004562a5, sub_00456418, loc_00412925, loc_0041291d
+  globals: 0x0048bcc4, 0x0048bd34, 0x0048a08c, 0x0048bcc5, 0x0048bd6c, 0x0048bd70, 0x0048bd74
+     00412851  mov     eax, ebp
+     00412853  shl     eax, 3
+     00412856  add     eax, ebp
+     00412858  mov     edi, dword ptr [esp + 0x48]
+     0041285c  shl     edi, 3
+     0041285f  movsx   esi, word ptr [edi + eax*8 + 0x474d7c]   ← 全局
+     00412867  movsx   edi, word ptr [edi + eax*8 + 0x474d7e]   ← 全局
+     0041286f  mov     eax, dword ptr [0x48bcc4]   ← 全局
+     00412874  and     eax, 3
+     00412877  cmp     eax, 2
+     0041287a  jne     0x4128a5   → loc_004128a5
+     0041287c  mov     eax, dword ptr [0x48bd34]   ← 全局
+     00412881  lea     ebx, [eax + 0x78]
+     00412884  push    edi
+    ... 余 42 条
+
+===== 0x416355  sub_00416355  76 条 =====
+  callees: loc_004163a2, loc_0041639c, loc_00416378, loc_004163db, loc_004163d5, loc_004163b7, sub_00457d61, drawText_colorcode
+  globals: 0x00498e84, 0x00498e98, 0x00498e88, 0x00498e8c
+     00416355  mov     ebx, 1
+     0041635a  mov     eax, dword ptr [0x498e84]   ← 全局
+     0041635f  add     eax, 0x34
+     00416362  xor     edi, edi
+     00416364  mov     dword ptr [esp + 0xac], edi
+     0041636b  mov     dword ptr [esp + 0xa8], edi
+     00416372  mov     ebp, dword ptr [0x498e98]   ← 全局
+     00416378  cmp     ebx, ebp
+     0041637a  jg      0x4163a2   → loc_004163a2
+     0041637c  xor     edx, edx
+     0041637e  mov     dl, byte ptr [eax + 0x19]
+     00416381  lea     ecx, [esi + 1]
+     00416384  cmp     edx, ecx
+     00416386  jne     0x41639c   → loc_0041639c
+    ... 余 62 条
+
+===== 0x417c67  sub_00417c67  67 条 =====
+  callees: blitRect, sub_0040235d, sub_00402250, sub_00417191, loc_00415f44
+  globals: 0x0048a0e0, 0x0048bdf0, 0x0048bdf4, 0x0048bde0, 0x0048a08c, 0x0048bad8, 0x0048a0dc, 0x00475270
+     00417c67  push    ebx
+     00417c68  push    esi
+     00417c69  push    edi
+     00417c6a  push    ebp
+     00417c6b  sub     esp, 0x10
+     00417c6e  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     00417c73  mov     edx, dword ptr [eax]
+     00417c75  push    0
+     00417c77  push    1
+     00417c79  push    0x48a068
+     00417c7e  push    0
+     00417c80  push    eax
+     00417c81  call    dword ptr [edx + 0x64]
+     00417c84  mov     edx, dword ptr [0x48bdf0]   ← 全局
+    ... 余 53 条
+
+===== 0x41ac3c  sub_0041ac3c  19 条 =====
+  callees: sub_0044090e, loc_0041ae37
+  globals: 0x004990e8, 0x0049910c
+     0041ac3c  push    edi
+     0041ac3d  push    3
+     0041ac3f  call    0x44090e   → sub_0044090e
+     0041ac44  add     esp, 8
+     0041ac47  mov     dword ptr [esp + 0xd4], eax
+     0041ac4e  xor     edx, edx
+     0041ac50  mov     dx, word ptr [ebx + 0x22]
+     0041ac54  imul    eax, edx
+     0041ac57  mov     ebp, dword ptr [0x4990e8]   ← 全局
+     0041ac5d  imul    ebp, eax
+     0041ac60  imul    eax, dword ptr [0x49910c], 0x68   ← 全局
+     0041ac67  mov     dl, byte ptr [esp + 0xd4]
+     0041ac6e  mov     dh, byte ptr [eax + 0x496ba6]   ← 全局
+     0041ac74  add     dh, dl
+    ... 余 5 条
+
+===== 0x41e15a  sub_0041e15a  12 条 =====
+  callees: loc_0041e184, sub_0041e2a8
+  globals: 0x0048be4c
+     0041e15a  mov     edx, dword ptr [0x48be4c]   ← 全局
+     0041e160  mov     eax, edx
+     0041e162  shl     eax, 2
+     0041e165  sub     eax, edx
+     0041e167  add     eax, eax
+     0041e169  mov     cl, byte ptr [eax + 0x48be38]   ← 全局
+     0041e16f  cmp     cl, 0xa
+     0041e172  jbe     0x41e184   → loc_0041e184
+     0041e174  mov     dl, cl
+     0041e176  sub     dl, 0xa
+     0041e179  mov     byte ptr [eax + 0x48be38], dl   ← 全局
+     0041e17f  jmp     0x41e2a8   → sub_0041e2a8
+
+===== 0x41e191  sub_0041e191  12 条 =====
+  callees: loc_0041e1bb, sub_0041e2a8
+  globals: 0x0048be4c
+     0041e191  mov     edx, dword ptr [0x48be4c]   ← 全局
+     0041e197  mov     eax, edx
+     0041e199  shl     eax, 2
+     0041e19c  sub     eax, edx
+     0041e19e  add     eax, eax
+     0041e1a0  mov     dh, byte ptr [eax + 0x48be38]   ← 全局
+     0041e1a6  cmp     dh, 0x5a
+     0041e1a9  jae     0x41e1bb   → loc_0041e1bb
+     0041e1ab  mov     bh, dh
+     0041e1ad  add     bh, 0xa
+     0041e1b0  mov     byte ptr [eax + 0x48be38], bh   ← 全局
+     0041e1b6  jmp     0x41e2a8   → sub_0041e2a8
+
+===== 0x423bd1  sub_00423bd1  15 条 =====
+  callees: loc_00423cd1, loc_00423c07, loc_00423bdc
+  globals: 0x00498e84, 0x00498e98
+     00423bd1  mov     eax, 1
+     00423bd6  mov     edx, dword ptr [0x498e84]   ← 全局
+     00423bdc  add     edx, 0x34
+     00423bdf  cmp     eax, dword ptr [0x498e98]   ← 全局
+     00423be5  jg      0x423cd1   → loc_00423cd1
+     00423beb  movzx   edi, byte ptr [edx + 0x19]
+     00423bef  lea     esi, [ebx + 1]
+     00423bf2  cmp     edi, esi
+     00423bf4  jne     0x423c07   → loc_00423c07
+     00423bf6  mov     edi, eax
+     00423bf8  add     edi, 0x7d0
+     00423bfe  mov     word ptr [ecx*2 + 0x48be70], di   ← 全局
+     00423c06  inc     ecx
+     00423c07  inc     eax
+    ... 余 1 条
+
+===== 0x423c0a  sub_00423c0a  17 条 =====
+  callees: loc_00423cd1, loc_00423c42, loc_00423c21
+  globals: 0x00498e88, 0x00498e8c
+     00423c0a  mov     eax, 1
+     00423c0f  mov     edx, dword ptr [0x498e88]   ← 全局
+     00423c15  add     edx, 0x38
+     00423c18  lea     esi, [ebx + 1]
+     00423c1b  mov     ebp, dword ptr [0x498e8c]   ← 全局
+     00423c21  cmp     eax, ebp
+     00423c23  jg      0x423cd1   → loc_00423cd1
+     00423c29  movzx   edi, byte ptr [edx + 0x19]
+     00423c2d  cmp     edi, esi
+     00423c2f  jne     0x423c42   → loc_00423c42
+     00423c31  mov     edi, eax
+     00423c33  add     edi, 0xfa0
+     00423c39  mov     word ptr [ecx*2 + 0x48be70], di   ← 全局
+     00423c41  inc     ecx
+    ... 余 3 条
+
+===== 0x423c48  sub_00423c48  20 条 =====
+  callees: loc_00423cd1, loc_00423c8a, loc_00423c59
+  globals: 0x00498e84, 0x00498e98
+     00423c48  mov     eax, 1
+     00423c4d  mov     edx, dword ptr [0x498e84]   ← 全局
+     00423c53  add     edx, 0x34
+     00423c56  lea     esi, [ebx + 1]
+     00423c59  cmp     eax, dword ptr [0x498e98]   ← 全局
+     00423c5f  jg      0x423cd1   → loc_00423cd1
+     00423c65  movzx   edi, byte ptr [edx + 0x19]
+     00423c69  cmp     edi, esi
+     00423c6b  jne     0x423c8a   → loc_00423c8a
+     00423c6d  cmp     byte ptr [edx + 0x1a], 0
+     00423c71  je      0x423c8a   → loc_00423c8a
+     00423c73  cmp     byte ptr [edx + 0x18], 0
+     00423c77  jne     0x423c8a   → loc_00423c8a
+     00423c79  mov     edi, eax
+    ... 余 6 条
+
+===== 0x423c90  sub_00423c90  19 条 =====
+  callees: loc_00423cd1, loc_00423cce, loc_00423c9b
+  globals: 0x00498e84, 0x00498e98
+     00423c90  mov     eax, 1
+     00423c95  mov     edx, dword ptr [0x498e84]   ← 全局
+     00423c9b  add     edx, 0x34
+     00423c9e  cmp     eax, dword ptr [0x498e98]   ← 全局
+     00423ca4  jg      0x423cd1   → loc_00423cd1
+     00423ca6  movzx   edi, byte ptr [edx + 0x19]
+     00423caa  lea     esi, [ebx + 1]
+     00423cad  cmp     edi, esi
+     00423caf  jne     0x423cce   → loc_00423cce
+     00423cb1  cmp     byte ptr [edx + 0x1a], 0
+     00423cb5  je      0x423cce   → loc_00423cce
+     00423cb7  cmp     byte ptr [edx + 0x18], 0
+     00423cbb  je      0x423cce   → loc_00423cce
+     00423cbd  mov     edi, eax
+    ... 余 5 条
+
+===== 0x424049  sub_00424049  122 条 =====
+  callees: loc_004240d1, loc_004240c8, sub_00423070, loc_004240b1, sub_004225a3, USER32!InvalidateRect, sub_00424049, loc_00424163, sub_0044f9d8, drawText_colorcode, loc_00423dc5, loc_00424156, blitRect, loc_004240dd, loc_004240eb
+  globals: 0x00499114, 0x0048c284, 0x0048c27c, 0x004753fc, 0x00475400, 0x004622f8, 0x0048a0e0, 0x0048c270, 0x0048a08c
+     00423dc5  xor     eax, eax
+     00423dc7  add     esp, 0x50
+     00423dca  pop     ebp
+     00423dcb  pop     edi
+     00423dcc  pop     esi
+     00423dcd  pop     ebx
+     00423dce  ret     0x10
+     00424049  cmp     ebx, dword ptr [0x499114]   ← 全局
+     0042404f  jge     0x4240d1   → loc_004240d1
+     00424055  cmp     byte ptr [0x48c284], 0   ← 全局
+     0042405c  jne     0x4240d1   → loc_004240d1
+     00424062  mov     cl, byte ptr [ebx + 0x48c278]   ← 全局
+     00424068  cmp     cl, 0xff
+     0042406b  je      0x4240d1   → loc_004240d1
+    ... 余 108 条
+
+===== 0x4241f2  sub_004241f2  7 条 =====
+  callees: sub_00402460, sub_00401966, sub_00424359
+     004241f2  push    0
+     004241f4  call    0x402460   → sub_00402460
+     004241f9  add     esp, 4
+     004241fc  push    0
+     004241fe  call    0x401966   → sub_00401966
+     00424203  add     esp, 4
+     00424206  jmp     0x424359   → sub_00424359
+
+===== 0x42420b  sub_0042420b  18 条 =====
+  callees: sub_00423070, loc_00424239, sub_004225a3, USER32!InvalidateRect, sub_00424359
+  globals: 0x0048c284, 0x004753fc, 0x00475400, 0x004622f8
+     0042420b  xor     eax, eax
+     0042420d  mov     al, byte ptr [0x48c284]   ← 全局
+     00424212  sub     eax, 2
+     00424215  mov     dword ptr [0x4753fc], eax   ← 全局
+     0042421a  call    0x423070   → sub_00423070
+     0042421f  cmp     dword ptr [0x4753fc], 1   ← 全局
+     00424226  jne     0x424239   → loc_00424239
+     00424228  push    0
+     0042422a  mov     edi, dword ptr [0x475400]   ← 全局
+     00424230  push    edi
+     00424231  call    0x4225a3   → sub_004225a3
+     00424236  add     esp, 8
+     00424239  push    0
+     0042423b  push    0
+    ... 余 4 条
+
+===== 0x42424e  sub_0042424e  40 条 =====
+  callees: sub_0045643d, USER32!InvalidateRect, loc_0042434a
+  globals: 0x0048a0e0, 0x0048c270, 0x0048a08c, 0x004622f8
+     0042424e  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     00424253  mov     edx, dword ptr [eax]
+     00424255  push    0
+     00424257  push    1
+     00424259  push    0x48a068
+     0042425e  push    0
+     00424260  push    eax
+     00424261  call    dword ptr [edx + 0x64]
+     00424264  mov     esi, 0x251
+     00424269  mov     dword ptr [esp + 0x40], esi
+     0042426d  mov     dword ptr [esp + 0x48], 0x26f
+     00424275  mov     ebp, 0x171
+     0042427a  mov     dword ptr [esp + 0x44], ebp
+     0042427e  mov     dword ptr [esp + 0x4c], 0x18f
+    ... 余 26 条
+
+===== 0x4242cd  sub_004242cd  43 条 =====
+  callees: sub_0045643d, USER32!InvalidateRect, sub_004225a3
+  globals: 0x0048a0e0, 0x0048c270, 0x0048a08c, 0x004622f8, 0x00475400
+     004242cd  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     004242d2  mov     edx, dword ptr [eax]
+     004242d4  push    0
+     004242d6  push    1
+     004242d8  push    0x48a068
+     004242dd  push    0
+     004242df  push    eax
+     004242e0  call    dword ptr [edx + 0x64]
+     004242e3  mov     esi, 0x251
+     004242e8  mov     dword ptr [esp + 0x40], esi
+     004242ec  mov     dword ptr [esp + 0x48], 0x26f
+     004242f4  mov     ebp, 0x1a1
+     004242f9  mov     dword ptr [esp + 0x44], ebp
+     004242fd  mov     dword ptr [esp + 0x4c], 0x1dd
+    ... 余 29 条
+
+===== 0x4249c2  sub_004249c2  88 条 =====
+  callees: blitRect, loc_00424a87, loc_00424a1d, loc_00424a7e, loc_00424a17, loc_00424a02, USER32!InvalidateRect
+  globals: 0x0048a0e0, 0x0048c298, 0x0048a08c, 0x00499114, 0x0048a0d4, 0x004622f8
+     004249c2  push    ebx
+     004249c3  push    esi
+     004249c4  push    edi
+     004249c5  push    ebp
+     004249c6  sub     esp, 0x10
+     004249c9  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     004249ce  mov     edx, dword ptr [eax]
+     004249d0  push    0
+     004249d2  push    1
+     004249d4  push    0x48a068
+     004249d9  push    0
+     004249db  push    eax
+     004249dc  call    dword ptr [edx + 0x64]
+     004249df  push    0x42
+    ... 余 74 条
+
+===== 0x42728e  sub_0042728e  128 条 =====
+  callees: drawText_colorcode, sprintf_wrap, sub_00457dbc, sub_00452793, loc_0042796c
+  strings: 0x463edb='%d張' | 0x463ee0='%s元' | 0x463ee0='%s元'
+  globals: 0x0048c2c6, 0x0048c2c4, 0x0048c2c2, 0x0048c2c3, 0x0048c2c8
+     0042728e  push    2
+     00427290  movsx   edx, word ptr [0x48c2c6]   ← 全局
+     00427297  add     edx, 0x5c
+     0042729a  push    edx
+     0042729b  movsx   edx, word ptr [0x48c2c4]   ← 全局
+     004272a2  add     edx, 0x78
+     004272a5  push    edx
+     004272a6  xor     edx, edx
+     004272a8  mov     dx, word ptr [eax + 0x4967e2]   ← 全局
+     004272af  mov     eax, edx
+     004272b1  shl     eax, 3
+     004272b4  add     eax, edx
+     004272b6  mov     edi, dword ptr [eax*4 + 0x496980]   ← 全局
+     004272bd  push    edi
+    ... 余 114 条
+
+===== 0x427469  sub_00427469  46 条 =====
+  callees: loc_00427550, drawText_colorcode, loc_0042750e, loc_0042752d
+  strings: 0x463ee5='住宅用地'
+  globals: 0x00498e84, 0x0048c2c6, 0x0048c2c4
+     00427469  mov     cx, word ptr [eax + 0x4967e2]   ← 全局
+     00427470  cmp     cx, 0xfa0
+     00427475  jae     0x427550   → loc_00427550
+     0042747b  mov     eax, ecx
+     0042747d  and     eax, 0xffff
+     00427482  sub     eax, 0x7d0
+     00427487  imul    eax, eax, 0x34
+     0042748a  mov     ebx, dword ptr [0x498e84]   ← 全局
+     00427490  add     ebx, eax
+     00427492  push    2
+     00427494  movsx   eax, word ptr [0x48c2c6]   ← 全局
+     0042749b  add     eax, 0x5c
+     0042749e  push    eax
+     0042749f  movsx   eax, word ptr [0x48c2c4]   ← 全局
+    ... 余 32 条
+
+===== 0x42771a  sub_0042771a  90 条 =====
+  callees: drawText_colorcode, sub_00452793, sprintf_wrap, loc_0042790e
+  strings: 0x463ee0='%s元' | 0x463ee0='%s元'
+  globals: 0x0048c2c6, 0x0048c2c4, 0x0048c2c2, 0x0048c2c3, 0x004990e8, 0x0048c2c8
+     0042771a  push    2
+     0042771c  movsx   edx, word ptr [0x48c2c6]   ← 全局
+     00427723  add     edx, 0x5c
+     00427726  push    edx
+     00427727  movsx   edx, word ptr [0x48c2c4]   ← 全局
+     0042772e  add     edx, 0x78
+     00427731  push    edx
+     00427732  mov     ax, word ptr [eax + 0x4967e2]   ← 全局
+     00427739  and     eax, 0xffff
+     0042773e  mov     ebx, dword ptr [eax*8 + 0x47feda]   ← 全局
+     00427745  push    ebx
+     00427746  push    0
+     00427748  call    0x44fabc   → drawText_colorcode
+     0042774d  add     esp, 0x14
+    ... 余 76 条
+
+===== 0x427816  sub_00427816  65 条 =====
+  callees: drawText_colorcode, sub_00452793, sprintf_wrap
+  strings: 0x463ee0='%s元'
+  globals: 0x0048c2c6, 0x0048c2c4, 0x0048c2c2, 0x0048c2c3, 0x004990e8
+     00427816  push    2
+     00427818  movsx   edx, word ptr [0x48c2c6]   ← 全局
+     0042781f  add     edx, 0x5c
+     00427822  push    edx
+     00427823  movsx   edx, word ptr [0x48c2c4]   ← 全局
+     0042782a  add     edx, 0x78
+     0042782d  push    edx
+     0042782e  mov     ax, word ptr [eax + 0x4967e2]   ← 全局
+     00427835  and     eax, 0xffff
+     0042783a  mov     edi, dword ptr [eax*8 + 0x47fdea]   ← 全局
+     00427841  push    edi
+     00427842  push    0
+     00427844  call    0x44fabc   → drawText_colorcode
+     00427849  add     esp, 0x14
+    ... 余 51 条
+
+===== 0x4298b9  sub_004298b9  8 条 =====
+  callees: loc_00429942, sub_0044f9d8
+     004298b9  push    1
+     004298bb  push    3
+     004298bd  push    0x101010
+     004298c2  push    0xff0000
+     004298c7  jmp     0x429942   → loc_00429942
+     00429942  push    0x10
+     00429944  call    0x44f9d8   → sub_0044f9d8
+     00429949  add     esp, 0x14
+
+===== 0x4298cc  sub_004298cc  14 条 =====
+  callees: sub_004561be, loc_00429942
+     004298cc  push    0xd00000
+     004298d1  push    0x14
+     004298d3  push    0x59
+     004298d5  lea     eax, [ebp - 0xa]
+     004298d8  push    eax
+     004298d9  push    0x90
+     004298de  push    0x46caec
+     004298e3  call    0x4561be   → sub_004561be
+     004298e8  add     esp, 0x18
+     004298eb  push    1
+     004298ed  push    2
+     004298ef  push    0
+     004298f1  push    0xf0f0f0
+     004298f6  jmp     0x429942   → loc_00429942
+
+===== 0x4298f8  sub_004298f8  5 条 =====
+  callees: loc_00429942
+     004298f8  push    1
+     004298fa  push    3
+     004298fc  push    0x101010
+     00429901  push    0xff00
+     00429906  jmp     0x429942   → loc_00429942
+
+===== 0x429908  sub_00429908  14 条 =====
+  callees: sub_004561be, loc_00429942
+     00429908  push    0xd000
+     0042990d  push    0x14
+     0042990f  push    0x59
+     00429911  lea     eax, [ebp - 0xa]
+     00429914  push    eax
+     00429915  push    0x90
+     0042991a  push    0x46caec
+     0042991f  call    0x4561be   → sub_004561be
+     00429924  add     esp, 0x18
+     00429927  push    1
+     00429929  push    2
+     0042992b  push    0
+     0042992d  push    0x101010
+     00429932  jmp     0x429942   → loc_00429942
+
+===== 0x429934  sub_00429934  4 条 =====
+     00429934  push    1
+     00429936  push    3
+     00429938  push    0x101010
+     0042993d  push    0xf0f0f0
+
+===== 0x4299af  sub_004299af  8 条 =====
+  callees: loc_004299dd, sub_0044f9d8
+     004299af  push    1
+     004299b1  push    3
+     004299b3  push    0x101010
+     004299b8  push    0xff0000
+     004299bd  jmp     0x4299dd   → loc_004299dd
+     004299dd  push    0x10
+     004299df  call    0x44f9d8   → sub_0044f9d8
+     004299e4  add     esp, 0x14
+
+===== 0x4299bf  sub_004299bf  5 条 =====
+  callees: loc_004299dd
+     004299bf  push    1
+     004299c1  push    3
+     004299c3  push    0x101010
+     004299c8  push    0xff00
+     004299cd  jmp     0x4299dd   → loc_004299dd
+
+===== 0x4299cf  sub_004299cf  4 条 =====
+     004299cf  push    1
+     004299d1  push    3
+     004299d3  push    0x101010
+     004299d8  push    0xf0f0f0
+
+===== 0x42ae26  sub_0042ae26  3 条 =====
+  callees: loc_0042ae03
+     0042ae26  xor     eax, eax
+     0042ae28  mov     al, dl
+     0042ae2a  jmp     0x42ae03   → loc_0042ae03
+
+===== 0x42aec4  sub_0042aec4  8 条 =====
+  callees: loc_0042afd5
+  globals: 0x0048c2ec, 0x0048c2eb
+     0042aec4  mov     cl, byte ptr [0x48c2ec]   ← 全局
+     0042aeca  xor     cl, 1
+     0042aecd  mov     byte ptr [0x48c2ec], cl   ← 全局
+     0042aed3  xor     ch, ch
+     0042aed5  mov     byte ptr [0x48c2eb], ch   ← 全局
+     0042aedb  xor     eax, eax
+     0042aedd  mov     al, cl
+     0042aedf  jmp     0x42afd5   → loc_0042afd5
+
+===== 0x42b0b7  sub_0042b0b7  4 条 =====
+  callees: loc_0042b0cb
+     0042b0b7  push    0
+     0042b0b9  push    0
+     0042b0bb  push    0x40b
+     0042b0c0  jmp     0x42b0cb   → loc_0042b0cb
+
+===== 0x42b0c2  sub_0042b0c2  5 条 =====
+  callees: USER32!PostMessageA
+  globals: 0x00462310
+     0042b0c2  push    0
+     0042b0c4  push    0
+     0042b0c6  push    0x205
+     0042b0cb  push    esi
+     0042b0cc  call    dword ptr cs:[0x462310]   → USER32!PostMessageA
+
+===== 0x42b3ca  sub_0042b3ca  3 条 =====
+  callees: loc_0042b3e1
+     0042b3ca  xor     eax, eax
+     0042b3cc  jmp     0x42b3e1   → loc_0042b3e1
+     0042b3e1  add     esp, 0x40
+
+===== 0x42d299  sub_0042d299  69 条 =====
+  callees: loc_0042d2f2, blitRect, loc_0042d32c, sub_00456418, sub_0044ec30
+  globals: 0x0048a0e0, 0x0048c310, 0x0048c308, 0x0048a08c
+     0042d299  push    ebx
+     0042d29a  push    esi
+     0042d29b  push    edi
+     0042d29c  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     0042d2a1  mov     edx, dword ptr [eax]
+     0042d2a3  push    0
+     0042d2a5  push    1
+     0042d2a7  push    0x48a068
+     0042d2ac  push    0
+     0042d2ae  push    eax
+     0042d2af  call    dword ptr [edx + 0x64]
+     0042d2b2  mov     edx, dword ptr [0x48c310]   ← 全局
+     0042d2b8  test    edx, edx
+     0042d2ba  jne     0x42d2f2   → loc_0042d2f2
+    ... 余 55 条
+
+===== 0x42d977  sub_0042d977  176 条 =====
+  callees: blitRect, loc_0042dba5, USER32!InvalidateRect, sub_0044ee18, loc_0042dc36, loc_0042dbd1, loc_0042dbf0, loc_0042dc0f, USER32!PostMessageA, sub_00402460, loc_0042dc33, USER32!KillTimer, sub_00401966, sub_0044ef3b, loc_0042dc4c, loc_0042d48d, loc_0042dd03, loc_0042ddf4, loc_0042dcc0, loc_0042dcf6, loc_0042dde5, rand15, loc_0042dd6e, loc_0042ddbb
+  globals: 0x0048a0e0, 0x0048c32f, 0x004622f8, 0x0048c318, 0x00462310, 0x0048c310, 0x0048c32b, 0x004622fc, 0x0048c343, 0x0048c314, 0x0048c308, 0x0048a08c
+     0042d977  call    0x4563f5   → blitRect
+     0042d97c  add     esp, 0x10
+     0042d97f  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     0042d984  mov     edx, dword ptr [eax]
+     0042d986  push    0
+     0042d988  push    eax
+     0042d989  call    dword ptr [edx + 0x80]
+     0042d98f  push    0
+     0042d991  lea     eax, [esp + 0x44]
+     0042d995  push    eax
+     0042d996  push    edi
+     0042d997  add     dword ptr [0x48c32f], 0x10   ← 全局
+     0042d99e  jmp     0x42dba5   → loc_0042dba5
+     0042dba5  call    dword ptr cs:[0x4622f8]   → USER32!InvalidateRect
+    ... 余 162 条
+
+===== 0x42f32c  sub_0042f32c  81 条 =====
+  callees: loc_0042f343, loc_0042f37a, loc_0042f365, sub_004552e7, loc_0042f33d, blitRect, sub_00456418, sub_0044ec30, sub_00450ced
+  globals: 0x0048c35c, 0x0048a0e0, 0x0048a08c, 0x0048c364
+     0042f32c  push    ebx
+     0042f32d  push    esi
+     0042f32e  push    edi
+     0042f32f  xor     esi, esi
+     0042f331  mov     ebx, 0x1f
+     0042f336  mov     edi, 0x110
+     0042f33b  jmp     0x42f343   → loc_0042f343
+     0042f33d  inc     esi
+     0042f33e  cmp     esi, 0x24
+     0042f341  jge     0x42f37a   → loc_0042f37a
+     0042f343  cmp     byte ptr [esi + 0x4990b8], 0   ← 全局
+     0042f34a  je      0x42f365   → loc_0042f365
+     0042f34c  push    -0xa
+     0042f34e  push    0x2e
+    ... 余 67 条
+
+===== 0x42faf8  sub_0042faf8  15 条 =====
+  callees: sub_00402460, sub_004021f8, USER32!KillTimer, sub_00401966, sub_0042fa9b
+  globals: 0x0048c36c, 0x004622fc
+     0042faf8  push    0
+     0042fafa  call    0x402460   → sub_00402460
+     0042faff  add     esp, 4
+     0042fb02  push    0
+     0042fb04  push    1
+     0042fb06  push    0x29
+     0042fb08  call    0x4021f8   → sub_004021f8
+     0042fb0d  add     esp, 0xc
+     0042fb10  mov     eax, dword ptr [0x48c36c]   ← 全局
+     0042fb15  push    eax
+     0042fb16  push    ebp
+     0042fb17  call    dword ptr cs:[0x4622fc]   → USER32!KillTimer
+     0042fb1e  push    0
+     0042fb20  call    0x401966   → sub_00401966
+    ... 余 1 条
+
+===== 0x4306ff  sub_004306ff  143 条 =====
+  callees: sub_0045643d, sub_00456418, sub_0044f9d8, drawText_colorcode, sub_00452793, sub_0042f417, sub_004301db
+  strings: 0x4645d9='累積獎金'
+  globals: 0x0048a0e0, 0x0048c360, 0x0048a08c, 0x0048c37d, 0x0048c37e, 0x00499080, 0x0048c37b
+     004306ff  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     00430704  mov     edx, dword ptr [eax]
+     00430706  push    0
+     00430708  push    1
+     0043070a  push    0x48a068
+     0043070f  push    0
+     00430711  push    eax
+     00430712  call    dword ptr [edx + 0x64]
+     00430715  push    0x82
+     0043071a  push    0x260
+     0043071f  push    0x154
+     00430724  push    0x10
+     00430726  push    0x154
+     0043072b  push    0x10
+    ... 余 129 条
+
+===== 0x431117  sub_00431117  22 条 =====
+  callees: rand15, loc_00431138, loc_00431431, loc_00431141, loc_0043112e, loc_0043114a
+  globals: 0x0048c350
+     00431117  call    0x456f2d   → rand15
+     0043111c  mov     ebx, eax
+     0043111e  sar     ebx, 9
+     00431121  mov     eax, dword ptr [0x48c350]   ← 全局
+     00431126  and     al, 0xf0
+     00431128  test    ebx, ebx
+     0043112a  jne     0x431138   → loc_00431138
+     0043112c  or      al, 1
+     0043112e  mov     dword ptr [0x48c350], eax   ← 全局
+     00431133  jmp     0x431431   → loc_00431431
+     00431138  cmp     ebx, 1
+     0043113b  jne     0x431141   → loc_00431141
+     0043113d  or      al, 2
+     0043113f  jmp     0x43112e   → loc_0043112e
+    ... 余 8 条
+
+===== 0x431157  sub_00431157  43 条 =====
+  callees: blitRect, loc_004311fe
+  globals: 0x0048c350, 0x0048a0e0, 0x0048c360, 0x0048a08c, 0x0048c351
+     00431157  mov     ebx, dword ptr [0x48c350]   ← 全局
+     0043115d  and     ebx, 0xf0
+     00431163  sar     ebx, 4
+     00431166  mov     dword ptr [esp + 0x64], 0x200
+     0043116e  mov     dword ptr [esp + 0x68], 0x66
+     00431176  mov     dword ptr [esp + 0x6c], 0x232
+     0043117e  mov     dword ptr [esp + 0x70], 0x76
+     00431186  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     0043118b  mov     edx, dword ptr [eax]
+     0043118d  push    0
+     0043118f  push    1
+     00431191  push    0x48a068
+     00431196  push    0
+     00431198  push    eax
+    ... 余 29 条
+
+===== 0x431222  sub_00431222  56 条 =====
+  callees: USER32!InvalidateRect, loc_00431431, blitRect, loc_004311fe
+  globals: 0x0048a0e0, 0x004622f8, 0x0048c350, 0x0048c360, 0x0048a08c, 0x0048c351
+     004311fe  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     00431203  mov     edx, dword ptr [eax]
+     00431205  push    0
+     00431207  push    eax
+     00431208  call    dword ptr [edx + 0x80]
+     0043120e  push    0
+     00431210  lea     eax, [esp + 0x68]
+     00431214  push    eax
+     00431215  push    esi
+     00431216  call    dword ptr cs:[0x4622f8]   → USER32!InvalidateRect
+     0043121d  jmp     0x431431   → loc_00431431
+     00431222  mov     ebx, dword ptr [0x48c350]   ← 全局
+     00431228  and     ebx, 0xf00
+     0043122e  sar     ebx, 8
+    ... 余 42 条
+
+===== 0x432511  sub_00432511  43 条 =====
+  callees: blitRect, sub_00456418, sub_0044ec30
+  globals: 0x0048a0e0, 0x0048c398, 0x0048a08c
+     00432511  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     00432516  mov     edx, dword ptr [eax]
+     00432518  push    0
+     0043251a  push    1
+     0043251c  push    0x48a068
+     00432521  push    0
+     00432523  push    eax
+     00432524  call    dword ptr [edx + 0x64]
+     00432527  push    0
+     00432529  push    0
+     0043252b  mov     eax, dword ptr [0x48c398]   ← 全局
+     00432530  add     eax, 0xc
+     00432533  push    eax
+     00432534  mov     edx, dword ptr [0x48a08c]   ← 全局
+    ... 余 29 条
+
+===== 0x432951  sub_00432951  40 条 =====
+  callees: blitRect, USER32!InvalidateRect, loc_004329e3, loc_00432871
+  globals: 0x0048c3a2, 0x0048a0e0, 0x0048c398, 0x0048a08c, 0x004622f8, 0x0048c3a5, 0x0048c3a1
+     00432951  mov     byte ptr [0x48c3a2], 4   ← 全局
+     00432958  mov     dword ptr [esp + 0x40], 0x11e
+     00432960  mov     dword ptr [esp + 0x44], 0xbc
+     00432968  mov     dword ptr [esp + 0x48], 0x15a
+     00432970  mov     dword ptr [esp + 0x4c], 0xdf
+     00432978  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     0043297d  mov     edx, dword ptr [eax]
+     0043297f  push    0
+     00432981  push    1
+     00432983  push    0x48a068
+     00432988  push    0
+     0043298a  push    eax
+     0043298b  call    dword ptr [edx + 0x64]
+     0043298e  mov     edi, dword ptr [esp + 0x44]
+    ... 余 26 条
+
+===== 0x4329ef  sub_004329ef  6 条 =====
+  callees: loc_00432944, sub_0043293c
+  globals: 0x0048c3a2, 0x0048c3a5, 0x004756a0
+     004329ef  mov     byte ptr [0x48c3a2], 6   ← 全局
+     004329f6  cmp     byte ptr [0x48c3a5], 0   ← 全局
+     004329fd  jne     0x432944   → loc_00432944
+     00432a03  mov     ebp, dword ptr [0x4756a0]   ← 全局   "?FF"
+     00432a09  push    ebp
+     00432a0a  jmp     0x43293c   → sub_0043293c
+
+===== 0x435ea2  sub_00435ea2  45 条 =====
+  callees: loc_00435f60, sub_00456418, USER32!InvalidateRect, sub_0044ecb6, loc_0043518a
+  globals: 0x0048c3e1, 0x0048c3dd, 0x0048a0e0, 0x0048c3c0, 0x0048a08c, 0x004622f8, 0x00475858
+     00435ea2  cmp     byte ptr [0x48c3e1], 1   ← 全局
+     00435ea9  jne     0x435f60   → loc_00435f60
+     00435eaf  cmp     byte ptr [0x48c3dd], 0xb   ← 全局
+     00435eb6  je      0x435f60   → loc_00435f60
+     00435ebc  mov     dword ptr [esp + 0xc0], 0x224
+     00435ec7  mov     dword ptr [esp + 0xc4], 0x1af
+     00435ed2  mov     dword ptr [esp + 0xc8], 0x274
+     00435edd  mov     dword ptr [esp + 0xcc], 0x1d7
+     00435ee8  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     00435eed  mov     edx, dword ptr [eax]
+     00435eef  push    0
+     00435ef1  push    1
+     00435ef3  push    0x48a068
+     00435ef8  push    0
+    ... 余 31 条
+
+===== 0x437c25  sub_00437c25  82 条 =====
+  callees: blitRect, sub_00456418, loc_00437cf6, loc_00437c7a, USER32!InvalidateRect
+  globals: 0x0048a0e0, 0x0048c41c, 0x0048a08c, 0x0048c420, 0x004622f8
+     00437c25  push    ebx
+     00437c26  push    esi
+     00437c27  push    edi
+     00437c28  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     00437c2d  mov     edx, dword ptr [eax]
+     00437c2f  push    0
+     00437c31  push    1
+     00437c33  push    0x48a068
+     00437c38  push    0
+     00437c3a  push    eax
+     00437c3b  call    dword ptr [edx + 0x64]
+     00437c3e  push    0
+     00437c40  push    0
+     00437c42  mov     eax, dword ptr [0x48c41c]   ← 全局
+    ... 余 68 条
+
+===== 0x4387f9  sub_004387f9  52 条 =====
+  callees: loc_00438885, loc_0043887f, sub_00456418, sub_004387f9, loc_00438a24, USER32!InvalidateRect, loc_00439196
+  globals: 0x0048c420, 0x0048c42f, 0x0048c41c, 0x0048a08c, 0x0048a0e0, 0x004622f8
+     004387f9  movzx   ebp, byte ptr [0x48c420]   ← 全局
+     00438800  cmp     ebx, ebp
+     00438802  jge     0x438885   → loc_00438885
+     00438808  xor     eax, eax
+     0043880a  mov     al, byte ptr [0x48c42f]   ← 全局
+     0043880f  cmp     ebx, eax
+     00438811  je      0x43887f   → loc_0043887f
+     00438813  xor     eax, eax
+     00438815  mov     al, byte ptr [ebx + 0x48c418]   ← 全局
+     0043881b  imul    eax, eax, 0x68
+     0043881e  xor     edx, edx
+     00438820  mov     dl, byte ptr [eax + 0x496b7b]   ← 全局
+     00438826  mov     eax, edx
+     00438828  shl     eax, 2
+    ... 余 38 条
+
+===== 0x4391ee  sub_004391ee  59 条 =====
+  callees: loc_00439302, loc_00439288, sub_0045643d, loc_004392db, loc_004396a8
+  globals: 0x0048c42c, 0x0048a0e0, 0x0048c41c, 0x0048a08c, 0x0048c42d
+     004391ee  cmp     ebx, 1
+     004391f1  jne     0x439302   → loc_00439302
+     004391f7  mov     al, byte ptr [0x48c42c]   ← 全局
+     004391fc  and     al, 0x30
+     004391fe  xor     ebx, ebx
+     00439200  mov     bl, al
+     00439202  sar     ebx, 4
+     00439205  mov     dword ptr [esp + 0xc0], 0x4c
+     00439210  mov     dword ptr [esp + 0xc4], 0x78
+     0043921b  mov     dword ptr [esp + 0xc8], 0x9c
+     00439226  mov     dword ptr [esp + 0xcc], 0xa0
+     00439231  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     00439236  mov     edx, dword ptr [eax]
+     00439238  push    0
+    ... 余 45 条
+
+===== 0x43c8fb  sub_0043c8fb  136 条 =====
+  callees: blitRect, loc_0043c9a1, sub_00456418, loc_0043ca19, loc_0043c9f6, loc_0043c938, loc_0043c967, loc_0043c98f, sub_0044f9d8, sub_00457d61, drawText_colorcode
+  globals: 0x0048a0e0, 0x0048c4b4, 0x0048a08c, 0x0049910c
+     0043c8fb  push    ebx
+     0043c8fc  push    esi
+     0043c8fd  push    edi
+     0043c8fe  push    ebp
+     0043c8ff  sub     esp, 0x14
+     0043c902  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     0043c907  mov     edx, dword ptr [eax]
+     0043c909  push    0
+     0043c90b  push    1
+     0043c90d  push    0x48a068
+     0043c912  push    0
+     0043c914  push    eax
+     0043c915  call    dword ptr [edx + 0x64]
+     0043c918  push    0
+    ... 余 122 条
+
+===== 0x43d88f  sub_0043d88f  125 条 =====
+  callees: blitRect, sub_00456418, loc_0043d8f2, loc_0043d97d, loc_0043d8e8, loc_0043d94c, loc_0043d942, sub_0044f9d8, sub_00457d61, drawText_colorcode
+  globals: 0x0048a0e0, 0x0048c4d4, 0x0048a08c, 0x0049910c
+     0043d88f  push    ebx
+     0043d890  push    esi
+     0043d891  push    edi
+     0043d892  push    ebp
+     0043d893  sub     esp, 0x14
+     0043d896  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     0043d89b  mov     edx, dword ptr [eax]
+     0043d89d  push    0
+     0043d89f  push    1
+     0043d8a1  push    0x48a068
+     0043d8a6  push    0
+     0043d8a8  push    eax
+     0043d8a9  call    dword ptr [edx + 0x64]
+     0043d8ac  push    0
+    ... 余 111 条
+
+===== 0x43f33f  sub_0043f33f  6 条 =====
+  callees: sub_0043ef3e, loc_0043f709
+     0043f33f  push    0
+     0043f341  push    0xf
+     0043f343  push    ebp
+     0043f344  call    0x43ef3e   → sub_0043ef3e
+     0043f349  add     esp, 0xc
+     0043f34c  jmp     0x43f709   → loc_0043f709
+
+===== 0x43f351  sub_0043f351  72 条 =====
+  callees: sub_0043ef3e, sub_0045643d, sub_00456418, sub_4542ce, loc_0043f709
+  globals: 0x0048a0e0, 0x0048c51c, 0x0048a08c, 0x0048c514, 0x0048a0dc
+     0043f351  push    0
+     0043f353  push    0xf
+     0043f355  push    ebp
+     0043f356  call    0x43ef3e   → sub_0043ef3e
+     0043f35b  add     esp, 0xc
+     0043f35e  mov     eax, dword ptr [ebp*4 + 0x475ce0]   ← 全局
+     0043f365  mov     dword ptr [esp + 0x9c], eax
+     0043f36c  mov     dword ptr [esp + 0xa0], 0xf0
+     0043f377  add     eax, 0x1f
+     0043f37a  mov     dword ptr [esp + 0xa4], eax
+     0043f381  mov     dword ptr [esp + 0xa8], 0x15c
+     0043f38c  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     0043f391  mov     edx, dword ptr [eax]
+     0043f393  push    0
+    ... 余 58 条
+
+===== 0x43f45d  sub_0043f45d  68 条 =====
+  callees: sub_0043ef3e, loc_0043f709, sub_0045643d, sub_00456418
+  globals: 0x0048a0e0, 0x0048c51c, 0x0048a08c, 0x0048c514, 0x0048a0dc
+     0043f45d  push    0
+     0043f45f  push    0xf
+     0043f461  push    ebp
+     0043f462  call    0x43ef3e   → sub_0043ef3e
+     0043f467  add     esp, 0xc
+     0043f46a  cmp     dword ptr [esp + 0xb0], 4
+     0043f472  jne     0x43f709   → loc_0043f709
+     0043f478  mov     eax, dword ptr [ebp*4 + 0x475ce0]   ← 全局
+     0043f47f  mov     dword ptr [esp + 0x9c], eax
+     0043f486  mov     dword ptr [esp + 0xa0], 0xf0
+     0043f491  add     eax, 0x1f
+     0043f494  mov     dword ptr [esp + 0xa4], eax
+     0043f49b  mov     dword ptr [esp + 0xa8], 0x15c
+     0043f4a6  mov     eax, dword ptr [0x48a0e0]   ← 全局
+    ... 余 54 条
+
+===== 0x43f55f  sub_0043f55f  9 条 =====
+  callees: sub_0043ef3e, loc_0043f709
+     0043f55f  push    1
+     0043f561  push    0xf
+     0043f563  push    ebp
+     0043f564  call    0x43ef3e   → sub_0043ef3e
+     0043f569  add     esp, 0xc
+     0043f56c  cmp     eax, 1
+     0043f56f  jne     0x43f709   → loc_0043f709
+     0043f575  mov     esi, 5
+     0043f57a  jmp     0x43f709   → loc_0043f709
+
+===== 0x43f57f  sub_0043f57f  9 条 =====
+  callees: sub_0043ef3e, loc_0043f709
+     0043f57f  push    2
+     0043f581  push    0xe
+     0043f583  push    ebp
+     0043f584  call    0x43ef3e   → sub_0043ef3e
+     0043f589  add     esp, 0xc
+     0043f58c  cmp     eax, 1
+     0043f58f  jne     0x43f709   → loc_0043f709
+     0043f595  mov     esi, 6
+     0043f59a  jmp     0x43f709   → loc_0043f709
+
+===== 0x43f59f  sub_0043f59f  9 条 =====
+  callees: sub_0043ef3e, loc_0043f709
+     0043f59f  push    3
+     0043f5a1  push    0xc
+     0043f5a3  push    ebp
+     0043f5a4  call    0x43ef3e   → sub_0043ef3e
+     0043f5a9  add     esp, 0xc
+     0043f5ac  cmp     eax, 1
+     0043f5af  jne     0x43f709   → loc_0043f709
+     0043f5b5  lea     esi, [ebp + 7]
+     0043f5b8  jmp     0x43f709   → loc_0043f709
+
+===== 0x43f5bd  sub_0043f5bd  9 条 =====
+  callees: sub_0043ef3e, loc_0043f709
+     0043f5bd  push    4
+     0043f5bf  push    8
+     0043f5c1  push    ebp
+     0043f5c2  call    0x43ef3e   → sub_0043ef3e
+     0043f5c7  add     esp, 0xc
+     0043f5ca  cmp     eax, 1
+     0043f5cd  jne     0x43f709   → loc_0043f709
+     0043f5d3  mov     esi, 8
+     0043f5d8  jmp     0x43f709   → loc_0043f709
+
+===== 0x43f6fa  sub_0043f6fa  3 条 =====
+  callees: loc_0043f709
+     0043f6fa  cmp     dword ptr [esp + 0xb0], 0x28
+     0043f702  jne     0x43f709   → loc_0043f709
+     0043f704  mov     esi, 0xa
+
+===== 0x43f883  sub_0043f883  2 条 =====
+  callees: loc_0043f127
+     0043f883  push    0
+     0043f885  call    0x43f127   → loc_0043f127
+
+===== 0x43fa19  sub_0043fa19  3 条 =====
+  callees: loc_0043fa23
+     0043fa19  cmp     ebp, 0x28
+     0043fa1c  jne     0x43fa23   → loc_0043fa23
+     0043fa1e  mov     ebx, 6
+
+===== 0x446457  sub_00446457  13 条 =====
+  callees: loc_00446489, loc_004465b6, loc_004465ba
+  globals: 0x0049910c
+     00446457  cmp     ebx, 0x7d0
+     0044645d  jle     0x446489   → loc_00446489
+     0044645f  cmp     ebx, 0xfa0
+     00446465  jge     0x446489   → loc_00446489
+     00446467  xor     edx, edx
+     00446469  mov     dl, byte ptr [edi + 0x19]
+     0044646c  mov     eax, dword ptr [0x49910c]   ← 全局
+     00446471  inc     eax
+     00446472  cmp     edx, eax
+     00446474  je      0x4465b6   → loc_004465b6
+     0044647a  cmp     byte ptr [edi + 0x1a], 0
+     0044647e  je      0x4465b6   → loc_004465b6
+     00446484  jmp     0x4465ba   → loc_004465ba
+
+===== 0x4464c3  sub_004464c3  13 条 =====
+  callees: loc_004464f6, loc_004465b6, loc_004465ba
+  globals: 0x0049910c
+     004464c3  cmp     ebx, 0x7d0
+     004464c9  jle     0x4464f6   → loc_004464f6
+     004464cb  cmp     ebx, 0xfa0
+     004464d1  jge     0x4464f6   → loc_004464f6
+     004464d3  xor     eax, eax
+     004464d5  mov     al, byte ptr [edi + 0x19]
+     004464d8  mov     edx, dword ptr [0x49910c]   ← 全局
+     004464de  inc     edx
+     004464df  cmp     eax, edx
+     004464e1  je      0x4465b6   → loc_004465b6
+     004464e7  cmp     byte ptr [edi + 0x1a], 0
+     004464eb  je      0x4465b6   → loc_004465b6
+     004464f1  jmp     0x4465ba   → loc_004465ba
+
+===== 0x44dd9f  sub_0044dd9f  161 条 =====
+  callees: loc_0044de4b, blitRect, loc_0044dec6, loc_0044ded1, loc_0044de1d, loc_0044de30, loc_0044de22, loc_0044de12, loc_0044de90, loc_0044debe, sub_0045825d, loc_0044df9d, loc_0044dee5, sub_0044f9d8, sub_004562cc, drawText_colorcode, loc_0044df3a
+  globals: 0x004762b8, 0x0048a0e0, 0x0048a08c, 0x0048c5e8, 0x00476298, 0x0048c5e4, 0x00476294, 0x0048c5f8, 0x004762b4, 0x004762a8, 0x004762a4, 0x0048c5f0
+     0044dd9f  push    ebx
+     0044dda0  push    esi
+     0044dda1  push    edi
+     0044dda2  sub     esp, 0xc
+     0044dda5  xor     esi, esi
+     0044dda7  mov     ebx, dword ptr [0x4762b8]   ← 全局
+     0044ddad  mov     eax, dword ptr [0x48a0e0]   ← 全局
+     0044ddb2  mov     edx, dword ptr [eax]
+     0044ddb4  push    esi
+     0044ddb5  push    1
+     0044ddb7  push    0x48a068
+     0044ddbc  push    esi
+     0044ddbd  push    eax
+     0044ddbe  call    dword ptr [edx + 0x64]
+    ... 余 147 条
+
+===== 0x44e668  sub_0044e668  41 条 =====
+  callees: loc_0044e692, loc_0044e69a, sub_0044e586, loc_0044e6e8, sub_0044e65e, loc_0044e69c
+  globals: 0x00476018, 0x0047601c
+     0044e668  mov     edx, dword ptr [0x476018]   ← 全局
+     0044e66e  mov     eax, edx
+     0044e670  shl     eax, 2
+     0044e673  add     eax, edx
+     0044e675  shl     eax, 2
+     0044e678  mov     edx, dword ptr [eax + 0x4761c4]   ← 全局
+     0044e67e  add     edx, 8
+     0044e681  mov     ecx, dword ptr [eax + 0x4761c0]   ← 全局
+     0044e687  cmp     edx, ecx
+     0044e689  jge     0x44e692   → loc_0044e692
+     0044e68b  mov     ebp, 8
+     0044e690  jmp     0x44e69a   → loc_0044e69a
+     0044e692  mov     ebp, ecx
+     0044e694  sub     ebp, dword ptr [eax + 0x4761c4]   ← 全局
+    ... 余 27 条
+
+===== 0x44e6eb  sub_0044e6eb  50 条 =====
+  callees: sub_0044e586, loc_0044e845
+  globals: 0x00476018, 0x0048c5fc, 0x0048c5e4, 0x0048c5e8, 0x0048a0e0, 0x0048c5f8, 0x0048a08c
+     0044e6eb  mov     edx, dword ptr [0x476018]   ← 全局
+     0044e6f1  mov     eax, edx
+     0044e6f3  shl     eax, 2
+     0044e6f6  add     eax, edx
+     0044e6f8  cmp     dword ptr [eax*4 + 0x4761c0], 8   ← 全局
+     0044e700  jle     0x44e586   → sub_0044e586
+     0044e706  mov     eax, dword ptr [0x48c5fc]   ← 全局
+     0044e70b  shl     eax, 4
+     0044e70e  mov     edx, dword ptr [0x48c5e4]   ← 全局
+     0044e714  mov     esi, dword ptr [eax + 0x476254]   ← 全局
+     0044e71a  add     edx, esi
+     0044e71c  mov     dword ptr [esp + 0x40], edx
+     0044e720  mov     edx, dword ptr [0x48c5e8]   ← 全局
+     0044e726  mov     ebp, dword ptr [eax + 0x476258]   ← 全局
+    ... 余 36 条
+
+===== 0x44e881  sub_0044e881  50 条 =====
+  callees: sub_0044e586, loc_0044e8d3, loc_0044e8c0, sub_0044e65e, sub_0044e83d
+  globals: 0x00476018, 0x0047601c, 0x0048c5e4, 0x00476274, 0x0048c5e8, 0x00476278, 0x0047627c, 0x00476280, 0x0048a0e0, 0x0048c5f8
+     0044e881  mov     edx, dword ptr [0x476018]   ← 全局
+     0044e887  mov     eax, edx
+     0044e889  shl     eax, 2
+     0044e88c  add     eax, edx
+     0044e88e  shl     eax, 2
+     0044e891  cmp     dword ptr [eax + 0x4761c0], 8   ← 全局
+     0044e898  jle     0x44e586   → sub_0044e586
+     0044e89e  mov     edx, dword ptr [eax + 0x4761c4]   ← 全局
+     0044e8a4  test    edx, edx
+     0044e8a6  jle     0x44e8d3   → loc_0044e8d3
+     0044e8a8  cmp     edx, 8
+     0044e8ab  jle     0x44e8c0   → loc_0044e8c0
+     0044e8ad  sub     dword ptr [0x47601c], 8   ← 全局
+     0044e8b4  sub     dword ptr [eax + 0x4761c4], 8   ← 全局
+    ... 余 36 条
+
+===== 0x44e944  sub_0044e944  18 条 =====
+  callees: sub_0044e586, loc_0044e9a2, loc_0044e989, sub_0044e65e
+  globals: 0x00476018, 0x0047601c
+     0044e944  mov     edx, dword ptr [0x476018]   ← 全局
+     0044e94a  mov     eax, edx
+     0044e94c  shl     eax, 2
+     0044e94f  add     eax, edx
+     0044e951  shl     eax, 2
+     0044e954  mov     edx, dword ptr [eax + 0x4761c0]   ← 全局
+     0044e95a  cmp     edx, 8
+     0044e95d  jle     0x44e586   → sub_0044e586
+     0044e963  sub     edx, 8
+     0044e966  mov     ecx, dword ptr [eax + 0x4761c4]   ← 全局
+     0044e96c  cmp     edx, ecx
+     0044e96e  jle     0x44e9a2   → loc_0044e9a2
+     0044e970  add     ecx, 8
+     0044e973  cmp     ecx, edx
+    ... 余 4 条
+
+===== 0x44ee18  sub_0044ee18  89 条 =====
+  callees: loc_0044ef2a, loc_0044ee3f, sub_00454493, loc_0044ee83, WINMM!timeGetTime, loc_0044ee5f, loc_0044ee63, loc_0044ee76, sub_004544b9, loc_0044ef34, blitRect, my_free, sub_0040235d, sub_00402250
+  globals: 0x004762c4, 0x0046246c, 0x0049715b, 0x0048a0e0, 0x0048c60c, 0x0048c608, 0x004762c0, 0x0048a08c, 0x0048a0dc
+     0044ee18  push    ebx
+     0044ee19  push    esi
+     0044ee1a  push    edi
+     0044ee1b  push    ebp
+     0044ee1c  cmp     dword ptr [0x4762c4], 0   ← 全局
+     0044ee23  je      0x44ef2a   → loc_0044ef2a
+     0044ee29  test    byte ptr [esp + 0x14], 1
+     0044ee2e  je      0x44ee3f   → loc_0044ee3f
+     0044ee30  call    0x454493   → sub_00454493
+     0044ee35  xor     ebp, ebp
+     0044ee37  mov     dword ptr [0x4762c4], ebp   ← 全局
+     0044ee3d  jmp     0x44ee83   → loc_0044ee83
+     0044ee3f  call    dword ptr cs:[0x46246c]   → WINMM!timeGetTime
+     0044ee46  mov     ecx, dword ptr [0x4762c4]   ← 全局
+    ... 余 75 条
+
+===== 0x44ff21  sub_0044ff21  2 条 =====
+  callees: loc_0044ff5d
+     0044ff21  sub     dword ptr [esp + 0xac], esi
+     0044ff28  jmp     0x44ff5d   → loc_0044ff5d
+
+===== 0x44ff2a  sub_0044ff2a  7 条 =====
+  callees: loc_0044ff5d
+     0044ff2a  mov     eax, esi
+     0044ff2c  sar     eax, 1
+     0044ff2e  sub     dword ptr [esp + 0xac], eax
+     0044ff35  mov     eax, ebx
+     0044ff37  sar     eax, 1
+     0044ff39  sub     dword ptr [esp + 0xb0], eax
+     0044ff40  jmp     0x44ff5d   → loc_0044ff5d
+
+===== 0x44ff42  sub_0044ff42  2 条 =====
+  callees: loc_0044ff35
+     0044ff42  sub     dword ptr [esp + 0xac], esi
+     0044ff49  jmp     0x44ff35   → loc_0044ff35
+
+===== 0x44ff4b  sub_0044ff4b  4 条 =====
+     0044ff4b  mov     eax, esi
+     0044ff4d  sar     eax, 1
+     0044ff4f  sub     dword ptr [esp + 0xac], eax
+     0044ff56  sub     dword ptr [esp + 0xb0], ebx
+

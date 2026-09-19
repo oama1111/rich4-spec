@@ -1,0 +1,123 @@
+#### action 28  handler 0042062b  len=417
+0042062b  push      ebx
+0042062c  push      esi
+0042062d  push      edi
+0042062e  push      ebp
+0042062f  sub       esp, 0x14
+00420632  xor       edx, edx
+00420634  mov       dword ptr [esp + 8], edx
+00420638  xor       esi, esi
+0042063a  push      6
+0042063c  mov       ecx, dword ptr [current_player]
+00420642  push      ecx
+00420643  call      0x40b221
+00420648  add       esp, 8
+0042064b  mov       ebx, dword ptr [current_player]
+00420651  push      ebx
+00420652  call      0x40d2d3
+00420657  add       esp, 4
+0042065a  mov       dword ptr [esp + 4], eax
+0042065e  xor       edi, edi
+00420660  mov       dword ptr [esp + 0xc], edi
+00420664  jmp       0x420705
+00420669  cmp       dword ptr [esp], 0
+0042066d  jne       0x420685
+0042066f  cmp       edi, 7
+00420672  jl        0x420685
+00420674  mov       eax, dword ptr [esp + 0x10]
+00420678  mov       dword ptr [aiP0], eax
+0042067d  mov       dword ptr [esp + 8], 1
+00420685  lea       esi, [ebp + 4]
+00420688  jmp       0x4206e8
+0042068a  mov       edx, dword ptr [esp + 0x10]
+0042068e  cmp       edx, 0xfa0
+00420694  jle       0x4206e8
+00420696  cmp       edx, 0x1770
+0042069c  jge       0x4206e8
+0042069e  cmp       dword ptr [esp + 4], -1
+004206a3  je        0x4206e8
+004206a5  lea       eax, [edx - 0xfa0]
+004206ab  shl       eax, 3
+004206ae  mov       edx, eax
+004206b0  shl       eax, 3
+004206b3  sub       eax, edx
+004206b5  mov       edx, dword ptr [com_land]
+004206bb  add       eax, edx
+004206bd  xor       ebx, ebx
+004206bf  mov       bl, byte ptr [eax + 0x19]
+004206c2  mov       edx, dword ptr [esp + 4]
+004206c6  inc       edx
+004206c7  cmp       ebx, edx
+004206c9  jne       0x4206e8
+004206cb  cmp       byte ptr [eax + 0x18], 0
+004206cf  je        0x4206e8
+004206d1  cmp       byte ptr [eax + 0x1a], 3
+004206d5  jb        0x4206e8
+004206d7  mov       eax, dword ptr [esp + 0x10]
+004206db  mov       dword ptr [aiP0], eax
+004206e0  mov       dword ptr [esp + 8], 1
+004206e8  mov       edi, dword ptr [esp + 0xc]
+004206ec  inc       edi
+004206ed  mov       dword ptr [esp + 0xc], edi
+004206f1  cmp       edi, 6
+004206f4  jge       0x4207c3
+004206fa  cmp       dword ptr [esp + 8], 0
+004206ff  jne       0x4207c3
+00420705  mov       eax, dword ptr [esp + 0xc]
+00420709  xor       edx, edx
+0042070b  mov       dx, word ptr [eax*2 + g48b8b4]
+00420713  mov       eax, edx
+00420715  shl       eax, 2
+00420718  add       edx, eax
+0042071a  shl       edx, 3
+0042071d  mov       eax, dword ptr [map2land]
+00420722  mov       ax, word ptr [edx + eax + 0x20]
+00420727  and       eax, 0xffff
+0042072c  mov       dword ptr [esp + 0x10], eax
+00420730  cmp       eax, 0x7d0
+00420735  jle       0x42068a
+0042073b  cmp       eax, 0xfa0
+00420740  jge       0x42068a
+00420746  sub       eax, 0x7d0
+0042074b  imul      eax, eax, 0x34
+0042074e  mov       ebp, dword ptr [res_land]
+00420754  add       ebp, eax
+00420756  test      esi, esi
+00420758  je        0x42076f
+0042075a  push      esi
+0042075b  lea       eax, [ebp + 4]
+0042075e  push      eax
+0042075f  call      0x458370
+00420764  add       esp, 8
+00420767  test      eax, eax
+00420769  je        0x4206e8
+0042076f  mov       esi, 1
+00420774  xor       edi, edi
+00420776  mov       dword ptr [esp], edi
+00420779  mov       ebx, dword ptr [res_land]
+0042077f  add       ebx, 0x34
+00420782  cmp       esi, dword ptr [0x498e98]
+00420788  jg        0x420669
+0042078e  lea       eax, [ebx + 4]
+00420791  push      eax
+00420792  lea       eax, [ebp + 4]
+00420795  push      eax
+00420796  call      0x458370
+0042079b  add       esp, 8
+0042079e  test      eax, eax
+004207a0  jne       0x4207c0
+004207a2  xor       edx, edx
+004207a4  mov       dl, byte ptr [ebx + 0x19]
+004207a7  mov       eax, dword ptr [current_player]
+004207ac  inc       eax
+004207ad  cmp       edx, eax
+004207af  je        0x420685
+004207b5  test      dl, dl
+004207b7  je        0x4207c0
+004207b9  xor       eax, eax
+004207bb  mov       al, byte ptr [ebx + 0x1a]
+004207be  add       edi, eax
+004207c0  inc       esi
+004207c1  jmp       0x42077f
+004207c3  mov       eax, dword ptr [esp + 8]
+004207c7  jmp       0x41ed36

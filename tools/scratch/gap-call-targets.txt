@@ -1,0 +1,67 @@
+# CALL 档（真信号）
+
+# JT 档（跳表成员，真信号）
+
+# JMP 档（待分类）
+0x4221c0   643B  jmp×5    
+0x420449   482B  jmp×5    sub_00420449
+0x43a500   469B  jmp×2    sub_0043a500
+0x422bbd   404B  jmp×4    sub_00422bbd
+0x425981   397B  jmp×7    
+0x4334c2   395B  jmp×1    sub_004334c2
+0x422d53   362B  jmp×2    sub_00422d53
+0x4252a2   362B  jmp×2    sub_004252a2
+0x40504d   265B  jmp×2    sub_0040504d
+0x44f82e   263B  jmp×3    
+0x426881   243B  jmp×2    sub_00426881
+0x410073   229B  jmp×3    sub_00410073
+0x42088b   229B  jmp×5    sub_0042088b
+0x42e073   225B  jmp×1    
+0x41fd69   221B  jmp×3    sub_0041fd69
+0x405df8   192B  jmp×2    sub_00405df8
+0x438f66   143B  jmp×1    sub_00438f66
+0x4352de   118B  jmp×1    
+0x4392c3    63B  jmp×3    
+0x410cd1    54B  jmp×1    sub_00410cee
+0x437601    44B  jmp×5    sub_00436ef8
+0x44e83d    44B  jmp×2    sub_0044e881
+0x43756f    37B  jmp×15   sub_00436ef8, sub_004375af
+0x4114a4    36B  jmp×1    sub_00411122
+0x43664a    30B  jmp×4    sub_00436034
+0x406223    27B  jmp×1    sub_004060e9
+0x4113bf    26B  jmp×1    sub_00411122
+0x419a39    25B  jmp×4    sub_004198b9
+0x406afd    23B  jmp×4    sub_004060e9
+0x441574    22B  jmp×8    sub_004413ec
+0x40591c    20B  jmp×1    sub_00404e44
+0x41e331    20B  jmp×3    sub_0041dda9
+0x425fb6    20B  jmp×1    sub_004258c1
+0x406c40    18B  jmp×5    sub_00406b14
+0x403865    17B  jmp×9    sub_0040363a, sub_004039c2
+0x4119da    16B  jmp×4    sub_00411122
+0x4370d8    15B  jmp×6    sub_00436ef8, sub_0043756f
+0x43a3d7    15B  jmp×9    sub_0043a2dd, sub_0043a500, sub_0043aa77
+0x4054cb    13B  jmp×3    sub_00404e44, sub_004054d8
+0x42b197    13B  jmp×3    sub_0042aaff
+0x42d560    13B  jmp×1    sub_0042d37f
+0x42e459    13B  jmp×3    sub_0042d37f, sub_0042d841
+0x4301db    13B  jmp×6    sub_0043010c, sub_00430243, sub_004306ff
+0x430478    13B  jmp×1    sub_00430485
+0x434864    13B  jmp×1    sub_00434871
+0x435787    13B  jmp×1    sub_00435062
+0x436162    13B  jmp×4    sub_00436034, sub_004365ac
+0x43cbe9    12B  jmp×5    sub_0043caab, sub_0043cf06
+0x43db4e    11B  jmp×2    sub_0043da27
+0x419a5d    10B  jmp×1    sub_004198b9
+0x42acfb    10B  jmp×9    sub_0042aaff, sub_0042adde, sub_0042b197, sub_0042b1ef
+0x43316d    10B  jmp×6    sub_00433088, sub_004334c2
+0x4375af     9B  jmp×1    sub_00436ef8
+0x414c61     8B  jmp×2    sub_00414bbc
+0x42650d     8B  jmp×1    sub_0042608f
+0x426a5b     8B  jmp×1    sub_004267a4
+0x426e7f     8B  jmp×1    sub_00426c2e
+0x4365ac     8B  jmp×1    sub_00436034
+0x43cf06     8B  jmp×1    sub_0043caab
+0x43f88a     8B  jmp×1    sub_0043f9ab
+0x43fd7e     7B  jmp×14   sub_0043fae4, sub_0043ff56, sub_004402d7
+0x42d841     6B  jmp×1    sub_0042d37f

@@ -1,0 +1,131 @@
+#### action 29  handler 004207cc  len=420
+004207cc  push      ebx
+004207cd  push      esi
+004207ce  push      edi
+004207cf  push      ebp
+004207d0  sub       esp, 0x1c
+004207d3  xor       edx, edx
+004207d5  mov       dword ptr [esp + 0xc], edx
+004207d9  push      -1
+004207db  call      0x40a45c
+004207e0  add       esp, 4
+004207e3  mov       dword ptr [aiP2], eax
+004207e8  xor       ecx, ecx
+004207ea  mov       dword ptr [esp], ecx
+004207ed  mov       ebx, dword ptr [current_player]
+004207f3  push      ebx
+004207f4  call      0x40d2d3
+004207f9  add       esp, 4
+004207fc  mov       dword ptr [esp + 0x14], eax
+00420800  xor       eax, eax
+00420802  xor       edi, edi
+00420804  cmp       eax, dword ptr [aiP2]
+0042080a  jge       0x420877
+00420810  mov       dx, word ptr [eax*2 + g48b8c4]
+00420818  and       edx, 0xffff
+0042081e  test      dh, 0x80
+00420821  je        0x420874
+00420823  test      dl, 0xf
+00420826  je        0x420874
+00420828  xor       ecx, ecx
+0042082a  mov       esi, 1
+0042082f  jmp       0x420839
+00420831  add       esi, esi
+00420833  inc       ecx
+00420834  cmp       esi, 0x10
+00420837  jge       0x420874
+00420839  test      edx, esi
+0042083b  je        0x420831
+0042083d  cmp       ecx, dword ptr [current_player]
+00420843  je        0x420831
+00420845  cmp       ecx, dword ptr [esp + 0x14]
+00420849  je        0x420831
+0042084b  imul      ebx, ecx, 0x68
+0042084e  cmp       byte ptr [ebx + player+0x15(type)], 0
+00420855  je        0x420831
+00420857  mov       bl, byte ptr [ebx + player+0x41(ally)]
+0042085d  and       ebx, 0xff
+00420863  mov       ebp, dword ptr [current_player]
+00420869  inc       ebp
+0042086a  cmp       ebx, ebp
+0042086c  je        0x420831
+0042086e  mov       byte ptr [esp + edi], cl
+00420871  inc       edi
+00420872  jmp       0x420831
+00420874  inc       eax
+00420875  jmp       0x420804
+00420877  test      edi, edi
+00420879  je        0x420964
+0042087f  xor       ecx, ecx
+00420881  xor       esi, esi
+00420883  mov       dword ptr [esp + 0x10], 0xffffffff
+0042088b  cmp       ecx, dword ptr [num_players]
+00420891  jge       0x420931
+00420897  cmp       ecx, dword ptr [current_player]
+0042089d  je        0x42092b
+004208a3  imul      eax, ecx, 0x68
+004208a6  cmp       byte ptr [eax + player+0x15(type)], 0
+004208ad  je        0x42092b
+004208b3  xor       edx, edx
+004208b5  mov       eax, 1
+004208ba  mov       ebx, dword ptr [res_land]
+004208c0  add       ebx, 0x34
+004208c3  cmp       eax, dword ptr [0x498e98]
+004208c9  jg        0x4208e8
+004208cb  movzx     ebp, byte ptr [ebx + 0x19]
+004208cf  mov       dword ptr [esp + 4], ebp
+004208d3  lea       ebp, [ecx + 1]
+004208d6  mov       dword ptr [esp + 8], ebp
+004208da  mov       ebp, dword ptr [esp + 4]
+004208de  cmp       ebp, dword ptr [esp + 8]
+004208e2  jne       0x4208e5
+004208e4  inc       edx
+004208e5  inc       eax
+004208e6  jmp       0x4208c0
+004208e8  mov       eax, 1
+004208ed  mov       ebx, dword ptr [com_land]
+004208f3  add       ebx, 0x38
+004208f6  mov       dword ptr [esp + 0x18], ebx
+004208fa  cmp       eax, dword ptr [0x498e8c]
+00420900  jg        0x420921
+00420902  xor       ebx, ebx
+00420904  mov       ebp, dword ptr [esp + 0x18]
+00420908  mov       bl, byte ptr [ebp + 0x19]
+0042090b  mov       dword ptr [esp + 8], ebx
+0042090f  lea       ebx, [ecx + 1]
+00420912  cmp       ebx, dword ptr [esp + 8]
+00420916  jne       0x420919
+00420918  inc       edx
+00420919  inc       eax
+0042091a  add       dword ptr [esp + 0x18], 0x38
+0042091f  jmp       0x4208fa
+00420921  cmp       esi, edx
+00420923  jge       0x42092b
+00420925  mov       esi, edx
+00420927  mov       dword ptr [esp + 0x10], ecx
+0042092b  inc       ecx
+0042092c  jmp       0x42088b
+00420931  xor       ecx, ecx
+00420933  mov       ebx, dword ptr [esp + 0x10]
+00420937  cmp       ecx, edi
+00420939  jge       0x420964
+0042093b  xor       eax, eax
+0042093d  mov       al, byte ptr [esp + ecx]
+00420940  cmp       eax, ebx
+00420942  jne       0x420961
+00420944  mov       cl, byte ptr [esp + 0x10]
+00420948  mov       eax, 1
+0042094d  shl       eax, cl
+0042094f  or        ah, 0x80
+00420952  mov       dword ptr [aiP0], eax
+00420957  mov       dword ptr [esp + 0xc], 1
+0042095f  jmp       0x420964
+00420961  inc       ecx
+00420962  jmp       0x420937
+00420964  mov       eax, dword ptr [esp + 0xc]
+00420968  add       esp, 0x1c
+0042096b  pop       ebp
+0042096c  pop       edi
+0042096d  pop       esi
+0042096e  pop       ebx
+0042096f  ret       

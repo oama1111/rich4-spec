@@ -1,0 +1,12 @@
+# func 0x00436edb insns=8 callers=[] callees=['0x00436d3a']
+#  reads=[]
+#  writes=['0x0048c3f8', '0x0048c3f9']
+===== func 0x00436edb .. 0x00436ef8 (29 bytes) =====
+  00436edb  mov      byte ptr [0x48c3f8], 0x30   ; [0x0048c3f8]
+  00436ee2  xor      dl, dl
+  00436ee4  mov      byte ptr [0x48c3f9], dl   ; [0x0048c3f9]
+  00436eea  mov      edx, dword ptr [esp + 4]
+  00436eee  push     edx
+  00436eef  call     0x436d3a   ; ->0x436d3a
+  00436ef4  add      esp, 4
+  00436ef7  ret      

@@ -1,0 +1,121 @@
+#### action 33  handler 004213c5  len=431
+004213c5  push      ebx
+004213c6  push      esi
+004213c7  push      edi
+004213c8  sub       esp, 0x208
+004213ce  xor       edx, edx
+004213d0  mov       dword ptr [esp + 0x200], edx
+004213d7  push      6
+004213d9  mov       ecx, dword ptr [current_player]
+004213df  push      ecx
+004213e0  call      0x40b343
+004213e5  add       esp, 8
+004213e8  call      0x409ef9
+004213ed  mov       dword ptr [esp + 0x204], eax
+004213f4  xor       ebx, ebx
+004213f6  xor       esi, esi
+004213f8  cmp       ebx, dword ptr [esp + 0x204]
+004213ff  jge       0x42153a
+00421405  xor       eax, eax
+00421407  xor       edi, edi
+00421409  jmp       0x421411
+0042140b  inc       eax
+0042140c  cmp       eax, 6
+0042140f  jge       0x42142f
+00421411  xor       ecx, ecx
+00421413  mov       cx, word ptr [ebx*2 + g48b8c4]
+0042141b  mov       dx, word ptr [eax*2 + g48b8b4]
+00421423  and       edx, 0xffff
+00421429  cmp       ecx, edx
+0042142b  jne       0x42140b
+0042142d  jmp       0x421437
+0042142f  test      edi, edi
+00421431  je        0x421534
+00421437  mov       ax, word ptr [ebx*2 + g48b8c4]
+0042143f  and       eax, 0xffff
+00421444  xor       edx, edx
+00421446  mov       dx, word ptr [0x48bae0]
+0042144d  cmp       eax, edx
+0042144f  jne       0x42145a
+00421451  cmp       dword ptr [player+0x-38], 0
+00421458  jne       0x42147d
+0042145a  mov       ax, word ptr [ebx*2 + g48b8c4]
+00421462  and       eax, 0xffff
+00421467  xor       edx, edx
+00421469  mov       dx, word ptr [0x48bae2]
+00421470  cmp       eax, edx
+00421472  jne       0x42148c
+00421474  cmp       dword ptr [player+0x-8], 0
+0042147b  je        0x42148c
+0042147d  xor       eax, eax
+0042147f  mov       ax, word ptr [ebx*2 + g48b8c4]
+00421487  jmp       0x421553
+0042148c  lea       edx, [ebx + ebx]
+0042148f  xor       ecx, ecx
+00421491  mov       cx, word ptr [edx + g48b8c4]
+00421498  mov       eax, ecx
+0042149a  shl       eax, 2
+0042149d  add       ecx, eax
+0042149f  shl       ecx, 3
+004214a2  mov       eax, dword ptr [map2land]
+004214a7  mov       ax, word ptr [ecx + eax + 0x20]
+004214ac  and       eax, 0xffff
+004214b1  cmp       eax, 0x7d0
+004214b6  jle       0x4214ec
+004214b8  cmp       eax, 0xfa0
+004214bd  jge       0x4214ec
+004214bf  sub       eax, 0x7d0
+004214c4  imul      ecx, eax, 0x34
+004214c7  mov       eax, dword ptr [res_land]
+004214cc  add       eax, ecx
+004214ce  cmp       byte ptr [eax + 0x19], 0
+004214d2  je        0x421534
+004214d4  xor       ecx, ecx
+004214d6  mov       cl, byte ptr [eax + 0x19]
+004214d9  mov       eax, dword ptr [current_player]
+004214de  inc       eax
+004214df  cmp       ecx, eax
+004214e1  je        0x421534
+004214e3  mov       dx, word ptr [edx + g48b8c4]
+004214ea  jmp       0x42152f
+004214ec  cmp       eax, 0xfa0
+004214f1  jle       0x421534
+004214f3  cmp       eax, 0x1770
+004214f8  jge       0x421534
+004214fa  sub       eax, 0xfa0
+004214ff  shl       eax, 3
+00421502  mov       edx, eax
+00421504  shl       eax, 3
+00421507  sub       eax, edx
+00421509  mov       edx, eax
+0042150b  mov       eax, dword ptr [com_land]
+00421510  add       eax, edx
+00421512  cmp       byte ptr [eax + 0x19], 0
+00421516  je        0x421534
+00421518  xor       edx, edx
+0042151a  mov       dl, byte ptr [eax + 0x19]
+0042151d  mov       eax, dword ptr [current_player]
+00421522  inc       eax
+00421523  cmp       edx, eax
+00421525  je        0x421534
+00421527  mov       dx, word ptr [ebx*2 + g48b8c4]
+0042152f  mov       word ptr [esp + esi*2], dx
+00421533  inc       esi
+00421534  inc       ebx
+00421535  jmp       0x4213f8
+0042153a  test      esi, esi
+0042153c  je        0x421563
+0042153e  call      0x456f2d
+00421543  mov       edx, eax
+00421545  sar       edx, 0x1f
+00421548  idiv      esi
+0042154a  mov       ax, word ptr [esp + edx*2]
+0042154e  and       eax, 0xffff
+00421553  mov       dword ptr [aiP3], eax
+00421558  mov       dword ptr [esp + 0x200], 1
+00421563  mov       eax, dword ptr [esp + 0x200]
+0042156a  add       esp, 0x208
+00421570  pop       edi
+00421571  pop       esi
+00421572  pop       ebx
+00421573  ret       

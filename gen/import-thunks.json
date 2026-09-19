@@ -1,0 +1,490 @@
+{
+ "0x460fbe": [
+  "GDI32.dll",
+  "CreateFontA"
+ ],
+ "0x460ffa": [
+  "GDI32.dll",
+  "CreatePen"
+ ],
+ "0x460fe2": [
+  "GDI32.dll",
+  "CreateSolidBrush"
+ ],
+ "0x460fc4": [
+  "GDI32.dll",
+  "DeleteObject"
+ ],
+ "0x460fdc": [
+  "GDI32.dll",
+  "Ellipse"
+ ],
+ "0x460fd0": [
+  "GDI32.dll",
+  "FloodFill"
+ ],
+ "0x461054": [
+  "GDI32.dll",
+  "GetStockObject"
+ ],
+ "0x460fe8": [
+  "GDI32.dll",
+  "LineTo"
+ ],
+ "0x460fee": [
+  "GDI32.dll",
+  "MoveToEx"
+ ],
+ "0x460fd6": [
+  "GDI32.dll",
+  "Pie"
+ ],
+ "0x460ff4": [
+  "GDI32.dll",
+  "SelectObject"
+ ],
+ "0x460fb8": [
+  "GDI32.dll",
+  "SetBkMode"
+ ],
+ "0x460fb2": [
+  "GDI32.dll",
+  "SetTextCharacterExtra"
+ ],
+ "0x460fa6": [
+  "GDI32.dll",
+  "SetTextColor"
+ ],
+ "0x460fca": [
+  "GDI32.dll",
+  "TextOutA"
+ ],
+ "0x46101e": [
+  "USER32.dll",
+  "BeginPaint"
+ ],
+ "0x4610ba": [
+  "USER32.dll",
+  "CharUpperBuffA"
+ ],
+ "0x461042": [
+  "USER32.dll",
+  "CreateWindowExA"
+ ],
+ "0x461066": [
+  "USER32.dll",
+  "DefWindowProcA"
+ ],
+ "0x461030": [
+  "USER32.dll",
+  "DestroyWindow"
+ ],
+ "0x461078": [
+  "USER32.dll",
+  "DispatchMessageA"
+ ],
+ "0x460fac": [
+  "USER32.dll",
+  "DrawTextA"
+ ],
+ "0x461018": [
+  "USER32.dll",
+  "EndPaint"
+ ],
+ "0x4610ae": [
+  "USER32.dll",
+  "GetCursorPos"
+ ],
+ "0x461048": [
+  "USER32.dll",
+  "GetSystemMetrics"
+ ],
+ "0x461000": [
+  "USER32.dll",
+  "IntersectRect"
+ ],
+ "0x461024": [
+  "USER32.dll",
+  "InvalidateRect"
+ ],
+ "0x46100c": [
+  "USER32.dll",
+  "KillTimer"
+ ],
+ "0x46105a": [
+  "USER32.dll",
+  "LoadCursorA"
+ ],
+ "0x461060": [
+  "USER32.dll",
+  "LoadIconA"
+ ],
+ "0x46109c": [
+  "USER32.dll",
+  "MessageBoxA"
+ ],
+ "0x461084": [
+  "USER32.dll",
+  "PeekMessageA"
+ ],
+ "0x4610a2": [
+  "USER32.dll",
+  "PostMessageA"
+ ],
+ "0x46106c": [
+  "USER32.dll",
+  "PostQuitMessage"
+ ],
+ "0x46104e": [
+  "USER32.dll",
+  "RegisterClassA"
+ ],
+ "0x4610a8": [
+  "USER32.dll",
+  "SetCursorPos"
+ ],
+ "0x461072": [
+  "USER32.dll",
+  "SetFocus"
+ ],
+ "0x461012": [
+  "USER32.dll",
+  "SetTimer"
+ ],
+ "0x461090": [
+  "USER32.dll",
+  "SetWindowsHookExA"
+ ],
+ "0x46102a": [
+  "USER32.dll",
+  "ShowCursor"
+ ],
+ "0x46103c": [
+  "USER32.dll",
+  "ShowWindow"
+ ],
+ "0x46107e": [
+  "USER32.dll",
+  "TranslateMessage"
+ ],
+ "0x46108a": [
+  "USER32.dll",
+  "UnhookWindowsHookEx"
+ ],
+ "0x461036": [
+  "USER32.dll",
+  "UpdateWindow"
+ ],
+ "0x461006": [
+  "USER32.dll",
+  "ValidateRect"
+ ],
+ "0x460f82": [
+  "KERNEL32.dll",
+  "CloseHandle"
+ ],
+ "0x4611b6": [
+  "KERNEL32.dll",
+  "CreateEventA"
+ ],
+ "0x460f9a": [
+  "KERNEL32.dll",
+  "CreateFileA"
+ ],
+ "0x4610d2": [
+  "KERNEL32.dll",
+  "CreateThread"
+ ],
+ "0x4611b0": [
+  "KERNEL32.dll",
+  "DeleteCriticalSection"
+ ],
+ "0x46111a": [
+  "KERNEL32.dll",
+  "DeleteFileA"
+ ],
+ "0x46119e": [
+  "KERNEL32.dll",
+  "EnterCriticalSection"
+ ],
+ "0x460f76": [
+  "KERNEL32.dll",
+  "ExitProcess"
+ ],
+ "0x4610c6": [
+  "KERNEL32.dll",
+  "ExitThread"
+ ],
+ "0x461138": [
+  "KERNEL32.dll",
+  "FlushFileBuffers"
+ ],
+ "0x4610f0": [
+  "KERNEL32.dll",
+  "GetACP"
+ ],
+ "0x4610e4": [
+  "KERNEL32.dll",
+  "GetCPInfo"
+ ],
+ "0x460f5e": [
+  "KERNEL32.dll",
+  "GetCommandLineA"
+ ],
+ "0x460f58": [
+  "KERNEL32.dll",
+  "GetCommandLineW"
+ ],
+ "0x461102": [
+  "KERNEL32.dll",
+  "GetConsoleMode"
+ ],
+ "0x461120": [
+  "KERNEL32.dll",
+  "GetCurrentDirectoryA"
+ ],
+ "0x4611ce": [
+  "KERNEL32.dll",
+  "GetCurrentProcessId"
+ ],
+ "0x4611aa": [
+  "KERNEL32.dll",
+  "GetCurrentThreadId"
+ ],
+ "0x4610d8": [
+  "KERNEL32.dll",
+  "GetCurrentThread"
+ ],
+ "0x460fa0": [
+  "KERNEL32.dll",
+  "GetDriveTypeA"
+ ],
+ "0x460f70": [
+  "KERNEL32.dll",
+  "GetEnvironmentStrings"
+ ],
+ "0x461132": [
+  "KERNEL32.dll",
+  "GetFileAttributesA"
+ ],
+ "0x460f8e": [
+  "KERNEL32.dll",
+  "GetFileSize"
+ ],
+ "0x46113e": [
+  "KERNEL32.dll",
+  "GetFileType"
+ ],
+ "0x461126": [
+  "KERNEL32.dll",
+  "GetFullPathNameA"
+ ],
+ "0x461192": [
+  "KERNEL32.dll",
+  "GetLastError"
+ ],
+ "0x460f7c": [
+  "KERNEL32.dll",
+  "GetLocalTime"
+ ],
+ "0x460f64": [
+  "KERNEL32.dll",
+  "GetModuleFileNameA"
+ ],
+ "0x46116e": [
+  "KERNEL32.dll",
+  "GetModuleFileNameW"
+ ],
+ "0x460f52": [
+  "KERNEL32.dll",
+  "GetModuleHandleA"
+ ],
+ "0x4610ea": [
+  "KERNEL32.dll",
+  "GetOEMCP"
+ ],
+ "0x461156": [
+  "KERNEL32.dll",
+  "GetProcAddress"
+ ],
+ "0x4611bc": [
+  "KERNEL32.dll",
+  "GetStdHandle"
+ ],
+ "0x461096": [
+  "KERNEL32.dll",
+  "GetTickCount"
+ ],
+ "0x460f6a": [
+  "KERNEL32.dll",
+  "GetVersion"
+ ],
+ "0x4611a4": [
+  "KERNEL32.dll",
+  "InitializeCriticalSection"
+ ],
+ "0x461198": [
+  "KERNEL32.dll",
+  "LeaveCriticalSection"
+ ],
+ "0x46115c": [
+  "KERNEL32.dll",
+  "LoadLibraryA"
+ ],
+ "0x46112c": [
+  "KERNEL32.dll",
+  "MoveFileA"
+ ],
+ "0x461168": [
+  "KERNEL32.dll",
+  "MultiByteToWideChar"
+ ],
+ "0x461108": [
+  "KERNEL32.dll",
+  "ReadConsoleInputA"
+ ],
+ "0x460f94": [
+  "KERNEL32.dll",
+  "ReadFile"
+ ],
+ "0x461114": [
+  "KERNEL32.dll",
+  "SetConsoleCtrlHandler"
+ ],
+ "0x4610fc": [
+  "KERNEL32.dll",
+  "SetConsoleMode"
+ ],
+ "0x4610c0": [
+  "KERNEL32.dll",
+  "SetEnvironmentVariableA"
+ ],
+ "0x4610b4": [
+  "KERNEL32.dll",
+  "SetEnvironmentVariableW"
+ ],
+ "0x4610de": [
+  "KERNEL32.dll",
+  "SetEvent"
+ ],
+ "0x460f88": [
+  "KERNEL32.dll",
+  "SetFilePointer"
+ ],
+ "0x461186": [
+  "KERNEL32.dll",
+  "SetLastError"
+ ],
+ "0x4611c2": [
+  "KERNEL32.dll",
+  "SetStdHandle"
+ ],
+ "0x46114a": [
+  "KERNEL32.dll",
+  "SetUnhandledExceptionFilter"
+ ],
+ "0x461180": [
+  "KERNEL32.dll",
+  "TlsAlloc"
+ ],
+ "0x461174": [
+  "KERNEL32.dll",
+  "TlsFree"
+ ],
+ "0x46118c": [
+  "KERNEL32.dll",
+  "TlsGetValue"
+ ],
+ "0x46117a": [
+  "KERNEL32.dll",
+  "TlsSetValue"
+ ],
+ "0x461150": [
+  "KERNEL32.dll",
+  "UnhandledExceptionFilter"
+ ],
+ "0x460f4c": [
+  "KERNEL32.dll",
+  "VirtualAlloc"
+ ],
+ "0x461144": [
+  "KERNEL32.dll",
+  "VirtualFree"
+ ],
+ "0x461162": [
+  "KERNEL32.dll",
+  "VirtualQuery"
+ ],
+ "0x4610cc": [
+  "KERNEL32.dll",
+  "WaitForSingleObject"
+ ],
+ "0x46110e": [
+  "KERNEL32.dll",
+  "WideCharToMultiByte"
+ ],
+ "0x4610f6": [
+  "KERNEL32.dll",
+  "WriteConsoleA"
+ ],
+ "0x4611c8": [
+  "KERNEL32.dll",
+  "WriteFile"
+ ],
+ "0x4611f8": [
+  "WINMM.dll",
+  "auxGetDevCapsA"
+ ],
+ "0x4611fe": [
+  "WINMM.dll",
+  "auxGetNumDevs"
+ ],
+ "0x4611f2": [
+  "WINMM.dll",
+  "auxGetVolume"
+ ],
+ "0x4611d4": [
+  "WINMM.dll",
+  "auxSetVolume"
+ ],
+ "0x4611ec": [
+  "WINMM.dll",
+  "mciGetDeviceIDA"
+ ],
+ "0x461216": [
+  "WINMM.dll",
+  "mciSendStringA"
+ ],
+ "0x4611e6": [
+  "WINMM.dll",
+  "midiOutGetDevCapsA"
+ ],
+ "0x4611e0": [
+  "WINMM.dll",
+  "midiOutGetVolume"
+ ],
+ "0x4611da": [
+  "WINMM.dll",
+  "midiOutSetVolume"
+ ],
+ "0x461204": [
+  "WINMM.dll",
+  "timeGetTime"
+ ],
+ "0x46120a": [
+  "WINMM.dll",
+  "timeKillEvent"
+ ],
+ "0x461210": [
+  "WINMM.dll",
+  "timeSetEvent"
+ ],
+ "0x46121c": [
+  "DSOUND.dll",
+  "DirectSoundCreate"
+ ],
+ "0x461222": [
+  "DDRAW.dll",
+  "DirectDrawCreate"
+ ]
+}

@@ -1,0 +1,23 @@
+# func 0x00436a5a insns=23 callers=['0x0041c84f'] callees=['0x0041906a', '0x004521aa']
+#  reads=['0x00436a4a', '0x00496b94', '0x00497160', '0x0049910c']
+#  writes=[]
+===== func 0x00436a5a .. 0x00436a9b (65 bytes) =====
+  00436a5a  push     ebx
+  00436a5b  push     esi
+  00436a5c  push     edi
+  00436a5d  imul     ebx, dword ptr [0x49910c], 0x68   ; [0x0049910c]
+  00436a64  mov      ecx, dword ptr [ebx + 0x496b94]
+  00436a6a  push     ecx
+  00436a6b  mov      ebx, dword ptr [0x497160]   ; [0x00497160]
+  00436a71  push     ebx
+  00436a72  call     0x4521aa   ; ->0x4521aa
+  00436a77  mov      ebx, eax
+  00436a79  add      esp, 8
+  00436a7c  cmp      eax, 3
+  00436a7f  jg       0x436b06
+  00436a85  push     1
+  00436a87  call     0x41906a   ; ->0x41906a
+  00436a8c  add      esp, 4
+  00436a8f  cmp      ebx, 3
+  00436a92  ja       0x436b06
+  00436a94  jmp      dword ptr [ebx*4 + 0x436a4a]

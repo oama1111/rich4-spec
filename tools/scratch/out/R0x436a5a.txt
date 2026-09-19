@@ -1,0 +1,55 @@
+=====  0x00436a5a .. 0x00436b0a (176 bytes) =====
+  00436a5a  push     ebx
+  00436a5b  push     esi
+  00436a5c  push     edi
+  00436a5d  imul     ebx, dword ptr [0x49910c], 0x68   ; [0x0049910c]
+  00436a64  mov      ecx, dword ptr [ebx + 0x496b94]
+  00436a6a  push     ecx
+  00436a6b  mov      ebx, dword ptr [0x497160]   ; [0x00497160]
+  00436a71  push     ebx
+  00436a72  call     0x4521aa   ; ->0x4521aa
+  00436a77  mov      ebx, eax
+  00436a79  add      esp, 8
+  00436a7c  cmp      eax, 3
+  00436a7f  jg       0x436b06
+  00436a85  push     1
+  00436a87  call     0x41906a   ; ->0x41906a
+  00436a8c  add      esp, 4
+  00436a8f  cmp      ebx, 3
+  00436a92  ja       0x436b06
+  00436a94  jmp      dword ptr [ebx*4 + 0x436a4a]
+  00436a9b  push     0x5dc
+  00436aa0  push     0x464b2c
+  00436aa5  call     0x440cac   ; ->0x440cac
+  00436aaa  add      esp, 8
+  00436aad  mov      esi, dword ptr [0x49910c]   ; [0x0049910c]
+  00436ab3  imul     ebx, esi, 0x68
+  00436ab6  mov      edi, dword ptr [ebx + 0x496b8c]
+  00436abc  push     edi
+  00436abd  push     esi
+  00436abe  call     0x433bd8   ; ->0x433bd8
+  00436ac3  add      esp, 8
+  00436ac6  imul     ebx, dword ptr [0x49910c], 0x68   ; [0x0049910c]
+  00436acd  xor      edx, edx
+  00436acf  mov      dword ptr [ebx + 0x496b8c], edx
+  00436ad5  mov      dword ptr [ebx + 0x496b94], edx
+  00436adb  pop      edi
+  00436adc  pop      esi
+  00436add  pop      ebx
+  00436ade  ret      
+  00436adf  push     0x5dc
+  00436ae4  push     0x464b43
+  00436ae9  call     0x440cac   ; ->0x440cac
+  00436aee  add      esp, 8
+  00436af1  pop      edi
+  00436af2  pop      esi
+  00436af3  pop      ebx
+  00436af4  ret      
+  00436af5  push     0x5dc
+  00436afa  push     0x464b5c
+  00436aff  jmp      0x436ae9   ; ->0x436ae9
+  00436b01  call     0x43695e   ; ->0x43695e
+  00436b06  pop      edi
+  00436b07  pop      esi
+  00436b08  pop      ebx
+  00436b09  ret      
